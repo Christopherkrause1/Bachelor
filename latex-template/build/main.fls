@@ -1,4 +1,4 @@
-PWD C:/Users/chris/Desktop/Praktikum/latex-template
+PWD C:/Users/chris/Documents/Bachelor/Bachelor/latex-template
 INPUT c:/texlive/2017/texmf-var/web2c/luatex/lualatex.fmt
 INPUT ./main.tex
 OUTPUT build/main.log
@@ -350,7 +350,6 @@ INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
 INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
-INPUT C:/texlive/2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-bold.luc
 INPUT C:/texlive/2017/texmf-var/luatex-cache/generic/fonts/otl/lmsans10-regular.luc
 INPUT C:/texlive/2017/texmf-var/luatex-cache/generic/fonts/otl/lmsans10-bold.luc
 INPUT C:/texlive/2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-regular.luc
@@ -372,16 +371,8 @@ INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT build/main.toc
 INPUT build/main.toc
 OUTPUT build/main.toc
-INPUT ./content/theorie.tex
-INPUT ./content/theorie.tex
-INPUT ./content/durchfuehrung.tex
-INPUT ./content/durchfuehrung.tex
-INPUT ./content/auswertung.tex
-INPUT ./content/auswertung.tex
-INPUT build/plot.pdf
-INPUT plot.pdf
-INPUT ./content/diskussion.tex
-INPUT ./content/diskussion.tex
+INPUT ./content/zielsetzung.tex
+INPUT ./content/zielsetzung.tex
 INPUT build/main.aux
 INPUT build/main.run.xml
 OUTPUT build/main.run.xml
