@@ -1,4 +1,4 @@
-PWD C:/Users/chris/Documents/Bachelor/Bachelor/latex-template
+PWD C:/Users/chris/Documents/Bachelor/Bachelor
 INPUT c:/texlive/2017/texmf-var/web2c/luatex/lualatex.fmt
 INPUT ./main.tex
 OUTPUT build/main.log
@@ -373,6 +373,8 @@ INPUT build/main.toc
 OUTPUT build/main.toc
 INPUT ./content/zielsetzung.tex
 INPUT ./content/zielsetzung.tex
+INPUT ./content/theorie.tex
+INPUT ./content/theorie.tex
 INPUT build/main.aux
 INPUT build/main.run.xml
 OUTPUT build/main.run.xml

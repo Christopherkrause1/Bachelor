@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/W32TeX)  (format=lualatex 2017.9.7)  12 MAR 2019 10:38
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/W32TeX)  (format=lualatex 2017.9.7)  12 MAR 2019 10:42
  restricted system commands enabled.
 **main.tex
 (./main.tex
@@ -22,7 +22,7 @@ Inserting `luaotfload.aux.patch_cambria_domh' at position 2 in `luaotfload.patch
 Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_font_unsafe'.
 Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'.
-luaotfload | main : initialization completed in 0.257 seconds
+luaotfload | main : initialization completed in 0.344 seconds
 Babel <3.12> and hyphenation patterns for 1 language(s) loaded.
 (./header.tex (c:/texlive/2017/texmf-dist/tex/latex/koma-script/scrartcl.cls
 Document Class: scrartcl 2017/04/13 v3.23 KOMA-Script document class (article)
@@ -2041,40 +2041,37 @@ Language ngerman already loaded; id is 8)
 \openout5 = main.toc
  [2
 
-] (./content/zielsetzung.tex)
-
-LaTeX Warning: Empty bibliography on input line 19.
-
+] (./content/zielsetzung.tex) (./content/theorie.tex)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 21.
-[3]
+ [3]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 21.
  (./build/main.aux
 Language ngerman already loaded; id is 8)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 21.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 21.
 Package rerunfilecheck Info: File `main.aux' has not changed.
-(rerunfilecheck)             Checksum: DB247F91CE8F502076B055F3180D0A59;1970.
+(rerunfilecheck)             Checksum: 5F2653EFEFED7AAA864A6FB55C30F684;2679.
 Package rerunfilecheck Info: File `main.toc' has not changed.
-(rerunfilecheck)             Checksum: 44E72FDA332A415CC1C5EA58016AFEE7;231.
+(rerunfilecheck)             Checksum: 78C75B072F45C0960B896A45867CDA03;357.
 Package logreq Info: Writing requests to 'main.run.xml'.
 
 \openout1 = main.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 40244 strings out of 494472
+ 40451 strings out of 494472
  100000,1648299 words of node,token memory allocated
- 572 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 1 kern, 7 attribute, 74 glue_spec, 7 attribute_list, 1 write nodes
-   avail lists: 2:114,3:21,4:9,5:32,6:231,7:96,8:7,9:32,10:4,11:29
- 43241 multiletter control sequences out of 65536+600000
+ 577 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 1 kern, 7 attribute, 75 glue_spec, 7 attribute_list, 1 write nodes
+   avail lists: 1:1,2:131,3:34,4:9,5:33,6:231,7:96,8:7,9:32,10:4,11:29
+ 43436 multiletter control sequences out of 65536+600000
  93 fonts using 24079883 bytes
- 61i,6n,104p,8833b,880s stack positions out of 5000i,500n,10000p,200000b,100000s
-<c:/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf><c:/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmsans10-bold.otf>
-Output written on main.pdf (3 pages, 12959 bytes).
+ 61i,6n,104p,8833b,2507s stack positions out of 5000i,500n,10000p,200000b,100000s
+<c:/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf><c:/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf><c:/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmsans10-bold.otf>
+Output written on main.pdf (3 pages, 18294 bytes).
 
-PDF statistics: 52 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
- 6 named destinations out of 1000 (max. 131072)
- 9 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 72 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
+ 9 named destinations out of 1000 (max. 131072)
+ 25 words of extra memory for PDF output out of 10000 (max. 100000000)
 
