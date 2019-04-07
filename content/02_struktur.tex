@@ -1,31 +1,31 @@
-\chapter{Struktur der Arbeit}
+\chapter{Siliziumdetektoren}
+Die Siliziumhalbleiter sind in der hochenenergie Physik weit verbreitete
+Detektoren, welche in Collider-Experimenten , wie Atlas, verwendet werden.
+Sie operieren bei Raumtemperatur und können präzise Rückschlüsse auf die
+Energie von Teilchen schließen.
 
-Eine mögliche Struktur der Arbeit sieht wie folgt aus:
+\section{Halbleiter}
+Die im Halbleiter vorkommenden Elektronen des Siliziumkristalls wechselwirken mit anderen Elektronen und
+Kernen, wodurch es zu vielen Aufspaltungen des Energieniveaus dieser kommt. Die
+Zustände liegen dicht bei einander, weshalb von Energiebändern gesprochen wird.
+Das höchste von den Elektronen besetzte Band ist das Valenzband, welches von dem
+nächsthöheren Band durch eine Bandlücke getrennt ist. Elektronen können
+durch Anregungen in das Leitungsband wandern und somit Strom leiten, vorrausgesetzt
+die Anregungen sind größer als die Energielücke.
 
-\begin{enumerate}
-    \item \textbf{Einleitung}\\
-        In der \emph{kurzen} Einleitung wird die Motivation für die Arbeit
-        dargestellt und ein Einblick in die kommenden Kapitel gegeben.
-    \item \textbf{Theoretische Grundlagen}\\
-        Alles was an theoretischen Grundlagen benötigt wird, sollte auch eher kurz gehalten werden.
-        Statt Grundlagenwissen zu präsentieren, eher auf die entsprechenden Lehrbücher verweisen.
-        Etwa: Tiefer gehende Informationen zur klassischen Mechanik entnehmen Sie bitte \cite{kuypers}.
-    \item \textbf{Ergebnisse} \\
-        Der eigentliche Teil der Arbeit, das was getan wurde.
-    \item \textbf{Zusammenfassung und Ausblick} \\
-        Zusammenfassung der Ergebnisse, Optimierungsmöglichkeiten, mögliche weitergehende Untersuchungen.
-\end{enumerate}
+Das Einbringen von Fremdatomen in den Siliziumkristall kann dessen Eigenschaften ändern
+und wird Dotierung genannt.
+Hat das Fremdatom mehr oder weniger Valenzelektronen als das Silizium, kommt
+es zu weiteren Aufspaltungen der Energienivaus, welche sich in der Energielücke
+befindet. Dadurch wird es für Elektronen einfacher in das Leitungsband zu wandern.
+Bei den Fremdatomen wird zwischen Donatoren und Akzeptoren unterschieden, wobei die
+Ersteren mehr Valenzelektronen als das Silizium besitzen und die Zweiteren weniger.
+Bereiche des Siliziumkristalls mit Donatoren werden n-Dotierte Halbleiter
+und Bereiche mit Akzeptoren p-Dotierte Halbleiter genannt.
 
-Die Gliederung sollte auf der einen Seite nicht zu fein sein, auf der anderen Seite
-sollten sich klar unterscheidende Abschnitte auch kenntlich gemacht werden.
-
-In der hier verwendeten \KOMAScript-Klasse \texttt{scrbook} ist die oberste Gliederungsebene,
-die in der Bachelorarbeit verwendet werden sollte, das \texttt{\textbackslash chapter}.
-
-Ein Kapitel sollte erst dann in tiefere Gliederungsebenen unterteilt werden, wenn es auch wirklich etwas zu unterteilen gibt. Es sollte keine Kapitel mit nur einem Unterkapitel (\texttt{\textbackslash section}) geben.
-
-In dieser Vorlage ist die Tiefe des Inhaltsverzeichnisses auf \texttt{chapter} und \texttt{section} beschränkt. Möchten Sie diese Beschränkung aufheben, entfernen Sie den Befehl
-\begin{verbatim}
-            \setcounter{tocdepth}{1}
-\end{verbatim}
-aus der Präambel oder ändern Sie den Zahlenwert entsprechend. Das Inhaltsverzeichnis sollte für eine Bachelorarbeit auf eine Seite passen.
+Bei einem Übergang von einer n-Dotierten zu einer p-Dotierten Schicht rekombinieren
+die Elektronen der n-Dotierten Schicht mit den Elektronenlöchern der p-dotierten Schicht, da
+sie in die anderen Bereiche diffundieren. Durch die übirg bleibenden Ortsfesten Atomkerne
+baut sich ein elektrisches Feld auf, welches dem Diffusionsstrom entgegen wirkt.
+Ein sich einstellendes Gleichgewicht führt zu einer raumladungsfreien Zone bei
+dem p-n-Übergang.
