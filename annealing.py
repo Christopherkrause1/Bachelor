@@ -10,7 +10,7 @@ N_Y_inf = 5.16 * 10**(-2) * 1.4*10**(13) #min/cm
 g_C = 1.49 * 10**(-2)  #cm**(-1)
 g_a_1 = 1.81 * 10**(-2) #cm**(-1)
 k_B = 1.38064852 * 10**(-23) #Boltzmann Konstante
-E_aa = 1.09 * 1.6* 10**(-19) #1/j
+E_aa = 1.09 * 1.6* 10**(-19) #j
 k_0a = 2.4 *10**(13)*60 #1/min
 
 t, phi, T = np.genfromtxt('daten.txt', unpack=True)
@@ -45,3 +45,27 @@ plt.ylim(0, 10*10**(11))
 plt.xlabel(r'annealing Zeit / $\mathrm{min}$')
 plt.ylabel(r'$\Delta$N_eff /$\mathrm{cm^{-3}} $')
 plt.savefig('build/annealing.pdf')
+plt.clf()
+
+#current related damage rate
+a_I = 1.23 * 10**(-17) #A/cm
+k_0I = 1.2 * 10**(13)*60 #1/min
+E_I = 1.11 * 1.6 * 10**(-19) #j
+a_0 = -8.9*10**(-17) + 4.6*10**(-14) * 1/T    #A/cm
+b = 3.07*10**(-18)    #A/cm
+t_0 = 1 #s
+
+def damage():
+    return (a_I * np.exp(-t* k_0I* np.exp(-E_I/(k_B*T)))  +     #shortterm
+    a_0 - b * np.log(t/t_0))                                    #longterm
+
+plt.gcf().subplots_adjust(bottom=0.18)
+
+plt.semilogx(t , damage(), 'r.', label='damage rate', Markersize=6)
+plt.title('current related damage rate')
+plt.legend()
+plt.grid()
+#plt.ylim(0, 10*10**(11))
+plt.xlabel(r'Zeit / $\mathrm{min}$')
+plt.ylabel(r'$\alpha  / \mathrm{A cm^{-1}} $')
+plt.savefig('build/damage.pdf')
