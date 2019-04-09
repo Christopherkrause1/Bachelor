@@ -15,6 +15,8 @@ k_0a = 2.4 *10**(13)*60 #1/min
 
 t, phi, T = np.genfromtxt('daten.txt', unpack=True)
 
+#Änderung der effektiven Dotierungskonzentration
+
 stable = N_C0 *(1 - np.exp(-c*phi)) + g_C * phi
 shortterm = stable + phi * g_a_1 * np.exp(-t * k_0a * (np.exp(-E_aa/(k_B * T))))
 longterm = stable + N_Y_inf * (1- 1/(1 + t/tau))
@@ -43,7 +45,7 @@ plt.legend()
 plt.grid()
 plt.ylim(0, 10*10**(11))
 plt.xlabel(r'annealing Zeit / $\mathrm{min}$')
-plt.ylabel(r'$\Delta$N_eff /$\mathrm{cm^{-3}} $')
+plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
 plt.savefig('build/annealing.pdf')
 plt.clf()
 
