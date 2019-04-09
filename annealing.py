@@ -5,10 +5,10 @@ from scipy.optimize import curve_fit
 N_C0 = 1.3*10**11 #1/cm**3
 c = 1
 tau_1 = 24.1 #min
-tau = 1060 #min
-N_Y_inf = 5.16 * 10**(-2) * 1.4*10**(13) #min/cm
+tau = 880 #min
+N_Y_inf = 4.84 * 10**(-2) * 1.4*10**(13) #min/cm
 g_C = 1.49 * 10**(-2)  #cm**(-1)
-g_a_1 = 1.81 * 10**(-2) #cm**(-1)
+g_a_1 = 1.59 * 10**(-2) #cm**(-1)
 k_B = 1.38064852 * 10**(-23) #Boltzmann Konstante
 E_aa = 1.09 * 1.6* 10**(-19) #j
 k_0a = 2.4 *10**(13)*60 #1/min
