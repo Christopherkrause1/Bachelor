@@ -13,7 +13,7 @@ k_B = 1.38064852 * 10**(-23) #Boltzmann Konstante
 E_aa = 1.09 * 1.6* 10**(-19) #j
 k_0a = 2.4 *10**(13)*60 #1/min
 
-t, phi, T = np.genfromtxt('daten.txt', unpack=True)
+t, phi, T, T_2, T_3, T_4 = np.genfromtxt('daten.txt', unpack=True)
 
 #Änderung der effektiven Dotierungskonzentration
 
@@ -21,7 +21,7 @@ stable = N_C0 *(1 - np.exp(-c*phi)) + g_C * phi
 shortterm = stable + phi * g_a_1 * np.exp(-t * k_0a * (np.exp(-E_aa/(k_B * T))))
 longterm = stable + N_Y_inf * (1- 1/(1 + t/tau))
 
-def N_eff():
+def N_eff(T):
     return (N_C0 *(1 - np.exp(-c*phi)) + g_C * phi +              #N_C
     phi * g_a_1 * np.exp(-t * k_0a * (np.exp(-E_aa/(k_B * T)))) + #N_A
     N_Y_inf * (1- 1/(1 + t/tau)))                                 #N_Y
@@ -35,7 +35,8 @@ def N_eff():
 
 plt.gcf().subplots_adjust(bottom=0.18)
 
-plt.semilogx(t , N_eff(), 'r.', label='Änderung N_eff', Markersize=6)
+plt.semilogx(t , N_eff(T), 'r.', label='Änderung N_eff', Markersize=6)
+#plt.semilogx(t , N_eff(T=T_2), 'b.', label='Änderung N_eff', Markersize=6)
 plt.semilogx(t, stable, 'k-', label='stable Damage', Markersize=4)
 plt.semilogx(t, shortterm, 'g--', label='short term', Markersize=4)
 plt.semilogx(t, longterm, 'b--', label='long term', Markersize=4)
@@ -55,15 +56,18 @@ k_0I = 1.2 * 10**(13)*60 #1/min
 E_I = 1.11 * 1.6 * 10**(-19) #j
 a_0 = -8.9*10**(-17) + 4.6*10**(-14) * 1/T    #A/cm
 b = 3.07*10**(-18)    #A/cm
-t_0 = 1 #s
+t_0 = 1 #min
 
-def damage():
-    return (a_I * np.exp(-t* k_0I* np.exp(-E_I/(k_B*T)))  +     #shortterm
-    a_0 - b * np.log(t/t_0))                                    #longterm
+def damage(T):
+    return (a_I * np.exp(-t* k_0I* np.exp(-E_I/(k_B*T)))  +                                      #shortterm
+    -8.9*10**(-17) + 4.6*10**(-14) * 1/T - b * np.log(t/t_0))                                    #longterm
 
 plt.gcf().subplots_adjust(bottom=0.18)
 
-plt.semilogx(t , damage(), 'r.', label='damage rate', Markersize=6)
+plt.semilogx(t , damage(T), 'r.', label='damage rate 60°C', Markersize=6)
+plt.semilogx(t , damage(T=T_2), 'b.', label='damage rate 21°C', Markersize=6)
+plt.semilogx(t , damage(T=T_3), 'k.', label='damage rate 90°C', Markersize=6)
+plt.semilogx(t , damage(T=T_4), 'g.', label='damage rate 106°C', Markersize=6)
 plt.title('current related damage rate')
 plt.legend()
 plt.grid()
