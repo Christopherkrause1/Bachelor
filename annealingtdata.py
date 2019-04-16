@@ -14,8 +14,12 @@ E_aa = 1.09 * 1.6* 10**(-19) #j   activation Energy
 k_0a = 2.4 *10**(13)*60 #1/min   frequnecy factor
 
 
-t, T = np.genfromtxt('tdata.txt', unpack=True)
+t, T = np.genfromtxt('tdata.txt', unpack=True)   #R1 daten
 
+t_unix, T3 = np.genfromtxt('2018-09-22_11_21_40_Annealingtest_1950.txt', usecols=(0, 2), unpack=True)  #unix daten in sekunden
+t_s=np.zeros(len(t_unix))
+for i in range(1, len(t_unix)):
+    t_s[i]=(t_unix[i]-t_unix[0])
 
 #Änderung der effektiven Dotierungskonzentration für WE-25k$\Omega$cm
 
@@ -55,4 +59,17 @@ plt.grid()
 plt.xlabel(r'Zeit / $\mathrm{min}$')
 plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
 plt.savefig('build/annealingtdata.pdf')
+plt.clf()
+
+
+plt.gcf().subplots_adjust(bottom=0.18)
+plt.semilogx(t_s/60, N_eff(t_s/60, 1*10**(15), T3+273.15), 'r.', label='Änderung N_eff', Markersize=6)
+plt.semilogx(t_s/60, N_eff(t_s/60, 1*10**(15), 60+273.15), 'b.', label='Änderung N_eff 60°C', Markersize=6)
+plt.title('Annealingeffekt für Unix Timestamps')
+plt.legend()
+plt.grid()
+#plt.ylim(1.52*10**(14), 1.56*10**(14))
+plt.xlabel(r'Zeit / $\mathrm{min}$')
+plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
+plt.savefig('build/annealingunix.pdf')
 plt.clf()
