@@ -5,7 +5,6 @@ from scipy.optimize import curve_fit
 N_C0 = 1.3*10**11 #1/cm**3
 E_y = 1.33*1.6*10**(-19)    #resulting activation Energy
 k_0y = 1.5 * 10**(15)*60   #frequnecy factor
-N_Y_inf = 4.84 * 10**(-2) * 1.4*10**(13) #min/cm
 g_c = 1.49 * 10**(-2)  #cm**(-1)    Acceptor introduction Rate
 g_a = 1.59 * 10**(-2) #cm**(-1)   introduction rate
 g_y = 5.16*10**(-2)   #cm**(-1)
@@ -15,7 +14,7 @@ k_0a = 2.4 *10**(13)*60 #1/min   frequnecy factor
 
 
 t, phi, T, T_2, T_3, T_4 = np.genfromtxt('daten.txt', unpack=True)
-
+t_2, T_5 = np.genfromtxt('tdata.txt', unpack=True)
 
 #Änderung der effektiven Dotierungskonzentration für WE-25k$\Omega$cm
 
@@ -52,6 +51,9 @@ plt.semilogx(t, N_eff(t, phi, T_3), 'g.', label='Änderung N_eff 80°C', Markers
 plt.semilogx(t, N_C(phi), 'k-', label='stable Damage', Markersize=4)
 plt.semilogx(t, N_C(phi) + N_A(t, phi, T), 'g--', label='short term', Markersize=4)
 plt.semilogx(t, N_C(phi) + N_Y(t, phi, T), 'b--', label='long term', Markersize=4)
+
+#plt.semilogx(t_2, N_eff(t_2, 5*10**(15), T_5), 'r.', label='Änderung N_eff 60°C', Markersize=6)
+
 plt.title('Annealingeffekt für WE-25k$\Omega$cm')
 plt.legend()
 plt.grid()
