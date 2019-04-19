@@ -13,7 +13,7 @@ E_aa = 1.09 * 1.6* 10**(-19) #j   activation Energy
 k_0a = 2.4 *10**(13) #1/s   frequency factor
 
 t, T_2 = np.genfromtxt('tdata.txt', unpack=True)   #R1 daten
-t_unix, T3 = np.genfromtxt('2018-09-22_11_21_40_Annealingtest_1950.txt', usecols=(0, 2), unpack=True)  #unix daten
+t_unix, T_3 = np.genfromtxt('2018-09-22_11_21_40_Annealingtest_1950.txt', usecols=(0, 2), unpack=True)  #unix daten
 t_s = t_unix-t_unix[0]          #t_s = vergangene Zeit in Sekunden
 
 
@@ -57,32 +57,34 @@ def gett_A(t, tau_A0, T):                              #sum of time differences 
 def N_C(phi):                                          #stable damage
     return N_C0 *(1 - np.exp(-phi)) + g_c * phi
 
-def N_A(t_A, phi):                                    #shortterm annealing
+def N_A(t, phi, T):                                    #shortterm annealing
+    tau_A0 = tau_A(T)
+    t_A = gett_A(t, tau_A0, T)                         #Vektor t_1 - t_0/tau_A(0)
     return phi * g_a * np.exp(-t_A)
 
 
-def N_Y(t_Y, phi):                                    #longterm annealing
+def N_Y(t, phi, T):                                    #longterm annealing
+    tau_Y0 = tau_Y(T)
+    t_Y = gett_Y(t, tau_Y0, T)                         #Vektor t_1 - t_0/tau_Y(0)
     return N_Y_inf(phi) * (1- 1/(1 + t_Y))
 
 
 def N_eff(t, phi, T):                                #Änderung der Dotierungskonzentration
-    tau_A0 = tau_A(T)
-    t_A = gett_A(t, tau_A0, T)                               #Vektor t_1 - t_0/tau_A(0)
-    tau_Y0 = tau_Y(T)
-    t_Y = gett_Y(t, tau_Y0, T)                               #Vektor t_1 - t_0/tau_Y(0)
-    return N_C(phi) + N_A(t_A, phi) + N_Y(t_Y, phi)
+    #tau_A0 = tau_A(T)
+    #t_A = gett_A(t, tau_A0, T)                               #Vektor t_1 - t_0/tau_A(0)
+    #tau_Y0 = tau_Y(T)
+    #t_Y = gett_Y(t, tau_Y0, T)                               #Vektor t_1 - t_0/tau_Y(0)
+    return N_C(phi) + N_A(t, phi, T) + N_Y(t, phi, T)
 
 
 
-#
+
 plt.gcf().subplots_adjust(bottom=0.18)
-plt.semilogx(t/60, N_eff(t, 5*10**(15), 80), 'b.', label='Änderung N_eff 80°C', Markersize=6)
 plt.semilogx(t/60, N_eff(t, 5*10**(15), T_2), 'r.', label='Änderung N_eff R1', Markersize=6)
-#plt.semilogx(t/60, N_C(5*10**(15))+N_A(t_A, 5*10**(15)) + N_Y(t_Y, 5*10**(15), T), 'k-', label='Änderung N_eff R1', Markersize=6)
-#plt.semilogx(t/60, N_C(5*10**(15))+N_A(t_A, 5*10**(15), T), 'b-', label='Änderung N_A', Markersize=6)
-#plt.semilogx(t/60, N_C(5*10**(15))+N_Y(t_Y, 5*10**(15), T), 'g-', label='Änderung N_A', Markersize=6)
-
-
+plt.semilogx(t/60, N_eff(t, 5*10**(15), 80), 'b.', label='Änderung N_eff 80°C', Markersize=6)
+plt.semilogx(t/60, N_C(5*10**(15))+N_A(t, 5*10**(15), T_2) + N_Y(t, 5*10**(15), T_2), 'k-', label='Änderung N_eff R1', Markersize=6)
+#plt.semilogx(t/60, N_C(5*10**(15))+N_A(t, 5*10**(15), T_2), 'b-', label='Änderung N_A', Markersize=6)
+#plt.semilogx(t/60, N_C(5*10**(15))+N_Y(t, 5*10**(15), T_2), 'g-', label='Änderung N_A', Markersize=6)
 plt.title('Annealingeffekt für R1')
 plt.legend()
 plt.grid()
@@ -96,12 +98,12 @@ plt.clf()
 
 #Änderung der effektiven Dotierungskonzentration für Diode mit Unix Zeiten
 
-t = t_s
-T = T3
+
+
 
 plt.gcf().subplots_adjust(bottom=0.18)
-plt.semilogx(t/60, N_eff(t/60, 1*10**(15), T), 'r.', label='Änderung N_eff', Markersize=6)
-plt.semilogx(t/60, N_eff(t/60, 1*10**(15), 60), 'b.', label='Änderung N_eff 60°C', Markersize=6)
+plt.semilogx(t_s/60, N_eff(t_s/60, 1*10**(15), T_3), 'r.', label='Änderung N_eff', Markersize=6)
+plt.semilogx(t_s/60, N_eff(t_s/60, 1*10**(15), 60), 'b.', label='Änderung N_eff 60°C', Markersize=6)
 plt.title('Annealingeffekt für Unix Timestamps')
 plt.legend()
 plt.grid()
