@@ -37,7 +37,6 @@ def gett_Y(t, tau_Y0, T):
     return t_Y
 
 
-
 def tau_A(T):                                          #Time constant
     return 1/(k_0a *np.exp(-E_aa/(k_B*(T+273.15))))
 
@@ -58,22 +57,18 @@ def N_C(phi):                                          #stable damage
     return N_C0 *(1 - np.exp(-phi)) + g_c * phi
 
 def N_A(t, phi, T):                                    #shortterm annealing
-    tau_A0 = tau_A(T)
+    tau_A0 = tau_A(T)                                  #tau_A0 = Array [egal, tau_A(T[0]), tau_A(T[1]),...]
     t_A = gett_A(t, tau_A0, T)                         #Vektor t_1 - t_0/tau_A(0)
     return phi * g_a * np.exp(-t_A)
 
 
 def N_Y(t, phi, T):                                    #longterm annealing
-    tau_Y0 = tau_Y(T)
+    tau_Y0 = tau_Y(T)                                  #tau_Y0 = Array [egal, tau_Y(T[0]), tau_Y(T[1]),...]
     t_Y = gett_Y(t, tau_Y0, T)                         #Vektor t_1 - t_0/tau_Y(0)
     return N_Y_inf(phi) * (1- 1/(1 + t_Y))
 
 
 def N_eff(t, phi, T):                                #Änderung der Dotierungskonzentration
-    #tau_A0 = tau_A(T)
-    #t_A = gett_A(t, tau_A0, T)                               #Vektor t_1 - t_0/tau_A(0)
-    #tau_Y0 = tau_Y(T)
-    #t_Y = gett_Y(t, tau_Y0, T)                               #Vektor t_1 - t_0/tau_Y(0)
     return N_C(phi) + N_A(t, phi, T) + N_Y(t, phi, T)
 
 
