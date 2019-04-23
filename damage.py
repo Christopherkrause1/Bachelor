@@ -27,6 +27,12 @@ def damage(t, T):                                #damage rate
 
 plt.gcf().subplots_adjust(bottom=0.18)
 
+fig, ax1 = plt.subplots()
+ax1.semilogx(t, damage(t, T), 'r.', marker='.', markersize=0)
+ax1.set_ylabel(r'$\alpha  / \mathrm{A cm^{-1}} $', fontsize=10, color="black")
+for label in ax1.get_yticklabels():
+    label.set_color("black")
+
 plt.semilogx(t , damage(t, T), 'r.', label='damage rate 60°C', Markersize=6)
 plt.semilogx(t , damage(t, T=T_2), 'b.', label='damage rate 21°C', Markersize=6)
 plt.semilogx(t , damage(t, T=T_3), 'k.', label='damage rate 80°C', Markersize=6)
@@ -34,9 +40,15 @@ plt.semilogx(t , damage(t, T=T_4), 'g.', label='damage rate 106°C', Markersize=
 plt.title('current related damage rate')
 plt.legend()
 plt.grid()
+
+ax2 = ax1.twinx()
+ax2.semilogx(t, T, 'k.', marker='.', markersize=0)
+ax2.set_ylabel(r"$T/K$", fontsize=10, color="black")
+for label in ax2.get_yticklabels():
+    label.set_color("black")
+
+
 #plt.ylim(0, 10*10**(11))
 plt.xlabel(r'Zeit / $\mathrm{min}$')
-plt.ylabel(r'$\alpha  / \mathrm{A cm^{-1}} $')
 plt.savefig('build/damage.pdf')
-# damage(t=80, T=60°C) = 4.0236277*10**(-17) A/cm, gemessener Wert 4.01 +/- 0.04
 plt.clf()

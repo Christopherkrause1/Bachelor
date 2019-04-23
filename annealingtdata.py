@@ -75,6 +75,13 @@ def N_eff(t, phi, T):                                #Änderung der Dotierungsko
 
 
 plt.gcf().subplots_adjust(bottom=0.18)
+
+#fig, ax1 = plt.subplots()
+#ax1.semilogx(t, N_eff(t, phi, T), 'r.', marker='.', markersize=0)
+#ax1.set_ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $', fontsize=10, color="black")
+#for label in ax1.get_yticklabels():
+#    label.set_color("black")
+
 plt.semilogx(t/60, N_eff(t, 5*10**(15), T_2), 'r.', label='Änderung N_eff R1', Markersize=6)
 plt.semilogx(t/60, N_eff(t, 5*10**(15), 80), 'b.', label='Änderung N_eff 80°C', Markersize=6)
 plt.semilogx(t/60, N_C(5*10**(15))+N_A(t, 5*10**(15), T_2) + N_Y(t, 5*10**(15), T_2), 'k-', label='Änderung N_eff R1', Markersize=6)
@@ -83,7 +90,14 @@ plt.semilogx(t/60, N_C(5*10**(15))+N_A(t, 5*10**(15), T_2) + N_Y(t, 5*10**(15), 
 plt.title('Annealingeffekt für R1')
 plt.legend()
 plt.grid()
-plt.xlabel(r'Zeit / $\mathrm{min}$')
+
+#ax2 = ax1.twinx()
+#ax2.semilogx(t, T, 'k.', marker='.', markersize=0)
+#ax2.set_ylabel(r"$T/K$", fontsize=10, color="black")
+#for label in ax2.get_yticklabels():
+#    label.set_color("black")
+
+plt.xlabel(r't / $\mathrm{min}$')
 plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
 plt.savefig('build/annealingtdata.pdf')
 plt.clf()
