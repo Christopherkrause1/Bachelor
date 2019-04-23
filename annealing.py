@@ -55,11 +55,11 @@ def N_eff(t, phi, T):                                  #Änderung der Dotierungs
 
 plt.semilogx(t_2/60, N_eff(t_2/60, 5*10**(15), T_5+273.15), 'r.', label='Änderung N_eff 60°C', Markersize=6)
 plt.semilogx(t_2/60, N_eff(t_2/60, 5*10**(15), 353.15), 'b.', label='Änderung N_eff 80°C', Markersize=6)
-plt.title('Annealingeffekt für WE-25k$\Omega$cm')
+plt.title('Annealingeffekt')    #für WE-25k$\Omega$cm')
 plt.legend()
 plt.grid()
 #plt.ylim(1.52*10**(14), 1.56*10**(14))
-plt.xlabel(r'Zeit / $\mathrm{min}$')
+plt.xlabel(r't/ $\mathrm{min}$')
 plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
 plt.savefig('build/annealing.pdf')
 plt.clf()

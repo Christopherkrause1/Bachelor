@@ -12,12 +12,7 @@ k_B = 1.38064852 * 10**(-23) #Boltzmann Konstante
 E_aa = 1.09 * 1.6* 10**(-19) #j   activation Energy
 k_0a = 2.4 *10**(13) #1/s   frequency factor
 
-t, T_2 = np.genfromtxt('tdata.txt', unpack=True)   #R1 daten
-t_unix, T_3 = np.genfromtxt('2018-09-22_11_21_40_Annealingtest_1950.txt', usecols=(0, 2), unpack=True)  #unix daten
-t_s = t_unix-t_unix[0]          #t_s = vergangene Zeit in Sekunden
 
-
-#Änderung der effektiven Dotierungskonzentration für R1
 
 
 def N_Y_inf(phi):                                      #longterm annealing amplitude
@@ -51,8 +46,6 @@ def gett_A(t, tau_A0, T):                              #sum of time differences 
     return t_A
 
 
-
-
 def N_C(phi):                                          #stable damage
     return N_C0 *(1 - np.exp(-phi)) + g_c * phi
 
@@ -72,16 +65,10 @@ def N_eff(t, phi, T):                                #Änderung der Dotierungsko
     return N_C(phi) + N_A(t, phi, T) + N_Y(t, phi, T)
 
 
-
+#Änderung der effektiven Dotierungskonzentration für R1
+t, T_2 = np.genfromtxt('tdata.txt', unpack=True)   #R1 daten
 
 plt.gcf().subplots_adjust(bottom=0.18)
-
-#fig, ax1 = plt.subplots()
-#ax1.semilogx(t, N_eff(t, phi, T), 'r.', marker='.', markersize=0)
-#ax1.set_ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $', fontsize=10, color="black")
-#for label in ax1.get_yticklabels():
-#    label.set_color("black")
-
 plt.semilogx(t/60, N_eff(t, 5*10**(15), T_2), 'r.', label='Änderung N_eff R1', Markersize=6)
 plt.semilogx(t/60, N_eff(t, 5*10**(15), 80), 'b.', label='Änderung N_eff 80°C', Markersize=6)
 plt.semilogx(t/60, N_C(5*10**(15))+N_A(t, 5*10**(15), T_2) + N_Y(t, 5*10**(15), T_2), 'k-', label='Änderung N_eff R1', Markersize=6)
@@ -90,13 +77,6 @@ plt.semilogx(t/60, N_C(5*10**(15))+N_A(t, 5*10**(15), T_2) + N_Y(t, 5*10**(15), 
 plt.title('Annealingeffekt für R1')
 plt.legend()
 plt.grid()
-
-#ax2 = ax1.twinx()
-#ax2.semilogx(t, T, 'k.', marker='.', markersize=0)
-#ax2.set_ylabel(r"$T/K$", fontsize=10, color="black")
-#for label in ax2.get_yticklabels():
-#    label.set_color("black")
-
 plt.xlabel(r't / $\mathrm{min}$')
 plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
 plt.savefig('build/annealingtdata.pdf')
@@ -106,18 +86,33 @@ plt.clf()
 
 
 #Änderung der effektiven Dotierungskonzentration für Diode mit Unix Zeiten
-
-
-
+t_unix, T_3 = np.genfromtxt('2018-09-22_11_21_40_Annealingtest_1950.txt', usecols=(0, 2), unpack=True)  #unix daten
+t_s = t_unix-t_unix[0]          #t_s = vergangene Zeit in Sekunden
 
 plt.gcf().subplots_adjust(bottom=0.18)
-plt.semilogx(t_s/60, N_eff(t_s/60, 1*10**(15), T_3), 'r.', label='Änderung N_eff', Markersize=6)
-plt.semilogx(t_s/60, N_eff(t_s/60, 1*10**(15), 60), 'b.', label='Änderung N_eff 60°C', Markersize=6)
-plt.title('Annealingeffekt für Unix Timestamps')
+plt.semilogx(t_s/60, N_eff(t_s, 1*10**(15), T_3), 'r.', label='Änderung N_eff', Markersize=6)
+plt.semilogx(t_s/60, N_eff(t_s, 1*10**(15), 60), 'b.', label='Änderung N_eff 60°C', Markersize=6)
+plt.title('Annealingeffekt')
 plt.legend()
 plt.grid()
-#plt.ylim(1.52*10**(14), 1.56*10**(14))
-plt.xlabel(r'Zeit / $\mathrm{min}$')
+plt.xlabel(r't / $\mathrm{min}$')
 plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
 plt.savefig('build/annealingunix.pdf')
+plt.clf()
+
+
+
+#Zweiter Datensatz mit unix zeiten
+t_unix2, T_4 = np.genfromtxt('2018-09-23_07_40_48_Annealingtest_1950.txt', usecols=(0, 1), unpack=True)  #unix daten
+t_s2 = t_unix2-t_unix2[0]
+
+plt.gcf().subplots_adjust(bottom=0.18)
+plt.semilogx(t_s2/60, N_eff(t_s2, 1*10**(15), T_4), 'r.', label='Änderung N_eff', Markersize=6)
+plt.semilogx(t_s2/60, N_eff(t_s2, 1*10**(15), 60), 'b.', label='Änderung N_eff 60°C', Markersize=6)
+plt.title('Annealingeffekt')
+plt.legend()
+plt.grid()
+plt.xlabel(r't / $\mathrm{min}$')
+plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
+plt.savefig('build/annealingunix_2.pdf')
 plt.clf()
