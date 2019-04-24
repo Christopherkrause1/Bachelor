@@ -61,5 +61,4 @@ plt.grid()
 plt.xlabel(r't / $\mathrm{min}$')
 plt.ylabel(r'$\alpha  / \mathrm{A cm^{-1}} $')
 plt.savefig('build/damagekorrektur.pdf')
-# damage(t=80, T=60°C) = 4.0236277*10**(-17) A/cm, gemessener Wert 4.01 +/- 0.04
 plt.clf()

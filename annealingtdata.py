@@ -68,17 +68,38 @@ def N_eff(t, phi, T):                                #Änderung der Dotierungsko
 #Änderung der effektiven Dotierungskonzentration für R1
 t, T_2 = np.genfromtxt('tdata.txt', unpack=True)   #R1 daten
 
-plt.gcf().subplots_adjust(bottom=0.18)
-plt.semilogx(t/60, N_eff(t, 5*10**(15), T_2), 'r.', label='Änderung N_eff R1', Markersize=6)
-plt.semilogx(t/60, N_eff(t, 5*10**(15), 80), 'b.', label='Änderung N_eff 80°C', Markersize=6)
-plt.semilogx(t/60, N_C(5*10**(15))+N_A(t, 5*10**(15), T_2) + N_Y(t, 5*10**(15), T_2), 'k-', label='Änderung N_eff R1', Markersize=6)
-#plt.semilogx(t/60, N_C(5*10**(15))+N_A(t, 5*10**(15), T_2), 'b-', label='Änderung N_A', Markersize=6)
-#plt.semilogx(t/60, N_C(5*10**(15))+N_Y(t, 5*10**(15), T_2), 'g-', label='Änderung N_A', Markersize=6)
+
+fig, ax1 = plt.subplots()
+plt.semilogx(t/60 , T_2, 'r.', label='Temperatur', Markersize=6)
+#ax1.bar()
+#ax1.scatter()
+ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
+ax1.tick_params('y',colors='red')
+ax1.set_xlabel("Zeit / min")
+ax1.legend(loc=6)
+
+
+ax2 = ax1.twinx()
+plt.semilogx(t/60, N_eff(t, 5*10**(15), T_2), 'b.', label='Änderung N_eff R1', Markersize=6)
+plt.semilogx(t/60, N_eff(t, 5*10**(15), 80), 'k--', label='Änderung N_eff 80°C', Markersize=6)
+ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
+ax2.tick_params('y',colors='blue')
+#ax2.set_yscale('log')
+#ax2.scatter()
+ax1.grid()
+ax2.legend(loc='best')
+
+#plt.gcf().subplots_adjust(bottom=0.18)
+#plt.semilogx(t/60, N_eff(t, 5*10**(15), T_2), 'r.', label='Änderung N_eff R1', Markersize=6)
+#plt.semilogx(t/60, N_eff(t, 5*10**(15), 80), 'b.', label='Änderung N_eff 80°C', Markersize=6)
+#plt.semilogx(t/60, N_C(5*10**(15))+N_A(t, 5*10**(15), T_2) + N_Y(t, 5*10**(15), T_2), 'k-', label='Änderung N_eff R1', Markersize=6)
+##plt.semilogx(t/60, N_C(5*10**(15))+N_A(t, 5*10**(15), T_2), 'b-', label='Änderung N_A', Markersize=6)
+##plt.semilogx(t/60, N_C(5*10**(15))+N_Y(t, 5*10**(15), T_2), 'g-', label='Änderung N_A', Markersize=6)
 plt.title('Annealingeffekt für R1')
-plt.legend()
-plt.grid()
-plt.xlabel(r't / $\mathrm{min}$')
-plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
+#plt.legend()
+#plt.grid()
+#plt.xlabel(r't / $\mathrm{min}$')
+#plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
 plt.savefig('build/annealingtdata.pdf')
 plt.clf()
 
