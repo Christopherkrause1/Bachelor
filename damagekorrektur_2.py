@@ -11,7 +11,7 @@ E_I2 = 1.3 * 1.6 * 10**(-19)
 b = 3.07*10**(-18)    #A/cm
 t_0 = 1 #min
 k_B = 1.38064852 * 10**(-23) #Boltzmann Konstante
-T_ref = 333.15
+T_ref = 393.15
 t, phi, T, T_2, T_3, T_4 = np.genfromtxt('daten.txt', unpack=True)
 t, T_1 = np.genfromtxt('tdata.txt', unpack=True)
 
@@ -44,7 +44,7 @@ def gett_theta(t, theta_0, T):
     timediff_theta = np.ediff1d(t, to_begin=0)
     theta_0 = np.roll(theta_0, shift=1) # shifting array by one to the right
     timediff_theta *= theta_0
-    timediff_theta[0]=10**(-80)
+    timediff_theta[0]=10**(-90)
     t_theta = np.zeros(len(t))
     for i in range(0, len(t)):
         t_theta[i] = np.sum(timediff_theta[0:i+1])
