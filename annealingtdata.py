@@ -80,8 +80,8 @@ ax1.legend(loc=6)
 
 
 ax2 = ax1.twinx()
-plt.semilogx(t/60, N_eff(t, 5*10**(15), T_2), 'b.', label='Änderung N_eff R1', Markersize=6)
-plt.semilogx(t/60, N_eff(t, 5*10**(15), 80), 'k--', label='Änderung N_eff 80°C', Markersize=6)
+plt.semilogx(t/60, N_eff(t, 5*10**(15), T_2), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ für R1', Markersize=6)
+plt.semilogx(t/60, N_eff(t, 5*10**(15), 80), 'k--', label=r'$\Delta N_{\mathrm{eff}}$ für 80°C', Markersize=6)
 ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
 ax2.tick_params('y',colors='blue')
 #ax2.set_yscale('log')

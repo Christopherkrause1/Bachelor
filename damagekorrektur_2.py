@@ -39,10 +39,23 @@ def a_02():                                  #Temperatur unabhängige parametris
 def theta(T):
     return np.exp(-E_I2/k_B *(1/T - 1/T_ref))
 
+def gett_theta(t, theta_0, T):
+    timediff_theta = np.zeros(len(t))
+    timediff_theta = np.ediff1d(t, to_begin=0)
+    theta_0 = np.roll(theta_0, shift=1) # shifting array by one to the right
+    timediff_theta *= theta_0
+    timediff_theta[0]=10**(-80)
+    t_theta = np.zeros(len(t))
+    for i in range(0, len(t)):
+        t_theta[i] = np.sum(timediff_theta[0:i+1])
+    return t_theta
+
 def damage(t, T):                                      #damage rate
     tau_I0 = tau_I(T)                                  #tau_I0 = Array [egal, tau_I(T[0]), tau_I(T[1]),...]
     t_I = gett_I(t, tau_I0, T)
-    return a_I * np.exp(-t_I) + a_02() - b * np.log(theta(T)*(t+0.01)/t_0)
+    theta_0 = theta(T)                                  #tau_I0 = Array [egal, tau_I(T[0]), tau_I(T[1]),...]
+    t_theta = gett_theta(t, theta_0, T)
+    return a_I * np.exp(-t_I) + a_02() - b * np.log(t_theta /t_0)
 
 
 fig, ax1 = plt.subplots()
@@ -65,6 +78,7 @@ ax2.set_ylabel(r"$\alpha  / \mathrm{A cm^{-1}} $",color='blue')
 ax2.tick_params('y',colors='blue')
 #ax2.set_yscale('log')
 #ax2.scatter()
+plt.ylim(0.1*10**(-16), 0.7*10**(-16))
 ax1.grid()
 ax2.legend(loc='best')
 
