@@ -1,6 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import curve_fit
+import scipy.interpolate
+import scipy as sp
+import math
 
 N_C0 = 1.3*10**11 #1/cm**3
 E_y = 1.33*1.6*10**(-19)    #resulting activation Energy
@@ -25,7 +28,8 @@ def gett_Y(t, tau_Y0, T):
     timediff_Y = np.zeros(len(t))
     timediff_Y = np.ediff1d(t, to_begin=0)
     tau_Y0 = np.roll(tau_Y0, shift=1) # shifting array by one to the right
-    timediff_Y /= tau_Y0
+    tau_Y1 = tau_Y(T)
+    timediff_Y /= (tau_Y0+ tau_Y1)/2
     t_Y = np.zeros(len(t))
     for i in range(0, len(t)):
         t_Y[i] = np.sum(timediff_Y[0:i+1])
@@ -39,7 +43,8 @@ def gett_A(t, tau_A0, T):                              #sum of time differences 
     timediff_A = np.zeros(len(t))
     timediff_A = np.ediff1d(t, to_begin=0)
     tau_A0 = np.roll(tau_A0, shift=1) # shifting array by one to the right, t[1]-t[0] soll ja durch tau[0] geteilt werden
-    timediff_A /= tau_A0
+    tau_A1 = tau_A(T)
+    timediff_A /= (tau_A0 + tau_A1)/2
     t_A = np.zeros(len(t))
     for i in range(0, len(t)):
         t_A[i] = np.sum(timediff_A[0:i+1])
@@ -50,14 +55,14 @@ def N_C(phi):                                          #stable damage
     return N_C0 *(1 - np.exp(-phi)) + g_c * phi
 
 def N_A(t, phi, T):                                    #shortterm annealing
-    tau_A0 = tau_A(T)                                  #tau_A0 = Array [egal, tau_A(T[0]), tau_A(T[1]),...]
+    tau_A0 = tau_A(T)                         #tau_A0 = Array [egal, tau_A(T[0]), tau_A(T[1]),...]
     t_A = gett_A(t, tau_A0, T)                         #Vektor t_1 - t_0/tau_A(0)
     return phi * g_a * np.exp(-t_A)
 
 
 def N_Y(t, phi, T):                                    #longterm annealing
-    tau_Y0 = tau_Y(T)                                #tau_Y0 = Array [egal, tau_Y(T[0]), tau_Y(T[1]),...]
-    t_Y = gett_Y(t, tau_Y0, T)                       #Vektor t_1 - t_0/tau_Y(0)
+    tau_Y0 = tau_Y(T)                             #tau_Y0 = Array [egal, tau_Y(T[0]), tau_Y(T[1]),...]
+    t_Y = gett_Y(t, tau_Y0, T)                         #Vektor t_1 - t_0/tau_Y(0)
     return N_Y_inf(phi) * (1- 1/(1 + t_Y))
 
 
@@ -65,27 +70,35 @@ def N_eff(t, phi, T):                                #Änderung der Dotierungsko
     return N_C(phi) + N_A(t, phi, T) + N_Y(t, phi, T)
 
 
-
-#T_max = max(T_1)
-#for i in range(1, len(T_1)):
-#    if T_1[i]-T_1[i-1] <= 0.05*(T_1[i-1]- T_max) + 0.02*273.15:
-#        n = 0.05*(T_1[i-1]- T_max) + 0.02*273.15
-#        t_I = (t[i]-t[i-1])/n
-#        print(i)
-#        print(t_I)
-#print('---------------------------')
-#T_max = max(T_1)
-#for i in range(1, len(T_1)):
-#    print(T_1[i]-T_1[i-1])
-
-
-
 #Änderung der effektiven Dotierungskonzentration für R1
 t, T_1 = np.genfromtxt('tdata.txt', unpack=True)   #R1 daten
-import scipy.interpolate
-import scipy as sp
+
 y = T_1
 x = t
+
+new_t = np.array(t[0])
+new_T = np.array(T_1[0])
+
+T_max = max(T_1)
+for i in range(1, len(T_1)):
+    #if T_1[i]-T_1[i-1] <= 0.05*(T_1[i-1]- T_max) + 0.02*273.15:
+    n = math.ceil((0.05*abs(T_1[i-1]- T_max) + 0.02*273.15)/abs(T_1[i-1]-T_1[i]))
+    for j in range(1, n+1):
+        new_T = np.append(new_T, T_1[i-1] + (T_1[i]-T_1[i-1])/(n) * (j))
+        new_t = np.append(new_t, t[i-1] + abs(t[i-1]-t[i])/n *j)
+
+
+#print(len(new_t))
+#print(len(new_T))
+
+plt.semilogx(new_t/60, new_T, 'r.')
+plt.semilogx(t/60, T_1, 'b.')
+plt.show()
+plt.clf()
+
+
+
+
 
 # Interpolate the data using a linear spline
 new_x = np.zeros(5*len(x)-5)

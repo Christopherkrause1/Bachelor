@@ -24,7 +24,8 @@ def gett_I(t, tau_I0, T):
     timediff_I = np.zeros(len(t))
     timediff_I = np.ediff1d(t, to_begin=0)
     tau_I0 = np.roll(tau_I0, shift=1) # shifting array by one to the right
-    timediff_I /= tau_I0
+    tau_I1 = tau_I(T)
+    timediff_I /= (tau_I0 + tau_I1)/2
     t_I = np.zeros(len(t))
     for i in range(0, len(t)):
         t_I[i] = np.sum(timediff_I[0:i+1])
@@ -43,7 +44,8 @@ def gett_theta(t, theta_0, T):
     timediff_theta = np.zeros(len(t))
     timediff_theta = np.ediff1d(t, to_begin=0)
     theta_0 = np.roll(theta_0, shift=1) # shifting array by one to the right
-    timediff_theta *= theta_0
+    theta_1 = theta(T)
+    timediff_theta *= (theta_0 + theta_1)/2
     timediff_theta[0]=10**(-90)
     t_theta = np.zeros(len(t))
     for i in range(0, len(t)):
