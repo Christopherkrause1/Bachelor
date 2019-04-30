@@ -101,6 +101,10 @@ for i in range(0,len(x)-1):
     for j in range(0,4): # mit 3 nur die dazwischen
         new_x[4*i+j] = x[i] + (x[i+1] - x[i])*(j+1)/4
 new_y = sp.interpolate.interp1d(x, y, kind='linear')(new_x)
+new_x = np.insert(new_x, 0, 0)
+new_y = np.insert(new_y, 0, T_1[0])
+print(len(new_x))
+print(new_y)
 plt.plot(x/60, y+5, 'bo-')
 plt.plot(new_x/60, new_y, 'ro-')
 plt.title('Using 1D linear Spline Interpolation')
