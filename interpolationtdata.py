@@ -56,8 +56,8 @@ def N_A(t, phi, T):                                    #shortterm annealing
 
 
 def N_Y(t, phi, T):                                    #longterm annealing
-    tau_Y0 = tau_Y(T)                                  #tau_Y0 = Array [egal, tau_Y(T[0]), tau_Y(T[1]),...]
-    t_Y = gett_Y(t, tau_Y0, T)                         #Vektor t_1 - t_0/tau_Y(0)
+    tau_Y0 = tau_Y(T)                                #tau_Y0 = Array [egal, tau_Y(T[0]), tau_Y(T[1]),...]
+    t_Y = gett_Y(t, tau_Y0, T)                       #Vektor t_1 - t_0/tau_Y(0)
     return N_Y_inf(phi) * (1- 1/(1 + t_Y))
 
 
@@ -65,16 +65,6 @@ def N_eff(t, phi, T):                                #Änderung der Dotierungsko
     return N_C(phi) + N_A(t, phi, T) + N_Y(t, phi, T)
 
 
-#Änderung der effektiven Dotierungskonzentration für R1
-t, T_1 = np.genfromtxt('tdata.txt', unpack=True)   #R1 daten
-plt.semilogx(t/60 , T_1, 'r.', label='Temperatur', Markersize=6)
-plt.title('Interpolation der Temperaturen')
-plt.legend()
-plt.grid()
-plt.xlabel(r'$t$ /$\mathrm{min} $')
-plt.ylabel(r'T / $^\mathrm{\circ}$C')
-plt.savefig('build/interpolationtdata.pdf')
-plt.clf()
 
 #T_max = max(T_1)
 #for i in range(1, len(T_1)):
@@ -89,22 +79,22 @@ plt.clf()
 #    print(T_1[i]-T_1[i-1])
 
 
-# Generate some random data
+
+#Änderung der effektiven Dotierungskonzentration für R1
+t, T_1 = np.genfromtxt('tdata.txt', unpack=True)   #R1 daten
 import scipy.interpolate
 import scipy as sp
 y = T_1
 x = t
 
 # Interpolate the data using a linear spline
-new_x = np.zeros(4*len(x)-4)
+new_x = np.zeros(5*len(x)-5)
 for i in range(0,len(x)-1):
-    for j in range(0,4): # mit 3 nur die dazwischen
-        new_x[4*i+j] = x[i] + (x[i+1] - x[i])*(j+1)/4
+    for j in range(0,5): # mit 3 nur die dazwischen
+        new_x[5*i+j] = x[i] + (x[i+1] - x[i])*(j+1)/5
 new_y = sp.interpolate.interp1d(x, y, kind='linear')(new_x)
-new_x = np.insert(new_x, 0, 0)
+new_x = np.insert(new_x, 0, t[0])
 new_y = np.insert(new_y, 0, T_1[0])
-print(len(new_x))
-print(new_y)
 plt.plot(x/60, y+5, 'bo-')
 plt.plot(new_x/60, new_y, 'ro-')
 plt.title('Using 1D linear Spline Interpolation')
@@ -112,4 +102,23 @@ plt.xlabel(r'$t$ /$\mathrm{min} $')
 plt.ylabel(r'T / $^\mathrm{\circ}$C')
 plt.savefig('build/interpolationtdata.pdf')
 plt.clf()
-#plt.subplot(2,1,2)
+
+fig, ax1 = plt.subplots()
+plt.semilogx(new_x/60 , new_y, 'r.', label='interpolierte Temperatur', Markersize=6)
+plt.semilogx(x/60 , y, 'g.', label='Temperatur', Markersize=6)
+ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
+ax1.tick_params('y',colors='red')
+ax1.set_xlabel("Zeit / min")
+ax1.legend(loc=6)
+
+
+ax2 = ax1.twinx()
+plt.semilogx(new_x/60, N_eff(new_x, 5*10**(15), new_y), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
+plt.semilogx(x/60, N_eff(x, 5*10**(15), y), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
+#plt.semilogx(new_x/60, N_eff(new_x, 5*10**(15), 80), 'k--', label=r'$\Delta N_{\mathrm{eff}}$ für 80°C', Markersize=6)
+ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
+ax2.tick_params('y',colors='blue')
+ax1.grid()
+ax2.legend(loc='best')
+plt.xlim(0, 2*10**2)
+plt.savefig('build/interpolationtdata_2.pdf')
