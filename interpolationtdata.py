@@ -73,52 +73,21 @@ def N_eff(t, phi, T):                                #Änderung der Dotierungsko
 #Änderung der effektiven Dotierungskonzentration für R1
 t, T_1 = np.genfromtxt('tdata.txt', unpack=True)   #R1 daten
 
-y = T_1
-x = t
-
 new_t = np.array(t[0])
 new_T = np.array(T_1[0])
 
-T_max = max(T_1)
+T_min = min(T_1)
+
 for i in range(1, len(T_1)):
-    #if T_1[i]-T_1[i-1] <= 0.05*(T_1[i-1]- T_max) + 0.02*273.15:
-    n = math.ceil((0.05*abs(T_1[i-1]- T_max) + 0.02*273.15)/abs(T_1[i-1]-T_1[i]))
+    n = math.ceil((0.05*abs(T_1[i-1]- T_min) + 0.2))
     for j in range(1, n+1):
         new_T = np.append(new_T, T_1[i-1] + (T_1[i]-T_1[i-1])/(n) * (j))
         new_t = np.append(new_t, t[i-1] + abs(t[i-1]-t[i])/n *j)
 
 
-#print(len(new_t))
-#print(len(new_T))
-
-plt.semilogx(new_t/60, new_T, 'r.')
-plt.semilogx(t/60, T_1, 'b.')
-plt.show()
-plt.clf()
-
-
-
-
-
-# Interpolate the data using a linear spline
-new_x = np.zeros(5*len(x)-5)
-for i in range(0,len(x)-1):
-    for j in range(0,5): # mit 3 nur die dazwischen
-        new_x[5*i+j] = x[i] + (x[i+1] - x[i])*(j+1)/5
-new_y = sp.interpolate.interp1d(x, y, kind='linear')(new_x)
-new_x = np.insert(new_x, 0, t[0])
-new_y = np.insert(new_y, 0, T_1[0])
-plt.plot(x/60, y+5, 'bo-')
-plt.plot(new_x/60, new_y, 'ro-')
-plt.title('Using 1D linear Spline Interpolation')
-plt.xlabel(r'$t$ /$\mathrm{min} $')
-plt.ylabel(r'T / $^\mathrm{\circ}$C')
-plt.savefig('build/interpolationtdata.pdf')
-plt.clf()
-
 fig, ax1 = plt.subplots()
-plt.semilogx(new_x/60 , new_y, 'r.', label='interpolierte Temperatur', Markersize=6)
-plt.semilogx(x/60 , y, 'g.', label='Temperatur', Markersize=6)
+plt.semilogx(new_t/60 , new_T, 'r.', label='interpolierte Temperatur', Markersize=6)
+plt.semilogx(t/60 , T_1, 'g.', label='Temperatur', Markersize=6)
 ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
 ax1.tick_params('y',colors='red')
 ax1.set_xlabel("Zeit / min")
@@ -126,12 +95,34 @@ ax1.legend(loc=6)
 
 
 ax2 = ax1.twinx()
-plt.semilogx(new_x/60, N_eff(new_x, 5*10**(15), new_y), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
-plt.semilogx(x/60, N_eff(x, 5*10**(15), y), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
+plt.semilogx(new_t/60, N_eff(new_t, 5*10**(15), new_T), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
+plt.semilogx(t/60, N_eff(t, 5*10**(15), T_1), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
+#plt.semilogx(new_t/60, N_C(5*10**(15))+N_Y(new_t, 5*10**(15), new_T), 'y-', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
 #plt.semilogx(new_x/60, N_eff(new_x, 5*10**(15), 80), 'k--', label=r'$\Delta N_{\mathrm{eff}}$ für 80°C', Markersize=6)
 ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
 ax2.tick_params('y',colors='blue')
 ax1.grid()
 ax2.legend(loc='best')
-plt.xlim(0, 2*10**2)
-plt.savefig('build/interpolationtdata_2.pdf')
+#plt.xlim(0, 2*10**2)
+plt.savefig('build/interpolationtdata.pdf')
+
+
+
+
+# Interpolate the data using a linear spline
+#y = T_1
+#x = t
+#new_x = np.zeros(5*len(x)-5)
+#for i in range(0,len(x)-1):
+#    for j in range(0,5): # mit 3 nur die dazwischen
+#        new_x[5*i+j] = x[i] + (x[i+1] - x[i])*(j+1)/5
+#new_y = sp.interpolate.interp1d(x, y, kind='linear')(new_x)
+#new_x = np.insert(new_x, 0, t[0])
+#new_y = np.insert(new_y, 0, T_1[0])
+#plt.plot(x/60, y+5, 'bo-')
+#plt.plot(new_x/60, new_y, 'ro-')
+#plt.title('Using 1D linear Spline Interpolation')
+#plt.xlabel(r'$t$ /$\mathrm{min} $')
+#plt.ylabel(r'T / $^\mathrm{\circ}$C')
+#plt.savefig('build/interpolationtdata.pdf')
+#plt.clf()
