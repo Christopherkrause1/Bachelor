@@ -74,6 +74,7 @@ ax1.legend(loc='best')
 
 ax2 = ax1.twinx()
 plt.semilogx(t/60 , damage(t, T_1+273.15), 'b.', label='Schadensrate', Markersize=6)
+plt.semilogx(t/60 , damage(t, 60+273.15), 'k.', label='Schadensrate', Markersize=6)
 #plt.semilogx(t/60 , damage(t, T_3), 'k.', label='damage rate 80°C', Markersize=6)
 #plt.semilogx(t/60 , damage(t, T_4), 'g.', label='damage rate 106°C', Markersize=6)
 ax2.set_ylabel(r"$\alpha  / \mathrm{A cm^{-1}} $",color='blue')

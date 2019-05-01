@@ -56,7 +56,7 @@ def N_C(phi):                                          #stable damage
 
 def N_A(t, phi, T):                                    #shortterm annealing
     tau_A0 = tau_A(T)                         #tau_A0 = Array [egal, tau_A(T[0]), tau_A(T[1]),...]
-    t_A = gett_A(t, tau_A0, T)                         #Vektor t_1 - t_0/tau_A(0)
+    t_A = gett_A(t, tau_A0, T)                   #Vektor t_1 - t_0/tau_A(0)
     return phi * g_a * np.exp(-t_A)
 
 
@@ -80,9 +80,11 @@ T_min = min(T_1)
 
 for i in range(1, len(T_1)):
     n = math.ceil((0.05*abs(T_1[i-1]- T_min) + 0.2))
+    print(n)
     for j in range(1, n+1):
         new_T = np.append(new_T, T_1[i-1] + (T_1[i]-T_1[i-1])/(n) * (j))
         new_t = np.append(new_t, t[i-1] + abs(t[i-1]-t[i])/n *j)
+
 
 
 fig, ax1 = plt.subplots()
