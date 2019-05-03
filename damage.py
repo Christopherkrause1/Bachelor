@@ -13,17 +13,30 @@ k_B = 1.38064852 * 10**(-23) #Boltzmann Konstante
 
 t, phi, T, T_2, T_3, T_4 = np.genfromtxt('daten.txt', unpack=True)
 
-
+t_1, T_1 = np.genfromtxt('tdata.txt', unpack=True)
 
 
 def tau_I(T):                                     #time constant
     return 1/(k_0I* np.exp(-E_I/(k_B*T)))
 
+def gett_I(t, tau_I0, T):
+    timediff_I = np.zeros(len(t))
+    timediff_I = np.ediff1d(t, to_begin=0)
+    tau_I0 = np.roll(tau_I0, shift=1) # shifting array by one to the right
+    tau_I1 = tau_I(T)
+    timediff_I /= (tau_I0 + tau_I1)/2
+    t_I = np.zeros(len(t))
+    for i in range(0, len(t)):
+        t_I[i] = np.sum(timediff_I[0:i+1])
+    return t_I
+
 def a_0(T):                                       #part of the longterm annealing
     return -8.9*10**(-17) + 4.6*10**(-14) * 1/T
 
-def damage(t, T):                                #damage rate
-    return ((a_I * np.exp(-t/tau_I(T))) + a_0(T) - b * np.log(t/t_0))
+def damage(t, T):
+    tau_I0 = tau_I(T)                                  #tau_I0 = Array [egal, tau_I(T[0]), tau_I(T[1]),...]
+    t_I = gett_I(t, tau_I0, T)                            #damage rate
+    return (a_I * np.exp(-t_I) + a_0(T) - b * np.log(t/t_0))
 
 plt.gcf().subplots_adjust(bottom=0.18)
 

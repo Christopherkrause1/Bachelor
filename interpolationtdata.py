@@ -1,19 +1,5 @@
-import matplotlib.pyplot as plt
-import numpy as np
-from scipy.optimize import curve_fit
-import scipy.interpolate
-import scipy as sp
-import math
+from einstellungen import *
 
-N_C0 = 1.3*10**11 #1/cm**3
-E_y = 1.33*1.6*10**(-19)    #resulting activation Energy
-k_0y = 1.5 * 10**(15)   #frequency factor
-g_c = 1.49 * 10**(-2)  #cm**(-1)    Acceptor introduction Rate
-g_a = 1.59 * 10**(-2) #cm**(-1)   introduction rate
-g_y = 5.16*10**(-2)   #cm**(-1)
-k_B = 1.38064852 * 10**(-23) #Boltzmann Konstante
-E_aa = 1.09 * 1.6* 10**(-19) #j   activation Energy
-k_0a = 2.4 *10**(13) #1/s   frequency factor
 
 
 
@@ -70,8 +56,7 @@ def N_eff(t, phi, T):                                #Änderung der Dotierungsko
     return N_C(phi) + N_A(t, phi, T) + N_Y(t, phi, T)
 
 
-#Änderung der effektiven Dotierungskonzentration für R1
-t, T_1 = np.genfromtxt('tdata.txt', unpack=True)   #R1 daten
+
 
 new_t = np.array(t[0])
 new_T = np.array(T_1[0])
