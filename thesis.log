@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/W32TeX)  (format=lualatex 2017.9.7)  7 MAY 2019 11:53
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/W32TeX)  (format=lualatex 2017.9.7)  7 MAY 2019 14:35
  restricted system commands enabled.
 **thesis.tex
 (./thesis.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.312 seconds
+luaotfload | main : initialization completed in 0.323 seconds
 Babel <3.12> and hyphenation patterns for 1 language(s) loaded.
 (./tudothesis.cls
 Document Class: tudothesis 2015/08/31 v0.9 wrapper to scrbook for thesis at TUDo
@@ -2174,28 +2174,28 @@ chapter 1.
 chapter 2.
 [2
 
-]) (./content/03_grundlagen.tex [3]
+]) (./content/03_grundlagen.tex [3] [4]
 chapter 3.
 
-LaTeX Warning: Citation 'koma' on page 4 undefined on input line 5.
+LaTeX Warning: Citation 'koma' on page 5 undefined on input line 5.
 
 
-LaTeX Warning: Citation 'toolbox' on page 4 undefined on input line 7.
+LaTeX Warning: Citation 'toolbox' on page 5 undefined on input line 7.
 
 
-LaTeX Warning: Citation 'l2tabu' on page 4 undefined on input line 7.
+LaTeX Warning: Citation 'l2tabu' on page 5 undefined on input line 7.
 
-[4
+[5
 
 ]
 
-LaTeX Warning: Citation 'make' on page 5 undefined on input line 45.
+LaTeX Warning: Citation 'make' on page 6 undefined on input line 45.
 
 
-LaTeX Warning: Citation 'gitbash' on page 5 undefined on input line 46.
+LaTeX Warning: Citation 'gitbash' on page 6 undefined on input line 46.
 
 
-LaTeX Warning: Citation 'texmaker' on page 5 undefined on input line 51.
+LaTeX Warning: Citation 'texmaker' on page 6 undefined on input line 51.
 
 
 Overfull \hbox (11.79156pt too wide) in paragraph at lines 51--53
@@ -2203,14 +2203,14 @@ Overfull \hbox (11.79156pt too wide) in paragraph at lines 51--53
 x-ma-ker, Down-load un-ter [[]].
  []
 
-<Plots/texmaker.png, id=101, pagebox=cropbox, 539.01375pt x 213.79875pt>
+<Plots/texmaker.png, id=106, pagebox=cropbox, 539.01375pt x 213.79875pt>
 File: Plots/texmaker.png Graphic file (type png)
 <use Plots/texmaker.png>
 Package luatex.def Info: Plots/texmaker.png  used on input line 64. on input lin
 e 64.
 Package luatex.def Info: Requested size: 341.43306pt x 135.4312pt on input line 
 64.
-[5] [6<./Plots/texmaker.png>]
+[6] [7<./Plots/texmaker.png>]
 chapter 4.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
 (Font)              scaled to size 17.28026pt on input line 79.
@@ -2225,32 +2225,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 88--90
 
  []
 
-[7
+[8
 
 ](load luc: C:/texlive/2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman6-re
 gular.luc)(load luc: C:/texlive/2017/texmf-var/luatex-cache/generic/fonts/otl/lm
 roman5-regular.luc)
 
-LaTeX Warning: Citation 'siunitx' on page 8 undefined on input line 137.
+LaTeX Warning: Citation 'siunitx' on page 9 undefined on input line 137.
 
 
-LaTeX Warning: Citation 'biblatex' on page 8 undefined on input line 143.
+LaTeX Warning: Citation 'biblatex' on page 9 undefined on input line 143.
 
 
-LaTeX Warning: Citation 'biblatex' on page 8 undefined on input line 154.
+LaTeX Warning: Citation 'biblatex' on page 9 undefined on input line 154.
 
-(load luc: C:/texlive/2017/texmf-var/luatex-cache/generic/fonts/otl/lmromanslant
-8-regular.luc) [8]
+[9]
 
-LaTeX Warning: Citation 'handbook_adhesives' on page 9 undefined on input line 1
-56.
+LaTeX Warning: Citation 'handbook_adhesives' on page 10 undefined on input line 
+156.
 
 
-LaTeX Warning: Citation 'einstein' on page 9 undefined on input line 157.
+LaTeX Warning: Citation 'einstein' on page 10 undefined on input line 157.
 
-) (./content/04_figs_tabs.tex [9]
+) (./content/04_figs_tabs.tex(load luc: C:/texlive/2017/texmf-var/luatex-cache/g
+eneric/fonts/otl/lmromanslant8-regular.luc) [10]
 chapter 5.
-<./Plots/Histogramm.pdf, id=141, pagebox=cropbox, 338.26375pt x 202.7575pt>
+<./Plots/Histogramm.pdf, id=146, pagebox=cropbox, 338.26375pt x 202.7575pt>
 File: ./Plots/Histogramm.pdf Graphic file (type pdf)
 <use ./Plots/Histogramm.pdf>
 Package luatex.def Info: ./Plots/Histogramm.pdf  used on input line 14. on input
@@ -2260,17 +2260,21 @@ Package luatex.def Info: Requested size: 338.26291pt x 202.757pt on input line 1
 
 Underfull \vbox (badness 1199) has occurred while \output is active []
 
- [10
+ [11
 
-<./Plots/Histogramm.pdf>]) (./content/a_anhang.tex [11]
+<./Plots/Histogramm.pdf>]) (./content/a_anhang.tex [12]
 chapter A.
-) [12
+) [13
 
 ]
 
 LaTeX Warning: Empty bibliography on input line 170.
 
-(./content/eid_versicherung.tex
+[14
+
+
+
+] (./content/eid_versicherung.tex
 Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
  []
@@ -2282,11 +2286,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--26
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 174.
- [13
-
-
-
-]
+ [15]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 174.
  (./thesis.aux
 Language ngerman already loaded; id is 8
@@ -2294,9 +2294,9 @@ Language ngerman already loaded; id is 8)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 174.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 174.
 Package rerunfilecheck Info: File `thesis.aux' has not changed.
-(rerunfilecheck)             Checksum: D67DAB7C9CD2FC645139455581ED5F5E;11506.
+(rerunfilecheck)             Checksum: 9708C0740780226CCE11D3F1B819893B;11506.
 Package rerunfilecheck Info: File `thesis.toc' has not changed.
-(rerunfilecheck)             Checksum: AB1592715F61483EB7D76221AD431FC1;1584.
+(rerunfilecheck)             Checksum: 46543A049270493E414B8C2D76AD0D6D;1584.
 
 
 LaTeX Warning: There were undefined references.
@@ -2313,15 +2313,15 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 174.
 )
 
 Here is how much of LuaTeX's memory you used:
- 42222 strings out of 494472
+ 42225 strings out of 494472
  100000,1648299 words of node,token memory allocated
- 588 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 1 kern, 6 attribute, 78 glue_spec, 6 attrib
+ 601 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 2 glue, 1 kern, 7 attribute, 78 glue_spec, 7 attrib
 ute_list, 1 write nodes
-   avail lists: 1:3,2:751,3:157,4:97,5:257,6:2908,7:638,8:51,9:239,10:20,11:417
+   avail lists: 1:3,2:749,3:157,4:97,5:257,6:2908,7:638,8:51,9:240,10:20,11:417
  45126 multiletter control sequences out of 65536+600000
  118 fonts using 24553903 bytes
- 59i,22n,84p,8817b,2482s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 62i,22n,85p,8817b,2482s stack positions out of 5000i,500n,10000p,200000b,100000s
 <c:/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmromanslant8-regular.otf><
 c:/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmsans10-regular.otf><c:/tex
 live/2017/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf><c:/texlive/201
@@ -2336,10 +2336,10 @@ ntype/public/lm/lmroman8-regular.otf><c:/texlive/2017/texmf-dist/fonts/opentype/
 public/lm/lmmono10-regular.otf><c:/texlive/2017/texmf-dist/fonts/opentype/public
 /lm/lmroman10-regular.otf><c:/texlive/2017/texmf-dist/fonts/opentype/public/lm/l
 msans10-bold.otf>
-Output written on thesis.pdf (18 pages, 230368 bytes).
+Output written on thesis.pdf (20 pages, 233441 bytes).
 
-PDF statistics: 382 PDF objects out of 1000 (max. 8388607)
- 248 compressed objects within 3 object streams
- 54 named destinations out of 1000 (max. 131072)
+PDF statistics: 391 PDF objects out of 1000 (max. 8388607)
+ 255 compressed objects within 3 object streams
+ 57 named destinations out of 1000 (max. 131072)
  121 words of extra memory for PDF output out of 10000 (max. 100000000)
 
