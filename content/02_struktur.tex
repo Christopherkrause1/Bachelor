@@ -71,4 +71,20 @@ Die Änderung von $N_{\mathrm{eff}}$ ist gegeben durch:
 \end{align}
 Die einzelnen Summanden werden im folgenden erläutert.
 
-\textbf{Stable Damage} $\symbf{N_{\mathrm{C}}}:$
+\textbf{\textit{Stable Damage}} $\symbf{N_{\mathrm{C}}}:$ Der stable Damage ist unabhängig von der Temperatur und wird durch das annealing nicht beeinflusst.
+\begin{align}
+  N_{\mathrm{C}}(\Phi_{\mathrm{eq}}) = N_{\mathrm{C0}}[1-\exp{(-c \cdot \Phi_{\mathrm{eq}})}] + g_{\mathrm{c}} \cdot \Phi_{\mathrm{eq}}
+\end{align}
+Der erste Summand folgt aus einer unvollständigen Entfernung von Donatoren, der zweite Summand beschreibt stabile Defekte, welche sich wie Akzeptorenverhalten \cite{beyer}.
+
+
+\textbf{\textit{Shortterm annealing}} $\symbf{N_{\mathrm{A}}}:$ Das shortterm annealing bewirkt eine Verringerung der Dotierungskonzentration und entsteht durch
+das Annealing von Akzeptoren, was zu einer kleineren Dotierungskonzentration führt. . Dieser Effekt soll
+zur Ausheilung des Sensors verwendet werden. Die Bezeichnung rührt daher, dass $N_{\mathrm{A}}$ meistens in den ersten 100 Minuten verschwindend gering wird. Die
+Funktion wird näherungsweise beschrieben durch:
+\begin{align}
+  N_{\mathrm{A}}(t, \Phi_{\mathrm{eq}}, T) = \Phi_{\mathrm{eq}} \cdot g_{\mathrm{a}} \cdot \exp{\left(-\frac{t}{\tau_{\mathrm{a}}}\right)}
+\end{align}
+
+
+\textbf{\textit{Longterm annealing}} $\symbf{N_{\mathrm{A}}}:$
