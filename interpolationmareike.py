@@ -2,8 +2,6 @@ from einstellungen import *
 
 
 
-
-
 def N_Y_inf(phi):                                      #longterm annealing amplitude
     return g_y * phi
 
@@ -102,7 +100,6 @@ ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
 ax2.tick_params('y',colors='blue')
 ax1.grid()
 ax2.legend(loc='best')
-#plt.xlim(0, 2*10**2)
 plt.savefig('build/interpolationmareike.pdf')
 plt.clf()
 
@@ -124,7 +121,6 @@ ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
 ax2.tick_params('y',colors='blue')
 ax1.grid()
 ax2.legend(loc='best')
-#plt.xlim(0, 2*10**2)
 plt.savefig('build/interpolationmareike2.pdf')
 plt.clf()
 
@@ -146,6 +142,5 @@ ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
 ax2.tick_params('y',colors='blue')
 ax1.grid()
 ax2.legend(loc='best')
-#plt.xlim(0, 2*10**2)
 plt.savefig('build/interpolationmareikeR3_1.pdf')
 plt.clf()
