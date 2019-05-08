@@ -47,7 +47,7 @@ kann Silizium, aber auch ein Fremdatom sein. Daraus folgt eine Änderung der Dot
 Halbleiter und somit eine Änderung seiner Eigenschaften.
 
 Um Fluenzen $ \Phi$ von verschiedenen Teilchen (Lepton, Hadron, Photon) miteinander vergleichen zu können, werden diese
-auf eine $1$MeV Neutronstrahlung normalisiert und haben die Einheit $\mathrm{\frac{n_{\mathrm{eq}}}{cm^2}}$.
+auf eine $\SI{1}{\mega\eV}$ Neutronstrahlung normalisiert und haben die Einheit $\mathrm{\frac{n_{\mathrm{eq}}}{cm^2}}$.
 
 
 \section{Annealing}
@@ -87,4 +87,9 @@ Funktion wird näherungsweise beschrieben durch:
 \end{align}
 
 
-\textbf{\textit{Longterm annealing}} $\symbf{N_{\mathrm{A}}}:$
+\textbf{\textit{Longterm annealing}} $\symbf{N_{\mathrm{A}}}:$ Der Aufbau von Akzeptoren sorgt nach einem hinreichend großen Zeitraum sorgt für eine steigende
+Dotierungskonzentration. Dieser Effekt wird wie folgt berechnet.
+\begin{align}
+  N_{\mathrm{Y}}(t, \Phi_{\mathrm{eq}}, T)     = N_{\mathrm{Y, \inf}}\cdot \left(1 - \frac{1}{1 - \frac{t}{\tau_{\mathrm{a}}}}\right)
+\end{align}
+Beginnend bei Null geht diese Funktion nach einem unendlich langen Zeitraum gegen die Konstante $N_{\mathrm{Y, \inf}}$.

@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/W32TeX)  (format=lualatex 2017.9.7)  7 MAY 2019 15:53
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/W32TeX)  (format=lualatex 2017.9.7)  8 MAY 2019 13:03
  restricted system commands enabled.
 **thesis.tex
 (./thesis.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.328 seconds
+luaotfload | main : initialization completed in 0.343 seconds
 Babel <3.12> and hyphenation patterns for 1 language(s) loaded.
 (./tudothesis.cls
 Document Class: tudothesis 2015/08/31 v0.9 wrapper to scrbook for thesis at TUDo
@@ -2174,8 +2174,9 @@ chapter 1.
 chapter 2.
 [2
 
-](load luc: C:/texlive/2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-b
-olditalic.luc) [3]
+](load luc: C:/texlive/2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman5-re
+gular.luc)(load luc: C:/texlive/2017/texmf-var/luatex-cache/generic/fonts/otl/lm
+roman10-bolditalic.luc) [3]
 
 LaTeX Warning: Citation 'beyer' on page 4 undefined on input line 78.
 
@@ -2208,7 +2209,7 @@ Overfull \hbox (11.79156pt too wide) in paragraph at lines 51--53
 x-ma-ker, Down-load un-ter [[]].
  []
 
-<Plots/texmaker.png, id=109, pagebox=cropbox, 539.01375pt x 213.79875pt>
+<Plots/texmaker.png, id=110, pagebox=cropbox, 539.01375pt x 213.79875pt>
 File: Plots/texmaker.png Graphic file (type png)
 <use Plots/texmaker.png>
 Package luatex.def Info: Plots/texmaker.png  used on input line 64. on input lin
@@ -2233,8 +2234,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 88--90
 [8
 
 ](load luc: C:/texlive/2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman6-re
-gular.luc)(load luc: C:/texlive/2017/texmf-var/luatex-cache/generic/fonts/otl/lm
-roman5-regular.luc)
+gular.luc)
 
 LaTeX Warning: Citation 'siunitx' on page 9 undefined on input line 137.
 
@@ -2255,7 +2255,7 @@ LaTeX Warning: Citation 'einstein' on page 10 undefined on input line 157.
 ) (./content/04_figs_tabs.tex(load luc: C:/texlive/2017/texmf-var/luatex-cache/g
 eneric/fonts/otl/lmromanslant8-regular.luc) [10]
 chapter 5.
-<./Plots/Histogramm.pdf, id=149, pagebox=cropbox, 338.26375pt x 202.7575pt>
+<./Plots/Histogramm.pdf, id=150, pagebox=cropbox, 338.26375pt x 202.7575pt>
 File: ./Plots/Histogramm.pdf Graphic file (type pdf)
 <use ./Plots/Histogramm.pdf>
 Package luatex.def Info: ./Plots/Histogramm.pdf  used on input line 14. on input
@@ -2318,14 +2318,14 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 174.
 )
 
 Here is how much of LuaTeX's memory you used:
- 42230 strings out of 494472
+ 42231 strings out of 494472
  100000,1648299 words of node,token memory allocated
  601 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 2 glue, 1 kern, 7 attribute, 78 glue_spec, 7 attrib
 ute_list, 1 write nodes
-   avail lists: 1:3,2:749,3:158,4:97,5:257,6:2908,7:638,8:51,9:240,10:20,11:417
+   avail lists: 1:3,2:751,3:158,4:97,5:257,6:2908,7:638,8:51,9:240,10:20,11:417
  45128 multiletter control sequences out of 65536+600000
- 119 fonts using 24646099 bytes
+ 119 fonts using 24645867 bytes
  62i,22n,85p,8817b,2482s stack positions out of 5000i,500n,10000p,200000b,100000s
 <c:/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmromanslant8-regular.otf><
 c:/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmsans10-regular.otf><c:/tex
@@ -2342,10 +2342,10 @@ ype/public/lm/lmroman8-regular.otf><c:/texlive/2017/texmf-dist/fonts/opentype/pu
 blic/lm/lmmono10-regular.otf><c:/texlive/2017/texmf-dist/fonts/opentype/public/l
 m/lmroman10-regular.otf><c:/texlive/2017/texmf-dist/fonts/opentype/public/lm/lms
 ans10-bold.otf>
-Output written on thesis.pdf (20 pages, 239192 bytes).
+Output written on thesis.pdf (20 pages, 240628 bytes).
 
-PDF statistics: 400 PDF objects out of 1000 (max. 8388607)
- 261 compressed objects within 3 object streams
- 59 named destinations out of 1000 (max. 131072)
+PDF statistics: 401 PDF objects out of 1000 (max. 8388607)
+ 262 compressed objects within 3 object streams
+ 60 named destinations out of 1000 (max. 131072)
  121 words of extra memory for PDF output out of 10000 (max. 100000000)
 
