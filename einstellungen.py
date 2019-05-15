@@ -12,10 +12,10 @@ k_0y = 1.5 * 10**(15)               #frequency factor in 1/s
 g_c = 1.49 * 10**(-2)               #Acceptor introduction Rate in cm**(-1)
 g_a = 1.59 * 10**(-2)               #introduction rate in 1/cm
 g_y = 5.16*10**(-2)                 #1/cm
-k_B = 1.38064852 * 10**(-23)        #Boltzmann constant in J/K
 E_aa = 1.09 * 1.6* 10**(-19)        #activation Energy in j
 k_0a = 2.4 *10**(13)                #frequency factor in 1/s
 phi = 5*10**(15)                    #constant fluence in 1/cm**2
+
 
 
 #txt file with time and temperature values
@@ -26,4 +26,3 @@ t_4, T_4 =np.genfromtxt('Daten/20190306_mareike_annealing_R3.txt', usecols=(0, 1
 t_2 -= t_2[0]
 t_3 -= t_3[0]
 t_4 -= t_4[0]
-print(T_4)

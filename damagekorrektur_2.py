@@ -12,8 +12,8 @@ b = 3.07*10**(-18)    #A/cm
 t_0 = 1 #min
 k_B = 1.38064852 * 10**(-23) #Boltzmann Konstante
 T_ref = 333.15
-t, phi, T, T_2, T_3, T_4 = np.genfromtxt('daten.txt', unpack=True)
-t_1, T_1 = np.genfromtxt('tdata.txt', unpack=True)
+t, phi, T, T_2, T_3, T_4 = np.genfromtxt('Daten/daten.txt', unpack=True)
+t_1, T_1 = np.genfromtxt('Daten/tdata.txt', unpack=True)
 
 
 
@@ -76,7 +76,7 @@ ax1.legend(loc='best')
 ax2 = ax1.twinx()
 #plt.semilogx(t_1/60 , damage(t_1, T_1+273.15), 'b.', label='Schadensrate', Markersize=6)
 #plt.semilogx(t_1 , damage(t_1, 40+273.15), 'k.', label='Schadensrate', Markersize=6)
-plt.semilogx(t_1/60 , damage(t_1, 60+273.15), 'k.', label='Schadensrate', Markersize=6)
+plt.semilogx(t_1/60 , damage(t_1, 60+273.15), 'k.', label='Schadensrate 60°C', Markersize=6)
 #plt.semilogx(t/60 , damage(t, T_3), 'k.', label='damage rate 80°C', Markersize=6)
 #plt.semilogx(t/60 , damage(t, T_4), 'g.', label='damage rate 106°C', Markersize=6)
 ax2.set_ylabel(r"$\alpha  / \mathrm{A cm^{-1}} $",color='blue')
