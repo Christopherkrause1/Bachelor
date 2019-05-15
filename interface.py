@@ -67,21 +67,22 @@ def N_eff(t, phi, T):                                #Änderung der Dotierungsko
 master = Tk()
 master.title("Annealing effect of the doping concentration")
 Label(master, text=r'Insert a time for the annealing to end, a temperature to anneal with and a fluence.').grid(row=0)
-Label(master, text=r'Time [min]').grid(row=1)
-Label(master, text="Temperature [°C]").grid(row=2)
-Label(master, text=r'Fluence [10^15 /cm^2]').grid(row=3)
+Label(master, text=r'Click on "plot" to create a plot of the effective doping concentration.').grid(row=1)
+Label(master, text=r'Time [min]').grid(row=2)
+Label(master, text="Temperature [°C]").grid(row=3)
+Label(master, text=r'Fluence [10^15 /cm^2]').grid(row=4)
 
 t_q = Entry(master)
-t_q.grid(row=1, column=1)
+t_q.grid(row=2, column=1)
 #t_q.pack()
 
 T_q = Entry(master)
-T_q.grid(row=2, column=1)
+T_q.grid(row=3, column=1)
 #T_q.pack()
 #T_q.insert(0, '0')
 
 phi_q = Entry(master)
-phi_q.grid(row=3, column=1)
+phi_q.grid(row=4, column=1)
 #phi_q.pack()
 
 #t_q.focus_set()
@@ -108,7 +109,7 @@ def plot():
 
 
 b = Button(master, text="plot", width=10, command=plot)
-b.grid(row=4, column=1)
+b.grid(row=5, column=1)
 #b.pack()
 
 mainloop()
