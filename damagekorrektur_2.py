@@ -7,12 +7,14 @@ from scipy.optimize import curve_fit
 a_I = 1.23 * 10**(-17) #A/cm
 k_0I = 1.2 * 10**(13) #1/s
 E_I = 1.11 * 1.6 * 10**(-19) #j
-E_I2 = 1.3 * 1.6 * 10**(-19)
+E_I2 = 1.3 * 1.6 * 10**(-19) #j
 b = 3.07*10**(-18)    #A/cm
-t_0 = 1 #min
+b_0 = 4.6*10**(-14) #AK/cm
+
+t_0 = 60 #min
 k_B = 1.38064852 * 10**(-23) #Boltzmann Konstante
 T_ref = 333.15
-t, phi, T, T_2, T_3, T_4 = np.genfromtxt('Daten/daten.txt', unpack=True)
+t_d, phi, T, T_2, T_3, T_4 = np.genfromtxt('Daten/daten.txt', unpack=True)
 t_1, T_1 = np.genfromtxt('Daten/tdata.txt', unpack=True)
 
 
@@ -35,7 +37,7 @@ def a_0(T):                                       #part of the longterm annealin
     return -8.9*10**(-17) + 4.6*10**(-14) * 1/T
 
 def a_02():                                  #Temperatur unabhängige parametrisiserung
-    return -8.9*10**(-17) + (b* E_I2 / (k_B* T_ref))
+    return -8.9*10**(-17) + (b_0/ T_ref)
 
 def theta(T):
     return np.exp(-E_I2/k_B *(1/T - 1/T_ref))
@@ -76,7 +78,7 @@ ax1.legend(loc='best')
 ax2 = ax1.twinx()
 #plt.semilogx(t_1/60 , damage(t_1, T_1+273.15), 'b.', label='Schadensrate', Markersize=6)
 #plt.semilogx(t_1 , damage(t_1, 40+273.15), 'k.', label='Schadensrate', Markersize=6)
-plt.semilogx(t_1/60 , damage(t_1, 60+273.15), 'k.', label='Schadensrate 60°C', Markersize=6)
+plt.semilogx(t_d/60 , damage(t_d, 60+273.15), 'k.', label='Schadensrate 60°C', Markersize=6)
 #plt.semilogx(t/60 , damage(t, T_3), 'k.', label='damage rate 80°C', Markersize=6)
 #plt.semilogx(t/60 , damage(t, T_4), 'g.', label='damage rate 106°C', Markersize=6)
 ax2.set_ylabel(r"$\alpha  / \mathrm{A cm^{-1}} $",color='blue')
