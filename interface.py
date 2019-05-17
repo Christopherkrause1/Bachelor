@@ -88,14 +88,14 @@ def plot():
     t_1 = float(t_q.get())
     T_1 = float(T_q.get())
     phi = float(phi_q.get())
-    new_t = np.array(0)
-    for i in range(0, int(t_1+1)):
-        for j in range(0, 60):
-            new_t = np.append(new_t, 60*i+j)
-    np.delete(new_t, 0)
+    new_t = np.logspace(np.log10(0.1), np.log10(int(t_1)), np.floor(np.log10(int(t_1))*20))
+    #for i in range(0, int(t_1)):
+    #    for j in range(0, 60):
+    #        new_t = np.append(new_t, 60*i+j)
+    #new_t = np.delete(new_t, 0)
     new_T = T_1
     new_phi = phi * 10**(15)
-    plt.semilogx(new_t, N_eff(new_t, new_phi, new_T), 'r.')
+    plt.semilogx(new_t, N_eff(new_t*60, new_phi, new_T), 'r.')
     plt.grid()
     plt.ylabel(r'$N_{\mathrm{eff}} /\mathrm{cm}^2$')
     plt.xlabel(r'$Time / $min')
@@ -120,16 +120,16 @@ T_a = Entry(master)
 T_a.grid(row=10, column=1)
 
 def plot_2():
-    t_1 = float(t_a.get())
-    T_1 = float(T_a.get())
-    new_t2 = np.array(0)
-    for i in range(0, int(t_1)):
-        for j in range(0, 60):
-            new_t2 = np.append(new_t2, 60*i+j)
-    np.delete(new_t2, 0)
-    print(new_t2)
-    new_t2[0] = 0.5
-    new_T2 = T_1 +273.15
+    t_2 = float(t_a.get())
+    T_2 = float(T_a.get())
+    new_t2 = np.logspace(np.log10(0.1), np.log10(int(t_2)), np.floor(np.log10(int(t_2))*20))
+    #print(new_t3)
+    #for i in range(0, int(t_2)):
+    #    for j in range(0, 60):
+    #        new_t2 = np.append(new_t2, 60*i+j)
+    #new_t2 =np.delete(new_t2, 0)
+    #new_t2 =np.delete(new_t2, 0)
+    new_T2 = T_2 +273.15
     plt.semilogx(new_t2, damage(new_t2, new_T2), 'r.')
     plt.grid()
     plt.ylabel(r'$\alpha /\mathrm{Acm}^2$')
