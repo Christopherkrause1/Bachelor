@@ -3,15 +3,16 @@ import numpy as np
 import scipy as sp
 import math
 
+#constant fluence in 1/cm**2
+phi = 5*10**(15)
 
-#constant parameters of the N_eff function
-phi = 5*10**(15)                    #constant fluence in 1/cm**2
+#constant parameters of the N_eff function with a "WE-25k Ohm cm" Diode
 N_C0 = 1.3*10**11                   #stable Damage amplitude in 1/cm**3
+g_c = 1.49 * 10**(-2)               #Acceptor introduction Rate in cm**(-1)
 E_y = 1.33*1.6*10**(-19)            #resulting activation Energy in j
 k_0y = 1.5 * 10**(15)               #frequency factor in 1/s
-g_c = 1.49 * 10**(-2)               #Acceptor introduction Rate in cm**(-1)
-g_a = 1.59 * 10**(-2)               #introduction rate in 1/cm
 g_y = 5.16*10**(-2)                 #1/cm
+g_a = 1.59 * 10**(-2)               #introduction rate in 1/cm
 E_aa = 1.09 * 1.6* 10**(-19)        #activation Energy in j
 k_0a = 2.4 *10**(13)                #frequency factor in 1/s
 
@@ -41,3 +42,15 @@ t_1, T_1 = np.genfromtxt('Daten/tdata.txt', unpack=True) #t_1: Time in seconds, 
 #        with open(f,'rb') as fd:
 #            shutil.copyfileobj(fd, wfd)
 ##################################################
+
+
+
+#constant parameters of the N_eff function with a "WI-4k Ohm cm" Diode
+#N_C0 = 1.3*10**11                   #stable Damage amplitude in 1/cm**3
+#g_c = 1.80 * 10**(-2)               #Acceptor introduction Rate in cm**(-1)
+#E_y = 1.33 *1.6 *10**(-19)          #resulting activation Energy in j
+#g_y = 4.92*10**(-2)                 #frequency factor in 1/s
+#k_0y = 1.5 * 10**(15)*60            #1/cm
+#g_a = 2.01 * 10**(-2)               #introduction rate in 1/cm
+#E_aa = 1.09 * 1.6* 10**(-19)        #activation Energy in j
+#k_0a = 2.4 *10**(13)*60             #frequency factor in 1/s

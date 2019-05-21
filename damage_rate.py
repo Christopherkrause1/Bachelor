@@ -1,4 +1,4 @@
-from einstellungen  import *
+from einstellungen import *
 k_B = 1.38064852 * 10**(-23)        #Boltzmann constant in J/K
 
 
