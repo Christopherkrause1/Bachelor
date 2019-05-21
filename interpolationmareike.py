@@ -95,7 +95,7 @@ ax1.legend(loc=6)
 
 
 ax2 = ax1.twinx()
-plt.semilogx(interpolation_t(t_2, T_2)/60, N_eff(interpolation_t(t_2, T_2), 5*10**(15), interpolation_T(t_2, T_2)), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
+plt.semilogx(interpolation_t(t_2, T_2)/60, N_eff(interpolation_t(t_2, T_2), phi, interpolation_T(t_2, T_2)), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
 plt.semilogx(t_2/60, N_eff(t_2, 5*10**(15), T_2), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
 ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
 ax2.tick_params('y',colors='blue')
@@ -116,7 +116,7 @@ ax1.legend(loc=6)
 
 
 ax2 = ax1.twinx()
-plt.semilogx(interpolation_t(t_3, T_3)/60, N_eff(interpolation_t(t_3, T_3), 5*10**(15), interpolation_T(t_3, T_3)), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
+plt.semilogx(interpolation_t(t_3, T_3)/60, N_eff(interpolation_t(t_3, T_3), phi, interpolation_T(t_3, T_3)), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
 plt.semilogx(t_3/60, N_eff(t_3, 5*10**(15), T_3), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
 ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
 ax2.tick_params('y',colors='blue')
@@ -137,7 +137,7 @@ ax1.legend(loc=6)
 
 
 ax2 = ax1.twinx()
-plt.semilogx(interpolation_t(t_4, T_4)/60, N_eff(interpolation_t(t_4, T_4), 5*10**(15), interpolation_T(t_4, T_4)), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
+plt.semilogx(interpolation_t(t_4, T_4)/60, N_eff(interpolation_t(t_4, T_4), phi, interpolation_T(t_4, T_4)), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
 plt.semilogx(t_4/60, N_eff(t_4, 5*10**(15), T_4), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
 ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
 ax2.tick_params('y',colors='blue')
