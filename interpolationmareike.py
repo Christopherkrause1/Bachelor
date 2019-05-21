@@ -1,4 +1,4 @@
-from einstellungen import *
+from einstellungen  import *
 k_B = 1.38064852 * 10**(-23)        #Boltzmann constant in J/K
 
 
@@ -83,65 +83,66 @@ def N_eff(t, phi, T):  #Änderung der Dotierungskonzentration
 
 
 
-
 #erster Datensatz
-fig, ax1 = plt.subplots()
-plt.semilogx(interpolation_t(t_2, T_2)/60 , interpolation_T(t_2, T_2), 'r.', label='interpolierte Temperatur', Markersize=6)
-plt.semilogx(t_2/60 , T_2, 'g.', label='Temperatur', Markersize=6)
-ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
-ax1.tick_params('y',colors='red')
-ax1.set_xlabel("Zeit / min")
-ax1.legend(loc=6)
+def plot_N_eff(t, phi, T):
+    fig, ax1 = plt.subplots()
+    plt.semilogx(interpolation_t(t, T)/60 , interpolation_T(t, T), 'r.', label='interpolierte Temperatur', Markersize=6)
+    plt.semilogx(t/60 , T, 'g.', label='Temperatur', Markersize=6)
+    ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
+    ax1.tick_params('y',colors='red')
+    ax1.set_xlabel("Zeit / min")
+    ax1.legend(loc=6)
 
 
-ax2 = ax1.twinx()
-plt.semilogx(interpolation_t(t_2, T_2)/60, N_eff(interpolation_t(t_2, T_2), phi, interpolation_T(t_2, T_2)), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
-plt.semilogx(t_2/60, N_eff(t_2, 5*10**(15), T_2), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
-ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
-ax2.tick_params('y',colors='blue')
-ax1.grid()
-ax2.legend(loc='best')
-plt.savefig('build/interpolationmareike.pdf')
-plt.clf()
+    ax2 = ax1.twinx()
+    plt.semilogx(interpolation_t(t, T)/60, N_eff(interpolation_t(t, T), phi, interpolation_T(t, T)), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
+    plt.semilogx(t/60, N_eff(t, phi, T), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
+    ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
+    ax2.tick_params('y',colors='blue')
+    ax1.grid()
+    ax2.legend(loc='best')
+    plt.savefig('build/interpolationmareike.pdf')
+    plt.clf()
+
 
 
 #zweiter Datensatz
-fig, ax1 = plt.subplots()
-plt.semilogx(interpolation_t(t_3, T_3)/60 , interpolation_T(t_3, T_3), 'r.', label='interpolierte Temperatur', Markersize=6)
-plt.semilogx(t_3/60 , T_3, 'g.', label='Temperatur', Markersize=6)
-ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
-ax1.tick_params('y',colors='red')
-ax1.set_xlabel("Zeit / min")
-ax1.legend(loc=6)
-
-
-ax2 = ax1.twinx()
-plt.semilogx(interpolation_t(t_3, T_3)/60, N_eff(interpolation_t(t_3, T_3), phi, interpolation_T(t_3, T_3)), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
-plt.semilogx(t_3/60, N_eff(t_3, 5*10**(15), T_3), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
-ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
-ax2.tick_params('y',colors='blue')
-ax1.grid()
-ax2.legend(loc='best')
-plt.savefig('build/interpolationmareike2.pdf')
-plt.clf()
-
-
-#erster Datensatz R3
-fig, ax1 = plt.subplots()
-plt.semilogx(interpolation_t(t_4, T_4)/60 , interpolation_T(t_4, T_4), 'r.', label='interpolierte Temperatur', Markersize=6)
-plt.semilogx(t_4/60 , T_4, 'g.', label='Temperatur', Markersize=6)
-ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
-ax1.tick_params('y',colors='red')
-ax1.set_xlabel("Zeit / min")
-ax1.legend(loc=6)
-
-
-ax2 = ax1.twinx()
-plt.semilogx(interpolation_t(t_4, T_4)/60, N_eff(interpolation_t(t_4, T_4), phi, interpolation_T(t_4, T_4)), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
-plt.semilogx(t_4/60, N_eff(t_4, 5*10**(15), T_4), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
-ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
-ax2.tick_params('y',colors='blue')
-ax1.grid()
-ax2.legend(loc='best')
-plt.savefig('build/interpolationmareikeR3_1.pdf')
-plt.clf()
+#fig, ax1 = plt.subplots()
+#plt.semilogx(interpolation_t(t_3, T_3)/60 , interpolation_T(t_3, T_3), 'r.', label='interpolierte Temperatur', Markersize=6)
+#plt.semilogx(t_3/60 , T_3, 'g.', label='Temperatur', Markersize=6)
+#ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
+#ax1.tick_params('y',colors='red')
+#ax1.set_xlabel("Zeit / min")
+#ax1.legend(loc=6)
+#
+#
+#ax2 = ax1.twinx()
+#plt.semilogx(interpolation_t(t_3, T_3)/60, N_eff(interpolation_t(t_3, T_3), phi, interpolation_T(t_3, T_3)), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
+#plt.semilogx(t_3/60, N_eff(t_3, 5*10**(15), T_3), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
+#ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
+#ax2.tick_params('y',colors='blue')
+#ax1.grid()
+#ax2.legend(loc='best')
+#plt.savefig('build/interpolationmareike2.pdf')
+#plt.clf()
+#
+#
+##erster Datensatz R3
+#fig, ax1 = plt.subplots()
+#plt.semilogx(interpolation_t(t_4, T_4)/60 , interpolation_T(t_4, T_4), 'r.', label='interpolierte Temperatur', Markersize=6)
+#plt.semilogx(t_4/60 , T_4, 'g.', label='Temperatur', Markersize=6)
+#ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
+#ax1.tick_params('y',colors='red')
+#ax1.set_xlabel("Zeit / min")
+#ax1.legend(loc=6)
+#
+#
+#ax2 = ax1.twinx()
+#plt.semilogx(interpolation_t(t_4, T_4)/60, N_eff(interpolation_t(t_4, T_4), phi, interpolation_T(t_4, T_4)), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
+#plt.semilogx(t_4/60, N_eff(t_4, 5*10**(15), T_4), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
+#ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
+#ax2.tick_params('y',colors='blue')
+#ax1.grid()
+#ax2.legend(loc='best')
+#plt.savefig('build/interpolationmareikeR3_1.pdf')
+#plt.clf()

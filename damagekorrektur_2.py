@@ -1,4 +1,4 @@
-from einstellungen import *
+from einstellungen  import *
 k_B = 1.38064852 * 10**(-23)        #Boltzmann constant in J/K
 
 
@@ -65,26 +65,28 @@ def interpolation_T(t, T):
     return T_int
 
 
-fig, ax1 = plt.subplots()
-plt.semilogx(interpolation_t(t_1, T_1)/60 , interpolation_T(t_1, T_1), 'r.', label='interpolierte Temperatur', Markersize=6)
-plt.semilogx(t_1/60 , T_1, 'g.', label='Temperatur', Markersize=6)
-ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
-ax1.tick_params('y',colors='red')
-ax1.set_xlabel("Zeit / min")
-ax1.legend(loc='best')
+def plot_damage_rate(t, T):
+    fig, ax1 = plt.subplots()
+    plt.semilogx(interpolation_t(t, T)/60 , interpolation_T(t, T), 'r.', label='interpolierte Temperatur', Markersize=6)
+    plt.semilogx(t/60 , T, 'g.', label='Temperatur', Markersize=6)
+    ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
+    ax1.tick_params('y',colors='red')
+    ax1.set_xlabel("Zeit / min")
+    ax1.legend(loc='best')
 
 
-ax2 = ax1.twinx()
+    ax2 = ax1.twinx()
 
-#plt.semilogx(t_1/60 , damage(t_1, 49+273.15), 'b.', label='Schadensrate 49°C', Markersize=6)
-plt.semilogx(interpolation_t(t_1, T_1)/60 , damage(interpolation_t(t_1, T_1), interpolation_T(t_1, T_1)+273.15), 'b.', label='interpolierte Schadensrate', Markersize=6)
-plt.semilogx(t_1/60 , damage(t_1, T_1+273.15), 'k.', label='Schadensrate', Markersize=6)
-ax2.set_ylabel(r"$\alpha  / \mathrm{A cm^{-1}} $",color='blue')
-ax2.tick_params('y',colors='blue')
-plt.ylim(0.1*10**(-16), 0.9*10**(-16))
-ax1.grid()
-ax2.legend(loc='lower center')
+    #plt.semilogx(t_1/60 , damage(t_1, 49+273.15), 'b.', label='Schadensrate 49°C', Markersize=6)
+    plt.semilogx(interpolation_t(t, T)/60 , damage(interpolation_t(t, T), interpolation_T(t, T)+273.15), 'b.', label='interpolierte Schadensrate', Markersize=6)
+    plt.semilogx(t/60 , damage(t, T+273.15), 'k.', label='Schadensrate', Markersize=6)
+    ax2.set_ylabel(r"$\alpha  / \mathrm{A cm^{-1}} $",color='blue')
+    ax2.tick_params('y',colors='blue')
+    plt.ylim(0.1*10**(-16), 0.9*10**(-16))
+    ax1.grid()
+    ax2.legend(loc='lower center')
 
 
-plt.savefig('build/damagekorrektur_2.pdf')
-plt.clf()
+    plt.savefig('build/damagekorrektur_2.pdf')
+    plt.clf()
+    return 0
