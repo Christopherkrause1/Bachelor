@@ -11,9 +11,9 @@ b = 3.07*10**(-18)    #A/cm
 t_0 = 1 #min
 k_B = 1.38064852 * 10**(-23) #Boltzmann Konstante
 
-t, phi, T, T_2, T_3, T_4 = np.genfromtxt('daten.txt', unpack=True)
+t, phi, T, T_2, T_3, T_4 = np.genfromtxt('Daten/daten.txt', unpack=True)
 
-t_1, T_1 = np.genfromtxt('tdata.txt', unpack=True)
+t_1, T_1 = np.genfromtxt('Daten/tdata.txt', unpack=True)
 
 
 def tau_I(T):                                     #time constant
@@ -41,12 +41,12 @@ def damage(t, T):
 plt.gcf().subplots_adjust(bottom=0.18)
 
 fig, ax1 = plt.subplots()
-ax1.semilogx(t, damage(t, T), 'r.', marker='.', markersize=0)
+#ax1.semilogx(t, damage(t, T), 'r.', marker='.', markersize=0)
 ax1.set_ylabel(r'$\alpha  / \mathrm{A cm^{-1}} $', fontsize=10, color="black")
 for label in ax1.get_yticklabels():
     label.set_color("black")
 
-plt.semilogx(t , damage(t, T), 'r.', label='damage rate 60°C', Markersize=6)
+plt.semilogx(t , damage(t, 49+273.15), 'r.', label='damage rate 49°C', Markersize=6)
 plt.semilogx(t , damage(t, T=T_2), 'b.', label='damage rate 21°C', Markersize=6)
 plt.semilogx(t , damage(t, T=T_3), 'k.', label='damage rate 80°C', Markersize=6)
 plt.semilogx(t , damage(t, T=T_4), 'g.', label='damage rate 106°C', Markersize=6)
