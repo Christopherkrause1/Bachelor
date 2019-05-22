@@ -69,8 +69,8 @@ def interpolation_T(t, T):
 #function that plots the damage rate
 def plot_damage_rate(t, T):
     fig, ax1 = plt.subplots()
-    plt.semilogx(interpolation_t(t, T)/60 , interpolation_T(t, T), 'r.', label='interpolierte Temperatur', Markersize=6)
-    plt.semilogx(t/60 , T, 'g.', label='Temperatur', Markersize=6)
+    plt.semilogx(interpolation_t(t, T)/60 , interpolation_T(t, T), 'r.', label='interpolated temperature', Markersize=6)
+    plt.semilogx(t/60 , T, 'g.', label='temperature', Markersize=6)
     ax1.set_ylabel(r"Temperature / $^{\circ}$C", color = 'red', size=25)
     ax1.tick_params('y',colors='red')
     ax1.set_xlabel("Time / min", size=25)
@@ -80,8 +80,8 @@ def plot_damage_rate(t, T):
     ax2 = ax1.twinx()
 
     #plt.semilogx(t_1/60 , damage(t_1, 49+273.15), 'b.', label='Schadensrate 49°C', Markersize=6)
-    plt.semilogx(interpolation_t(t, T)/60 , damage(interpolation_t(t, T), interpolation_T(t, T)+273.15), 'b.', label='interpolierte Schadensrate', Markersize=6)
-    plt.semilogx(t/60 , damage(t, T+273.15), 'k.', label='Schadensrate', Markersize=6)
+    plt.semilogx(interpolation_t(t, T)/60 , damage(interpolation_t(t, T), interpolation_T(t, T)+273.15), 'b.', label='interpolated damage rate', Markersize=6)
+    plt.semilogx(t/60 , damage(t, T+273.15), 'k.', label='damage rate', Markersize=6)
     ax2.set_ylabel(r"$\alpha  / \mathrm{A cm^{-1}} $",color='blue', size=25)
     ax2.tick_params('y',colors='blue')
     plt.ylim(0.1*10**(-16), 0.9*10**(-16))
@@ -91,4 +91,5 @@ def plot_damage_rate(t, T):
     #plt.savefig('build/damagekorrektur_2.pdf')
     plt.clf()
 
-plot_damage_rate(t_1, T_1)     #function of the damage rate
+#function of the damage rate
+plot_damage_rate(t_1, T_1)

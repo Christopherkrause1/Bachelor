@@ -1,36 +1,32 @@
 from tkinter import *
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.optimize import curve_fit
-import scipy.interpolate
-import scipy as sp
-import math
 import string
 import locale
 from locale import atof
 locale.setlocale(locale.LC_ALL, 'de_DE')
+k_B = 1.38064852 * 10**(-23)    #Boltzmann constant
 
 
 
 
+N_C0 = 1.1*10**11               #stable Damage amplitude in 1/cm**3
+E_y = 1.33*1.6*10**(-19)        #resulting activation Energy in j
+k_0y = 1.5 * 10**(15)           #frequency factor in 1/s
+g_c = 1.58 * 10**(-2)           #Acceptor introduction Rate in cm**(-1)
+g_a = 1.59 * 10**(-2)           #introduction rate in cm**(-1)
+g_y = 4.84*10**(-2)             #cm**(-1)
+E_aa = 1.09 * 1.6* 10**(-19)    #activation Energy in j
+k_0a = 2.4 *10**(13)            #frequency factor in 1/s
+c = 75 * 10**(-14)              #fit parameter in 1/cm**2
 
-N_C0 = 1.1*10**11 #1/cm**3
-E_y = 1.33*1.6*10**(-19)    #resulting activation Energy
-k_0y = 1.5 * 10**(15)   #frequency factor
-g_c = 1.58 * 10**(-2)  #cm**(-1)    Acceptor introduction Rate
-g_a = 1.59 * 10**(-2) #cm**(-1)   introduction rate
-g_y = 4.84*10**(-2)   #cm**(-1)
-k_B = 1.38064852 * 10**(-23) #Boltzmann Konstante
-E_aa = 1.09 * 1.6* 10**(-19) #j   activation Energy
-k_0a = 2.4 *10**(13) #1/s   frequency factor
-c = 75 * 10**(-14)    #fit parameter 1/cm**2
-
-a_I = 1.23 * 10**(-17) #A/cm
-a0 = -8.9*10**(-17)         #fit parameter A/cm
-k_0I = 1.2 * 10**(13)*60     #1/min
-E_I = 1.11 * 1.6 * 10**(-19) #j
-beta = 3.07*10**(-18)    #A/cm
-t_0 = 1 #min
+a_I = 1.23 * 10**(-17)         #A/cm
+a0 = -8.9*10**(-17)            #fit parameter in A/cm
+k_0I = 1.2 * 10**(13)*60       #1/min
+E_I = 1.11 * 1.6 * 10**(-19)   #j
+beta = 3.07*10**(-18)          #A/cm
+b_0 = 4.6*10**(-14)            #fit parameter in A*K/cm
+t_0 = 1                        #min
 
 
 def N_Y_inf(phi):                                      #longterm annealing amplitude
@@ -63,7 +59,7 @@ def tau_I(T):                                     #time constant
     return 1/(k_0I* np.exp(-E_I/(k_B*T)))
 
 def a_0(T):                                       #part of the longterm annealing
-    return a0 + 4.6*10**(-14) * 1/T
+    return a0 + b_0 * 1/T
 
 def damage(t, T):                          #damage rate
     return a_I * np.exp(-t/tau_I(T)) + a_0(T) - beta * np.log(t/t_0)
