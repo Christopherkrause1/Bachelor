@@ -64,7 +64,7 @@ def damage(t, T):                          #damage rate
 
 
 master = Tk()
-master.title("Annealing effects at constant temperatures")
+master.title("Annealing effects at constant temperatures for a 'WE-4k' diode")
 Label(master, text=r'Insert a time for the annealing to end, a temperature to anneal with and a fluence.').grid(row=0)
 Label(master, text=r'Click on "plot" to create a plot of the effective doping concentration.').grid(row=1)
 Label(master, text=r'Time [min]').grid(row=2)
@@ -84,7 +84,10 @@ phi_q.grid(row=4, column=1)
 
 
 
+
 def plot():
+
+
     t_1 = float(t_q.get())
     T_1 = float(T_q.get())
     phi = float(phi_q.get())

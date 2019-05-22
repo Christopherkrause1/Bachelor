@@ -1,7 +1,7 @@
 from configuration import *
 t_1 -= t_1[0]  #converts unix time stamps to seconds
 k_B = 1.38064852 * 10**(-23)        #Boltzmann constant in J/K
-
+t_0 = 60                     #s
 
 
 

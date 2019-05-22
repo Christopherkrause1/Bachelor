@@ -3,8 +3,9 @@ import numpy as np
 import scipy as sp
 import math
 
-#txt file with time and temperature values
-t_1, T_1 = np.genfromtxt('Daten/tdata.txt', unpack=True) #t_1: Time in seconds, T_1: Temperature in degree celsius
+#txt file with time and temperature values (no rows with nans)
+t_1, T_1 = np.genfromtxt('Daten/tdata.txt', unpack=True)
+#t_1: Time in seconds/unix timestamps, T_1: Temperature in degree celsius
 
 
 
@@ -23,17 +24,16 @@ k_0a = 2.4 *10**(13)                #frequency factor in 1/s
 c = 75 * 10**(-14)                  #fit parameter 1/cm**2
 
 #constant parameters of the damage rate
-a_I = 1.23 * 10**(-17) #amplitude A/cm
-a_0 = -8.9*10**(-17) #fit parameter A/cm
-k_0I = 1.2 * 10**(13) #1/s
+a_I = 1.23 * 10**(-17)       #amplitude A/cm
+a_0 = -8.9*10**(-17)         #fit parameter A/cm
+k_0I = 1.2 * 10**(13)        #1/s
 E_I = 1.11 * 1.6 * 10**(-19) #j
 E_I2 = 1.3 * 1.6 * 10**(-19) #j
-beta = 3.07*10**(-18)    #A/cm
-b_0 = 4.6*10**(-14) #fit parameter AK/cm
-t_0 = 60 #s
-T_ref = 322.15 #reference temperature in kelvin
+beta = 3.07*10**(-18)        #A/cm
+b_0 = 4.6*10**(-14)          #fit parameter AK/cm
+T_ref = 322.15               #reference temperature in kelvin
 
-#parameters for the numbers of interpolation intervalls n = x * (T-T_min) + y
+#parameters for the numbers of linear interpolation intervalls n = x * (T-T_min) + y
 x_int = 0.05
 y_int = 0.2
 
@@ -45,7 +45,7 @@ y_int = 0.2
 ##################################################
 #import shutil
 #with open('output_file.txt','wb') as wfd:
-#    for f in ['seg1.txt','seg2.txt','seg3.txt']:
+#    for f in ['data1.txt','data2.txt','data3.txt', ...]:
 #        with open(f,'rb') as fd:
 #            shutil.copyfileobj(fd, wfd)
 ##################################################
