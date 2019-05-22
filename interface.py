@@ -39,7 +39,7 @@ def damage(t, T):                          #damage rate
 
 
 master = Tk()
-master.title("Annealing effects at constant temperatures for a 'WE-4k' diode")
+master.title("Annealing effects at constant temperatures for a 'WE-25k' diode")
 Label(master, text=r'Insert a time for the annealing to end, a temperature to anneal with and a fluence.').grid(row=0)
 Label(master, text=r'Click on "plot" to create a plot of the effective doping concentration.').grid(row=1)
 Label(master, text=r'Time [min]').grid(row=2)

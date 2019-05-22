@@ -6,9 +6,14 @@ import shutil
 # merging different txt.files into one:
 ##################################################
 #with open('output_file.txt','wb') as wfd:
-#    for f in ['data1.txt','data2.txt','data3.txt', ...]:
+#    for f in ['Daten/mareike_annealing.txt','Daten/mareike_annealing2.txt', 'Daten/tdata.txt']:
 #        with open(f,'rb') as fd:
 #            shutil.copyfileobj(fd, wfd)
+#        with open('output_file.txt', 'r+') as fd:
+#            contents = fd.readlines()
+#            contents.insert(sum(1 for line in 'output_file.txt'), '#new File\n')  # new_string should end in a newline
+#            #fd.seek(0)  # readlines consumes the iterator, so we need to start over
+#            fd.writelines(contents)  # No need to truncate as we are increasing filesize
 ##################################################
 
 
@@ -36,10 +41,10 @@ c = 75 * 10**(-14)                  #fit parameter in 1/cm**2
 #constant parameters of the damage rate
 a_I = 1.23 * 10**(-17)       #amplitude in A/cm
 a_0 = -8.9*10**(-17)         #fit parameter in A/cm
-k_0I = 1.2 * 10**(13)        #1/s
-E_I = 1.11 * 1.6 * 10**(-19) #j
-E_I2 = 1.3 * 1.6 * 10**(-19) #j
-beta = 3.07*10**(-18)        #A/cm
+k_0I = 1.2 * 10**(13)        #fit parameter 1/s
+E_I = 1.11 * 1.6 * 10**(-19) #fit parameter j
+E_I2 = 1.3 * 1.6 * 10**(-19) #fit parameter j
+beta = 3.07*10**(-18)        #fit parameter A/cm
 b_0 = 4.6*10**(-14)          #fit parameter in A*K/cm
 T_ref = 322.15               #reference temperature in kelvin
 

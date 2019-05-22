@@ -81,10 +81,6 @@ def N_eff(t, phi, T):  #change of the doping concentration
 
 
 
-
-
-
-
 #function that plots n_eff
 def plot_N_eff(t, phi, T):
     fig, ax1 = plt.subplots()

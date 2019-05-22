@@ -46,24 +46,24 @@ def damage(t, T):                                      #damage rate
     t_theta = gett_theta(t, theta_0, T)                #assigning name for the approximation
     return a_I * np.exp(-t_I) + a_02() - beta * np.log(t_theta /t_0)
 
-def interpolation_t(t, T):
-    t_int = np.array(t[0])
-    T_min = min(T)
+def interpolation_t(t, T):                                #linear interpolation of the time for more data
+    t_int = np.array(t[0])                                #create new time starting with arrays of zeros
+    T_min = min(T)                                        #number of intervalls depend on minimal temperature
     for i in range(1, len(T)):
-        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int))
+        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int)) #function for the number of intervalls
         for j in range(1, n+1):
             t_int = np.append(t_int, t[i-1] + abs(t[i-1]-t[i])/n *j)
-    return t_int;
+    return t_int;                                         #new interpolated times (includes initial times)
 
 
-def interpolation_T(t, T):
-    T_int = np.array(T[0])
-    T_min = min(T)
+def interpolation_T(t, T):                                #linear interpolation of the temperature for more data
+    T_int = np.array(T[0])                                #create new temperature starting with arrays of zeros
+    T_min = min(T)                                        #number of intervalls depend on minimal temperature
     for i in range(1, len(T)):
-        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int))
+        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int)) #function for the number of intervalls
         for j in range(1, n+1):
             T_int = np.append(T_int, T[i-1] + (T[i]-T[i-1])/(n) * (j))
-    return T_int
+    return T_int                                          #new interpolated temperatures (includes initial temperatures)
 
 
 #function that plots the damage rate
