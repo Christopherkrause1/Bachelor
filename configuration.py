@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 import shutil
-from matplotlib.legend_handler import HandlerLine2D
+
 # merging different txt.files into one:
 ##################################################
 #with open('output_file.txt','wb') as wfd:

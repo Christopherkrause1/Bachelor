@@ -1,32 +1,4 @@
-from tkinter import *
-import matplotlib.pyplot as plt
-import numpy as np
-import string
-import locale
-from locale import atof
-locale.setlocale(locale.LC_ALL, 'de_DE')
-k_B = 1.38064852 * 10**(-23)    #Boltzmann constant
-
-
-
-
-N_C0 = 1.1*10**11               #stable Damage amplitude in 1/cm**3
-E_y = 1.33*1.6*10**(-19)        #resulting activation Energy in j
-k_0y = 1.5 * 10**(15)           #frequency factor in 1/s
-g_c = 1.58 * 10**(-2)           #Acceptor introduction Rate in cm**(-1)
-g_a = 1.59 * 10**(-2)           #introduction rate in cm**(-1)
-g_y = 4.84*10**(-2)             #cm**(-1)
-E_aa = 1.09 * 1.6* 10**(-19)    #activation Energy in j
-k_0a = 2.4 *10**(13)            #frequency factor in 1/s
-c = 75 * 10**(-14)              #fit parameter in 1/cm**2
-
-a_I = 1.23 * 10**(-17)         #A/cm
-a0 = -8.9*10**(-17)            #fit parameter in A/cm
-k_0I = 1.2 * 10**(13)*60       #1/min
-E_I = 1.11 * 1.6 * 10**(-19)   #j
-beta = 3.07*10**(-18)          #A/cm
-b_0 = 4.6*10**(-14)            #fit parameter in A*K/cm
-t_0 = 1                        #min
+from config_interface import *
 
 
 def N_Y_inf(phi):                                      #longterm annealing amplitude
@@ -89,23 +61,28 @@ phi_q.grid(row=4, column=1)
 
 
 def plot():
-
-
-    t_1 = float(atof(t_q.get()))
-    T_1 = float(atof(T_q.get()))
-    phi = float(atof(phi_q.get()))
-    new_t = np.logspace(np.log10(0.1), np.log10(int(t_1)), np.floor(np.log10(int(t_1))*20))
-    #for i in range(0, int(t_1)):
-    #    for j in range(0, 60):
-    #        new_t = np.append(new_t, 60*i+j)
-    #new_t = np.delete(new_t, 0)
-    new_T = T_1
-    new_phi = phi * 10**(15)
-    plt.semilogx(new_t, N_eff(new_t*60, new_phi, new_T), 'r.')
-    plt.grid()
-    plt.ylabel(r'$N_{\mathrm{eff}} /\mathrm{cm}^2$', size=25)
-    plt.xlabel(r'$Time / $min', size=25)
-    plt.show()
+    t_1 = float(t_q.get())
+    T_1 = float(T_q.get())
+    phi = float(phi_q.get())
+    if t_1 < 2:
+        t_1=2
+        new_t = np.logspace(np.log10(0.1), np.log10(int(t_1)), np.floor(np.log10(int(t_1))*20))
+        new_T = T_1
+        new_phi = phi * 10**(15)
+        plt.semilogx(new_t, N_eff(new_t*60, new_phi, new_T), 'r.')
+        plt.grid()
+        plt.ylabel(r'$N_{\mathrm{eff}} /\mathrm{cm}^2$', size=25)
+        plt.xlabel(r'$Time / $min', size=25)
+        plt.show()
+    else:
+        new_t = np.logspace(np.log10(0.1), np.log10(int(t_1)), np.floor(np.log10(int(t_1))*20))
+        new_T = T_1
+        new_phi = phi * 10**(15)
+        plt.semilogx(new_t, N_eff(new_t*60, new_phi, new_T), 'r.')
+        plt.grid()
+        plt.ylabel(r'$N_{\mathrm{eff}} /\mathrm{cm}^2$', size=25)
+        plt.xlabel(r'$Time / $min', size=25)
+        plt.show()
 
 
 z = Button(master, text="plot", width=10, command=plot)
@@ -126,21 +103,25 @@ T_a = Entry(master)
 T_a.grid(row=10, column=1)
 
 def plot_2():
-    t_2 = float(atof(t_a.get()))
-    T_2 = float(atof(T_a.get()))
-    new_t2 = np.logspace(np.log10(0.1), np.log10(int(t_2)), np.floor(np.log10(int(t_2))*20))
-    #print(new_t3)
-    #for i in range(0, int(t_2)):
-    #    for j in range(0, 60):
-    #        new_t2 = np.append(new_t2, 60*i+j)
-    #new_t2 =np.delete(new_t2, 0)
-    #new_t2 =np.delete(new_t2, 0)
-    new_T2 = T_2 +273.15
-    plt.semilogx(new_t2, damage(new_t2, new_T2), 'r.')
-    plt.grid()
-    plt.ylabel(r'$\alpha /\mathrm{Acm}^2$', size=25)
-    plt.xlabel(r'$Time / $min', size=25)
-    plt.show()
+    t_2 = float(t_a.get())
+    T_2 = float(T_a.get())
+    if t_2 < 2:
+        t_2 = 2
+        new_t2 = np.logspace(np.log10(0.1), np.log10(int(t_2)), np.floor(np.log10(int(t_2))*20))
+        new_T2 = T_2 +273.15
+        plt.semilogx(new_t2, damage(new_t2, new_T2), 'r.')
+        plt.grid()
+        plt.ylabel(r'$\alpha /\mathrm{Acm}^2$', size=25)
+        plt.xlabel(r'$Time / $min', size=25)
+        plt.show()
+    else:
+        new_t2 = np.logspace(np.log10(0.1), np.log10(int(t_2)), np.floor(np.log10(int(t_2))*20))
+        new_T2 = T_2 +273.15
+        plt.semilogx(new_t2, damage(new_t2, new_T2), 'r.')
+        plt.grid()
+        plt.ylabel(r'$\alpha /\mathrm{Acm}^2$', size=25)
+        plt.xlabel(r'$Time / $min', size=25)
+        plt.show()
 
 
 

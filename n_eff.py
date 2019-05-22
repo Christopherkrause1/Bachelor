@@ -12,7 +12,7 @@ def tau_Y(T):                                          #Time constant of the lon
     return 1/(k_0y *np.exp(-E_y/(k_B*(T+273.15))))
 
 def gett_Y(t, tau_Y0, T):                    #creating an approximation for t/tau_Y
-    timediff_Y = np.zeros(len(t))            #first create an array of zeros to work with
+    timediff_Y = np.zeros(len(t))            #creates an array of zeros to work with
     timediff_Y = np.ediff1d(t, to_begin=0)   #creates array = [0, t[1]-t[0], t[2]-t[1], ...]
     tau_Y0 = np.roll(tau_Y0, shift=1)        #shifting tau_Y array by one to the right
     tau_Y1 = tau_Y(T)
@@ -27,7 +27,7 @@ def tau_A(T):                                #Time constant of the short term an
     return 1/(k_0a *np.exp(-E_aa/(k_B*(T+273.15))))
 
 def gett_A(t, tau_A0, T):                   #creating an approximation for t/tau_A
-    timediff_A = np.zeros(len(t))           #first create an array of zeros to work with
+    timediff_A = np.zeros(len(t))           #creates an array of zeros to work with
     timediff_A = np.ediff1d(t, to_begin=0)  #creates array = [0, t[1]-t[0], t[2]-t[1], ...]
     tau_A0 = np.roll(tau_A0, shift=1)       #shifting tau_A array by one to the right
     tau_A1 = tau_A(T)

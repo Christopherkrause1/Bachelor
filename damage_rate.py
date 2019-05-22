@@ -1,49 +1,49 @@
 from configuration import *
-t_1 -= t_1[0]  #converts unix time stamps to seconds
-k_B = 1.38064852 * 10**(-23)        #Boltzmann constant in J/K
-t_0 = 60                     #s
+t_1 -= t_1[0]                            #converts unix time stamps to seconds
+k_B = 1.38064852 * 10**(-23)             #Boltzmann constant in J/K
+t_0 = 60                                 #s
 
 
 
-def tau_I(T):                                     #time constant
+def tau_I(T):                            #time constant
     return 1/(k_0I* np.exp(-E_I/(k_B*T)))
 
-def gett_I(t, tau_I0, T):
-    timediff_I = np.zeros(len(t))
-    timediff_I = np.ediff1d(t, to_begin=0)
-    tau_I0 = np.roll(tau_I0, shift=1) # shifting array by one to the right
+def gett_I(t, tau_I0, T):                   #creates an approximation for t/tau_I
+    timediff_I = np.zeros(len(t))           #creates an array of zeros to work with
+    timediff_I = np.ediff1d(t, to_begin=0)  #creates array = [0, t[1]-t[0], t[2]-t[1], ...]
+    tau_I0 = np.roll(tau_I0, shift=1)       #shifting tau_I array by one to the right
     tau_I1 = tau_I(T)
-    timediff_I /= (tau_I0 + tau_I1)/2
-    t_I = np.zeros(len(t))
+    timediff_I /= (tau_I0 + tau_I1)/2       #dividing each element by the mean of 2 adjacent tau_I elements
+    t_I = np.zeros(len(t))                  #create an array of zeros to work with
     for i in range(0, len(t)):
-        t_I[i] = np.sum(timediff_I[0:i+1])
-    return t_I
+        t_I[i] = np.sum(timediff_I[0:i+1])  #writes in each element the sum of the cooresponding timediff_I values
+    return t_I                              #now looks like [0, 0 + t[1]-t[0]/(tau_I[0] + tau_I[1])/2, ...]
 
 
-def a_02():                                  #Temperatur unabhängige parametrisiserung
+def a_02():                                  #temperature independent
     return a_0 + (b_0/ T_ref)
 
-def theta(T):
+def theta(T):                                #scaling factor for the time
     return np.exp(-E_I2/k_B *(1/T - 1/T_ref))
 
 
-def gett_theta(t, theta_0, T):
-    timediff_theta = np.zeros(len(t))
-    timediff_theta = np.ediff1d(t, to_begin=0)
-    theta_0 = np.roll(theta_0, shift=1) # shifting array by one to the right
+def gett_theta(t, theta_0, T):                        #creates an approximation for theta*t
+    timediff_theta = np.zeros(len(t))                 #creates an array of zeros to work with
+    timediff_theta = np.ediff1d(t, to_begin=0)        #creates array = [0, t[1]-t[0], t[2]-t[1], ...]
+    theta_0 = np.roll(theta_0, shift=1)               #shifting theta array by one to the right
     theta_1 = theta(T)
-    timediff_theta *= (theta_0 + theta_1)/2
-    timediff_theta[0]=10**(-90)
-    t_theta = np.zeros(len(t))
+    timediff_theta *= (theta_0 + theta_1)/2           #dividing each element by the mean of 2 adjacent theta elements
+    timediff_theta[0]=10**(-90)                       #to avoid dividing by zero in the logarithm
+    t_theta = np.zeros(len(t))                        #create an array of zeros to work with
     for i in range(0, len(t)):
-        t_theta[i] = np.sum(timediff_theta[0:i+1])
-    return t_theta
+        t_theta[i] = np.sum(timediff_theta[0:i+1])    #writes in each element the sum of the cooresponding timediff values
+    return t_theta                                    #now looks like [0, 0 + t[1]-t[0]*(theta[0] + theta[1])/2, ...]
 
 def damage(t, T):                                      #damage rate
-    tau_I0 = tau_I(T)                                  #tau_I0 = Array [egal, tau_I(T[0]), tau_I(T[1]),...]
-    t_I = gett_I(t, tau_I0, T)
-    theta_0 = theta(T)                                  #tau_I0 = Array [egal, tau_I(T[0]), tau_I(T[1]),...]
-    t_theta = gett_theta(t, theta_0, T)
+    tau_I0 = tau_I(T)                                  #assigning array for the t/tau_I approximation
+    t_I = gett_I(t, tau_I0, T)                         #assigning name to the new approximated time
+    theta_0 = theta(T)                                 #assigning array theta*t for the approximation
+    t_theta = gett_theta(t, theta_0, T)                #assigning name for the approximation
     return a_I * np.exp(-t_I) + a_02() - beta * np.log(t_theta /t_0)
 
 def interpolation_t(t, T):
