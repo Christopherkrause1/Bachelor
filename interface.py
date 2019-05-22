@@ -6,23 +6,30 @@ import scipy.interpolate
 import scipy as sp
 import math
 import string
+import locale
+from locale import atof
+locale.setlocale(locale.LC_ALL, 'de_DE')
 
 
 
-N_C0 = 1.3*10**11 #1/cm**3
+
+
+N_C0 = 1.1*10**11 #1/cm**3
 E_y = 1.33*1.6*10**(-19)    #resulting activation Energy
 k_0y = 1.5 * 10**(15)   #frequency factor
-g_c = 1.49 * 10**(-2)  #cm**(-1)    Acceptor introduction Rate
+g_c = 1.58 * 10**(-2)  #cm**(-1)    Acceptor introduction Rate
 g_a = 1.59 * 10**(-2) #cm**(-1)   introduction rate
-g_y = 5.16*10**(-2)   #cm**(-1)
+g_y = 4.84*10**(-2)   #cm**(-1)
 k_B = 1.38064852 * 10**(-23) #Boltzmann Konstante
 E_aa = 1.09 * 1.6* 10**(-19) #j   activation Energy
 k_0a = 2.4 *10**(13) #1/s   frequency factor
+c = 75 * 10**(-14)    #fit parameter 1/cm**2
 
 a_I = 1.23 * 10**(-17) #A/cm
-k_0I = 1.2 * 10**(13)*60 #1/min
+a0 = -8.9*10**(-17)         #fit parameter A/cm
+k_0I = 1.2 * 10**(13)*60     #1/min
 E_I = 1.11 * 1.6 * 10**(-19) #j
-b = 3.07*10**(-18)    #A/cm
+beta = 3.07*10**(-18)    #A/cm
 t_0 = 1 #min
 
 
@@ -56,10 +63,10 @@ def tau_I(T):                                     #time constant
     return 1/(k_0I* np.exp(-E_I/(k_B*T)))
 
 def a_0(T):                                       #part of the longterm annealing
-    return -8.9*10**(-17) + 4.6*10**(-14) * 1/T
+    return a0 + 4.6*10**(-14) * 1/T
 
 def damage(t, T):                          #damage rate
-    return a_I * np.exp(-t/tau_I(T)) + a_0(T) - b * np.log(t/t_0)
+    return a_I * np.exp(-t/tau_I(T)) + a_0(T) - beta * np.log(t/t_0)
 
 
 
@@ -88,9 +95,9 @@ phi_q.grid(row=4, column=1)
 def plot():
 
 
-    t_1 = float(t_q.get())
-    T_1 = float(T_q.get())
-    phi = float(phi_q.get())
+    t_1 = float(atof(t_q.get()))
+    T_1 = float(atof(T_q.get()))
+    phi = float(atof(phi_q.get()))
     new_t = np.logspace(np.log10(0.1), np.log10(int(t_1)), np.floor(np.log10(int(t_1))*20))
     #for i in range(0, int(t_1)):
     #    for j in range(0, 60):
@@ -100,8 +107,8 @@ def plot():
     new_phi = phi * 10**(15)
     plt.semilogx(new_t, N_eff(new_t*60, new_phi, new_T), 'r.')
     plt.grid()
-    plt.ylabel(r'$N_{\mathrm{eff}} /\mathrm{cm}^2$')
-    plt.xlabel(r'$Time / $min')
+    plt.ylabel(r'$N_{\mathrm{eff}} /\mathrm{cm}^2$', size=25)
+    plt.xlabel(r'$Time / $min', size=25)
     plt.show()
 
 
@@ -123,8 +130,8 @@ T_a = Entry(master)
 T_a.grid(row=10, column=1)
 
 def plot_2():
-    t_2 = float(t_a.get())
-    T_2 = float(T_a.get())
+    t_2 = float(atof(t_a.get()))
+    T_2 = float(atof(T_a.get()))
     new_t2 = np.logspace(np.log10(0.1), np.log10(int(t_2)), np.floor(np.log10(int(t_2))*20))
     #print(new_t3)
     #for i in range(0, int(t_2)):
@@ -135,8 +142,8 @@ def plot_2():
     new_T2 = T_2 +273.15
     plt.semilogx(new_t2, damage(new_t2, new_T2), 'r.')
     plt.grid()
-    plt.ylabel(r'$\alpha /\mathrm{Acm}^2$')
-    plt.xlabel(r'$Time / $min')
+    plt.ylabel(r'$\alpha /\mathrm{Acm}^2$', size=25)
+    plt.xlabel(r'$Time / $min', size=25)
     plt.show()
 
 

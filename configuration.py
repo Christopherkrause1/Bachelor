@@ -2,10 +2,21 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy as sp
 import math
+import shutil
+
+# merging different txt.files into one:
+##################################################
+#with open('output_file.txt','wb') as wfd:
+#    for f in ['data1.txt','data2.txt','data3.txt', ...]:
+#        with open(f,'rb') as fd:
+#            shutil.copyfileobj(fd, wfd)
+##################################################
+
 
 #txt file with time and temperature values (no rows with nans)
-t_1, T_1 = np.genfromtxt('Daten/tdata.txt', unpack=True)
+t_1, T_1 = np.genfromtxt('Daten/tdata.txt', usecols=(0, 1), unpack=True) #adjust columns if necessary
 #t_1: Time in seconds/unix timestamps, T_1: Temperature in degree celsius
+
 
 
 
@@ -41,16 +52,6 @@ y_int = 0.2
 
 
 
-# merging different txt.files into one:
-##################################################
-#import shutil
-#with open('output_file.txt','wb') as wfd:
-#    for f in ['data1.txt','data2.txt','data3.txt', ...]:
-#        with open(f,'rb') as fd:
-#            shutil.copyfileobj(fd, wfd)
-##################################################
-
-
 
 #constant parameters of the N_eff function with a "WI-4k Ohm cm" diode
 #N_C0 = 0.9*10**11                   #stable Damage amplitude in 1/cm**3
@@ -61,4 +62,4 @@ y_int = 0.2
 #g_a = 2.01 * 10**(-2)               #introduction rate in 1/cm
 #E_aa = 1.09 * 1.6* 10**(-19)        #activation Energy in j
 #k_0a = 2.4 *10**(13)*60             #frequency factor in 1/s
-#c = 31 * 10**(14)                   #fitparameter 1/cm**2
+#c = 31 * 10**(14)                   #fit parameter 1/cm**2
