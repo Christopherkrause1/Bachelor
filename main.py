@@ -1,6 +1,6 @@
 import n_eff as doping
 import damage_rate as dmg
-from einstellungen import *
+from configuration import *
 
 #########################################################
 # DONT TOUCH!!!!!
