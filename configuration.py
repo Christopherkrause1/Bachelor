@@ -1,24 +1,27 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import math
-import shutil
+
 
 # merging different txt.files into one:
 ##################################################
-#with open('output_file.txt','wb') as wfd:
-#    for f in ['Daten/mareike_annealing.txt','Daten/mareike_annealing2.txt', 'Daten/tdata.txt']:
-#        with open(f,'rb') as fd:
-#            shutil.copyfileobj(fd, wfd)
-#        with open('output_file.txt', 'r+') as fd:
-#            contents = fd.readlines()
-#            contents.insert(sum(1 for line in 'output_file.txt'), '#new File\n')  # new_string should end in a newline
-#            #fd.seek(0)  # readlines consumes the iterator, so we need to start over
-#            fd.writelines(contents)  # No need to truncate as we are increasing filesize
+merge = open("merge_file.txt", "w+") # creates merge file in which the data is merged
+
+#also creates notification at the start of each file
+data_collection = np.array(['Daten/mareike_annealing_1.txt', 'Daten/mareike_annealing_2.txt']) #insert the data files here
+for vartext in data_collection: # loops over the data files
+    fin = open(vartext, "r") # opens each data to cache it
+    data = fin.read()
+    fin.close()
+    fout = open("merge_file.txt", "a") # opens the merge_file to save the data in it
+    fout.write("#----------- data file: " + vartext +" --------------\n")
+    fout.write(data) #writes the cached in it
+    fout.close()
 ##################################################
 
 
 #txt file with time and temperature values (no rows with nans)
-t_1, T_1 = np.genfromtxt('Daten/tdata.txt', usecols=(0, 1), unpack=True) #adjust columns if necessary
+t_1, T_1 = np.genfromtxt('Daten/tdata_1.txt', usecols=(0, 1), unpack=True) #adjust columns if necessary
 #t_1: Time in seconds/unix timestamps, T_1: Temperature in degree celsius
 
 

@@ -84,8 +84,8 @@ def N_eff(t, phi, T):  #change of the doping concentration
 #function that plots n_eff
 def plot_N_eff(t, phi, T):
     fig, ax1 = plt.subplots()
-    plt.semilogx(interpolation_t(t, T)/60 , interpolation_T(t, T), 'r.', label='interpolated temperature', Markersize=6)
-    plt.semilogx(t/60 , T, 'g.', label='temperature', Markersize=6)
+    plt.semilogx(interpolation_t(t, T)/60 , interpolation_T(t, T), 'g.', label='interpolated temperature', Markersize=6)
+    plt.semilogx(t/60 , T, 'r.', label='temperature', Markersize=6)
     ax1.set_ylabel(r"Temperature / $^{\circ}$C", color = 'red', size=25)
     ax1.tick_params('y',colors='red')
     ax1.set_xlabel("Time / min", size=25)
@@ -93,8 +93,8 @@ def plot_N_eff(t, phi, T):
 
 
     ax2 = ax1.twinx()
-    plt.semilogx(interpolation_t(t, T)/60, N_eff(interpolation_t(t, T), phi, interpolation_T(t, T)), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ with interpolation', Markersize=6)
-    plt.semilogx(t/60, N_eff(t, phi, T), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ without interpolation', Markersize=6)
+    plt.semilogx(interpolation_t(t, T)/60, N_eff(interpolation_t(t, T), phi, interpolation_T(t, T)), 'b.', label=r'interpolated $\Delta N_{\mathrm{eff}}$', Markersize=6)
+    plt.semilogx(t/60, N_eff(t, phi, T), 'k.', label=r'$\Delta N_{\mathrm{eff}}$', Markersize=6)
     ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue', size=25)
     ax2.tick_params('y',colors='blue')
     ax1.grid()
