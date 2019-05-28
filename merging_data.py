@@ -29,3 +29,4 @@ for text in glob.glob("Felix_Daten/*.txt"):            #loop over all the data f
     fout.write(data) #writes the cached data in it
     fout.close()
 ##################################################
+#to use the merged time, write t_1 = t_final under the genfromtxt in the configuration.py

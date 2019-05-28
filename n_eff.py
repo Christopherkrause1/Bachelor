@@ -1,6 +1,6 @@
 from configuration import *
 
-t_1 -= t_1[0]                            #converts unix time stamps to seconds
+t_1 -= t_1[0]                                          #converts unix time stamps to seconds
 k_B = 1.38064852 * 10**(-23)                           #Boltzmann constant in J/K
 
 
@@ -11,12 +11,12 @@ def N_Y_inf(phi):                                      #longterm annealing ampli
 def tau_Y(T):                                          #Time constant of the longterm annealing
     return 1/(k_0y *np.exp(-E_y/(k_B*(T+273.15))))
 
-def gett_Y(t, tau_Y0, T):                    #creating an approximation for t/tau_Y
+def gett_Y(t, T_s_1, T):                     #creating an approximation for t/tau_Y  (T_s ist the Temperature shifted to the right)
     timediff_Y = np.zeros(len(t))            #creates an array of zeros to work with
     timediff_Y = np.ediff1d(t, to_begin=0)   #creates array = [0, t[1]-t[0], t[2]-t[1], ...]
-    tau_Y0 = np.roll(tau_Y0, shift=1)        #shifting tau_Y array by one to the right
-    tau_Y1 = tau_Y(T)
-    timediff_Y /= (tau_Y0+ tau_Y1)/2         #dividing each element by the mean of 2 adjacent tau_Y elements
+    T_s_1 = np.roll(T_s_1, shift=1)          #shifting tau_Y array by one to the right
+    T_n = T                                  #Temperature not shifted to the right
+    timediff_Y /= tau_Y((T_s_1+T_n)/2)       #dividing each element by the mean of 2 adjacent Temperature elements (inside tau)
     t_Y = np.zeros(len(t))                   #create an array of zeros to work with
     for i in range(0, len(t)):
         t_Y[i] = np.sum(timediff_Y[0:i+1])   #writes in each element the sum of the cooresponding timediff_Y values
@@ -26,12 +26,12 @@ def gett_Y(t, tau_Y0, T):                    #creating an approximation for t/ta
 def tau_A(T):                                #Time constant of the short term annealing
     return 1/(k_0a *np.exp(-E_aa/(k_B*(T+273.15))))
 
-def gett_A(t, tau_A0, T):                   #creating an approximation for t/tau_A
+def gett_A(t, T_s_2, T):                    #creating an approximation for t/tau_A
     timediff_A = np.zeros(len(t))           #creates an array of zeros to work with
     timediff_A = np.ediff1d(t, to_begin=0)  #creates array = [0, t[1]-t[0], t[2]-t[1], ...]
-    tau_A0 = np.roll(tau_A0, shift=1)       #shifting tau_A array by one to the right
-    tau_A1 = tau_A(T)
-    timediff_A /= (tau_A0 + tau_A1)/2       #dividing each element by the mean of 2 adjacent tau_A elements
+    T_s_2 = np.roll(T_s_2, shift=1)         #shifting tau_A array by one to the right
+    T_n = T                                 #Temperature not shifted to the right
+    timediff_A /= tau_A((T_s_2+T_n)/2)      #dividing each element by the mean of 2 adjacent tau_A elements
     t_A = np.zeros(len(t))                  #create an array of zeros to work with
     for i in range(0, len(t)):
         t_A[i] = np.sum(timediff_A[0:i+1])  #writes in each element the sum of the cooresponding timediff_Y values
@@ -42,14 +42,14 @@ def N_C(phi):                                        #stable damage
     return N_C0 *(1 - np.exp(-c * phi)) + g_c * phi
 
 def N_A(t, phi, T):                                  #shortterm annealing
-    tau_A0 = tau_A(T)                                #assigning array for the approximation
-    t_A = gett_A(t, tau_A0, T)                       #assigning name to the new approximated time
+    T_s_2 = T                                        #assigning array for the approximation
+    t_A = gett_A(t, T_s_2, T)                        #assigning name to the new approximated time
     return phi * g_a * np.exp(-t_A)
 
 
 def N_Y(t, phi, T):                                  #longterm annealing
-    tau_Y0 = tau_Y(T)                                #assigning array for the approximation
-    t_Y = gett_Y(t, tau_Y0, T)                       #assigning name to the new approximated time
+    T_s_1 = T                                        #assigning array for the approximation
+    t_Y = gett_Y(t, T_s_1, T)                        #assigning name to the new approximated time
     return N_Y_inf(phi) * (1- 1/(1 + t_Y))
 
 
@@ -104,44 +104,3 @@ def plot_N_eff(t, phi, T):
     plt.clf()
 
 plot_N_eff(t_1, phi, T_1)    #function of the doping concentration
-
-#zweiter Datensatz
-#fig, ax1 = plt.subplots()
-#plt.semilogx(interpolation_t(t_3, T_3)/60 , interpolation_T(t_3, T_3), 'r.', label='interpolierte Temperatur', Markersize=6)
-#plt.semilogx(t_3/60 , T_3, 'g.', label='Temperatur', Markersize=6)
-#ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
-#ax1.tick_params('y',colors='red')
-#ax1.set_xlabel("Zeit / min")
-#ax1.legend(loc=6)
-#
-#
-#ax2 = ax1.twinx()
-#plt.semilogx(interpolation_t(t_3, T_3)/60, N_eff(interpolation_t(t_3, T_3), phi, interpolation_T(t_3, T_3)), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
-#plt.semilogx(t_3/60, N_eff(t_3, 5*10**(15), T_3), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
-#ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
-#ax2.tick_params('y',colors='blue')
-#ax1.grid()
-#ax2.legend(loc='best')
-#plt.savefig('build/interpolationmareike2.pdf')
-#plt.clf()
-#
-#
-##erster Datensatz R3
-#fig, ax1 = plt.subplots()
-#plt.semilogx(interpolation_t(t_4, T_4)/60 , interpolation_T(t_4, T_4), 'r.', label='interpolierte Temperatur', Markersize=6)
-#plt.semilogx(t_4/60 , T_4, 'g.', label='Temperatur', Markersize=6)
-#ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
-#ax1.tick_params('y',colors='red')
-#ax1.set_xlabel("Zeit / min")
-#ax1.legend(loc=6)
-#
-#
-#ax2 = ax1.twinx()
-#plt.semilogx(interpolation_t(t_4, T_4)/60, N_eff(interpolation_t(t_4, T_4), phi, interpolation_T(t_4, T_4)), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
-#plt.semilogx(t_4/60, N_eff(t_4, 5*10**(15), T_4), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
-#ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
-#ax2.tick_params('y',colors='blue')
-#ax1.grid()
-#ax2.legend(loc='best')
-#plt.savefig('build/interpolationmareikeR3_1.pdf')
-#plt.clf()

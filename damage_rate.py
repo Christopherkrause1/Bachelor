@@ -5,15 +5,15 @@ t_0 = 60                                 #s
 
 
 
-def tau_I(T):                            #time constant
+def tau_I(T):                               #time constant
     return 1/(k_0I* np.exp(-E_I/(k_B*T)))
 
-def gett_I(t, tau_I0, T):                   #creates an approximation for t/tau_I
+def gett_I(t, T_s, T):                      #creates an approximation for t/tau_I
     timediff_I = np.zeros(len(t))           #creates an array of zeros to work with
     timediff_I = np.ediff1d(t, to_begin=0)  #creates array = [0, t[1]-t[0], t[2]-t[1], ...]
-    tau_I0 = np.roll(tau_I0, shift=1)       #shifting tau_I array by one to the right
-    tau_I1 = tau_I(T)
-    timediff_I /= (tau_I0 + tau_I1)/2       #dividing each element by the mean of 2 adjacent tau_I elements
+    T_s = np.roll(T_s, shift=1)             #shifting tau_I array by one to the right
+    T_n = T
+    timediff_I /= tau_I((T_s+T_n)/2)        #dividing each element by the mean of 2 adjacent tau_I elements
     t_I = np.zeros(len(t))                  #create an array of zeros to work with
     for i in range(0, len(t)):
         t_I[i] = np.sum(timediff_I[0:i+1])  #writes in each element the sum of the cooresponding timediff_I values
@@ -27,23 +27,23 @@ def theta(T):                                #scaling factor for the time
     return np.exp(-E_I2/k_B *(1/T - 1/T_ref))
 
 
-def gett_theta(t, theta_0, T):                        #creates an approximation for theta*t
+def gett_theta(t, T_t, T):                            #creates an approximation for theta*t
     timediff_theta = np.zeros(len(t))                 #creates an array of zeros to work with
     timediff_theta = np.ediff1d(t, to_begin=0)        #creates array = [0, t[1]-t[0], t[2]-t[1], ...]
-    theta_0 = np.roll(theta_0, shift=1)               #shifting theta array by one to the right
-    theta_1 = theta(T)
-    timediff_theta *= (theta_0 + theta_1)/2           #dividing each element by the mean of 2 adjacent theta elements
+    T_t = np.roll(T_t, shift=1)                       #shifting theta array by one to the right
+    T_n = T
+    timediff_theta *= theta((T_n+T_t)/2)              #dividing each element by the mean of 2 adjacent theta elements
     timediff_theta[0]=10**(-90)                       #to avoid dividing by zero in the logarithm
     t_theta = np.zeros(len(t))                        #create an array of zeros to work with
     for i in range(0, len(t)):
         t_theta[i] = np.sum(timediff_theta[0:i+1])    #writes in each element the sum of the cooresponding timediff values
     return t_theta                                    #now looks like [0, 0 + t[1]-t[0]*(theta[0] + theta[1])/2, ...]
 
-def damage(t, T):                                      #damage rate
-    tau_I0 = tau_I(T)                                  #assigning array for the t/tau_I approximation
-    t_I = gett_I(t, tau_I0, T)                         #assigning name to the new approximated time
-    theta_0 = theta(T)                                 #assigning array theta*t for the approximation
-    t_theta = gett_theta(t, theta_0, T)                #assigning name for the approximation
+def damage(t, T):                                     #damage rate
+    T_s = T                                           #assigning array for the t/tau_I approximation
+    t_I = gett_I(t, T_s, T)                           #assigning name to the new approximated time
+    T_t = T                                           #assigning array theta*t for the approximation
+    t_theta = gett_theta(t, T_t, T)                   #assigning name for the approximation
     return a_I * np.exp(-t_I) + a_02() - beta * np.log(t_theta /t_0)
 
 def interpolation_t(t, T):                                #linear interpolation of the time for more data
@@ -83,16 +83,16 @@ def plot_damage_rate(t, T):
     plt.semilogx(interpolation_t(t, T)/60 , damage(interpolation_t(t, T), interpolation_T(t, T)+273.15), 'b.', label='interpolated damage rate', Markersize=6)
     plt.semilogx(t/60 , damage(t, T+273.15), 'k.', label='damage rate', Markersize=6)
     ##################
-    #plt.semilogx(t_extra[0]/60 ,  4.41257461*10**(-17), 'co', label='measured damage rate', Markersize=6)
-    #plt.semilogx(t_extra[1]/60 ,  4.29371053*10**(-17), 'co', Markersize=6)
-    #plt.semilogx(t_extra[2]/60 ,  4.32595362*10**(-17), 'co', Markersize=6)
-    #plt.semilogx(t_extra[3]/60 ,  4.08389690*10**(-17), 'co', Markersize=6)
-    #plt.semilogx(t_extra[5]/60 ,  4.12733081*10**(-17), 'co', Markersize=6)
-    #plt.semilogx(t_extra[8]/60 ,  4.03425668*10**(-17), 'co', Markersize=6)
-    #plt.semilogx(t_extra[13]/60 , 3.83768497*10**(-17), 'co', Markersize=6)
-    #plt.semilogx(t_extra[23]/60 , 3.58868817*10**(-17), 'co', Markersize=6)
-    #plt.semilogx(t_extra[38]/60 , 3.40072803*10**(-17), 'co', Markersize=6)
-    #plt.semilogx(t_extra[59]/60 , 3.29323499*10**(-17), 'co', Markersize=6)
+    plt.semilogx(t_extra[0]/60 ,  4.41257461*10**(-17), 'co', label='measured damage rate', Markersize=6)
+    plt.semilogx(t_extra[1]/60 ,  4.29371053*10**(-17), 'co', Markersize=6)
+    plt.semilogx(t_extra[2]/60 ,  4.32595362*10**(-17), 'co', Markersize=6)
+    plt.semilogx(t_extra[3]/60 ,  4.08389690*10**(-17), 'co', Markersize=6)
+    plt.semilogx(t_extra[5]/60 ,  4.12733081*10**(-17), 'co', Markersize=6)
+    plt.semilogx(t_extra[8]/60 ,  4.03425668*10**(-17), 'co', Markersize=6)
+    plt.semilogx(t_extra[13]/60 , 3.83768497*10**(-17), 'co', Markersize=6)
+    plt.semilogx(t_extra[23]/60 , 3.58868817*10**(-17), 'co', Markersize=6)
+    plt.semilogx(t_extra[38]/60 , 3.40072803*10**(-17), 'co', Markersize=6)
+    plt.semilogx(t_extra[59]/60 , 3.29323499*10**(-17), 'co', Markersize=6)
     ##################
     ax2.set_ylabel(r"$\alpha  / \mathrm{A cm^{-1}} $",color='blue', size=13)
     ax2.tick_params('y',colors='blue')
@@ -100,7 +100,6 @@ def plot_damage_rate(t, T):
     ax1.grid()
     ax2.legend(loc='lower center')
     plt.show()
-    #plt.savefig('build/damagekorrektur_2.pdf')
     plt.clf()
 
 #function of the damage rate

@@ -3,26 +3,13 @@ import numpy as np
 import math
 from merging_data import *
 
-#merging different txt.files into one:
-##################################################
-#merge = open("merge_file.txt", "w+") # creates merge file in which the data is merged
-#
-#data_collection = np.array(['Felix_Daten/2018-09-22_21_29_01_Annealingtest_1950.txt']) #insert the data files here
-#for text in data_collection: #loops over the data files
-#    fin = open(text, "r")    #opens each data to cache it
-#    data = fin.read()
-#    fin.close()
-#    fout = open("merge_file.txt", "a") # opens the merge_file to save the data in it
-#    fout.write("#----------- data file: " + text +" --------------\n") #creates notification at the start of each file
-#    fout.write(data) #writes the cached data in it
-#    fout.close()
-##################################################
-
 
 #insert txt file with time and temperature values (no rows with nans)
 t_1, T_1 = np.genfromtxt('merge_file.txt', usecols=(0, 1), unpack=True) #adjust columns if necessary
 #t_1: Time in seconds/unix timestamps; T_1: Temperature in degree celsius
-t_1 = t_final
+
+#use this line if you merged files with the merge_file.txt
+#t_1 = t_final
 
 
 

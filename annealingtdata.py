@@ -18,13 +18,13 @@ k_0a = 2.4 *10**(13) #1/s   frequency factor
 def N_Y_inf(phi):                                      #longterm annealing amplitude
     return g_y * phi
 
-def tau_Y(T):                                        #Time constant
+def tau_Y(T):                                          #Time constant
     return 1/(k_0y *np.exp(-E_y/(k_B*(T+273.15))))
 
 def gett_Y(t, T_s, T):
     timediff_Y = np.zeros(len(t))
     timediff_Y = np.ediff1d(t, to_begin=0)
-    T_s = np.roll(T_s, shift=1) # shifting array by one to the right
+    T_s = np.roll(T_s, shift=1)                        #shifting array by one to the right
     T_n = T
     timediff_Y /= tau_Y((T_s+ T_n)/2)
     t_Y = np.zeros(len(t))
@@ -39,7 +39,7 @@ def tau_A(T):                                          #Time constant
 def gett_A(t, tau_A0, T):                              #sum of time differences divided by tau(T)
     timediff_A = np.zeros(len(t))
     timediff_A = np.ediff1d(t, to_begin=0)
-    tau_A0 = np.roll(tau_A0, shift=1) # shifting array by one to the right, t[1]-t[0] soll ja durch tau[0] geteilt werden
+    tau_A0 = np.roll(tau_A0, shift=1) #shifting array by one to the right, t[1]-t[0] soll ja durch tau[0] geteilt werden
     tau_A1 = tau_A(T)
     timediff_A /= (tau_A0 + tau_A1)/2
     t_A = np.zeros(len(t))
@@ -52,14 +52,14 @@ def N_C(phi):                                          #stable damage
     return N_C0 *(1 - np.exp(-phi)) + g_c * phi
 
 def N_A(t, phi, T):                                    #shortterm annealing
-    tau_A0 = tau_A(T)                         #tau_A0 = Array [egal, tau_A(T[0]), tau_A(T[1]),...]
+    tau_A0 = tau_A(T)                                  #tau_A0 = Array [egal, tau_A(T[0]), tau_A(T[1]),...]
     t_A = gett_A(t, tau_A0, T)                         #Vektor t_1 - t_0/tau_A(0)
     return phi * g_a * np.exp(-t_A)
 
 
 def N_Y(t, phi, T):                                    #longterm annealing
-    T_s = T                             #tau_Y0 = Array [egal, tau_Y(T[0]), tau_Y(T[1]),...]
-    t_Y = gett_Y(t, T_s, T)                         #Vektor t_1 - t_0/tau_Y(0)
+    T_s = T                                            #tau_Y0 = Array [egal, tau_Y(T[0]), tau_Y(T[1]),...]
+    t_Y = gett_Y(t, T_s, T)                            #Vektor t_1 - t_0/tau_Y(0)
     return N_Y_inf(phi) * (1- 1/(1 + t_Y))
 
 
