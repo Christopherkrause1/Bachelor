@@ -9,7 +9,15 @@ t_1, T_1 = np.genfromtxt('merge_file.txt', usecols=(0, 1), unpack=True) #adjust 
 #t_1: Time in seconds/unix timestamps; T_1: Temperature in degree celsius
 
 #use this line if you merged files with the merge_file.txt
-#t_1 = t_final
+t_1 = t_final
+
+
+#if you also want the annealing of a constant temperature in your plot, use the following line, adjust the value T_const in °C
+#T_const = 80
+
+
+#if you don't want to have the temperature curve shown in the plot, comment the next line out
+#show_temperature_curve
 
 
 
