@@ -66,22 +66,22 @@ def plot():
     phi = float(phi_q.get())
     if t_1 < 2:
         t_1=2
-        new_t = np.logspace(np.log10(0.1), np.log10(int(t_1)), np.floor(np.log10(int(t_1))*20))
+        new_t = np.logspace(np.log10(0.1), np.log10(int(t_1)), np.floor(np.log10(10000)*20))
         new_T = T_1
         new_phi = phi * 10**(15)
         plt.semilogx(new_t, N_eff(new_t*60, new_phi, new_T), 'r.')
         plt.grid()
-        plt.ylabel(r'$N_{\mathrm{eff}} /\mathrm{cm}^2$', size=25)
-        plt.xlabel(r'$Time / $min', size=25)
+        plt.ylabel(r'$N_{\mathrm{eff}} /\mathrm{cm}^2$', size=13)
+        plt.xlabel(r'$Time / $min', size=13)
         plt.show()
     else:
-        new_t = np.logspace(np.log10(0.1), np.log10(int(t_1)), np.floor(np.log10(int(t_1))*20))
+        new_t = np.logspace(np.log10(0.1), np.log10(int(t_1)), np.floor(np.log10(10000)*20))
         new_T = T_1
         new_phi = phi * 10**(15)
         plt.semilogx(new_t, N_eff(new_t*60, new_phi, new_T), 'r.')
         plt.grid()
-        plt.ylabel(r'$N_{\mathrm{eff}} /\mathrm{cm}^2$', size=25)
-        plt.xlabel(r'$Time / $min', size=25)
+        plt.ylabel(r'$\Delta N_{\mathrm{eff}} /\mathrm{cm}^2$', size=13)
+        plt.xlabel(r'$Time / $min', size=13)
         plt.show()
 
 
@@ -111,16 +111,16 @@ def plot_2():
         new_T2 = T_2 +273.15
         plt.semilogx(new_t2, damage(new_t2, new_T2), 'r.')
         plt.grid()
-        plt.ylabel(r'$\alpha /\mathrm{Acm}^2$', size=25)
-        plt.xlabel(r'$Time / $min', size=25)
+        plt.ylabel(r'$\alpha /\mathrm{Acm}^2$', size=13)
+        plt.xlabel(r'$Time / $min', size=13)
         plt.show()
     else:
         new_t2 = np.logspace(np.log10(0.1), np.log10(int(t_2)), np.floor(np.log10(int(t_2))*20))
         new_T2 = T_2 +273.15
         plt.semilogx(new_t2, damage(new_t2, new_T2), 'r.')
         plt.grid()
-        plt.ylabel(r'$\alpha /\mathrm{Acm}^2$', size=25)
-        plt.xlabel(r'$Time / $min', size=25)
+        plt.ylabel(r'$\alpha /\mathrm{Acm}^2$', size=13)
+        plt.xlabel(r'$Time / $min', size=13)
         plt.show()
 
 

@@ -13,10 +13,10 @@ E_aa = 1.09 * 1.6* 10**(-19) #j   activation Energy
 k_0a = 2.4 *10**(13)*60 #1/min   frequnecy factor
 
 
-t, phi, T, T_2, T_3, T_4 = np.genfromtxt('daten.txt', unpack=True)
-t_2, T_5 = np.genfromtxt('tdata.txt', unpack=True)
-t_unix, T_6 = np.genfromtxt('2018-09-22_11_21_40_Annealingtest_1950.txt', usecols=(0, 2), unpack=True)  #unix daten
-t_s = t_unix-t_unix[0]
+t, phi, T, T_2, T_3, T_4 = np.genfromtxt('Daten/daten.txt', unpack=True)
+#t_2, T_5 = np.genfromtxt('Daten/tdata_1.txt', unpack=True)
+#t_unix, T_6 = np.genfromtxt('2018-09-22_11_21_40_Annealingtest_1950.txt', usecols=(0, 2), unpack=True)  #unix daten
+#t_s = t_unix-t_unix[0]
 #Änderung der effektiven Dotierungskonzentration für WE-25k$\Omega$cm
 
 
@@ -43,41 +43,35 @@ def N_eff(t, phi, T):                                  #Änderung der Dotierungs
     return N_C(phi) + N_A(t, phi, T) + N_Y(t, phi, T)
 
 
-fig, ax1 = plt.subplots()
-plt.semilogx(t_2/60 , T_5, 'r.', label='Temperatur', Markersize=6)
-#ax1.bar()
-#ax1.scatter()
-ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
-ax1.tick_params('y',colors='red')
-ax1.set_xlabel("Zeit / min")
-ax1.legend(loc=6)
 
 
-ax2 = ax1.twinx()
-plt.semilogx(t_2/60, N_eff(t_2/60, 5*10**(15), T_5+273.15), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ für R1', Markersize=6)
-plt.semilogx(t_2/60, N_eff(t_2/60, 5*10**(15), 80+273.15), 'k--', label=r'$\Delta N_{\mathrm{eff}}$ für 80°C', Markersize=6)
-ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
-ax2.tick_params('y',colors='blue')
-#ax2.set_yscale('log')
-#ax2.scatter()
-ax1.grid()
-ax2.legend(loc='upper left')
-#plt.title('A')
 
-#plt.gcf().subplots_adjust(bottom=0.18)
-#plt.semilogx(t, N_eff(t, phi, T), 'r.', label='Änderung N_eff 60°C', Markersize=6)
-#plt.semilogx(t, N_eff(t, phi, T_2), 'b.', label='Änderung N_eff 21°C', Markersize=6)
-#plt.semilogx(t, N_eff(t, phi, T_3), 'g.', label='Änderung N_eff 80°C', Markersize=6)
-#plt.semilogx(t, N_C(phi), 'k-', label='stable Damage', Markersize=4)
-#plt.semilogx(t, N_C(phi) + N_A(t, phi, T), 'g--', label='short term', Markersize=4)
-#plt.semilogx(t, N_C(phi) + N_Y(t, phi, T), 'b--', label='long term', Markersize=4)
+#fig, ax1 = plt.subplots()
+#plt.semilogx(t_2/60 , T_5, 'r.', label='Temperature', Markersize=6)
+#ax1.set_ylabel(r"Temperature / $^{\circ}$C", color = 'red')
+#ax1.tick_params('y',colors='red')
+#ax1.set_xlabel("Time / min")
+#ax1.legend(loc='upper left')
+#
+#
+#ax2 = ax1.twinx()
+#plt.semilogx(t_2/60, N_eff(t_2/60, 5*10**(15), T_5+273.15), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ of R1', Markersize=6)
+##plt.semilogx(t_2/60, N_eff(t_2/60, 5*10**(15), 80+273.15), 'k--', label=r'$\Delta N_{\mathrm{eff}}$@80°C', Markersize=6)
+#ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
+#ax2.tick_params('y',colors='blue')
+#
+#ax1.grid()
+#ax2.legend(loc='best')
+#plt.savefig('build/annealing.pdf')
+#plt.clf()
 
-#plt.semilogx(t_2/60, N_eff(t_2/60, 5*10**(15), T_5+273.15), 'r.', label='Änderung N_eff 60°C', Markersize=6)
-#plt.semilogx(t_2/60, N_eff(t_2/60, 5*10**(15), 353.15), 'b.', label='Änderung N_eff 80°C', Markersize=6)
-#plt.legend()
-#plt.grid()
-#plt.ylim(1.52*10**(14), 1.56*10**(14))
-#plt.xlabel(r't/ $\mathrm{min}$')
-#plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
+plt.gcf().subplots_adjust(bottom=0.18)
+plt.semilogx(t, N_eff(t, 5*10**(15), 60+273.15), 'r.', label=r'$\Delta N_eff@60°C$', Markersize=6)
+plt.semilogx(t, N_eff(t, 5*10**(15), 80+273.15), 'b.', label=r'$\Delta N_eff@80°C$', Markersize=6)
+plt.legend()
+plt.grid()
+
+plt.xlabel(r'Time / $\mathrm{min}$')
+plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
 plt.savefig('build/annealing.pdf')
 plt.clf()
