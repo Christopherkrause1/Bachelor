@@ -1,14 +1,14 @@
 from configuration import *
 
-time -= time[0]                                          #converts unix time stamps to seconds
-k_B = 1.38064852 * 10**(-23)                           #Boltzmann constant in J/K
+time -= time[0]                              #converts unix time stamps to seconds
+k_B = 1.38064852 * 10**(-23)                 #Boltzmann constant in J/K
 
 
 
-def N_Y_inf(phi):                                      #longterm annealing amplitude
+def N_Y_inf(phi):                            #longterm annealing amplitude
     return g_y * phi
 
-def tau_Y(T):                                          #Time constant of the longterm annealing
+def tau_Y(T):                                #Time constant of the longterm annealing
     return 1/(k_0y *np.exp(-E_y/(k_B*(T+273.15))))
 
 def gett_Y(t, T_s_1, T):                     #creating an approximation for t/tau_Y  (T_s ist the Temperature shifted to the right)
@@ -26,16 +26,16 @@ def gett_Y(t, T_s_1, T):                     #creating an approximation for t/ta
 def tau_A(T):                                #Time constant of the short term annealing
     return 1/(k_0a *np.exp(-E_aa/(k_B*(T+273.15))))
 
-def gett_A(t, T_s_2, T):                    #creating an approximation for t/tau_A
-    timediff_A = np.zeros(len(t))           #creates an array of zeros to work with
-    timediff_A = np.ediff1d(t, to_begin=0)  #creates array = [0, t[1]-t[0], t[2]-t[1], ...]
-    T_s_2 = np.roll(T_s_2, shift=1)         #shifting tau_A array by one to the right
-    T_n = T                                 #Temperature not shifted to the right
-    timediff_A /= tau_A((T_s_2+T_n)/2)      #dividing each element by the mean of 2 adjacent tau_A elements
-    t_A = np.zeros(len(t))                  #create an array of zeros to work with
+def gett_A(t, T_s_2, T):                     #creating an approximation for t/tau_A
+    timediff_A = np.zeros(len(t))            #creates an array of zeros to work with
+    timediff_A = np.ediff1d(t, to_begin=0)   #creates array = [0, t[1]-t[0], t[2]-t[1], ...]
+    T_s_2 = np.roll(T_s_2, shift=1)          #shifting tau_A array by one to the right
+    T_n = T                                  #Temperature not shifted to the right
+    timediff_A /= tau_A((T_s_2+T_n)/2)       #dividing each element by the mean of 2 adjacent tau_A elements
+    t_A = np.zeros(len(t))                   #create an array of zeros to work with
     for i in range(0, len(t)):
-        t_A[i] = np.sum(timediff_A[0:i+1])  #writes in each element the sum of the cooresponding timediff_Y values
-    return t_A                              #now looks like [0, 0 + t[1]-t[0]/(tau_A[0] + tau_A[1])/2, ...]
+        t_A[i] = np.sum(timediff_A[0:i+1])   #writes in each element the sum of the cooresponding timediff_Y values
+    return t_A                               #now looks like [0, 0 + t[1]-t[0]/(tau_A[0] + tau_A[1])/2, ...]
 
 
 def N_C(phi):                                        #stable damage
@@ -91,7 +91,7 @@ def plot_N_eff(t, phi, T):
         ax1.tick_params('y',colors='red')
         ax1.set_xlabel("Time / min", size=13)
         ax1.legend(loc=6)
-        ax2 = ax1.twinx()          #n_eff axis
+        ax2 = ax1.twinx()            #n_eff axis
         plt.semilogx(interpolation_t(t, T)/60, N_eff(interpolation_t(t, T), phi, interpolation_T(t, T)), 'b.', label=r'interpolated $\Delta N_{\mathrm{eff}}$', Markersize=6)
         plt.semilogx(t/60, N_eff(t, phi, T), 'k.', label=r'$\Delta N_{\mathrm{eff}}$', Markersize=6)
         if 'T_const' in globals():   #plots the function with a constant temperature if specified in the configuration

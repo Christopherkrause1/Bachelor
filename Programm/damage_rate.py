@@ -1,7 +1,7 @@
 from configuration import *
-time -= time[0]                            #converts unix time stamps to seconds
-k_B = 1.38064852 * 10**(-23)             #Boltzmann constant in J/K
-t_0 = 60                                 #in s
+time -= time[0]                             #converts unix time stamps to seconds
+k_B = 1.38064852 * 10**(-23)                #Boltzmann constant in J/K
+t_0 = 60                                    #in s
 
 
 
@@ -20,10 +20,10 @@ def gett_I(t, T_s, T):                      #creates an approximation for t/tau_
     return t_I                              #now looks like [0, 0 + t[1]-t[0]/(tau_I[0] + tau_I[1])/2, ...]
 
 
-def a_02():                                  #temperature independent
+def a_02():                                 #temperature independent
     return a_0 + (b_0/ T_ref)
 
-def theta(T):                                #scaling factor for the time
+def theta(T):                               #scaling factor for the time
     return np.exp(-E_I2/k_B *(1/T - 1/T_ref))
 
 
@@ -88,7 +88,6 @@ def plot_damage_rate(t, T):
         ax2.legend(loc='lower center')
         plt.show()
         plt.clf()
-
     else:
         plt.gcf().subplots_adjust(bottom=0.18)
         plt.semilogx(interpolation_t(t, T)/60, damage(interpolation_t(t, T), interpolation_T(t, T)+273.15), 'b.', label=r'interpolated damage rate', Markersize=6)
@@ -103,7 +102,6 @@ def plot_damage_rate(t, T):
         plt.legend(loc='best')
         plt.show()
         plt.clf()
-
 
 #shows the plot of the given data
 plot_damage_rate(time, temperature)

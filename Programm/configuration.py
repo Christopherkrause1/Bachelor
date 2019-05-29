@@ -1,24 +1,24 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import math
-from merging_data import *     #only use this line if you want to plot data from the merged file (also uncomment line 12)
+#from merging_data import *     #only use this line if you want to plot data from the merged file (also uncomment line 12)
 
 
 #insert txt file with time and temperature values (no rows with nans)
-time, temperature = np.genfromtxt('merge_file.txt', usecols=(0, 1), unpack=True) #adjust columns if necessary
+time, temperature = np.genfromtxt('text_file.txt', usecols=(0, 1), unpack=True) #adjust columns if necessary
 #time: Time in seconds/unix timestamps; temperature: Temperature in degree celsius
 
 #only use next line if you merged files with the merging_data.py and want to plot the data of the merge_file.txt
-time = t_merged_data
+#time = t_merged_data
 
 
 
-#if you also want the annealing of a constant temperature in your plot, use the following line, adjust the value T_const in °C
+#if you also want the annealing of a constant temperature in your plot, use the following line, adjust the value of T_const in °C
 #T_const = 80
 
 
 #if you don't want to have the temperature curve shown in the plot, comment the following line out
-#show_temperature_curve = 1
+show_temperature_curve = 1
 
 
 

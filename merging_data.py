@@ -3,7 +3,7 @@ import glob
 import sys
 import os.path
 
-folder = input("Please enter the folder in which the data is stored: ")   #input folder from the command line
+folder = input("Please enter the path in which the data is stored: ")   #input folder from the command line
 
 
 #merging different txt.files into one: merge_file.txt
@@ -35,6 +35,6 @@ if os.path.exists(folder) == True:                       #checks if the given fo
         fout.write(data) #writes the cached data in it
         fout.close()
 else:
-    print('Folder not found') #Stops the program if the folder does not exist
+    print('path not found') #Stops the program if the folder does not exist
     exit()
 ##################################################

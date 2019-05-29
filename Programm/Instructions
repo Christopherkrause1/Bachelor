@@ -1,7 +1,7 @@
 Nutzen:
-Das Programm dient dazu die Schadensrate und die effektive Dotierungskonzentration
-für beliebige Zeiten, Temperaturen, Sensoren und Fluenzen zu berechnen und zu
-modellieren.
+Das Programm dient dazu die Schadensrate und die effektive
+Dotierungskonzentration für beliebige Zeiten, Temperaturen, Sensoren und
+Fluenzen zu berechnen und zu modellieren.
 
 Bestandteile:
 Bestehend aus vier Programmen (configuration.py, damage_rate.py, n_eff.py,
@@ -24,17 +24,6 @@ np.genfromtxt-Funktion geschrieben werden um die Schadensrate und die
 Dotierungskonzentration daraus berechnen zu können. Aus dieser Datei soll
 die Zeit und die zugehörige Temperatur genommen werden.
 
-Hinweise zur np.genfromtxt-Funktion:
-Befindet sich die Textdatei innerhalb eines weiteren Directories, so muss dieses
-mit in die np.genfromtxt-Funktion angegeben werden. Gibt es Zeilen ohne Daten,
-so müssen diese auskommentiert werden.
-Sind die Variablen 'time' und 'temperature' nicht in der ersten und zweiten Spalte der
-Textdatei muss mit der Option "usecols" die richtigen Spalten genommen werden.
-Die Variablen 'time' und 'temperature' dürfen nicht umbenannt werden. Auch
-eine weitere np.genfromtxt-Funktion darunter würde zu einem Fehler führen, wenn
-neue Namen für die Variablen verwendet werden. Es darf nur der Name der
-Textdatei verändert werden.
-
 Die darauf folgende Zeile darf nur verwendet werden, wenn die
 merging_data.py verwendet wird und passt die Zeit der verbundenen
 Textdateien an.
@@ -50,6 +39,16 @@ Diode des Typs "WE-25k" verwendet.
 Zum Schluss steht auch eine weitere Parametereinstellung der Diode "WI-4k"
 für die Dotierungskonzentration zur Verfügung.
 
+Hinweise zur configuration.py:
+Befindet sich die Textdatei innerhalb eines weiteren Directories, so muss dieses
+mit in die np.genfromtxt-Funktion angegeben werden. Gibt es Zeilen ohne Daten,
+so müssen diese auskommentiert werden.
+Sind die Variablen 'time' und 'temperature' nicht in der ersten und zweiten
+Spalte der Textdatei muss mit der Option "usecols" die richtigen Spalten
+genommen werden. Die Variablen 'time' und 'temperature' dürfen nicht umbenannt
+werden. Auch eine weitere np.genfromtxt-Funktion darunter würde zu einem Fehler
+führen, wenn neue Namen für die Variablen verwendet werden. Es darf nur der Name
+der Textdatei verändert werden.
 
 
 
@@ -73,6 +72,7 @@ Bildschirm erscheint.
 Hinweise zur damage_rate.py/n_eff.py:
 Beide Programme sollten unter normalen Umständen nicht verändert werden.
 Lediglich die configuration.py sollte angepasst werden.
+
 
 
 

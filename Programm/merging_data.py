@@ -32,4 +32,3 @@ if os.path.exists(folder) == True:                       #checks if the given fo
 else:
     print('Folder not found') #Stops the program if the folder does not exist
     exit()
-##################################################
