@@ -5,7 +5,7 @@ modellieren.
 
 Bestandteile:
 Bestehend aus vier Programmen (configuration.py, damage_rate.py, n_eff.py,
-merging_data.py) soll lediglich der code in der configuration.py von dem
+merging_data.py) soll lediglich der Code in der configuration.py von dem
 Nutzer verändert werden. Sind die Daten und Parameter in der configuration.py
 wie gewünscht eingestellt worden, so kann mit dem Ausführen des Programmes
 damage_rate.py die Schadensrate und mit dem Programm n_eff.py die
@@ -25,7 +25,7 @@ Dotierungskonzentration daraus berechnen zu können. Aus dieser Datei soll
 die Zeit und die zugehörige Temperatur genommen werden.
 
 Hinweise zur np.genfromtxt-Funktion:
-Befindet sich die Textdatei innerhalb eines weiteren directories, so muss dieses
+Befindet sich die Textdatei innerhalb eines weiteren Directories, so muss dieses
 mit in die np.genfromtxt-Funktion angegeben werden. Gibt es Zeilen ohne Daten,
 so müssen diese auskommentiert werden.
 Sind die Variablen 'time' und 'temperature' nicht in der ersten und zweiten Spalte der
@@ -33,13 +33,13 @@ Textdatei muss mit der Option "usecols" die richtigen Spalten genommen werden.
 Die Variablen 'time' und 'temperature' dürfen nicht umbenannt werden. Auch
 eine weitere np.genfromtxt-Funktion darunter würde zu einem Fehler führen, wenn
 neue Namen für die Variablen verwendet werden. Es darf nur der Name der
-Textfatei verändert werden.
+Textdatei verändert werden.
 
 Die darauf folgende Zeile darf nur verwendet werden, wenn die
-merging_data.py verwendet wird. Die Zeile passt die Zeit der verbundenen
+merging_data.py verwendet wird und passt die Zeit der verbundenen
 Textdateien an.
 
-Die darauf folgenden Zeile bietet die Möglichkeit wahlweise zusätzlich die
+In der Zeile danach wird die Möglichkeit geboten wahlweise zusätzlich die
 Temperatur in den zu erstellenden Plots darzustellen.
 Die darauf folgenden Zeile bietet die Möglichkeit wahlweise zusätzlich die
 jeweilige Funktion bei einer konstanten Temperatur darzustellen.
@@ -48,7 +48,7 @@ Nun werden die konstanten Parameter der beiden Funktionen aufgelistet. Jedem
 Parameter muss ein Wert zugeordnet Werten. Als Standardeinstellung wird eine
 Diode des Typs "WE-25k" verwendet.
 Zum Schluss steht auch eine weitere Parametereinstellung der Diode "WI-4k"
-für die Doterungskonzentration zur verfügung.
+für die Dotierungskonzentration zur Verfügung.
 
 
 
@@ -58,10 +58,10 @@ für die Doterungskonzentration zur verfügung.
 damage_rate.py/n_eff.py:
 Beide Programme haben die gleiche Struktur und müssen nach den getroffenen
 Einstellungen in der configuration.py ausgeführt werden. Diese wird in
-beide Programme importiert. Danach werden unix timestamps, falls sie verwendet
+beide Programme importiert. Danach werden Unixzeiten, falls sie verwendet
 werden, in Sekunden umgerechnet.
 Die jeweilige Funktion, die das Programm modellieren soll wird in einzelnen
-Teilen berechnet. Zusätzich wird aus den eigentlichen Zeitdaten ein neuer
+Teilen berechnet. Zusätzlich wird aus den eigentlichen Zeitdaten ein neuer
 Zeitarray erstellt, welcher eine Korrektur für ändernde Temperaturen beschreibt.
 
 Der neue Zeitarray, sowie der Temperaturarray durchläuft eine Schleife für
@@ -71,7 +71,7 @@ Die nachfolgende Funktion erstellt einen Plot der Daten, welcher auf dem
 Bildschirm erscheint.
 
 Hinweise zur damage_rate.py/n_eff.py:
-Beide Programme sollten unter noralen Umständen nicht verändert werden.
+Beide Programme sollten unter normalen Umständen nicht verändert werden.
 Lediglich die configuration.py sollte angepasst werden.
 
 
@@ -81,18 +81,21 @@ Lediglich die configuration.py sollte angepasst werden.
 
 merging_data.py:
 Dieses Programm verbindet alle Textdateien in alphabetischer Reihenfolge
-miteinander und produziert eine merging_file.txt in dem directory dieses
+miteinander und produziert eine merging_file.txt in dem Directory dieses
 Programmes. In dieser Textdatei wird zusätzlich zu Beginn jeder neu angefügten
 Datei der Name dieser Datei angezeigt.
-Diese Datei wird mit der configuration.py verbunden indem die 4.Zeile
-nicht auskommentiert ist. In diesem Fall wid bei der Ausführung von
-damage.py oder n_eff.py nach einem Ordner gefragt in dem sich die Textdateien
-befinden.
+Diese Datei wird mit der configuration.py verbunden, indem die 4. Zeile in der
+configuration.py nicht auskommentiert ist. In diesem Fall wid bei der Ausführung
+von damage.py oder n_eff.py nach einem Ordner gefragt in dem sich die
+Textdateien befinden.
 
 Hinweise merging_data.py:
 Die produzierte merge_file.txt muss  in der np.genfromtxt-Funktion angegeben
-werden. Gehen die Zeiten der einzelnen Textdateien nicht nahtlos in einander
-über, so muss zuätzlich die Zeile 12 verwendet werden. Der neue Zeitarray
+werden. Gehen die Zeiten der einzelnen Textdateien nicht nahtlos ineinander
+über, so muss zusätzlich die Zeile 12 verwendet werden. Der neue Zeitarray
 wird während der Schleife über alle Textdateien erstellt und eliminiert
 Zeitabstände zwischen den Textdateien. (Letzter Zeitpunkt der ersten
 Textdatei = erster Zeitpunkt der zweiten Textdatei)
+Die zu verbindenden Textdateien dürfen nicht in demselben Directory wie dieses
+Programm sein, da die enstehende merge_file.txt sonst bei der nächsten
+Anwendung mit verbunden wird.
