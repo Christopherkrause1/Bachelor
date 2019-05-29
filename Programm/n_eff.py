@@ -1,6 +1,6 @@
 from configuration import *
 
-t_1 -= t_1[0]                                          #converts unix time stamps to seconds
+time -= time[0]                                          #converts unix time stamps to seconds
 k_B = 1.38064852 * 10**(-23)                           #Boltzmann constant in J/K
 
 
@@ -83,8 +83,8 @@ def N_eff(t, phi, T):  #change of the doping concentration
 
 #function that plots n_eff
 def plot_N_eff(t, phi, T):
-    if 'show_temperature_curve' in globals():
-        fig, ax1 = plt.subplots()   #temperature axis
+    if 'show_temperature_curve' in globals():   #shows the temperature curve on a secoond axis, if specified in the configuration
+        fig, ax1 = plt.subplots()               #temperature axis
         plt.semilogx(interpolation_t(t, T)/60 , interpolation_T(t, T), 'g.', label='interpolated temperature', Markersize=6)
         plt.semilogx(t/60 , T, 'r.', label='temperature', Markersize=6)
         ax1.set_ylabel(r"Temperature / $^{\circ}$C", color = 'red', size=13)
@@ -94,7 +94,7 @@ def plot_N_eff(t, phi, T):
         ax2 = ax1.twinx()          #n_eff axis
         plt.semilogx(interpolation_t(t, T)/60, N_eff(interpolation_t(t, T), phi, interpolation_T(t, T)), 'b.', label=r'interpolated $\Delta N_{\mathrm{eff}}$', Markersize=6)
         plt.semilogx(t/60, N_eff(t, phi, T), 'k.', label=r'$\Delta N_{\mathrm{eff}}$', Markersize=6)
-        if 'T_const' in globals():
+        if 'T_const' in globals():   #plots the function with a constant temperature if specified in the configuration
             plt.semilogx(t/60, N_eff(t, phi, T_const), 'c.', label=r'$\Delta N_{\mathrm{eff}} @$'+ str(T_const) + '°C', Markersize=6)
         ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue', size=13)
         ax2.tick_params('y',colors='blue')
@@ -107,7 +107,7 @@ def plot_N_eff(t, phi, T):
         plt.gcf().subplots_adjust(bottom=0.18)
         plt.semilogx(interpolation_t(t, T)/60, N_eff(interpolation_t(t, T), phi, interpolation_T(t, T)), 'b.', label=r'interpolated $\Delta N_{\mathrm{eff}}$', Markersize=6)
         plt.semilogx(t/60, N_eff(t, phi, T), 'k.', label=r'$\Delta N_{\mathrm{eff}}$', Markersize=6)
-        if 'T_const' in globals():
+        if 'T_const' in globals():   #plots the function with a constant temperature if specified in the configuration
             plt.semilogx(t/60, N_eff(t, phi, T_const), 'c.', label=r'$\Delta N_{\mathrm{eff}} @$'+ str(T_const) + '°C', Markersize=6)
         plt.xlabel("Time / min", size=13)
         plt.ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue', size=13)
@@ -117,4 +117,5 @@ def plot_N_eff(t, phi, T):
         plt.show()
         plt.clf()
 
-plot_N_eff(t_1, phi, T_1)    #function of the doping concentration
+#shows the plot of the doping concentration with the given data
+plot_N_eff(time, phi, temperature)

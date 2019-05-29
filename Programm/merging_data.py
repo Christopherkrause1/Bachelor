@@ -22,11 +22,6 @@ if os.path.exists(folder) == True:                       #checks if the given fo
         new_t_2 = t_data - t_data[0]                                  #convert stamps to seconds, which then start from 0
         t_merged_data = np.append(t_merged_data, [new_t_2 + new_t_1]) #array with all the times with will be plotted
 
-
-        ###################
-        #t_extra = np.append(t_extra, new_t_2[-1]+new_t_1) #times of the measured damage rate
-        ###################
-
         new_t_1 += t_data[-1]-t_data[0]    #closes time gap between the files
         data = fin.read()
         fin.close()

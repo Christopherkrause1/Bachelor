@@ -1,5 +1,5 @@
 from configuration import *
-t_1 -= t_1[0]                            #converts unix time stamps to seconds
+time -= time[0]                            #converts unix time stamps to seconds
 k_B = 1.38064852 * 10**(-23)             #Boltzmann constant in J/K
 t_0 = 60                                 #in s
 
@@ -68,7 +68,7 @@ def interpolation_T(t, T):                                #linear interpolation 
 
 #function that plots the damage rate
 def plot_damage_rate(t, T):
-    if 'show_temperature_curve' in globals():
+    if 'show_temperature_curve' in globals():   #shows the temperature curve on a secoond axis, if specified in the configuration
         fig, ax1 = plt.subplots()
         plt.semilogx(interpolation_t(t, T)/60 , interpolation_T(t, T), 'g.', label='interpolated temperature', Markersize=6)
         plt.semilogx(t/60 , T, 'r.', label='temperature', Markersize=6)
@@ -79,17 +79,7 @@ def plot_damage_rate(t, T):
         ax2 = ax1.twinx() #second axis (damage rate)
         plt.semilogx(interpolation_t(t, T)/60 , damage(interpolation_t(t, T), interpolation_T(t, T)+273.15), 'b.', label='interpolated damage rate', Markersize=6)
         plt.semilogx(t/60 , damage(t, T+273.15), 'k.', label='damage rate', Markersize=6)
-        #plt.semilogx(t_extra[0]/60 ,  4.41257461*10**(-17), 'co', label='measured damage rate', Markersize=6)
-        #plt.semilogx(t_extra[1]/60 ,  4.29371053*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[2]/60 ,  4.32595362*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[3]/60 ,  4.08389690*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[5]/60 ,  4.12733081*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[8]/60 ,  4.03425668*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[13]/60 , 3.83768497*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[23]/60 , 3.58868817*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[38]/60 , 3.40072803*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[59]/60 , 3.29323499*10**(-17), 'co', Markersize=6)
-        if 'T_const' in globals():
+        if 'T_const' in globals():  #plots the function with a constant temperature if specified in the configuration
             plt.semilogx(t/60 , damage(t, T_const+273.15), 'c.', label=r'$\alpha @$'+ str(T_const) + '°C', Markersize=6)
         ax2.set_ylabel(r"$\alpha  / \mathrm{A cm^{-1}} $",color='blue', size=13)
         ax2.tick_params('y',colors='blue')
@@ -103,7 +93,7 @@ def plot_damage_rate(t, T):
         plt.gcf().subplots_adjust(bottom=0.18)
         plt.semilogx(interpolation_t(t, T)/60, damage(interpolation_t(t, T), interpolation_T(t, T)+273.15), 'b.', label=r'interpolated damage rate', Markersize=6)
         plt.semilogx(t/60, damage(t, T+273.15), 'k.', label=r'damage rate', Markersize=6)
-        if 'T_const' in globals():
+        if 'T_const' in globals():  #plots the function with a constant temperature if specified in the configuration
             plt.semilogx(t/60, damage(t/60, T_const+273.15), 'c.', label=r'$\alpha @$'+ str(T_const) + '°C', Markersize=6)
         plt.xlabel("Time / min", size=13)
         plt.ylabel(r"$\alpha$ /$\mathrm{A cm^{-1}} $",color='blue', size=13)
@@ -116,4 +106,4 @@ def plot_damage_rate(t, T):
 
 
 #shows the plot of the given data
-plot_damage_rate(t_1, T_1)
+plot_damage_rate(time, temperature)

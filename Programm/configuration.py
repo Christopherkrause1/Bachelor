@@ -5,11 +5,11 @@ from merging_data import *     #only use this line if you want to plot data from
 
 
 #insert txt file with time and temperature values (no rows with nans)
-t_1, T_1 = np.genfromtxt('merge_file.txt', usecols=(0, 1), unpack=True) #adjust columns if necessary
-#t_1: Time in seconds/unix timestamps; T_1: Temperature in degree celsius
+time, temperature = np.genfromtxt('merge_file.txt', usecols=(0, 1), unpack=True) #adjust columns if necessary
+#time: Time in seconds/unix timestamps; temperature: Temperature in degree celsius
 
 #only use next line if you merged files with the merging_data.py and want to plot the data of the merge_file.txt
-t_1 = t_merged_data
+time = t_merged_data
 
 
 
@@ -17,7 +17,7 @@ t_1 = t_merged_data
 #T_const = 80
 
 
-#if you don't want to have the temperature curve shown in the plot, comment the next line out
+#if you don't want to have the temperature curve shown in the plot, comment the following line out
 #show_temperature_curve = 1
 
 
