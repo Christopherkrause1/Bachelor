@@ -9,7 +9,7 @@ t_1, T_1 = np.genfromtxt(r'merge_file.txt', usecols=(0, 1), unpack=True) #adjust
 #t_1: Time in seconds/unix timestamps; T_1: Temperature in degree celsius
 
 #only use next line if you merged files with the merging_data.py and want to plot the data of the merge_file.txt
-#t_1 = t_merged_data
+t_1 = t_merged_data
 
 
 
@@ -18,7 +18,7 @@ t_1, T_1 = np.genfromtxt(r'merge_file.txt', usecols=(0, 1), unpack=True) #adjust
 
 
 #if you don't want to have the temperature curve shown in the plot, comment the next line out
-show_temperature_curve = 1
+#show_temperature_curve = 1
 
 
 

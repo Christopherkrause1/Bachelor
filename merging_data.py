@@ -24,7 +24,7 @@ if os.path.exists(folder) == True:                       #checks if the given fo
 
 
         ###################
-        #t_extra = np.append(t_extra, new_t_2[-1]+new_t_1) #times of the measured damage rate
+        t_extra = np.append(t_extra, new_t_2[-1]+new_t_1) #times of the measured damage rate
         ###################
 
         new_t_1 += t_data[-1]-t_data[0]    #closes time gap between the files
