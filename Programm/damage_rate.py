@@ -16,7 +16,7 @@ def gett_I(t, T_s, T):                      #creates an approximation for t/tau_
     timediff_I /= tau_I((T_s+T_n)/2)        #dividing each element by the mean of 2 adjacent tau_I elements
     t_I = np.zeros(len(t))                  #create an array of zeros to work with
     for i in range(0, len(t)):
-        t_I[i] = np.sum(timediff_I[0:i+1])  #writes in each element the sum of the cooresponding timediff_I values
+        t_I[i] = np.sum(timediff_I[0:i+1])  #writes in each element the sum of the corresponding timediff_I values
     return t_I                              #now looks like [0, 0 + t[1]-t[0]/(tau_I[0] + tau_I[1])/2, ...]
 
 
@@ -36,7 +36,7 @@ def gett_theta(t, T_t, T):                            #creates an approximation 
     timediff_theta[0]=10**(-90)                       #to avoid dividing by zero in the logarithm
     t_theta = np.zeros(len(t))                        #create an array of zeros to work with
     for i in range(0, len(t)):
-        t_theta[i] = np.sum(timediff_theta[0:i+1])    #writes in each element the sum of the cooresponding timediff values
+        t_theta[i] = np.sum(timediff_theta[0:i+1])    #writes in each element the sum of the corresponding timediff values
     return t_theta                                    #now looks like [0, 0 + t[1]-t[0]*(theta[0] + theta[1])/2, ...]
 
 def damage(t, T):                                     #damage rate
@@ -48,9 +48,9 @@ def damage(t, T):                                     #damage rate
 
 def interpolation_t(t, T):                                #linear interpolation of the time for more data
     t_int = np.array(t[0])                                #create new time starting with arrays of zeros
-    T_min = min(T)                                        #number of intervalls depend on minimal temperature
+    T_min = min(T)                                        #number of intervals depend on minimal temperature
     for i in range(1, len(T)):
-        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int)) #function for the number of intervalls
+        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int)) #function for the number of intervals
         for j in range(1, n+1):
             t_int = np.append(t_int, t[i-1] + abs(t[i-1]-t[i])/n *j)
     return t_int;                                         #new interpolated times (includes initial times)
@@ -58,17 +58,17 @@ def interpolation_t(t, T):                                #linear interpolation 
 
 def interpolation_T(t, T):                                #linear interpolation of the temperature for more data
     T_int = np.array(T[0])                                #create new temperature starting with arrays of zeros
-    T_min = min(T)                                        #number of intervalls depend on minimal temperature
+    T_min = min(T)                                        #number of intervals depend on minimal temperature
     for i in range(1, len(T)):                            #loop over all temperatures
-        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int)) #function for the number of intervalls
-        for j in range(1, n+1):                           #loop over each intervall n
+        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int)) #function for the number of intervals
+        for j in range(1, n+1):                           #loop over each interval n
             T_int = np.append(T_int, T[i-1] + (T[i]-T[i-1])/(n) * (j)) #temperature array for every n
     return T_int                                          #new interpolated temperatures (includes initial temperatures)
 
 
 #function that plots the damage rate
 def plot_damage_rate(t, T):
-    if 'show_temperature_curve' in globals():   #shows the temperature curve on a secoond axis, if specified in the configuration
+    if 'show_temperature_curve' in globals():   #shows the temperature curve on a second axis, if specified in the configuration
         fig, ax1 = plt.subplots()
         plt.semilogx(interpolation_t(t, T)/60 , interpolation_T(t, T), 'g.', label='interpolated temperature', Markersize=6)
         plt.semilogx(t/60 , T, 'r.', label='temperature', Markersize=6)

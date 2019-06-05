@@ -36,6 +36,7 @@ dem p-n-Übergang.
 Durch eine äußere Spannung wird die Zone vergrößert und dient als Ionisationskammer für einfallende Teilchen.
 Die entstehenden Elektronen-Loch Paare werden als elektrisches Signal gemessen.
 
+Mehr Informationen über Halbleiter finden sich beispielsweise in dem Buch "Halbleiter-Leistungsbauelemente"  \cite{semiconductor}.
 
 \section{Strahlenschäden}
 Wechselwirkungen von hochenergetischen Teilchen mit Siliziumhalbleitern können zu Defekten in deren
@@ -95,13 +96,13 @@ Dotierungskonzentration. Dieser Effekt wird wie folgt berechnet.
 \end{align}
 Beginnend bei Null geht diese Funktion nach einem unendlich langen Zeitraum gegen die Konstante $N_{\mathrm{Y, \inf}}$.
 
-In Abbildung \ref{fig:n_eff_beipsiel} ist Beipsielhaft das Annealingverhalten eines
+In Abbildung \ref{fig:n_eff_beispiel} ist Beipsielhaft das Annealingverhalten eines
 Sensors dargestellt.
 
 \begin{figure}
   \includegraphics[width=0.95\textwidth]{logos/n_eff_beispiel.PNG}
   \caption{Dotierungskonzentration bei 60°C für eine Bestrahlung mit einer Fluenz
-  von $\Phi=\SI{1.4e13}{\per\centi\meter}$ .[Moll]}
+  von $\Phi=\SI{1.4e13}{\per\centi\meter\squared}$ .\cite{moll}}
   \label{fig:n_eff_beispiel}
 \end{figure}
 
@@ -113,7 +114,7 @@ angenommenen Weg. Bei Halbleitern ist damit der Strom gemeint, der trotz sperren
 Diode fließt. Dieser entsteht durch die Diffusion von einzelnen Ladungsträgern, welche
 in der Realität nicht komplett verhindert werden kann.
 Zusätzlich kommt ein Leckstrom durch strahlungsinduzierte Defekte hinzu, welche
-Elektronen-Loch-Paare generieren.[Moll]
+Elektronen-Loch-Paare generieren \cite{moll}.
 Durch das Annealing kann der Leckstrom somit verringert werden.
 
 Die Fluenz und der durch Strahlung hervor gerufenen Leckstrom $\Delta I$ sind
@@ -129,10 +130,10 @@ weshalb $\Delta I$ als Näherung den gesamten Leckstrom beschreibt.
 
 Die Verringerung des Leckstromes durch annealing wird mit der Schadensrate
 beschrieben, welche als eine Funktion abhängig von der Zeit und
-Temperatur beschrieben wird.[Moll]
+Temperatur beschrieben wird.\cite{moll}
 
 \begin{align}
-  \alpha(t, T) = \underbrace{\alpha_I \cdot \exp{\left(-\frac{t}{\tau_{\mathrm{I}}(T)}\right)}}_{shortterm \: annealing} + \underbrace{\alpha_{\mathrm{0}} -\beta \cdot \ln{\left(\frac{t}{t_{\mathrm{0}}}\right)}}_{longterm \: annealing}
+  \alpha(t, T) = \underbrace{\alpha_I \cdot \exp{\left(-\frac{t}{\tau_{\mathrm{I}}(T)}\right)}}_{\mathrm{shortterm \: annealing}} + \underbrace{\alpha_{\mathrm{0}} -\beta \cdot \ln{\left(\frac{t}{t_{\mathrm{0}}}\right)}}_{\mathrm{longterm \: annealing}}
 \end{align}
 
 Anders als das Annealingverhalten der Dotierungskonzentration kann die Schadensrate
@@ -145,6 +146,6 @@ ist in Abbildung \ref{fig:damage_rates} dargestellt.
 
 \begin{figure}
   \includegraphics[width=0.9\textwidth]{logos/schadensraten.PNG}
-  \caption{Schadensraten für verschiedene konstante Annealingtemperaturen.[Moll]}
+  \caption{Schadensraten für verschiedene konstante Annealingtemperaturen.\cite{moll}}
   \label{fig:damage_rates}
 \end{figure}

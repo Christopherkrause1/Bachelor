@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import string
 import locale
-k_B = 1.38064852 * 10**(-23)    #Boltzmann constant
+
 
 
 #constant parameters of the N_eff function with a "WE-25k Ohm cm" Diode

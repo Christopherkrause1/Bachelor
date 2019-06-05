@@ -3,7 +3,7 @@ import glob
 import sys
 import os.path
 
-folder = input("Please enter the folder in which the data is stored: ")   #input folder from the command line
+folder = input("Please enter the folder in which the data are stored: ")   #input folder from the command line
 
 
 #merging different txt.files into one: merge_file.txt

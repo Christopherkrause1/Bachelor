@@ -48,9 +48,9 @@ beta = 3.07*10**(-18)        #fit parameter A/cm
 b_0 = 4.6*10**(-14)          #fit parameter in A*K/cm
 T_ref = 322.15               #reference temperature in kelvin
 
-#parameters for the numbers of linear interpolation intervalls n = x * (T-T_min) + y
-x_int = 0.05
-y_int = 0.2
+#parameters for the numbers of linear interpolation intervals n = x * (T-T_min) + y
+x_int = 0.05   #only one parameter can be 0;
+y_int = 0.2    #for 0 intervals use x_int = 0, y_int = 1
 
 
 

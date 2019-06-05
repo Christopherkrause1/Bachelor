@@ -1,15 +1,15 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import math
-from merging_data import *     #only use this line if you want to plot data from the merged file (also uncomment line 12)
+#from merging_data import *     #only use this line if you want to plot data from the merged file (also uncomment line 12)
 
 
 #insert txt file with time and temperature values (no rows with nans)
-t_1, T_1 = np.genfromtxt(r'merge_file.txt', usecols=(0, 1), unpack=True) #adjust columns if necessary
+t_1, T_1 = np.genfromtxt(r'daten/tdata_1.txt', usecols=(0, 1), unpack=True) #adjust columns if necessary
 #t_1: Time in seconds/unix timestamps; T_1: Temperature in degree celsius
 
 #only use next line if you merged files with the merging_data.py and want to plot the data of the merge_file.txt
-t_1 = t_merged_data
+#t_1 = t_merged_data
 
 
 
@@ -25,7 +25,7 @@ t_1 = t_merged_data
 #following parameters can be changed
 
 #constant fluence in 1/cm**2
-phi = 5*10**(15)
+phi = 1*10**(15)
 
 #constant parameters of the N_eff function with a "WE-25k Ohm cm" Diode
 N_C0 = 1.1*10**11                   #stable Damage amplitude in 1/cm**3
@@ -50,7 +50,7 @@ T_ref = 322.15               #reference temperature in kelvin
 
 #parameters for the numbers of linear interpolation intervalls n = x * (T-T_min) + y
 x_int = 0.05
-y_int = 0.2
+y_int = 0.02
 
 
 

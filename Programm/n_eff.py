@@ -11,7 +11,7 @@ def N_Y_inf(phi):                            #longterm annealing amplitude
 def tau_Y(T):                                #Time constant of the longterm annealing
     return 1/(k_0y *np.exp(-E_y/(k_B*(T+273.15))))
 
-def gett_Y(t, T_s_1, T):                     #creating an approximation for t/tau_Y  (T_s ist the Temperature shifted to the right)
+def gett_Y(t, T_s_1, T):                     #creating an approximation for t/tau_Y  (T_s is the Temperature shifted to the right)
     timediff_Y = np.zeros(len(t))            #creates an array of zeros to work with
     timediff_Y = np.ediff1d(t, to_begin=0)   #creates array = [0, t[1]-t[0], t[2]-t[1], ...]
     T_s_1 = np.roll(T_s_1, shift=1)          #shifting tau_Y array by one to the right
@@ -19,7 +19,7 @@ def gett_Y(t, T_s_1, T):                     #creating an approximation for t/ta
     timediff_Y /= tau_Y((T_s_1+T_n)/2)       #dividing each element by the mean of 2 adjacent Temperature elements (inside tau)
     t_Y = np.zeros(len(t))                   #create an array of zeros to work with
     for i in range(0, len(t)):
-        t_Y[i] = np.sum(timediff_Y[0:i+1])   #writes in each element the sum of the cooresponding timediff_Y values
+        t_Y[i] = np.sum(timediff_Y[0:i+1])   #writes in each element the sum of the corresponding timediff_Y values
     return t_Y                               #now looks like [0, 0 + t[1]-t[0]/(tau_Y[0] + tau_Y[1])/2, ...]
 
 
@@ -34,7 +34,7 @@ def gett_A(t, T_s_2, T):                     #creating an approximation for t/ta
     timediff_A /= tau_A((T_s_2+T_n)/2)       #dividing each element by the mean of 2 adjacent tau_A elements
     t_A = np.zeros(len(t))                   #create an array of zeros to work with
     for i in range(0, len(t)):
-        t_A[i] = np.sum(timediff_A[0:i+1])   #writes in each element the sum of the cooresponding timediff_Y values
+        t_A[i] = np.sum(timediff_A[0:i+1])   #writes in each element the sum of the corresponding timediff_Y values
     return t_A                               #now looks like [0, 0 + t[1]-t[0]/(tau_A[0] + tau_A[1])/2, ...]
 
 
@@ -55,9 +55,9 @@ def N_Y(t, phi, T):                                  #longterm annealing
 
 def interpolation_t(t, T):                                            #linear interpolation of the time for more data
     t_int = np.array(t[0])                                            #create new time starting with arrays of zeros
-    T_min = min(T)                                                    #number of intervalls depend on minimal temperature
+    T_min = min(T)                                                    #number of intervals depend on minimal temperature
     for i in range(1, len(T)):
-        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int))             #function for the number of intervalls
+        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int))             #function for the number of intervals
         for j in range(1, n+1):
             t_int = np.append(t_int, t[i-1] + abs(t[i-1]-t[i])/n *j)  #new interpolated times (includes initial times)
     return t_int;
@@ -65,9 +65,9 @@ def interpolation_t(t, T):                                            #linear in
 
 def interpolation_T(t, T):                                            #linear interpolation of the temperature for more data
     T_int = np.array(T[0])                                            #create new temperature starting with arrays of zeros
-    T_min = min(T)                                                    #number of intervalls depend on minimal temperature
+    T_min = min(T)                                                    #number of intervals depend on minimal temperature
     for i in range(1, len(T)):
-        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int))             #function for the number of intervalls
+        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int))             #function for the number of intervals
         for j in range(1, n+1):
             T_int = np.append(T_int, T[i-1] + (T[i]-T[i-1])/(n) * (j))#new interpolated temperatures (includes initial ones)
     return T_int
@@ -83,7 +83,7 @@ def N_eff(t, phi, T):  #change of the doping concentration
 
 #function that plots n_eff
 def plot_N_eff(t, phi, T):
-    if 'show_temperature_curve' in globals():   #shows the temperature curve on a secoond axis, if specified in the configuration
+    if 'show_temperature_curve' in globals():   #shows the temperature curve on a second axis, if specified in the configuration
         fig, ax1 = plt.subplots()               #temperature axis
         plt.semilogx(interpolation_t(t, T)/60 , interpolation_T(t, T), 'g.', label='interpolated temperature', Markersize=6)
         plt.semilogx(t/60 , T, 'r.', label='temperature', Markersize=6)

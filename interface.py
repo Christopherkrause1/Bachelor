@@ -1,5 +1,5 @@
 from config_interface import *
-
+k_B = 1.38064852 * 10**(-23)    #Boltzmann constant
 
 def N_Y_inf(phi):                                      #longterm annealing amplitude
     return g_y * phi
@@ -39,7 +39,7 @@ def damage(t, T):                          #damage rate
 
 
 master = Tk()
-master.title("Annealing effects at constant temperatures for a 'WE-25k' diode")
+master.title("Annealing effects at constant temperatures")
 Label(master, text=r'Insert a time for the annealing to end, a temperature to anneal with and a fluence.').grid(row=0)
 Label(master, text=r'Click on "plot" to create a plot of the effective doping concentration.').grid(row=1)
 Label(master, text=r'Time [min]').grid(row=2)
@@ -69,19 +69,21 @@ def plot():
         new_t = np.logspace(np.log10(0.1), np.log10(int(t_1)), np.floor(np.log10(10000)*20))
         new_T = T_1
         new_phi = phi * 10**(15)
-        plt.semilogx(new_t, N_eff(new_t*60, new_phi, new_T), 'r.')
+        plt.semilogx(new_t, N_eff(new_t*60, new_phi, new_T), 'r.', label=str(new_T)+'°C')
         plt.grid()
         plt.ylabel(r'$N_{\mathrm{eff}} /\mathrm{cm}^2$', size=13)
         plt.xlabel(r'$Time / $min', size=13)
+        plt.legend()
         plt.show()
     else:
         new_t = np.logspace(np.log10(0.1), np.log10(int(t_1)), np.floor(np.log10(10000)*20))
         new_T = T_1
         new_phi = phi * 10**(15)
-        plt.semilogx(new_t, N_eff(new_t*60, new_phi, new_T), 'r.')
+        plt.semilogx(new_t, N_eff(new_t*60, new_phi, new_T), 'r.', label=str(new_T)+'°C')
         plt.grid()
         plt.ylabel(r'$\Delta N_{\mathrm{eff}} /\mathrm{cm}^2$', size=13)
         plt.xlabel(r'$Time / $min', size=13)
+        plt.legend()
         plt.show()
 
 
@@ -109,18 +111,20 @@ def plot_2():
         t_2 = 2
         new_t2 = np.logspace(np.log10(0.1), np.log10(int(t_2)), np.floor(np.log10(int(t_2))*20))
         new_T2 = T_2 +273.15
-        plt.semilogx(new_t2, damage(new_t2, new_T2), 'r.')
+        plt.semilogx(new_t2, damage(new_t2, new_T2), 'r.', label=str(T_2)+'°C')
         plt.grid()
         plt.ylabel(r'$\alpha /\mathrm{Acm}^2$', size=13)
         plt.xlabel(r'$Time / $min', size=13)
+        plt.legend()
         plt.show()
     else:
         new_t2 = np.logspace(np.log10(0.1), np.log10(int(t_2)), np.floor(np.log10(int(t_2))*20))
         new_T2 = T_2 +273.15
-        plt.semilogx(new_t2, damage(new_t2, new_T2), 'r.')
+        plt.semilogx(new_t2, damage(new_t2, new_T2), 'r.', label=str(T_2)+'°C')
         plt.grid()
         plt.ylabel(r'$\alpha /\mathrm{Acm}^2$', size=13)
         plt.xlabel(r'$Time / $min', size=13)
+        plt.legend()
         plt.show()
 
 
