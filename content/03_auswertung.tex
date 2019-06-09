@@ -1,0 +1,18 @@
+\chapter{Wichtige Hinweise zum Dokument}\label{make}
+\section{Annealingeffekt bei konstanten Temperaturen}
+Gleichung \ref{eqn:N_eff} wird für das Modellieren der Annealingeffekte verwendet. In
+Abbildung \ref{fig:N_eff} und \ref{fig:damage} sind diese, jeweils für zwei Temperaturen dargestellt.
+Für alle Plots werden materialabhängige
+Parameter einer "WE-25k" aus \cite{moll} genommen.
+
+\begin{figure}
+    \includegraphics[width=0.95\textwidth]{build/annealing.PDF}
+    \caption{$\Delta N_{eff}$ einer WE-25k Diode nach Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
+    \label{fig:N_eff}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=0.95\textwidth]{build/damage.PDF}
+    \caption{Schadensrate einer WE-25k Diode.}
+    \label{fig:damage}
+\end{figure}

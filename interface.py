@@ -13,7 +13,7 @@ def tau_A(T):                                          #Time constant
 
 
 def N_C(phi):                                          #stable damage
-    return N_C0 *(1 - np.exp(-phi)) + g_c * phi
+    return N_C0 *(1 - np.exp(-c*phi)) + g_c * phi
 
 def N_A(t, phi, T):                                    #shortterm annealing
     return phi * g_a * np.exp(-t/tau_A(T))

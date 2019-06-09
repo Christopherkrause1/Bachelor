@@ -41,22 +41,34 @@ def damage(t, T):
 
 
 
-fig, ax1 = plt.subplots()
-plt.semilogx(t_5/60 , T_5, 'r.', label='Temperature', Markersize=6)
-ax1.set_ylabel(r"Temperature / $^{\circ}$C", color = 'red')
-ax1.tick_params('y',colors='red')
-ax1.set_xlabel("Time / min")
-ax1.legend(loc='upper left')
+#fig, ax1 = plt.subplots()
+#plt.semilogx(t_5/60 , T_5, 'r.', label='Temperature', Markersize=6)
+#ax1.set_ylabel(r"Temperature / $^{\circ}$C", color = 'red')
+#ax1.tick_params('y',colors='red')
+#ax1.set_xlabel("Time / min")
+#ax1.legend(loc='upper left')
+#
+#
+#ax2 = ax1.twinx()
+#plt.semilogx(t_5/60, damage(t_5/60, T_5+273.15), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ of R1', Markersize=6)
+##plt.semilogx(t_2/60, N_eff(t_2/60, 5*10**(15), 80+273.15), 'k--', label=r'$\Delta N_{\mathrm{eff}}$@80°C', Markersize=6)
+#ax2.set_ylabel(r"$\alpha $ /$\mathrm{A cm^{-1}} $",color='blue')
+#ax2.tick_params('y',colors='blue')
 
+#ax1.grid()
+#ax2.legend(loc='best')
+#plt.xlabel(r'Time / $\mathrm{min}$')
+#plt.savefig('build/damage.pdf')
+#plt.clf()
 
-ax2 = ax1.twinx()
-plt.semilogx(t_5/60, damage(t_5/60, T_5+273.15), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ of R1', Markersize=6)
-#plt.semilogx(t_2/60, N_eff(t_2/60, 5*10**(15), 80+273.15), 'k--', label=r'$\Delta N_{\mathrm{eff}}$@80°C', Markersize=6)
-ax2.set_ylabel(r"$\alpha $ /$\mathrm{A cm^{-1}} $",color='blue')
-ax2.tick_params('y',colors='blue')
-plt.ylim(0, 1*10**(-16))
-ax1.grid()
-ax2.legend(loc='best')
+plt.gcf().subplots_adjust(bottom=0.18)
+plt.semilogx(t, damage(t, 60+273.15), 'r.', label=r'$\alpha @60°C$', Markersize=6)
+plt.semilogx(t, damage(t, 80+273.15), 'b.', label=r'$\alpha @80°C$', Markersize=6)
+plt.legend()
+plt.grid()
+
 plt.xlabel(r'Time / $\mathrm{min}$')
+plt.ylabel(r"$\alpha $ /$\mathrm{A cm^{-1}} $")
+plt.ylim(0, 10*10**(-17))
 plt.savefig('build/damage.pdf')
 plt.clf()

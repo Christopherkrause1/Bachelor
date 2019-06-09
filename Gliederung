@@ -1,0 +1,23 @@
+Gliederung
+
+Einleitung:
+-Motivation/Zweck der Bachelorarbeit
+-Thematischer Bezug auf ATLAS
+
+
+Theoretische Grundlagen:
+-Siliziumhalbleiterdetektoren (Funktionsweise/Nutzen)
+-Strahlenschäden (Entstehung, Arten, Folgen für den Sensor)
+-Annealing der Dotierungskonzentration (Migration, Komplexformation, Dissoziation,
+stable Damage, shortterm/longterm annealing)
+-Annealing des Leckstrom (Erklärung des Leckstroms, shortterm/longterm annealing)
+
+Auswertung:
+-Annealing für konstante Temperaturen (N_eff, alpha)
+-Naiver Ansatz für Temperaturprofile
+-Korrekturansatz
+-Lineare Interpolation der Temperatur
+-Modellierung für gesamte Annealinghistorie
+-Vergleich der theoretischen mit der experimentellen Schadensrate, Erklärungen für Abweichung
+
+(-Interface)

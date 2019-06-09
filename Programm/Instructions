@@ -10,7 +10,7 @@ Nutzer verändert werden. Sind die Daten und Parameter in der configuration.py
 wie gewünscht eingestellt worden, so kann mit dem Ausführen des Programmes
 damage_rate.py die Schadensrate und mit dem Programm n_eff.py die
 Dotierungskonzentration modelliert werden.
-
+Zusätzlich liegt dem Programm eine Datei zum Aufrufen eines Interfaces bei.
 
 
 
@@ -77,8 +77,6 @@ Lediglich die configuration.py sollte angepasst werden.
 
 
 
-
-
 merging_data.py:
 Dieses Programm verbindet alle Textdateien in alphabetischer Reihenfolge
 miteinander und produziert eine merging_file.txt in dem Directory dieses
@@ -99,3 +97,10 @@ Textdatei = erster Zeitpunkt der zweiten Textdatei)
 Die zu verbindenden Textdateien dürfen nicht in demselben Directory wie dieses
 Programm sein, da die enstehende merge_file.txt sonst bei der nächsten
 Anwendung mit verbunden wird.
+
+
+
+Zusatz: Interface
+Das Interface erlaubt das Modellieren von der Dotierungskonzentration und
+der Schadensrate. Geöffnet wird es durch das Ausführen der "interface.py" Datei.
+Parameter des Sensors können in der "config_interface.py" eingestellt werden.
