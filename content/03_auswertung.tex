@@ -1,13 +1,13 @@
-\chapter{Wichtige Hinweise zum Dokument}\label{make}
-\section{Annealingeffekt bei konstanten Temperaturen}
-Gleichung \ref{eqn:N_eff} wird für das Modellieren der Annealingeffekte verwendet. In
+\chapter{Auswertung}\label{make}
+\section{Annealingeffekt für konstanten Temperaturen}
+Gleichung \ref{eqn:N_eff} und \ref{eqn:damage}  wird für das Modellieren der Annealingeffekte verwendet. In
 Abbildung \ref{fig:N_eff} und \ref{fig:damage} sind diese, jeweils für zwei Temperaturen dargestellt.
 Für alle Plots werden materialabhängige
 Parameter einer "WE-25k" aus \cite{moll} genommen.
 
 \begin{figure}
     \includegraphics[width=0.95\textwidth]{build/annealing.PDF}
-    \caption{$\Delta N_{eff}$ einer WE-25k Diode nach Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
+    \caption{$\Delta N_{\mathrm{eff}}$ einer WE-25k Diode nach Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
     \label{fig:N_eff}
 \end{figure}
 
@@ -16,3 +16,76 @@ Parameter einer "WE-25k" aus \cite{moll} genommen.
     \caption{Schadensrate einer WE-25k Diode.}
     \label{fig:damage}
 \end{figure}
+
+[...]
+
+
+
+\section{Annealingeffekt für nicht konstanten Temperaturen}
+Werden die selben Gleichungen zur Modellierung von Annealingeffekte für nicht
+konstante Temperaturen verwendet, so kommt es zu deutlichen Abweichungen für
+$\Delta N_{\mathrm{eff}}$ und $\alpha$ im Vergleich zu dem eigentlich erwarteten
+Verhalten nach dem Hamburg-Modell. In Abbildung \ref{fig:ohnekorrektur} ist das Annealingverhalten
+der Dotierungskonzetration (a) und der Schadensrate (b) mit
+diesem Ansatz dargestellt. Das Temperaturprofil wurde von einem Sensor "R1" in
+"Sandia National Laboratories" aufgenommen.
+
+%\begin{figure}
+%  \subfigure[]{\includegraphics[width=0.49\textwidth]{build/ohnekorrektur.PDF}}
+%  \subfigure[]{\includegraphics[width=0.49\textwidth]{build/damageohnekorrektur.PDF}}
+%  \caption{Dotierungskonzentration (a) und Schadensrate (b) des Sensors R1 nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
+%  \label{fig:ohnekorrektur}
+%\end{figure}
+
+Der longterm Annealingeffekt der Dotierungskonzetration soll nach dem Hamburg-Modell
+für unendlich große Zeiten gegen einen konstanten Wert streben und nicht mehr
+kleiner werden können. Die Schadensrate kann mit fortschreitendem annealing nicht
+größer werden, somit Verhalten sich beide Kurven nicht dem theoretisch
+vorhergesehenem Verhalten.
+Der Fehler entsteht, da die Gleichung \ref{eqn:N_eff} und \ref{eqn:damage} für jeden
+Zeitpunkt eine konstante Temperatur annehmen. Jedoch ist es für Annealingeffekte
+wichtig mit welchen Temperaturen und wie lange damit vorher annealed wurde.
+Das bedeutet, dass $\Delta N_{\mathrm{eff}}$ für große Zeiten abfällt, da die Gleichung über den
+gesamten Zeitraum mit den zugehörigen kleinen Temperaturen rechnet. Für
+die Schadensrate gilt das gleiche Problem.
+
+Um die Effekte richtig berechnen zu können, muss eine Korrektur in den
+Gleichungen vorgenommen werden.
+Zunächst wird die Dotierungskonzentration betrachtet. Als Näherung soll über
+jeden einzelnen Zeitabschnitt $t_{\mathrm{i}} - t_{\mathrm{i-1}}$ mit der
+Temperatur $\frac{T_{\mathrm{i}} +T_{\mathrm{i-1}}}{2}$ annealed werden.
+Da der stable damage keine Temperaturabhängigkeit hat muss dieser nicht
+verändert werden. Für $N_{\mathrm{A}}$ soll nun folgende Näherung
+verwendet werden:
+
+\begin{align}
+  &\frac{t_{\mathrm{n}}}{\tau_{\mathrm{a}}(T_{\mathrm{n}})} \rightarrow \sum_{i=0}^n  \frac{t_{\mathrm{i}} - t_{\mathrm{i-1}}}{\tau_{\mathrm{a}}(\frac{T_{\mathrm{i}} +T_{\mathrm{i-1}}}{2})} \:\:\:\: \text{für} \: n>0 \\
+\end{align}
+Für den Zeitpunkt $t=0$ gilt weiterhin $\frac{t_{\mathrm{n}}}{\tau_{\mathrm{a}}(T_{\mathrm{n}})} = 0$.
+Durch die Summation der einzelnen Zeitabschnitte mit dem Mittelwert der dazugehörigen
+Temperatur kann die gesamte Temperaturkurve beschrieben werden. Für $N_{\mathrm{Y}}$
+wird analog die gleiche Korrektur durchgeführt.
+In Abbildung \ref{fig:korrektur_N_eff} ist Dotierungskonzentration ohne und mit Korrektur dargestellt.
+
+%\begin{figure}
+%    \subfigure[]{\includegraphics[width=0.49\textwidth]{images/ohnekorrektur.PDF}}
+%    \subfigure[]{\includegraphics[width=0.49\textwidth]{images/annealingtdata.PDF}}
+%    \caption{$\Delta N_{eff}$ des Sensors R1 ohne Korrektur (a) und mit Korrektur (b) nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
+%    \label{fig:korrektur_N_eff}
+%\end{figure}
+
+
+[...]
+
+Eine solche Korrektur kann für den shortterm annealing Term der Schadensrate ebenfalls gemacht werden.
+Für den zweiten Term ist $\alpha_{0}$ temperaturabhängig, aber nicht zeitabhängig,
+wodurch der Korrekturansatz hier nicht mehr gelten kann. Um den Ansatz dennoch
+verwenden zu können, wird die Zeit des longterm annealing [Grammatik] mit dem
+Skalierungsfaktor
+\begin{align}
+  $\Theta(T) = \frac{E_{\mathrm{I}}^*}{k_b} \exp{\left(-\frac{1}{T}-\frac{1}{T_{\mathrm{ref}}}\right)}$
+\end{align}
+versehen. Dadurch ändert sich auch $\alpha_{0}$ und ist nun nicht mehr temperaturabhängig,
+sondern lediglich abhängig von einer Referenztempeeratur $T_{\mathrm{ref}}$. Für konstante Temperaturen
+ist diese Gleichung folglich äquivalent zu Gleichung \ref{eqn:damage}, für nicht
+konstante Temperaturen ist sie eine Näherung.
