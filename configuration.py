@@ -18,7 +18,7 @@ t_1, T_1 = np.genfromtxt(r'daten/tdata_1.txt', usecols=(0, 1), unpack=True) #adj
 
 
 #if you don't want to have the temperature curve shown in the plot, comment the next line out
-#show_temperature_curve = 1
+show_temperature_curve = 1
 
 
 

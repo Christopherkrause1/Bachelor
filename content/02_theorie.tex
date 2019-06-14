@@ -1,13 +1,7 @@
 \chapter{Theoretische Grundlagen}
 
 
-\section{Siliziumhalbleiterdetektoren}
-
-Die Siliziumhalbleiter sind in der hochenergie Physik weit verbreitete
-Detektoren, welche in Collider-Experimenten , wie Atlas, verwendet werden.
-Sie operieren bei Raumtemperatur und können präzise Rückschlüsse auf die
-Energie von Teilchen schließen.
-
+\section{Siliziumdetektoren}
 
 Die im Halbleiter vorkommenden Elektronen des Siliziumkristalls wechselwirken mit anderen Elektronen und
 Kernen, wodurch es zu vielen Aufspaltungen des Energieniveaus dieser kommt. Die
@@ -39,7 +33,7 @@ Die entstehenden Elektronen-Loch-Paare werden als elektrisches Signal gemessen.
 Mehr Informationen über Halbleiter finden sich beispielsweise in dem Buch "Halbleiter-Leistungsbauelemente"  \cite{semiconductor}.
 
 \section{Strahlenschäden}
-Wechselwirkungen von hochenergetischen Teilchen mit Siliziumhalbleitern können zu Defekten in deren
+Wechselwirkungen von hochenergetischen Teilchen mit Silizium können zu Defekten in deren
 Gitterstruktur führen.
 Die Energie der Teilchen an die Gitteratome wird dabei durch Ionisation und elastischer Streuung abgeben.
 Es muss zwischen verschiedenen Arten von Defekten unterschieden werden. Die Teilchen können ein Gitteratom aus dem
@@ -56,7 +50,7 @@ auf eine $\SI{1}{\mega\eV}$ Neutronstrahlung normalisiert und haben die Einheit 
 
 \section{Annealing der Dotierungskonzentration}
 Annealing beschreibt allgemein die durch Erhitzung hervorgerufenen Veränderungen von Materialeigenschaften. Für die
-Siliziumhalbleiter sollen dabei, durch die zugeführte Wärme, die Defekte teilweise behoben werden, um somit eine
+Halbleiter sollen dabei, durch die zugeführte Wärme, die Defekte teilweise behoben werden, um somit eine
 bessere Funktionsfähigkeit über einen längeren Zeitraum zu garantieren. Die auftretenden Effekte sind dabei wie folgt:
 
 \textbf{1. Migration:} Ist die Temperatur hoch genug können die Zwischengitteratome durch das Gitterwandern und
@@ -83,8 +77,8 @@ Der erste Summand folgt aus einer unvollständigen Entfernung von Donatoren, der
 
 
 \textbf{\textit{Shortterm annealing}} $\symbf{N_{\mathrm{A}}}:$ Das shortterm annealing bewirkt eine Verringerung der Dotierungskonzentration und entsteht durch
-das Annealing von Akzeptoren, was zu einer kleineren Dotierungskonzentration führt. . Dieser Effekt soll
-zur Ausheilung des Sensors verwendet werden. Die Bezeichnung rührt daher, dass $N_{\mathrm{A}}$ meistens in den ersten 100 Minuten verschwindend gering wird. Die
+das Annealing von Akzeptoren, was zu einer kleineren Dotierungskonzentration führt. . Dieser Effekt wird
+zur Ausheilung des Sensors verwendet. Die Bezeichnung rührt daher, dass $N_{\mathrm{A}}$ meistens in den ersten 100 Minuten verschwindend gering wird. Die
 Funktion wird näherungsweise beschrieben durch:
 \begin{align}
   N_{\mathrm{A}}(t, \Phi_{\mathrm{eq}}, T) = \Phi_{\mathrm{eq}} \cdot g_{\mathrm{a}} \cdot \exp{\left(-\frac{t}{\tau_{\mathrm{a}}(T)}\right)}
@@ -127,16 +121,25 @@ Zusätzlich kommt ein Leckstrom durch strahlungsinduzierte Defekte hinzu, welche
 Elektronen-Loch-Paare generieren \cite{moll}.
 Durch das Annealing kann der Leckstrom somit verringert werden.
 
-Die Fluenz und der durch Strahlung hervor gerufenen Leckstrom $\Delta I$ sind
+Die Fluenz und der durch Strahlung hervor gerufene Leckstrom $\Delta I$ sind
 proportional zueinander.
+
 
 \begin{align}
   \Delta I = \alpha \Phi_{\mathrm{eq}} \cdot V
 \end{align}
 Hierbei ist $V$ das Volumen des Detektormaterials und $\alpha$ die
-sogenannte Schadensrate. Der Leckstrom ist vor der Bestrahlung des Sensors
-vernachlässigbar klein im Vergleich zu dem Leckstrom nach der Bestrahlung,
-weshalb $\Delta I$ als Näherung den gesamten Leckstrom beschreibt.
+sogenannte Schadensrate.
+%Der Leckstrom ist vor der Bestrahlung des Sensors
+%vernachlässigbar klein im Vergleich zu dem Leckstrom nach der Bestrahlung,
+%weshalb $\Delta I$ als Näherung den gesamten Leckstrom beschreibt.
+
+Der Leckstrom vor und nach der Bestrahlung ist temperaturabhängig und wird
+beschrieben durch
+\begin{align}
+  I(T) \propto T^2 \exp{\frac{-E_{\mathrm{g}}}{2 k_{\mathrm{B}}T}} \text{\cite{moll}} \label{eqn:Chilingarov_2013}.
+\end{align}
+Hier ist $E_{\mathrm{g}}$ die Energie der Bandlücke.
 
 Die Verringerung des Leckstromes durch annealing wird mit der Schadensrate
 beschrieben, welche als eine Funktion abhängig von der Zeit und
