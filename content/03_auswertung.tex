@@ -1,6 +1,8 @@
 \chapter{Auswertung}\label{make}
+Die folgenden Unterkapitel beschreiben die Vorgehensweise für die Umsetzung des Python Programms zur
+Berechnung der Annealingeffekte.
 \section{Annealingeffekt für konstanten Temperaturen}
-Gleichung \ref{eqn:N_eff} und \ref{eqn:damage}  wird für das Modellieren der Annealingeffekte verwendet. In
+Gleichung \ref{eqn:N_eff} und \ref{eqn:damage}  werden für das Modellieren der Annealingeffekte verwendet. In
 Abbildung \ref{fig:N_eff} und \ref{fig:damage} sind diese, jeweils für zwei Temperaturen dargestellt.
 Für alle Plots werden materialabhängige
 Parameter einer "WE-25k" aus \cite{moll} genommen.
@@ -27,13 +29,35 @@ bestätigt.
 Werden die selben Gleichungen zur Modellierung von Annealingeffekte für nicht
 konstante Temperaturen verwendet, so kommt es zu deutlichen Abweichungen für
 $\Delta N_{\mathrm{eff}}$ und $\alpha$ im Vergleich zu dem eigentlich erwarteten
-Verhalten nach dem Hamburg-Modell. In Abbildung \ref{fig:ohnekorrektur} ist das Annealingverhalten
-der Dotierungskonzetration (a) und der Schadensrate (b) mit
+Verhalten nach dem Hamburg-Modell. In Abbildung \ref{fig:N_eff_ohne} und \ref{fig_damage_ohne} ist das Annealingverhalten
+der Dotierungskonzetration und der Schadensrate mit
 diesem Ansatz dargestellt. Das Temperaturprofil wurde von einem Sensor "R1" in
 "Sandia National Laboratories" aufgenommen.
 
+\begin{figure}
+    \includegraphics[width=0.95\textwidth]{build/ohnekorrektur.PDF}
+    \caption{Dotierungskonzentration des Sensors R1 nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
+    \label{fig:N_eff_ohne}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=0.95\textwidth]{build/damageohnekorrektur.PDF}
+    \caption{Schadensrate einer WE-25k Diode.}
+    \label{fig:damage_ohne}
+\end{figure}
+
 %\begin{figure}
-%  \subfigure[]{\includegraphics[width=0.49\textwidth]{build/ohnekorrektur.PDF}}
+%  \centering
+%  \begin{subfigure}{0.48\textwidth}
+%      \centering
+%      \includegraphics[height=0.78\textwidth]{build/ohnekorrektur.PDF}
+%  \end{subfigure}
+%  \begin{subfigure}{0.48\textwidth}
+%      \centering
+%      \includegraphics[height=0.78\textwidth]{build/damageohnekorrektur.PDF}
+%  \end{subfigure}
+%  \caption{Dotierungskonzentration (a) und Schadensrate (b) des Sensors R1 nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
+%\end{figure}
 %  \subfigure[]{\includegraphics[width=0.49\textwidth]{build/damageohnekorrektur.PDF}}
 %  \caption{Dotierungskonzentration (a) und Schadensrate (b) des Sensors R1 nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
 %  \label{fig:ohnekorrektur}
@@ -84,7 +108,7 @@ In Abbildung \ref{fig:korrektur_N_eff} ist Dotierungskonzentration mit Korrektur
 
 
 Der Verlauf entspricht nun den theoretischen Erwartungen. Mit der Berücksichtigung
-der einzelnen Temperaturen verringert sich der annealingeffekt insgesamt, da anfänglich
+der einzelnen Temperaturen verringert sich der Annealingeffekt insgesamt, da anfänglich
 geringe Temperaturen nur wenig zum gesamten Effekt beitragen. Dies wird
 an dem späteren Zeitpukt des Minimums deutlich.
 
@@ -137,6 +161,8 @@ Erwartungen, so kann beispielsweise die Schadensrate mit voranschreitendem annea
 Mit Korrektur verhält sich die Schadensrate gemäß den Erwartungen, der stärkste
 Effekt ist bei den größten Temperaturen zu sehen, kleine Temperaturen führen hingegen
 nur zu minimalen Änderungen.
+Mit der Implementierung dieser Korrekturen kann das Programm Annealingeffekte für
+beliebige Temperaturen berechnen.
 
 
 
@@ -192,9 +218,17 @@ für beide Temperaturdatensätze gegen den selben Wert.
 
 \section{Berechnung der gesamten Annealinghistorie eines Sensors}
 Die hier betrachtete Annealinghistorie setzt sich aus 60 Erwärmungs-und
-Abkühlungszyklen des Sensors "P3" zusammen. Diese werden mit einander Verbunden,
-wobei die Zeiten zwischen dem annealing, wegen den geringen Temperaturen
-vernachlässigt werden können.
+Abkühlungszyklen des Sensors "P3" zusammen, welche $\SI{1170}{\minute}$ entsprechen.
+Für den Sensor "P4" werden 39 Zyklen ($\SI{1170}{\minute}$) betrachtet.
+Beide wurden von der IRRAD Einrichtung mit $\SI{24}{\giga\eV\per\c}$ Protonen des Protonen Sychrotrons bestrahlt.
+Die Datensätze werden mithilfe eines Python Programmes mit einander Verbunden,
+wobei die Zeiten zwischen dem annealing von einem Zyklus zum nächsten auf Null gesetzt werden. Wegen der geringen
+Temperaturen nach jeder Abkühlung sind die daraus resultierenden Abweichungen vernachlässigbar.
+Für jeden Zyklus wurde bei den Sensoren eine Temperatur von $\SI{60}{\celsius}$ angestrebt.
+Mehr Informationen zu den Eigenschaften von P3 und P4 in "Temperature scaling of reverse current generated in
+proton irradiated silicon bulk" \cite{felix}.
+
+
 In Abbildung \ref{fig:P_3} ist die Schadensrate für die 60 Annealingschritte,
 sowie die experimentell bestimmte Schadensrate dargestellt.
 
@@ -214,13 +248,13 @@ Für die Bestimmung der Schadensrate wird das Detektorvolumen und den durch
 Strahlung induzierten Leckstrom $\Delta I$ benötigt. Bei der Messung wurde
 $\Delta I$ mit dem Leckstrom gleichgesetzt. Dies gilt nur bei einer Temperatur
 von $\SI{20}{\celsius}$, bei der Messung des Stroms betrug die tatsächliche Temperatur
-$\SI{-2}{\celsius}$. Um dies zu korrigieren wird der Leckstrom gemäß \ref{eqn:T_skalierung}
+$\SI{-2}{\celsius}$. Um dies zu korrigieren wird der Leckstrom gemäß \ref{eqn:Chilingarov_2013}
 mit der Temperatur skaliert. Die Energie der Bandlücke und das Volumen des Detektormaterial
 unterliegen dabei Unsicherheiten. Zusätzlich haben auch die materialspezifischen Parameter
 der theoretischen Messwerte eine gewisse Abweichung zu den tatsächlichen Parametern, da
 ein anderer Sensor betrachtet wird.
 
-Ein weitere Messung wurde mit dem Sensor "P4" durchgeführt und ist in Abbildung \ref{fig:P_4}
+Die Messung des Sensors "P4" ist in Abbildung \ref{fig:P_4}
 dargestellt.
 
 \begin{figure}
@@ -231,3 +265,5 @@ dargestellt.
 
 Die Abweichungen sind in dieser Messreihe noch deutlicher. Neben den Fehlerquellen die
 für den Sensor "P3" aufgezählt wurden, ist "P4" zusätzlich nicht vollständig depletiert.
+Dies führt zu einer Änderung der gemessenen Schadensrate, da diese von dem Volumen
+der depletierten Zone abhängt, dessen Größe in diesem Fall nicht bekannt ist.

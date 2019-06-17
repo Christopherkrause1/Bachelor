@@ -27,24 +27,32 @@ in die anderen Bereiche diffundieren. Durch die übrig bleibenden ortsfesten Ato
 baut sich ein elektrisches Feld auf, welches dem Diffusionsstrom entgegenwirkt.
 Ein sich einstellendes Gleichgewicht führt zu einer raumladungsfreien Zone bei
 dem p-n-Übergang.
-Durch eine äußere Spannung wird die Zone vergrößert und dient als Ionisationskammer für einfallende Teilchen.
-Die entstehenden Elektronen-Loch-Paare werden als elektrisches Signal gemessen.
+Für Detektoren werden die eiden Schichten unterschiedlich stark Dotiert, wobei typischerweise
+mehr Akzeptoren als Donatoren in den Siliziumkristall eingebracht werden. Bei
+asymmetrischer Dotierung breitet sich die Verarmungszone hauptsächlich in die schwächer dotierte Seite aus. 
+Durch eine äußere Spannung wird die Zone vergrößert und dient als Ionisationskammer für einfallende Teilchen. Diese streuen
+an den Atomkernen in der Zone und geben ein Teil oder ihre gesamte Energie bei dem Durchgang durch den Detektor ab. Mit der so abgegebenen
+Energie werden Elektron-Loch Paare erzeugt, welche sich durch das vorhandene elektrische Feld zu ihrer jeweiligen dotierten
+Schicht bewegen und über Elektroden als elektrisches Signal gemessen werden können.
+Die raumladungsfreie Zone dient somit als Detektor und soll ein möglichst großes Volumen umfassen.
 
 Mehr Informationen über Halbleiter finden sich beispielsweise in dem Buch "Halbleiter-Leistungsbauelemente"  \cite{semiconductor}.
 
 \section{Strahlenschäden}
 Wechselwirkungen von hochenergetischen Teilchen mit Silizium können zu Defekten in deren
 Gitterstruktur führen.
-Die Energie der Teilchen an die Gitteratome wird dabei durch Ionisation und elastischer Streuung abgeben.
+Die Energie der Teilchen an die Gitteratome wird dabei durch Ionisation und elastischer Streuung abgeben. Die Ionisation der
+Gitteratome wird "Total Ionizing Dose" (TID) genannt und führt zu keinen Schäden im Gitter.
 Es muss zwischen verschiedenen Arten von Defekten unterschieden werden. Die Teilchen können ein Gitteratom aus dem
-Gitter herausschlagen, wodurch eine Leerstelle und ein Zwischengitteratom entsteht. Das herausgeschlagene Atom
+Gitter herausschlagen, wodurch eine Leerstelle und ein Zwischengitteratom entstehen. Das herausgeschlagene Atom
 kann Silizium, aber auch ein Fremdatom sein. Daraus folgt eine Änderung der Dotierungskonzentration im
 Halbleiter und somit eine Änderung seiner Eigenschaften.
 Leerstellen können mit Fremdatomen und anderen Leerstellen Bindungen eingehen. Die
 entstehenden Komplexe sind stabil und verändern den Halbleiter permanent.
 
-
-Um Fluenzen $ \Phi$ von verschiedenen Teilchen (Lepton, Hadron, Photon) miteinander vergleichen zu können, werden diese
+Nach der "Non-Ionizing Energy Loss" (NIEL) Hypothese wird der Detektorschaden durch die Energie des herausgeschlagennen
+Atoms beschrieben und ist unabhängig von der ursprünglichen Wechselwirkung.
+Um somit Fluenzen $ \Phi$ von verschiedenen Teilchen (Lepton, Hadron) miteinander vergleichen zu können, werden diese
 auf eine $\SI{1}{\mega\eV}$ Neutronstrahlung normalisiert und haben die Einheit $\mathrm{\frac{n_{\mathrm{eq}}}{cm^2}}$.
 
 
@@ -74,7 +82,7 @@ Die einzelnen Summanden werden im folgenden erläutert.
   N_{\mathrm{C}}(\Phi_{\mathrm{eq}}) = N_{\mathrm{C0}}[1-\exp{(-c \cdot \Phi_{\mathrm{eq}})}] + g_{\mathrm{c}} \cdot \Phi_{\mathrm{eq}}
 \end{align}
 Der erste Summand folgt aus einer unvollständigen Entfernung von Donatoren, der zweite Summand beschreibt stabile Defekte, welche sich wie Akzeptoren verhalten \cite{beyer}.
-
+Hierbei beschreibt $N_{\mathrm{C0}}$ die Amplitude , $g_{\mathrm{c}}$ die sogenannte "introduction rate" der Akzeptoren und $c$ einen Fitparameter.
 
 \textbf{\textit{Shortterm annealing}} $\symbf{N_{\mathrm{A}}}:$ Das shortterm annealing bewirkt eine Verringerung der Dotierungskonzentration und entsteht durch
 das Annealing von Akzeptoren, was zu einer kleineren Dotierungskonzentration führt. . Dieser Effekt wird
@@ -89,7 +97,7 @@ Mit der Temperaturabhängigen Funktion
 \end{align}
 
 \textbf{\textit{Longterm annealing}} $\symbf{N_{\mathrm{Y}}}:$ Der Aufbau von
-Akzeptoren sorgt nach einem hinreichend großen Zeitraum sorgt für eine steigende
+Akzeptoren sorgen nach einem hinreichend großen Zeitraum für eine steigende
 Dotierungskonzentration. Dieser Effekt wird wie folgt berechnet.
 \begin{align}
   N_{\mathrm{Y}}(t, \Phi_{\mathrm{eq}}, T)     = N_{\mathrm{Y , \inf}}\cdot \left(1 - \frac{1}{1 + \frac{t}{\tau_{\mathrm{Y}}(T)}}\right)
