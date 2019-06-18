@@ -29,14 +29,21 @@ Ein sich einstellendes Gleichgewicht führt zu einer raumladungsfreien Zone bei
 dem p-n-Übergang.
 Für Detektoren werden die eiden Schichten unterschiedlich stark Dotiert, wobei typischerweise
 mehr Akzeptoren als Donatoren in den Siliziumkristall eingebracht werden. Bei
-asymmetrischer Dotierung breitet sich die Verarmungszone hauptsächlich in die schwächer dotierte Seite aus. 
+asymmetrischer Dotierung breitet sich die Depletionszone hauptsächlich in die schwächer dotierte Seite aus.
+Mit dieser Annahme ($N_{\mathrm{A}} \gg N_{\mathrm{D}}$) lässt sich die Depletionstiefe $d$ beschreiben durch:
+\begin{align}
+  d \approx \sqrt{\frac{2 \epsilon \epsilon_0}{e} (U_{\mathrm{bi}}+U_{\mathrm{ext}})\frac{1}{N_{\mathrm{D}}}}
+\end{align}
+Hierbei beschreibt $\epsilon \epsilon_0$ die Permittivität, $e$ die elementar Ladung, $N_{\mathrm{D}}$ die Donatorenkonzentration, $U_{\mathrm{bi}}$ (built-in voltage)  die
+durch die festen Raumladungen entstehende Spannung und $U_{\mathrm{ext}}$ die extern angelegte Spannung.
+
 Durch eine äußere Spannung wird die Zone vergrößert und dient als Ionisationskammer für einfallende Teilchen. Diese streuen
 an den Atomkernen in der Zone und geben ein Teil oder ihre gesamte Energie bei dem Durchgang durch den Detektor ab. Mit der so abgegebenen
 Energie werden Elektron-Loch Paare erzeugt, welche sich durch das vorhandene elektrische Feld zu ihrer jeweiligen dotierten
 Schicht bewegen und über Elektroden als elektrisches Signal gemessen werden können.
 Die raumladungsfreie Zone dient somit als Detektor und soll ein möglichst großes Volumen umfassen.
 
-Mehr Informationen über Halbleiter finden sich beispielsweise in dem Buch "Halbleiter-Leistungsbauelemente"  \cite{semiconductor}.
+Mehr Informationen über Halbleiter finden sich beispielsweise in dem Buch "Teilchendetektoren"  \cite{semiconductor}.
 
 \section{Strahlenschäden}
 Wechselwirkungen von hochenergetischen Teilchen mit Silizium können zu Defekten in deren
@@ -91,10 +98,13 @@ Funktion wird näherungsweise beschrieben durch:
 \begin{align}
   N_{\mathrm{A}}(t, \Phi_{\mathrm{eq}}, T) = \Phi_{\mathrm{eq}} \cdot g_{\mathrm{a}} \cdot \exp{\left(-\frac{t}{\tau_{\mathrm{a}}(T)}\right)}
 \end{align}
-Mit der Temperaturabhängigen Funktion
+Hierbei gilt für Temperaturabhängigen Funktion:
 \begin{align}
-  \tau_{\mathrm{a}}(T) = \frac{1}{k_{0\mathrm{Y}}}\exp{\left(\frac{E_{Y}}{k_{\mathrm{b}}T}\right)}.
+  \tau_{\mathrm{a}}(T) = \frac{1}{k_{0\mathrm{a}}}\exp{\left(\frac{E_{aa}}{k_{\mathrm{b}}T}\right)}
 \end{align}
+Mit der "introduction rate" $g_{\mathrm{a}}$, dem Frequenzfaktor $k_{0\mathrm{a}}$, der Boltzmann Konstante $k_{\mathrm{b}}$ und
+der Aktivierungsenergie $E_{aa}$
+
 
 \textbf{\textit{Longterm annealing}} $\symbf{N_{\mathrm{Y}}}:$ Der Aufbau von
 Akzeptoren sorgen nach einem hinreichend großen Zeitraum für eine steigende
@@ -103,11 +113,13 @@ Dotierungskonzentration. Dieser Effekt wird wie folgt berechnet.
   N_{\mathrm{Y}}(t, \Phi_{\mathrm{eq}}, T)     = N_{\mathrm{Y , \inf}}\cdot \left(1 - \frac{1}{1 + \frac{t}{\tau_{\mathrm{Y}}(T)}}\right)
 \end{align}
 Beginnend bei null geht diese Funktion nach einem unendlich langen Zeitraum gegen die Konstante $N_{\mathrm{Y, \inf}}$.
-Hierbei gilt für $\tau_{\mathrm{Y}}(T)$:
+Für $\tau_{\mathrm{Y}}(T)$ gilt:
 \begin{align}
-  \tau_{\mathrm{Y}}(T) = \frac{1}{k_{0\mathrm{a}}}\exp{\left(\frac{E_{aa}}{k_{\mathrm{b}}T}\right)}.
+  \tau_{\mathrm{Y}}(T) = \frac{1}{k_{0\mathrm{Y}}}\exp{\left(\frac{E_{Y}}{k_{\mathrm{b}}T}\right)}.
 \end{align}
-
+Auch hier ist $k_{0\mathrm{Y}}$ ein Frequenzfaktor und $E_{\mathrm{Y}}$ die Aktivierungsenergie. Der Faktor $N_{\mathrm{Y , \inf}}$
+ist das Produkt der "introduction rate" $g_{\mathrm{Y}}$ und der Fluenz. Nach einem unenndlich großen Zeitraum strebt
+die Funktion $N_{\mathrm{A}}(t, \Phi_{\mathrm{eq}}, T) + N_{\mathrm{Y}}(t, \Phi_{\mathrm{eq}}, T)$ gegen $N_{\mathrm{Y , \inf}}$.
 In Abbildung \ref{fig:n_eff_beispiel} ist Beispielhaft das Annealingverhalten eines
 Sensors dargestellt.
 
@@ -156,10 +168,13 @@ Temperatur beschrieben wird.\cite{moll}
 \begin{align}
   \alpha(t, T) = \underbrace{\alpha_I \cdot \exp{\left(-\frac{t}{\tau_{\mathrm{I}}(T)}\right)}}_{\mathrm{shortterm \: annealing}} + \underbrace{\alpha_{\mathrm{0}}(T) -\beta \cdot \ln{\left(\frac{t}{t_{\mathrm{0}}}\right)}}_{\mathrm{longterm \: annealing}} \text{\label{eqn:damage}}
 \end{align}
-Mit den in \cite{moll} berechnete Werten für $\alpha_{\mathrm{0}}(T)$:
+Mit der Amplitude $\alpha_I$, dem Parameter $\beta$, den in \cite{moll} berechnete Werten für $\alpha_{\mathrm{0}}(T)$, sowie der
+temperaturabhängigen Funktion $\tau_{\mathrm{I}}(T)$:
 \begin{align}
-  \alpha_{\mathrm{0}}(T) = \SI{-8.9e-17}{\ampere\per\centi\meter} + \SI{4.6e-14}{\ampere\kelvin\per\centi\meter} \cdot \frac{1}{T}
+  &\alpha_{\mathrm{0}}(T) = \SI{-8.9e-17}{\ampere\per\centi\meter} + \SI{4.6e-14}{\ampere\kelvin\per\centi\meter} \cdot \frac{1}{T} \\
+  &\tau_{\mathrm{a}}(T) = \frac{1}{k_{0\mathrm{I}}}\exp{\left(\frac{E_{I}}{k_{\mathrm{b}}T}\right)}
 \end{align}
+Wie für $N_{\mathrm{A}}$ und $N_{\mathrm{Y}}$ ist $k_{0\mathrm{I}}$ ein Frequenzfakor und $E_{I}$ die Aktvierungsenergie.
 
 Anders als das Annealingverhalten der Dotierungskonzentration kann die Schadensrate
 bei fortschreitendem annealing nur sinken. Für kurze und

@@ -5,13 +5,29 @@ Sie operieren bei Raumtemperatur und können präzise Rückschlüsse auf die
 Energie von Teilchen schließen. Einfallende Teilchen können die
 Struktur des Detektors verändern, wodurch dieser ineffizienter wird.
 Es ist somit notwendig, die Strahlenschäden möglichst gering zu halten damit
-die Halbleiter eine möglichst lange Lebenszeit besitzen. Manche Schäden sind
-irreparabel, wodurch die Detektoren unweigerlich mit fortlaufendem Einsatz
+die Halbleiter eine möglichst lange Lebenszeit besitzen. Manche Schäden sind durch annealing nicht
+aufhebbar, wodurch die Detektoren unweigerlich mit fortlaufendem Einsatz
 an Leistungsfähigkeit verlieren. Um die reparablen Schäden im Siliziumkristall
 zu beseitigen wird der Annealingeffekt genutzt. Hierbei wird durch zugeführte Wärme gewisse
 Defekte entfernt.
+Zusätzlich sorgt die Bestrahlung der Detekoren für einen anwachsenden Leckstrom, welcher den
+gemessenen elektrischen Signalen überlagert ist und ein Rauschen kreiert. Ein
+effektiver Detektor sollte somit einen möglichst geringen Leckstrom haben.
+Für einen Detektor ist eine möglichst große Depletionszone ebenfalls wichtig, idealerweise
+liegt eine vollständige Depletion des Detekorvolumens vor. Um dies zu erreichen wird
+eine externe Spannung verwendet. Mit steigender Spannung wächst jedoch auch der Leckstrom, weshalb
+darauf geachtet werden muss bei möglichst geringer externer Spannung den Detektor zu depletieren.
+Dies ist abhängig von der Dotierungskonzentration, da sie die Ladung der
+Raumladungszone beschreibt.
+
+Die durch Strahlung induzierte Änderung der Dotierungskonzentration und des Leckstromes sind
+somit wichtige Größen für die Qualität eines Detektors. In dieser Arbeit wird das
+theoretische Verhalten der beiden Größen auf der Grundlage des Hamburger-Modells betrachtet.
+Ein Programm zur Modellierung von Annealingeffekten kann somit zur
+optimierung des Annealingprozesses beitragen.
+
 
 Das oben erwähnte Collider-Experiment, ATLAS, verwendet Siliziumdetekoren als
 einen Teil seines inneren Detektors zur Bestimmung von Richtung, Impuls
 und Ladung von geladenen Teilchen. Es ist Teil des LHC am Cern und umfasst
-das größte Volumen aller Detektoren, die bisher gebaut wurden\cite{atlas}.
+das größte Volumen aller Detektoren, die bisher gebaut wurden\cite{atlas}. 
