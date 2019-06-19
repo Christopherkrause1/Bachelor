@@ -1,0 +1,34 @@
+\chapter{Interface zur Berechnung von Annealingeffekte für konstante Temperaturen}
+Das Hauptprogramm dient zur Modellierung von Annealingeffekte für beliebige Datensätze.
+Um den theoretischen Verlauf von Annealingeffekten von konstanten Temperaturen über einen
+beliebigen Zeitraum darstellen zu können dient ein weiteres Pyton Programm diesem Zweck.
+Bei der Ausführung öffnet es ein Interface, welches nach den relevanten Angaben für
+das Modellieren der Dotierungskonzentration oder der Schadensrate fragt. In Abbildung \ref{fig:interface}
+ist das Interface dargestellt.
+
+\begin{figure}
+    \includegraphics[width=0.95\textwidth]{build/interface.PNG}
+\caption{Interface zur Berechnung von $N_{\mathrm{eff}}$ und $\alpha$.}
+\label{fig:interface}
+\end{figure}
+
+Die Berechnung erfolgt dabei ebenfalls auf der Grundlage des Hamburger Modells.
+Das Zeitintervall von einem Wert zum nächsten ist dabei logarithmisch, wodurch über alle
+Größenordnungen der Zeit hinweg der Abstand auf der logarithmischen Zeitachse gleich bleibt.
+Die Parameter können in den Einstellungen beliebig gewählt werden.
+
+In Abbildung \ref{fig:inter_n} und \ref{fig:inter_damage} sind Beispielhaft jeweils ein Plot für die Dotierungskonzentration und der
+Schadensrate dargestellt. Hierbei werden die Parameter einer "WE-25k" Diode verwendet.
+
+
+\begin{figure}
+  \includegraphics[width=0.9\textwidth]{build/interface_n_eff.PDF}
+  \caption{Beispiel Plot von $N_{\mathrm{eff}}$ mit $t = \SI{1e5}{\minute}$, $\Phi_{\mathrm{eq}}= \SI{5e15}{\per\centi\meter\squared}$ und $T=\SI{60}{\celsius}$.}
+  \label{fig:inter_n}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=0.9\textwidth]{build/interface_damage.PDF}
+  \caption{Beispiel Plot von $\alpha$ mit $t = \SI{1e5}{\minute}$ und $T=\SI{60}{\celsius}$.}
+  \label{fig:inter_damage}
+\end{figure}

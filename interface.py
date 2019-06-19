@@ -81,10 +81,11 @@ def plot():
         new_phi = phi * 10**(15)
         plt.semilogx(new_t, N_eff(new_t*60, new_phi, new_T), 'r.', label=str(new_T)+'°C')
         plt.grid()
-        plt.ylabel(r'$\Delta N_{\mathrm{eff}} /\mathrm{cm}^2$', size=13)
-        plt.xlabel(r'$Time / $min', size=13)
-        plt.legend()
-        plt.show()
+        plt.ylabel(r'$\Delta N_{\mathrm{eff}} /\mathrm{cm}^2$')
+        plt.xlabel(r'$Time / $min')
+        #plt.legend(prop={'size': 15})
+        #plt.show()
+        plt.savefig('build/interface_n_eff.pdf')
 
 
 z = Button(master, text="plot", width=10, command=plot)
@@ -122,10 +123,11 @@ def plot_2():
         new_T2 = T_2 +273.15
         plt.semilogx(new_t2, damage(new_t2, new_T2), 'r.', label=str(T_2)+'°C')
         plt.grid()
-        plt.ylabel(r'$\alpha /\mathrm{Acm}^2$', size=13)
-        plt.xlabel(r'$Time / $min', size=13)
-        plt.legend()
-        plt.show()
+        plt.ylabel(r'$\alpha /\mathrm{Acm}^2$')
+        plt.xlabel(r'$Time / $min')
+        #plt.legend()
+        #plt.show()
+        plt.savefig('build/interface_damage.pdf')
 
 
 
