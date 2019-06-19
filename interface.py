@@ -84,8 +84,8 @@ def plot():
         plt.ylabel(r'$\Delta N_{\mathrm{eff}} /\mathrm{cm}^2$')
         plt.xlabel(r'$Time / $min')
         #plt.legend(prop={'size': 15})
-        #plt.show()
-        plt.savefig('build/interface_n_eff.pdf')
+        plt.show()
+        #plt.savefig('build/interface_n_eff.pdf')
 
 
 z = Button(master, text="plot", width=10, command=plot)
@@ -126,8 +126,8 @@ def plot_2():
         plt.ylabel(r'$\alpha /\mathrm{Acm}^2$')
         plt.xlabel(r'$Time / $min')
         #plt.legend()
-        #plt.show()
-        plt.savefig('build/interface_damage.pdf')
+        plt.show()
+        #plt.savefig('build/interface_damage.pdf')
 
 
 

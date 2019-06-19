@@ -1,0 +1,29 @@
+\chapter{Ergebnisse und Ausblick}
+Das Programm beschreibt die Dotierungskonzentration und die Schadensrate
+auf der Grundlage des Hamburger Modells präzise. Die Näherung für beliebige
+Temperaturen verursacht für hinreichend viele Interpolationsintervalle
+vernachlässigbar kleine Fehler. Das Modell versagt für kleine Schadensraten $\alpha \l \SI{1.5e-17}{\ampere\per\centi\meter}$,
+da diese nicht beliebig gering werden können. Solche Werte werden jedoch erst nach
+einer Annealingzeit von mehr als $t=\SI{1e4}{\minute}$ bei $\SI{80}{\celsius}$ erreicht, wofür
+die Dotierungskonzentration bereits nahe am Sättigungswert liegt.
+
+Die Verbindung von Datensätzen und die Anknüpfung der einzelnen Zeitstempel der
+Textdateien funktioniert unter vernachlässigbar kleinen Ungenauigkeiten, da das annealing
+nach einem Abkühlungszyklus selbst über große Zeiträume irrelevant im Vergleich zu
+den Erwärmungszyklen.
+
+Abweichungen von experimentellen Daten sind durch systematische Fehler in der Messung
+zu erklären. Unvollständige Depletion des Sensors, vorheriges annealing über einen
+unbekannten Zeitraum, und Unsicherheiten in der Temperaturskalierung des Leckstroms sowie
+des Volumens des Detektors sind dabei die Hauptursachen.
+
+Das Interface modelliert Annealingeffekte für beliebige Fluenzen, Temperaturen und
+Zeiten zuverlässig. Die dargestellten Werte entsprechen den genauen Funktionswerten
+der Funktionen \ref{eqn:N_eff} und \ref{eqn:damage}, da keine Näherungen nötig sind.
+
+
+Das erstellte Programm kann keine Annealingeffekte mit nicht konstanter Fluenz
+bestimmen. Die präzise Modellierung des Annealingverhaltens während der Bestrahlung
+ist hiermit nicht möglich. Anders als die Temperaturen, die mit einem Zeitabschnitt
+assoziiert werden, treten die Fluenzen in der Dotierungskonzentration
+unabhängig von der Zeit auf, weshalb eine andere Herangehensweise nötig ist.
