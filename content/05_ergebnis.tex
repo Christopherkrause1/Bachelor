@@ -2,7 +2,7 @@
 Das Programm beschreibt die Dotierungskonzentration und die Schadensrate
 auf der Grundlage des Hamburger Modells präzise. Die Näherung für beliebige
 Temperaturen verursacht für hinreichend viele Interpolationsintervalle
-vernachlässigbar kleine Fehler. Das Modell versagt für kleine Schadensraten $\alpha \l \SI{1.5e-17}{\ampere\per\centi\meter}$,
+vernachlässigbar kleine Fehler. Das Modell versagt für kleine Schadensraten $\alpha < \SI{1.5e-17}{\ampere\per\centi\meter}$,
 da diese nicht beliebig gering werden können. Solche Werte werden jedoch erst nach
 einer Annealingzeit von mehr als $t=\SI{1e4}{\minute}$ bei $\SI{80}{\celsius}$ erreicht, wofür
 die Dotierungskonzentration bereits nahe am Sättigungswert liegt.
@@ -22,7 +22,7 @@ Zeiten zuverlässig. Die dargestellten Werte entsprechen den genauen Funktionswe
 der Funktionen \ref{eqn:N_eff} und \ref{eqn:damage}, da keine Näherungen nötig sind.
 
 
-Das erstellte Programm kann keine Annealingeffekte mit nicht konstanter Fluenz
+Das erstellte Programm kann nur Annealingeffekte mit konstanter Fluenz
 bestimmen. Die präzise Modellierung des Annealingverhaltens während der Bestrahlung
 ist hiermit nicht möglich. Anders als die Temperaturen, die mit einem Zeitabschnitt
 assoziiert werden, treten die Fluenzen in der Dotierungskonzentration

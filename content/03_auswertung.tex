@@ -70,7 +70,7 @@ größer werden, somit Verhalten sich beide Kurven nicht dem theoretisch
 vorhergesehenem Verhalten.
 Der Fehler entsteht, da die Gleichung \ref{eqn:N_eff} und \ref{eqn:damage} für jeden
 Zeitpunkt eine konstante Temperatur annehmen. Jedoch ist es für Annealingeffekte
-wichtig mit welchen Temperaturen und wie lange damit vorher annealed wurde.
+wichtig mit welchen Temperaturen und wie lange damit vorher der Detekotr erhitzt wurde.
 Das bedeutet, dass $\Delta N_{\mathrm{eff}}$ für große Zeiten abfällt, da die Gleichung über den
 gesamten Zeitraum mit den zugehörigen kleinen Temperaturen rechnet. Für
 die Schadensrate gilt das gleiche Problem.
@@ -78,8 +78,8 @@ die Schadensrate gilt das gleiche Problem.
 Um die Effekte richtig berechnen zu können, muss eine Korrektur in den
 Gleichungen vorgenommen werden.
 Zunächst wird die Dotierungskonzentration betrachtet. Als Näherung wird über
-jeden einzelnen Zeitabschnitt $t_{\mathrm{i}} - t_{\mathrm{i-1}}$ mit der
-Temperatur $\frac{T_{\mathrm{i}} +T_{\mathrm{i-1}}}{2}$ annealed.
+jeden einzelnen Zeitabschnitt $t_{\mathrm{i}} - t_{\mathrm{i-1}}$ die
+Temperatur $\frac{T_{\mathrm{i}} +T_{\mathrm{i-1}}}{2}$ für das annealing verwendet.
 Da der stable damage keine Temperaturabhängigkeit hat, muss dieser nicht
 verändert werden. Für $N_{\mathrm{A}}$ wird nun folgende Näherung
 verwendet werden:
@@ -126,7 +126,7 @@ versehen, wodurch sich die Formel der Schadensrate ändert.
   \medskip
   \text{mit}\:\: &\alpha^*_{\mathrm{0}}(T) = \SI{-8.9e-17}{\ampere\per\centi\meter} + \SI{4.6e-14}{\ampere\kelvin\per\centi\meter} \cdot \frac{1}{T_{\mathrm{ref}}}
 \end{align}
-Hierbei ist $\alpha^*_{0}$ nun nicht mehr temperaturabhängig,
+Hierbei ist$E_{\mathrm{I}}^*$ ein Aktvierungsenergie und $\alpha^*_{0}$ nun nicht mehr temperaturabhängig,
 sondern lediglich abhängig von einer Referenztemperatur $T_{\mathrm{ref}}$. Für konstante Temperaturen
 ist diese Gleichung folglich äquivalent zu Gleichung \ref{eqn:damage}, für nicht
 konstante Temperaturen ist sie eine Näherung.
@@ -220,7 +220,7 @@ für beide Temperaturdatensätze gegen den selben Wert.
 Die hier betrachtete Annealinghistorie setzt sich aus 60 Erwärmungs-und
 Abkühlungszyklen des Sensors "P3" zusammen, welche $\SI{1170}{\minute}$ entsprechen.
 Für den Sensor "P4" werden 39 Zyklen ($\SI{1170}{\minute}$) betrachtet.
-Beide wurden von der IRRAD Einrichtung mit $\SI{24}{\giga\eV\per\c}$ Protonen des Protonen Sychrotrons bestrahlt.
+Beide wurden von der IRRAD Einrichtung mit $\SI{24}{\giga\eV\per\clight}$ Protonen des Protonen Sychrotrons bestrahlt.
 Die Datensätze werden mithilfe eines Python Programmes mit einander Verbunden,
 wobei die Zeiten zwischen dem annealing von einem Zyklus zum nächsten auf Null gesetzt werden. Wegen der geringen
 Temperaturen nach jeder Abkühlung sind die daraus resultierenden Abweichungen vernachlässigbar.
@@ -229,7 +229,7 @@ Mehr Informationen zu den Eigenschaften von P3 und P4 in "Temperature scaling of
 proton irradiated silicon bulk" \cite{felix}.
 
 
-In Abbildung \ref{fig:P_3} ist die Schadensrate für die 60 Annealingschritte,
+In Abbildung \ref{fig:P_3} ist die Schadensrate für die 60 Annealingzyklen,
 sowie die experimentell bestimmte Schadensrate dargestellt.
 
 \begin{figure}
@@ -239,7 +239,7 @@ sowie die experimentell bestimmte Schadensrate dargestellt.
 \end{figure}
 
 Es ist eine merkliche Abweichung der experimentellen Messwerte von den theoretischen
-Werten erkennbar. Der Sensor "P3" wurde schon vor der Messung annealed, wodurch
+Werten erkennbar. Der Sensor "P3" wurde schon vor der Messung erwärmt, wodurch
 die angegebenen Annealingzeiten in Wahrheit größer sind. Dies erklärt die
 geringe Änderung der einzelnen Messwerte von einander, welche dem
 Verlauf der theoretischen Werte für große Zeiten ähnelt. Die Abweichung der theoretischen

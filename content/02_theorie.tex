@@ -3,50 +3,54 @@
 
 \section{Siliziumdetektoren}
 
-Die im Halbleiter vorkommenden Elektronen des Siliziumkristalls wechselwirken mit anderen Elektronen und
-Kernen, wodurch es zu vielen Aufspaltungen des Energieniveaus dieser kommt. Die
-Zustände liegen dicht bei einander, weshalb von Energiebändern gesprochen wird.
-Das höchste von den Elektronen besetzte Band ist das Valenzband, welches von dem
+Die im Silzium vorkommenden Elektronen wechselwirken mit anderen Elektronen und
+Kernen des Kristalls, wodurch es zu vielen Aufspaltungen des Energieniveaus dieser kommt. Wegen dem Pauli-Prinzip können
+die Elektronen nicht dieselben Quantenzahlen besitzen, wodurch sich deren Energieniveaus voneinander unterscheidet.
+Die Zustände liegen dicht bei einander, weshalb von Energiebändern gesprochen wird.
+Das höchste von den Elektronen besetzte Band im Grundzustand ist das Valenzband, welches von dem
 nächsthöheren Band durch eine Bandlücke getrennt ist. Elektronen können
 durch Anregungen in das Leitungsband wandern und somit Strom leiten, vorausgesetzt
 die Anregungen sind größer als die Energielücke.
 
 Das Einbringen von Fremdatomen in den Siliziumkristall kann dessen Eigenschaften ändern
 und wird Dotierung genannt.
-Hat das Fremdatom mehr oder weniger Valenzelektronen als das Silizium, kommt
-es zu weiteren Aufspaltungen der Energieniveaus, welche sich in der Energielücke
-befindet. Dadurch wird es für Elektronen einfacher in das Leitungsband zu wandern.
+Hat das Fremdatom mehr oder weniger Valenzelektronen als das Silizium, ersetzt ein neuer Zustand innerhalb der Bandlücke
+einen alten Zustand .
+Durch Donatoren wird es für Elektronen einfacher in das Leitungsband zu wandern. Aktzeptoren
+erschaffen ein Loch über dem Valenzband, welches durch ein Elektron gefüllt wird und somit ein
+Loch im Valenzband zurückbleibt.
 Bei den Fremdatomen wird zwischen Donatoren und Akzeptoren unterschieden, wobei die
 Ersteren mehr Valenzelektronen als das Silizium besitzen und die Zweiteren weniger.
 Bereiche des Siliziumkristalls mit Donatoren werden n-Dotierte Halbleiter
-und Bereiche mit Akzeptoren p-Dotierte Halbleiter genannt.
+und Bereiche mit Akzeptoren p-Dotierte Bereiche genannt.
 
 Bei einem Übergang von einer n-Dotierten zu einer p-Dotierten Schicht rekombinieren
 die Elektronen der n-Dotierten Schicht mit den Elektronenlöchern der p-dotierten Schicht, da beide
 in die anderen Bereiche diffundieren. Durch die übrig bleibenden ortsfesten Atomkerne
 baut sich ein elektrisches Feld auf, welches dem Diffusionsstrom entgegenwirkt.
-Ein sich einstellendes Gleichgewicht führt zu einer raumladungsfreien Zone bei
+Ein sich einstellendes Gleichgewicht führt zu einer raumladungsträgerfreien Zone bei
 dem p-n-Übergang.
-Für Detektoren werden die eiden Schichten unterschiedlich stark Dotiert, wobei typischerweise
+Für Detektoren werden die beiden Schichten unterschiedlich stark dotiert, wobei typischerweise
 mehr Akzeptoren als Donatoren in den Siliziumkristall eingebracht werden. Bei
 asymmetrischer Dotierung breitet sich die Depletionszone hauptsächlich in die schwächer dotierte Seite aus.
-Mit dieser Annahme ($N_{\mathrm{A}} \gg N_{\mathrm{D}}$) lässt sich die Depletionstiefe $d$ beschreiben durch:
+Im Falle von ($N_{\mathrm{A}} \gg N_{\mathrm{D}}$) lässt sich die Depletionstiefe $d$ beschreiben durch:
 \begin{align}
-  d \approx \sqrt{\frac{2 \epsilon \epsilon_0}{e} (U_{\mathrm{bi}}+U_{\mathrm{ext}})\frac{1}{N_{\mathrm{D}}}}
+  d \approx \sqrt{\frac{2 \epsilon \epsilon_0}{e} (U_{\mathrm{bi}}+U_{\mathrm{ext}})\frac{1}{N_{\mathrm{D}}}}.
 \end{align}
 Hierbei beschreibt $\epsilon \epsilon_0$ die Permittivität, $e$ die elementar Ladung, $N_{\mathrm{D}}$ die Donatorenkonzentration, $U_{\mathrm{bi}}$ (built-in voltage)  die
-durch die festen Raumladungen entstehende Spannung und $U_{\mathrm{ext}}$ die extern angelegte Spannung.
+durch die festen Raumladungen entstehende Spannung und $U_{\mathrm{ext}}$ die extern angelegte Spannung. Für strahlenbeschädigte Detektoren entspricht ...
 
-Durch eine äußere Spannung wird die Zone vergrößert und dient als Ionisationskammer für einfallende Teilchen. Diese streuen
+
+Durch eine äußere negative Spannung  an der p-Seite im Bezug zur n-Seite, oder umgekehrt, wird die Zone vergrößert und dient als Ionisationskammer für einfallende Teilchen,. Diese streuen
 an den Atomkernen in der Zone und geben ein Teil oder ihre gesamte Energie bei dem Durchgang durch den Detektor ab. Mit der so abgegebenen
 Energie werden Elektron-Loch Paare erzeugt, welche sich durch das vorhandene elektrische Feld zu ihrer jeweiligen dotierten
 Schicht bewegen und über Elektroden als elektrisches Signal gemessen werden können.
 Die raumladungsfreie Zone dient somit als Detektor und soll ein möglichst großes Volumen umfassen.
 
-Mehr Informationen über Halbleiter finden sich beispielsweise in dem Buch "Teilchendetektoren"  \cite{semiconductor}.
+Mehr Informationen über Halbleiter finden sich in  \cite{semiconductor}.
 
 \section{Strahlenschäden}
-Wechselwirkungen von hochenergetischen Teilchen mit Silizium können zu Defekten in deren
+Wechselwirkungen von Teilchen mit Silizium können zu Defekten in deren
 Gitterstruktur führen.
 Die Energie der Teilchen an die Gitteratome wird dabei durch Ionisation und elastischer Streuung abgeben. Die Ionisation der
 Gitteratome wird "Total Ionizing Dose" (TID) genannt und führt zu keinen Schäden im Gitter.
@@ -72,7 +76,7 @@ In Abbildung \ref{fig:typeinversion} ist eine Typinversion aus dem Buch "Teilche
 \label{fig:typeinversion}
 \end{figure}
 
-Nach der "Non-Ionizing Energy Loss" (NIEL) Hypothese wird der Detektorschaden durch die Energie des herausgeschlagennen
+Nach der "Non-Ionizing Energy Loss" (NIEL) Hypothese wird der Detektorschaden durch die Energie des herausgeschlagenen
 Atoms beschrieben und ist unabhängig von der ursprünglichen Wechselwirkung.
 Um somit Fluenzen $ \Phi$ von verschiedenen Teilchen (Lepton, Hadron) miteinander vergleichen zu können, werden diese
 auf eine $\SI{1}{\mega\eV}$ Neutronstrahlung normalisiert und haben die Einheit $\mathrm{\frac{n_{\mathrm{eq}}}{cm^2}}$.
