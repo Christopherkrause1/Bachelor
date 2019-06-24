@@ -30,9 +30,9 @@ in die anderen Bereiche diffundieren. Durch die übrig bleibenden ortsfesten Ato
 baut sich ein elektrisches Feld auf, welches dem Diffusionsstrom entgegenwirkt.
 Ein sich einstellendes Gleichgewicht führt zu einer raumladungsträgerfreien Zone bei
 dem p-n-Übergang.
-Für Detektoren werden die beiden Schichten unterschiedlich stark dotiert, wobei typischerweise
-mehr Akzeptoren als Donatoren in den Siliziumkristall eingebracht werden. Bei
-asymmetrischer Dotierung breitet sich die Depletionszone hauptsächlich in die schwächer dotierte Seite aus.
+Für Detektoren werden die beiden Schichten unterschiedlich stark dotiert, wobei eine
+stark dotierte Oberfläche und ein leicht dotierter Bulk verwendet. Durch die asymmetrische
+Dotierung breitet sich die Depletionszone hauptsächlich in den schwächer dotierten Bulk aus.
 Im Falle von ($N_{\mathrm{A}} \gg N_{\mathrm{D}}$) lässt sich die Depletionstiefe $d$ beschreiben durch:
 \begin{align}
   d \approx \sqrt{\frac{2 \epsilon \epsilon_0}{e} (U_{\mathrm{bi}}+U_{\mathrm{ext}})\frac{1}{N_{\mathrm{D}}}}.
@@ -52,16 +52,18 @@ Mehr Informationen über Halbleiter finden sich in  \cite{semiconductor}.
 \section{Strahlenschäden}
 Wechselwirkungen von Teilchen mit Silizium können zu Defekten in deren
 Gitterstruktur führen.
-Die Energie der Teilchen an die Gitteratome wird dabei durch Ionisation und elastischer Streuung abgeben. Die Ionisation der
-Gitteratome wird "Total Ionizing Dose" (TID) genannt und führt zu keinen Schäden im Gitter.
+Die Energie der Teilchen wird dabei durch Ionisation und elastischer Streuung an den Gitteratomen abgeben. Die Ionisation der
+Gitteratome wird "Total Ionizing Dose" (TID) genannt und führt zu keinen Schäden im Bulk, lediglich das Streuen der Strahlung an den
+Atomkernen kann zu Defekten im Gitter führen.
 Es muss zwischen verschiedenen Arten von Defekten unterschieden werden. Die Teilchen können ein Gitteratom aus dem
 Gitter herausschlagen, wodurch eine Leerstelle und ein Zwischengitteratom entstehen. Das herausgeschlagene Atom
 kann Silizium, aber auch ein Fremdatom sein. Daraus folgt eine Änderung der Dotierungskonzentration im
-Halbleiter und somit eine Änderung seiner Eigenschaften.
-Leerstellen können mit Fremdatomen und anderen Leerstellen Bindungen eingehen. Die
-entstehenden Komplexe sind stabil und verändern den Halbleiter permanent.
+Halbleiter und somit eine Änderung seiner Eigenschaften. Somit können zum Beispiel neue Zustände innerhalb der
+Bandlücke entstehen, welche Elektronen und Löcher einfangen  und emitieren, wodurch der Leckstrom wächst.
+Zwischengitteratome können stabile Komplexe mit einander bilden. Diese werden nicht durch Annealing
+beeinflusst und verändern die Halbleiter permanent.
 
-Die durch Strahlenschäden hervorgerufenen Defekte verhalten sich wie Akzeptoren im Siliziumgitter. Bei
+Die durch Strahlenschäden hervorgerufenen Energiezustände verhalten sich hauptsächlich wie Akzeptoren im Siliziumgitter. Bei
 einer steigenden Anzahl an Defekten werden die dotierten Schichten insgesamt positiver. Für die n-dotierte Schicht kann
 es zur sogennaten Typinversion kommen, wodurch diese sich in eine leicht p-dotierte Schicht umwandelt. Bei einer
 solchen Typinversion wird die Dotierungskonzentration minimal und die benötigte externe Spannung für das Depletieren des Sensors geht gegen Null, da sich
@@ -79,47 +81,52 @@ In Abbildung \ref{fig:typeinversion} ist eine Typinversion aus dem Buch "Teilche
 Nach der "Non-Ionizing Energy Loss" (NIEL) Hypothese wird der Detektorschaden durch die Energie des herausgeschlagenen
 Atoms beschrieben und ist unabhängig von der ursprünglichen Wechselwirkung.
 Um somit Fluenzen $ \Phi$ von verschiedenen Teilchen (Lepton, Hadron) miteinander vergleichen zu können, werden diese
-auf eine $\SI{1}{\mega\eV}$ Neutronstrahlung normalisiert und haben die Einheit $\mathrm{\frac{n_{\mathrm{eq}}}{cm^2}}$.
+auf eine $\SI{1}{\mega\eV}$ Neutronstrahlung normalisiert und haben die Einheit $[\Phi_{\mathrm{eq}}]\mathrm{\frac{n_{\mathrm{eq}}}{cm^2}}$.
 
 
 \section{Annealing der Dotierungskonzentration}
-Annealing beschreibt allgemein die durch Erhitzung hervorgerufenen Veränderungen von Materialeigenschaften. Für die
-Halbleiter sollen dabei, durch die zugeführte Wärme, die Defekte teilweise behoben werden, um somit eine
+Annealing beschreibt im Allgemeinen die durch Erhitzung hervorgerufenen Veränderungen von Materialeigenschaften. Für strahlengeschädigte
+Halbleiter werden dabei, durch die zugeführte Wärme, die Defekte teilweise behoben werden, um somit eine
 bessere Funktionsfähigkeit über einen längeren Zeitraum zu garantieren. Die auftretenden Effekte sind dabei wie folgt:
 
-\textbf{1. Migration:} Ist die Temperatur hoch genug können die Zwischengitteratome durch das Gitterwandern und
-zum einen Leerstellen im Gitter füllen.
+\textbf{1. Migration:} Ist die Temperatur hoch genug können die Zwischengitteratome durch das Gitter wandern und
+Leerstellen im Gitter füllen.
 
-\textbf{2. Komplexformation:} Das Migrieren der Atome kann zum Ausbilden von Komplexen führen. So kann sich zum Beispiel ein
-Zwischengittersiliziumatom mit einem Siliziumatom im Gitter binden.
+\textbf{2. Komplexformation:} Das Migrieren der Atome kann zum Ausbilden von Komplexen führen. Dies geschieht durch das
+Gruppieren von mehreren Zwischengitteratomen im Kristall.
 
 \textbf{3. Dissoziation:} Komplexe können bei hohen Temperaturen Dissoziieren, wodurch einzelne Bestandteile des Komplexes
 durch das Gitter migrieren können. Dafür muss die Schwingungsenergie des Gitters größer als die Bindungsenergie der Komplexe sein.
 
-Die Annealingeffekte bewirken eine Änderung in der Dotierungskonzentration $N_{\mathrm{eff}}= |N_{\mathrm{D}}-N_{\mathrm{A}}|$, welches durch das Hamburger Modell beschrieben wird.
+Die Annealingeffekte bewirken eine Änderung in der effektiven Dotierungskonzentration
+\begin{align}
+  N_{\mathrm{eff}}= |N_{\mathrm{D}}-N_{\mathrm{A}}|,
+\end{align}
+welches durch das Hamburger Modell beschrieben wird.
 Die Änderung von $N_{\mathrm{eff}}$ ist gegeben durch:
 \begin{align}
-  \Delta N_{\mathrm{eff}}(t, \Phi_{\mathrm{eq}}, T)   = N_{\mathrm{C}}(\Phi_{\mathrm{eq}}) + N_{\mathrm{A}}(t, \Phi_{\mathrm{eq}}, T) + N_{\mathrm{Y}}(t, \Phi_{\mathrm{eq}}, T) \label{eqn:N_eff}
+  \Delta N_{\mathrm{eff}}(t, \Phi_{\mathrm{eq}}, T)   = N_{\mathrm{C}}(\Phi_{\mathrm{eq}}) + N_{\mathrm{A}}(t, \Phi_{\mathrm{eq}}, T) + N_{\mathrm{Y}}(t, \Phi_{\mathrm{eq}}, T) \text{\cite{moll}}
+  \label{eqn:N_eff}
 \end{align}
 Die einzelnen Summanden werden im folgenden erläutert.
 
-\textbf{\textit{Stable Damage}} $\symbf{N_{\mathrm{C}}}:$ Der stable Damage ist unabhängig von der Temperatur und wird durch das annealing nicht beeinflusst.
+\textbf{\textit{Stable Damage}} $\symbf{N_{\mathrm{C}}}:$ Der stable Damage ist unabhängig von der Temperatur und wird durch Annealing nicht beeinflusst.
 \begin{align}
   N_{\mathrm{C}}(\Phi_{\mathrm{eq}}) = N_{\mathrm{C0}}[1-\exp{(-c \cdot \Phi_{\mathrm{eq}})}] + g_{\mathrm{c}} \cdot \Phi_{\mathrm{eq}}
 \end{align}
 Der erste Summand folgt aus einer unvollständigen Entfernung von Donatoren, der zweite Summand beschreibt stabile Defekte, welche sich wie Akzeptoren verhalten \cite{beyer}.
-Hierbei beschreibt $N_{\mathrm{C0}}$ die Amplitude , $g_{\mathrm{c}}$ die sogenannte "introduction rate" der Akzeptoren und $c$ einen Fitparameter.
+Hierbei beschreibt $N_{\mathrm{C0}}$ die Amplitude, $g_{\mathrm{c}}$ die sogenannte "introduction rate" der Akzeptoren und $c$ einen Fitparameter.
 
 \textbf{\textit{Shortterm annealing}} $\symbf{N_{\mathrm{A}}}:$ Das shortterm annealing bewirkt eine Verringerung der Dotierungskonzentration und entsteht durch
-das Annealing von Akzeptoren, was zu einer kleineren Dotierungskonzentration führt. . Dieser Effekt wird
-zur Ausheilung des Sensors verwendet. Die Bezeichnung rührt daher, dass $N_{\mathrm{A}}$ meistens in den ersten 100 Minuten verschwindend gering wird. Die
+das Annealing von Akzeptoren, was zu einer kleineren Dotierungskonzentration führt. . Dieser Effekt wird beim
+gezielten Ausheilen des Sensors ausgenutzt. Die Bezeichnung rührt daher, dass $N_{\mathrm{A}}$ meistens in den ersten 100 Minuten verschwindend gering wird. Die
 Funktion wird näherungsweise beschrieben durch:
 \begin{align}
-  N_{\mathrm{A}}(t, \Phi_{\mathrm{eq}}, T) = \Phi_{\mathrm{eq}} \cdot g_{\mathrm{a}} \cdot \exp{\left(-\frac{t}{\tau_{\mathrm{a}}(T)}\right)}
+  N_{\mathrm{A}}(t, \Phi_{\mathrm{eq}}, T) = \Phi_{\mathrm{eq}} \cdot g_{\mathrm{a}} \cdot \exp{\left(-\frac{t}{\tau_{\mathrm{a}}(T)}\right)}.
 \end{align}
-Hierbei gilt für Temperaturabhängigen Funktion:
+Hierbei gilt für die temperaturabhängigen Funktion:
 \begin{align}
-  \tau_{\mathrm{a}}(T) = \frac{1}{k_{0\mathrm{a}}}\exp{\left(\frac{E_{aa}}{k_{\mathrm{b}}T}\right)}
+  \tau_{\mathrm{a}}(T) = \frac{1}{k_{0\mathrm{a}}}\exp{\left(\frac{E_{aa}}{k_{\mathrm{b}}T}\right)}.
 \end{align}
 Mit der "introduction rate" $g_{\mathrm{a}}$, dem Frequenzfaktor $k_{0\mathrm{a}}$, der Boltzmann Konstante $k_{\mathrm{b}}$ und
 der Aktivierungsenergie $E_{aa}$
@@ -131,15 +138,15 @@ Dotierungskonzentration. Dieser Effekt wird wie folgt berechnet.
 \begin{align}
   N_{\mathrm{Y}}(t, \Phi_{\mathrm{eq}}, T)     = N_{\mathrm{Y , \inf}}\cdot \left(1 - \frac{1}{1 + \frac{t}{\tau_{\mathrm{Y}}(T)}}\right)
 \end{align}
-Beginnend bei null geht diese Funktion nach einem unendlich langen Zeitraum gegen die Konstante $N_{\mathrm{Y, \inf}}$.
+Beginnend bei null läuft die Funktion asymptotisch gegen die Konstante $N_{\mathrm{Y, \inf}}$.
 Für $\tau_{\mathrm{Y}}(T)$ gilt:
 \begin{align}
   \tau_{\mathrm{Y}}(T) = \frac{1}{k_{0\mathrm{Y}}}\exp{\left(\frac{E_{Y}}{k_{\mathrm{b}}T}\right)}.
 \end{align}
 Auch hier ist $k_{0\mathrm{Y}}$ ein Frequenzfaktor und $E_{\mathrm{Y}}$ die Aktivierungsenergie. Der Faktor $N_{\mathrm{Y , \inf}}$
-ist das Produkt der "introduction rate" $g_{\mathrm{Y}}$ und der Fluenz. Nach einem unenndlich großen Zeitraum strebt
+ist das Produkt der "introduction rate" $g_{\mathrm{Y}}$ und der Fluenz. Nach einem unendlich großen Zeitraum strebt
 die Funktion $N_{\mathrm{A}}(t, \Phi_{\mathrm{eq}}, T) + N_{\mathrm{Y}}(t, \Phi_{\mathrm{eq}}, T)$ gegen $N_{\mathrm{Y , \inf}}$.
-In Abbildung \ref{fig:n_eff_beispiel} ist Beispielhaft das Annealingverhalten eines
+In Abbildung \ref{fig:n_eff_beispiel} ist beispielhaft das Annealingverhalten eines
 Sensors dargestellt.
 
 \begin{figure}
@@ -153,12 +160,18 @@ Sensors dargestellt.
 
 \section{Annealing des Leckstroms}
 Der Leckstrom beschreibt allgemein einen messbaren Stromfluss über einen als isolierend
-angenommenen Weg. Bei Halbleitern ist damit der Strom gemeint, der trotz sperrender
-Diode fließt. Dieser entsteht durch die Diffusion von einzelnen Ladungsträgern, welche
-in der Realität nicht komplett verhindert werden kann.
-Zusätzlich kommt ein Leckstrom durch strahlungsinduzierte Defekte hinzu, welche
-Elektronen-Loch-Paare generieren \cite{moll}.
-Durch das Annealing kann der Leckstrom somit verringert werden.
+angenommenen Weg. Bei den hier thematisierten Sensoren ist damit der Strom gemeint, der trotz sperrender
+Diode fließt. Dieser entsteht hauptsächlich durch die Generation von Ladungsträgern an Defekten, welche
+bei realen Dioden auch vor der Bestrahlung vorhanden sind. \cite{moll}.
+Durch das Annealing werden die Defekte in der Mitte der Energielücke teilweise behoben,
+was zu einer Verringerung des Leckstroms führt.
+
+Der Leckstrom vor und nach der Bestrahlung ist temperaturabhängig und wird
+beschrieben durch
+\begin{align}
+  I(T) \propto T^2 \exp{\frac{-E_{\mathrm{g}}}{2 k_{\mathrm{B}}T}} \text{\cite{moll}} \label{eqn:Chilingarov_2013}.
+\end{align}
+Hier ist $E_{\mathrm{g}}$ die Energie der Bandlücke.
 
 Die Fluenz und der durch Strahlung hervor gerufene Leckstrom $\Delta I$ sind
 proportional zueinander.
@@ -169,16 +182,8 @@ proportional zueinander.
 \end{align}
 Hierbei ist $V$ das Volumen des Detektormaterials und $\alpha$ die
 sogenannte Schadensrate.
-%Der Leckstrom ist vor der Bestrahlung des Sensors
-%vernachlässigbar klein im Vergleich zu dem Leckstrom nach der Bestrahlung,
-%weshalb $\Delta I$ als Näherung den gesamten Leckstrom beschreibt.
 
-Der Leckstrom vor und nach der Bestrahlung ist temperaturabhängig und wird
-beschrieben durch
-\begin{align}
-  I(T) \propto T^2 \exp{\frac{-E_{\mathrm{g}}}{2 k_{\mathrm{B}}T}} \text{\cite{moll}} \label{eqn:Chilingarov_2013}.
-\end{align}
-Hier ist $E_{\mathrm{g}}$ die Energie der Bandlücke.
+
 
 Die Verringerung des Leckstromes durch annealing wird mit der Schadensrate
 beschrieben, welche als eine Funktion abhängig von der Zeit und
@@ -187,7 +192,7 @@ Temperatur beschrieben wird.\cite{moll}
 \begin{align}
   \alpha(t, T) = \underbrace{\alpha_I \cdot \exp{\left(-\frac{t}{\tau_{\mathrm{I}}(T)}\right)}}_{\mathrm{shortterm \: annealing}} + \underbrace{\alpha_{\mathrm{0}}(T) -\beta \cdot \ln{\left(\frac{t}{t_{\mathrm{0}}}\right)}}_{\mathrm{longterm \: annealing}} \text{\label{eqn:damage}}
 \end{align}
-Mit der Amplitude $\alpha_I$, dem Parameter $\beta$, den in \cite{moll} berechnete Werten für $\alpha_{\mathrm{0}}(T)$, sowie der
+Mit den Fitparameter $\alpha_I$,  $\beta$, den in \cite{moll} berechnete Werten für den Fitparameter $\alpha_{\mathrm{0}}(T)$, sowie der
 temperaturabhängigen Funktion $\tau_{\mathrm{I}}(T)$:
 \begin{align}
   &\alpha_{\mathrm{0}}(T) = \SI{-8.9e-17}{\ampere\per\centi\meter} + \SI{4.6e-14}{\ampere\kelvin\per\centi\meter} \cdot \frac{1}{T} \\
@@ -197,11 +202,12 @@ Wie für $N_{\mathrm{A}}$ und $N_{\mathrm{Y}}$ ist $k_{0\mathrm{I}}$ ein Frequen
 
 Anders als das Annealingverhalten der Dotierungskonzentration kann die Schadensrate
 bei fortschreitendem annealing nur sinken. Für kurze und
-lange Zeiten dominieren wie bei der Dotierungskonzentration unterschiedliche
+lange Zeiten dominieren in diesem Modell wie bei der Dotierungskonzentration unterschiedliche
 Terme. Für große Temperaturen und Zeiten würde die Schadensrate kleiner als null
-werden. Die Messwerte für kleine $\alpha$ weichen jedoch von dem
-theoretischen Verlauf ab und nähern sich einen Wert größer null an. Dies
-ist in Abbildung \ref{fig:damage_rates} dargestellt.
+werden. Die Messwerte für kleine $\alpha$ weichen jedoch von den
+Vorhersagen des Modells ab und nähern sich einen Wert größer null an. Auch für große Schadenraten ab ungefähr $\alpha=\SI{6e-17}{\ampere\per\centi\meter}$
+versagt das Modell.
+Dies ist in Abbildung \ref{fig:damage_rates} dargestellt.
 
 \begin{figure}
   \includegraphics[width=0.83\textwidth]{logos/schadensraten.PNG}
