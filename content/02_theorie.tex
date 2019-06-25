@@ -36,9 +36,11 @@ Dotierung breitet sich die Depletionszone hauptsächlich in den schwächer dotie
 Im Falle von ($N_{\mathrm{A}} \gg N_{\mathrm{D}}$) lässt sich die Depletionstiefe $d$ beschreiben durch:
 \begin{align}
   d \approx \sqrt{\frac{2 \epsilon \epsilon_0}{e} (U_{\mathrm{bi}}+U_{\mathrm{ext}})\frac{1}{N_{\mathrm{D}}}}.
+  \label{eqn:depletionsdicke}
 \end{align}
 Hierbei beschreibt $\epsilon \epsilon_0$ die Permittivität, $e$ die elementar Ladung, $N_{\mathrm{D}}$ die Donatorenkonzentration, $U_{\mathrm{bi}}$ (built-in voltage)  die
-durch die festen Raumladungen entstehende Spannung und $U_{\mathrm{ext}}$ die extern angelegte Spannung. Für strahlenbeschädigte Detektoren entspricht ...
+durch die festen Raumladungen entstehende Spannung und $U_{\mathrm{ext}}$ die extern angelegte Spannung. Für ideale Detektoren gilt $N_{\mathrm{D}} = N_{\mathrm{D}}$, bei
+strahlengeschädigten Detektoren ist dies nicht mehr der Fall, wodurch in Gleichung \ref{eqn:depletionsdicke} das $N_{\mathrm{D}}$ durch $N_{\mathrm{D}}$ ersetzt werden muss.
 
 
 Durch eine äußere negative Spannung  an der p-Seite im Bezug zur n-Seite, oder umgekehrt, wird die Zone vergrößert und dient als Ionisationskammer für einfallende Teilchen,. Diese streuen
@@ -58,8 +60,9 @@ Atomkernen kann zu Defekten im Gitter führen.
 Es muss zwischen verschiedenen Arten von Defekten unterschieden werden. Die Teilchen können ein Gitteratom aus dem
 Gitter herausschlagen, wodurch eine Leerstelle und ein Zwischengitteratom entstehen. Das herausgeschlagene Atom
 kann Silizium, aber auch ein Fremdatom sein. Daraus folgt eine Änderung der Dotierungskonzentration im
-Halbleiter und somit eine Änderung seiner Eigenschaften. Somit können zum Beispiel neue Zustände innerhalb der
-Bandlücke entstehen, welche Elektronen und Löcher einfangen  und emitieren, wodurch der Leckstrom wächst.
+Halbleiter und somit eine Änderung seiner Eigenschaften. Zum Beispiel können neue Zustände innerhalb der
+Bandlücke entstehen, welche Elektronen und Löcher aus dem Valenzband einfangen  und in das Leitungsband
+abgeben, wodurch der Leckstrom wächst.
 Zwischengitteratome können stabile Komplexe mit einander bilden. Diese werden nicht durch Annealing
 beeinflusst und verändern die Halbleiter permanent.
 
@@ -74,7 +77,7 @@ In Abbildung \ref{fig:typeinversion} ist eine Typinversion aus dem Buch "Teilche
 
 \begin{figure}
     \includegraphics[width=0.83\textwidth]{build/typeinversion.PNG}
-\caption{Depletionsspannung und Dotierungskonzetration in Abhängigkeit von der Fluenz \cite{semiconductor}.}
+\caption{Depletionsspannung und Dotierungskonzetration in Abhängigkeit von der Fluenz \cite{typinversion}.}
 \label{fig:typeinversion}
 \end{figure}
 
@@ -99,9 +102,7 @@ Gruppieren von mehreren Zwischengitteratomen im Kristall.
 durch das Gitter migrieren können. Dafür muss die Schwingungsenergie des Gitters größer als die Bindungsenergie der Komplexe sein.
 
 Die Annealingeffekte bewirken eine Änderung in der effektiven Dotierungskonzentration
-\begin{align}
-  N_{\mathrm{eff}}= |N_{\mathrm{D}}-N_{\mathrm{A}}|,
-\end{align}
+${N_{\mathrm{eff}}= |N_{\mathrm{D}}-N_{\mathrm{A}}|}$,
 welches durch das Hamburger Modell beschrieben wird.
 Die Änderung von $N_{\mathrm{eff}}$ ist gegeben durch:
 \begin{align}
@@ -115,10 +116,11 @@ Die einzelnen Summanden werden im folgenden erläutert.
   N_{\mathrm{C}}(\Phi_{\mathrm{eq}}) = N_{\mathrm{C0}}[1-\exp{(-c \cdot \Phi_{\mathrm{eq}})}] + g_{\mathrm{c}} \cdot \Phi_{\mathrm{eq}}
 \end{align}
 Der erste Summand folgt aus einer unvollständigen Entfernung von Donatoren, der zweite Summand beschreibt stabile Defekte, welche sich wie Akzeptoren verhalten \cite{beyer}.
-Hierbei beschreibt $N_{\mathrm{C0}}$ die Amplitude, $g_{\mathrm{c}}$ die sogenannte "introduction rate" der Akzeptoren und $c$ einen Fitparameter.
+Hierbei beschreibt $N_{\mathrm{C0}}$ die Amplitude, $g_{\mathrm{c}}$ die sogenannte \textit{introduction rate} der Akzeptoren und $c$ einen Fitparameter.
+Die \textit{introduction rate} beschreibt die Anzahl an durch Bestrahlung entstehenden Akzeptoren.
 
-\textbf{\textit{Shortterm annealing}} $\symbf{N_{\mathrm{A}}}:$ Das shortterm annealing bewirkt eine Verringerung der Dotierungskonzentration und entsteht durch
-das Annealing von Akzeptoren, was zu einer kleineren Dotierungskonzentration führt. . Dieser Effekt wird beim
+\textbf{\textit{Shortterm annealing}} $\symbf{N_{\mathrm{A}}}:$ Das shortterm Annealing bewirkt eine Verringerung der Dotierungskonzentration und entsteht durch
+das Annealing von Akzeptoren, was zu einer kleineren Dotierungskonzentration führt. Dieser Effekt wird beim
 gezielten Ausheilen des Sensors ausgenutzt. Die Bezeichnung rührt daher, dass $N_{\mathrm{A}}$ meistens in den ersten 100 Minuten verschwindend gering wird. Die
 Funktion wird näherungsweise beschrieben durch:
 \begin{align}
@@ -128,8 +130,8 @@ Hierbei gilt für die temperaturabhängigen Funktion:
 \begin{align}
   \tau_{\mathrm{a}}(T) = \frac{1}{k_{0\mathrm{a}}}\exp{\left(\frac{E_{aa}}{k_{\mathrm{b}}T}\right)}.
 \end{align}
-Mit der "introduction rate" $g_{\mathrm{a}}$, dem Frequenzfaktor $k_{0\mathrm{a}}$, der Boltzmann Konstante $k_{\mathrm{b}}$ und
-der Aktivierungsenergie $E_{aa}$
+Mit der \textit{introduction rate} $g_{\mathrm{a}}$, dem Frequenzfaktor $k_{0\mathrm{a}}$, der Boltzmann Konstante $k_{\mathrm{b}}$ und
+der Aktivierungsenergie $E_{aa}$. Die Aktivierungsenergie beschreibt dabei die nötige Energie für das Ausheilen der Defekte.
 
 
 \textbf{\textit{Longterm annealing}} $\symbf{N_{\mathrm{Y}}}:$ Der Aufbau von
@@ -144,7 +146,7 @@ Für $\tau_{\mathrm{Y}}(T)$ gilt:
   \tau_{\mathrm{Y}}(T) = \frac{1}{k_{0\mathrm{Y}}}\exp{\left(\frac{E_{Y}}{k_{\mathrm{b}}T}\right)}.
 \end{align}
 Auch hier ist $k_{0\mathrm{Y}}$ ein Frequenzfaktor und $E_{\mathrm{Y}}$ die Aktivierungsenergie. Der Faktor $N_{\mathrm{Y , \inf}}$
-ist das Produkt der "introduction rate" $g_{\mathrm{Y}}$ und der Fluenz. Nach einem unendlich großen Zeitraum strebt
+ist das Produkt der \textit{introduction rate} $g_{\mathrm{Y}}$ und der Fluenz. Nach einem unendlich großen Zeitraum strebt
 die Funktion $N_{\mathrm{A}}(t, \Phi_{\mathrm{eq}}, T) + N_{\mathrm{Y}}(t, \Phi_{\mathrm{eq}}, T)$ gegen $N_{\mathrm{Y , \inf}}$.
 In Abbildung \ref{fig:n_eff_beispiel} ist beispielhaft das Annealingverhalten eines
 Sensors dargestellt.
@@ -185,7 +187,7 @@ sogenannte Schadensrate.
 
 
 
-Die Verringerung des Leckstromes durch annealing wird mit der Schadensrate
+Die Verringerung des Leckstromes durch Annealing wird mit der Schadensrate
 beschrieben, welche als eine Funktion abhängig von der Zeit und
 Temperatur beschrieben wird.\cite{moll}
 
@@ -201,7 +203,7 @@ temperaturabhängigen Funktion $\tau_{\mathrm{I}}(T)$:
 Wie für $N_{\mathrm{A}}$ und $N_{\mathrm{Y}}$ ist $k_{0\mathrm{I}}$ ein Frequenzfakor und $E_{I}$ die Aktvierungsenergie.
 
 Anders als das Annealingverhalten der Dotierungskonzentration kann die Schadensrate
-bei fortschreitendem annealing nur sinken. Für kurze und
+bei fortschreitendem Annealing nur sinken. Für kurze und
 lange Zeiten dominieren in diesem Modell wie bei der Dotierungskonzentration unterschiedliche
 Terme. Für große Temperaturen und Zeiten würde die Schadensrate kleiner als null
 werden. Die Messwerte für kleine $\alpha$ weichen jedoch von den
