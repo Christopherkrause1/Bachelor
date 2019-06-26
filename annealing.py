@@ -67,7 +67,7 @@ def N_eff(t, phi, T):                                  #Änderung der Dotierungs
 #ax2.legend(loc='best')
 #plt.savefig('build/annealing.pdf')
 #plt.clf()
-
+t = np.logspace(1, 5, 25, endpoint=True)
 plt.gcf().subplots_adjust(bottom=0.18)
 plt.semilogx(t, N_eff(t, 1.4*10**(13), 60+273.15), 'r.', label=r'$\Delta N_eff@60°C$', Markersize=6)
 plt.semilogx(t, N_eff(t, 1.4*10**(13), 80+273.15), 'b.', label=r'$\Delta N_eff@80°C$', Markersize=6)

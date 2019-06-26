@@ -1,11 +1,56 @@
-\chapter{Auswertung}\label{make}
-Die folgenden Unterkapitel beschreiben die Vorgehensweise für die Umsetzung des Python Programms zur
-Berechnung der Annealingeffekte.
+\chapter{Entwicklung des Programmes zur Berechnung von Annealingeffekten}\label{make}
+Die folgenden Unterkapitel beschreiben die Vorgehensweise für die Entwicklung  eines Programmes zur
+Berechnung von Annealingeffekten. Das Programm ist in der Programmiersprache Python unter
+der Verwendung der NumPy, Matplotlib und math Bibliotheken geschrieben.
 \section{Annealingeffekt für konstanten Temperaturen}
-Gleichung \ref{eqn:N_eff} und \ref{eqn:damage}  werden für das Modellieren der Annealingeffekte verwendet. In
-Abbildung \ref{fig:N_eff} und \ref{fig:damage} sind diese, jeweils für zwei Temperaturen dargestellt.
-Für alle Plots werden materialabhängige
-Parameter einer "WE-25k" aus \cite{moll} genommen.
+Zur Überprüfung der Implementation der Funktionen werden
+Gleichung \ref{eqn:N_eff} und \ref{eqn:damage}  bei konstanter Temperatur verwendet. In
+Abbildung \ref{fig:N_eff} und \ref{fig:damage} sind diese, jeweils für $\SI{60}{\celsius}$ und $\SI{80}{\celsius}$ dargestellt.
+Für alle Plots werden Fitparameter und  materialabhängige
+Parameter einer "WE-25k" Diode aus \cite{moll} genommen und sind in Tabelle \ref{tab:w1} dargestellt. Die verwendeten
+Parameter sind beispielhaft gewählt und können gezielt angepasst werden.
+
+%\begin{table}[H]
+%\centering
+%\caption{Positionen der Photodiode und gemessene Stromstärken}
+%\sisetup{table-format=2.1}
+%\begin{tabular}{S S S S S S}
+%  \toprule
+%    \multicolumn{5}{c}{Fitparameter} & \multicolumn{1}{c}{Materialparameter} \\
+%    \cmidrule(lr){1-5}\cmidrule(lr){6-6}
+%    {$\alpha_{\mathrm{I}}/10^{-17}\, \mathrm{Acm^{-1}}$} & {$\beta/\, /10^{-17}\, \mathrm{Acm^{-18}}$} & {$k_{0\mathrm{I}}/\,10^{13}\mathrm{s^{-1}}$} &
+%    {$k_{0\mathrm{a}}/\,10^{13}\mathrm{s^{-1}}$} & {$k_{Y\mathrm{I}}/\,10^{15}\mathrm{s^{-1}}$} & {$E_{\mathrm{I}}/\, \mathrm{eV}$} \\
+%    \midrule
+%    1 & 1 & 1 & 1 & 1 \\
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+
+\begin{table}
+  \centering
+  \caption{Fitparameter der "WE-25k" Diode für die Modellierung von Annealingeffekten }
+  \label{tab:w1}
+  \begin{tabular}{c c}
+    \toprule
+    Fitparameter & Wert  \\
+    \midrule
+        $\alpha_{\mathrm{I}}$  &    1,23 $\cdot$ $  10^{-17}        \mathrm{Acm^{-1}}$    \\
+        $\beta $               &    3,07 $\cdot$ $10^{-17}          \mathrm{Acm^{-18}}$     \\
+        $N_{\mathrm{C0}}$             &    1,1  $\cdot$            $10^{11}\mathrm{cm^{-3}}$   \\
+        $c$                          &    75   $\cdot$             $10^{-14}\mathrm{cm^{-2}}$    \\
+        $k_{0\mathrm{I}}$            &    1,2  $\cdot$             $10^{13}\mathrm{s^{-1}}$\\
+        $k_{0\mathrm{a}}$           &    2,4  $\cdot$              $10^{13}\mathrm{s^{-1}}$   \\
+        $k_{0\mathrm{Y}}$            &    1,5  $\cdot$             $10^{15}\mathrm{s^{-1}}$     \\
+        $E_{\mathrm{I}}$                       &    1,11 $\cdot$   $\mathrm{eV}$       \\
+        $E_{\mathrm{aa}}$                     &    1,09 $\cdot$    $\mathrm{eV}$       \\
+        $E_{\mathrm{Y}}$                      &    1,33 $\cdot$    $\mathrm{eV}$    \\
+        $g_{\mathrm{c}}$      &    1,58 $\cdot$                    $10^{-2}\mathrm{cm^{-2}}$           \\
+        $g_{\mathrm{a}}$           &    1,59 $\cdot$               $10^{-2}\mathrm{cm^{-2}}$         \\
+        $g_{\mathrm{Y}}$          &    4,84 $\cdot$                $10^{-2}\mathrm{cm^{-2}}$      \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+%Die Frequenzfaktoren und die Aktivierungsenergien sind zusätzlich Materialabhängig.
 
 \begin{figure}
     \includegraphics[width=0.83\textwidth]{build/annealing.PDF}

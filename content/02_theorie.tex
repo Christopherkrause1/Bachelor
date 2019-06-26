@@ -173,9 +173,9 @@ was zu einer Verringerung des Leckstroms führt.
 Der Leckstrom vor und nach der Bestrahlung ist temperaturabhängig und wird
 beschrieben durch
 \begin{align}
-  I(T) \propto T^2 \exp{\frac{-E_{\mathrm{g}}}{2 k_{\mathrm{B}}T}} \text{\cite{moll}} \label{eqn:Chilingarov_2013}.
+  I(T) \propto T^2 \exp{\left(\frac{-E_{\mathrm{g}}}{2 k_{\mathrm{B}}T}\right)} \text{\cite{moll}} \label{eqn:Chilingarov_2013}.
 \end{align}
-Hier ist $E_{\mathrm{g}}$ die Energie der Bandlücke.
+Hierbei $E_{\mathrm{g}}$ die Aktivierungsenergie.
 
 Die Fluenz und der durch Strahlung hervor gerufene Leckstrom $\Delta I$ sind
 proportional zueinander.
@@ -200,7 +200,7 @@ Mit den Fitparameter $\alpha_I$,  $\beta$, den in \cite{moll} berechnete Werten 
 temperaturabhängigen Funktion $\tau_{\mathrm{I}}(T)$:
 \begin{align}
   &\alpha_{\mathrm{0}}(T) = \SI{-8.9e-17}{\ampere\per\centi\meter} + \SI{4.6e-14}{\ampere\kelvin\per\centi\meter} \cdot \frac{1}{T} \\
-  &\tau_{\mathrm{a}}(T) = \frac{1}{k_{0\mathrm{I}}}\exp{\left(\frac{E_{I}}{k_{\mathrm{b}}T}\right)}
+  &\tau_{\mathrm{a}}(T) = \frac{1}{k_{0\mathrm{I}}}\exp{\left(\frac{E_{I}}{k_{\mathrm{B}}T}\right)}
 \end{align}
 Wie für $N_{\mathrm{A}}$ und $N_{\mathrm{Y}}$ ist $k_{0\mathrm{I}}$ ein Frequenzfakor und $E_{I}$ die Aktvierungsenergie.
 
