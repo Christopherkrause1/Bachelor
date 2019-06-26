@@ -5,7 +5,8 @@ der Verwendung der NumPy, Matplotlib und math Bibliotheken geschrieben.
 \section{Annealingeffekt für konstanten Temperaturen}
 Zur Überprüfung der Implementation der Funktionen werden
 Gleichung \ref{eqn:N_eff} und \ref{eqn:damage}  bei konstanter Temperatur verwendet. In
-Abbildung \ref{fig:N_eff} und \ref{fig:damage} sind diese, jeweils für $\SI{60}{\celsius}$ und $\SI{80}{\celsius}$ dargestellt.
+Abbildung \ref{fig:N_eff} und \ref{fig:damage} sind diese, für $10^5$ Minuten bei einer Temperatur
+von $\SI{60}{\celsius}$ und $\SI{80}{\celsius}$  dargestellt.
 Für alle Plots werden Fitparameter und  materialabhängige
 Parameter einer "WE-25k" Diode aus \cite{moll} genommen und sind in Tabelle \ref{tab:w1} dargestellt. Die verwendeten
 Parameter sind beispielhaft gewählt und können gezielt angepasst werden.
@@ -64,24 +65,33 @@ Parameter sind beispielhaft gewählt und können gezielt angepasst werden.
     \label{fig:damage}
 \end{figure}
 
-Beide Annealingeffekte stimmen mit dem theoretischen Verlauf aus \cite{moll} über ein, was
-die Korrekte Implementierung der Funktionen \ref{eqn:N_eff} und \ref{eqn:damage}  des Programms
+Beide Annealingeffekte stimmen mit dem Verlauf von \ref{fig:n_eff_beispiel} und \ref{fig:damage_beispiel} über ein, was
+die korrekte Implementierung der Funktionen \ref{eqn:N_eff} und \ref{eqn:damage}  des Programms
 bestätigt.
 
 
 
 \section{Annealingeffekt für nicht konstanten Temperaturen}{\label{nicht_konstant}}
-Werden die selben Gleichungen zur Modellierung von Annealingeffekte für nicht
-konstante Temperaturen verwendet, so kommt es zu deutlichen Abweichungen für
-$\Delta N_{\mathrm{eff}}$ und $\alpha$ im Vergleich zu dem eigentlich erwarteten
-Verhalten nach dem Hamburg-Modell. In Abbildung \ref{fig:N_eff_ohne} und \ref{fig:damage_ohne} ist das Annealingverhalten
-der Dotierungskonzetration und der Schadensrate mit
-diesem Ansatz dargestellt. Das Temperaturprofil wurde von einem Sensor "R1" in
-"Sandia National Laboratories" aufgenommen.
+Die Gleichungen \ref{eqn:N_eff} und \ref{eqn:damage} gehen bei der Berechnung der Annealingeffekte von
+einer konstanten Temperatur aus, wodurch diese nicht geeignet sind um $\Delta N_{\mathrm{eff}}$ und $\alpha$ für
+Temperaturverläufe zu Berechnen, welche deutlich von einer konstanten Temperatur abweichen.
+
+
+%Werden die selben Gleichungen zur Modellierung von Annealingeffekte für nicht
+%konstante Temperaturen verwendet, so kommt es zu deutlichen Abweichungen für
+%$\Delta N_{\mathrm{eff}}$ und $\alpha$ im Vergleich zu dem eigentlich erwarteten
+%Verhalten nach dem Hamburg-Modell.
+In Abbildung \ref{fig:N_eff_ohne} und \ref{fig:damage_ohne} ist das Annealingverhalten
+der Dotierungskonzentration und der Schadensrate mit
+diesem Ansatz dargestellt.
+Das Temperaturprofil wurde während der Bestrahlung
+des Sensors "R1" mit Reaktorneutronen in den
+"Sandia National Laboratories" aufgenommen. Weitere Informationen zu dem Sensor und
+der Bestrahlungen finden sich in \ref{mareike}.
 
 \begin{figure}
     \includegraphics[width=0.83\textwidth]{build/ohnekorrektur.PDF}
-    \caption{Dotierungskonzentration des Sensors R1 nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
+    \caption{Dotierungskonzentration des Sensors R1 im Verkauf des Annealings nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
     \label{fig:N_eff_ohne}
 \end{figure}
 
@@ -108,14 +118,12 @@ diesem Ansatz dargestellt. Das Temperaturprofil wurde von einem Sensor "R1" in
 %  \label{fig:ohnekorrektur}
 %\end{figure}
 
-Der longterm Annealingeffekt der Dotierungskonzetration strebt nach dem Hamburg-Modell
+Die Dotierungskonzetration strebt nach dem Hamburg-Modell
 für unendlich große Zeiten gegen einen konstanten Wert und nimmt nicht mehr
-ab. Die Schadensrate kann mit fortschreitendem annealing nicht
-größer werden, somit Verhalten sich beide Kurven nicht dem theoretisch
-vorhergesehenem Verhalten.
-Der Fehler entsteht, da die Gleichung \ref{eqn:N_eff} und \ref{eqn:damage} für jeden
+ab.
+Der Fehler entsteht, da Gleichung \ref{eqn:N_eff} für jeden
 Zeitpunkt eine konstante Temperatur annehmen. Jedoch ist es für Annealingeffekte
-wichtig mit welchen Temperaturen und wie lange damit vorher der Detekotr erhitzt wurde.
+relevant die Annealinghistorie zu berücksichtigen.
 Das bedeutet, dass $\Delta N_{\mathrm{eff}}$ für große Zeiten abfällt, da die Gleichung über den
 gesamten Zeitraum mit den zugehörigen kleinen Temperaturen rechnet. Für
 die Schadensrate gilt das gleiche Problem.
@@ -124,7 +132,7 @@ Um die Effekte richtig berechnen zu können, muss eine Korrektur in den
 Gleichungen vorgenommen werden.
 Zunächst wird die Dotierungskonzentration betrachtet. Als Näherung wird über
 jeden einzelnen Zeitabschnitt $t_{\mathrm{i}} - t_{\mathrm{i-1}}$ die
-Temperatur $\frac{T_{\mathrm{i}} +T_{\mathrm{i-1}}}{2}$ für das annealing verwendet.
+Temperatur $(T_{\mathrm{i}} +T_{\mathrm{i-1}})/2$ für das annealing verwendet.
 Da der stable damage keine Temperaturabhängigkeit hat, muss dieser nicht
 verändert werden. Für $N_{\mathrm{A}}$ wird nun folgende Näherung
 verwendet werden:
@@ -132,7 +140,7 @@ verwendet werden:
 \begin{align}
   &\frac{t_{\mathrm{n}}}{\tau_{\mathrm{a}}(T_{\mathrm{n}})} \rightarrow \sum_{i=0}^n  \frac{t_{\mathrm{i}} - t_{\mathrm{i-1}}}{\tau_{\mathrm{a}}(\frac{T_{\mathrm{i}} +T_{\mathrm{i-1}}}{2})} \:\:\:\: \text{für} \: n>0 \\
 \end{align}
-Für den Zeitpunkt $t=0$ gilt weiterhin $\frac{t_{\mathrm{n}}}{\tau_{\mathrm{a}}(T_{\mathrm{n}})} = 0$.
+Für den Zeitpunkt $t=0$ gilt weiterhin $t_{\mathrm{n}}/(\tau_{\mathrm{a}}(T_{\mathrm{n}})) = 0$.
 Durch die Summation der einzelnen Zeitabschnitte mit dem Mittelwert der dazugehörigen
 Temperatur kann die gesamte Temperaturkurve beschrieben werden. Für $N_{\mathrm{Y}}$
 wird analog die gleiche Korrektur durchgeführt.
@@ -140,7 +148,7 @@ In Abbildung \ref{fig:korrektur_N_eff} ist Dotierungskonzentration mit Korrektur
 
 
 \begin{figure}
-    \includegraphics[width=0.83\textwidth]{build/ohnekorrektur.PDF}
+    \includegraphics[width=0.83\textwidth]{build/annealingtdata.PDF}
 \caption{$\Delta N_{eff}$ des Sensors R1 mit Korrektur nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
 \label{fig:korrektur_N_eff}
 \end{figure}
@@ -152,18 +160,18 @@ In Abbildung \ref{fig:korrektur_N_eff} ist Dotierungskonzentration mit Korrektur
 %\end{figure}
 
 
-Der Verlauf entspricht nun den theoretischen Erwartungen. Mit der Berücksichtigung
-der einzelnen Temperaturen verringert sich der Annealingeffekt insgesamt, da anfänglich
+Der Verlauf entspricht nun den Erwartungen. Mit der Berücksichtigung
+der einzelnen Temperaturen verzögert sich der Annealingeffekt insgesamt, da anfänglich
 geringe Temperaturen nur wenig zum gesamten Effekt beitragen. Dies wird
-an dem späteren Zeitpukt des Minimums deutlich.
+an dem späteren Zeitpunkt des Minimums deutlich.
 
 Eine solche Korrektur kann für den shortterm annealing Term der Schadensrate ebenfalls gemacht werden.
-Für den zweiten Term ist $\alpha_{0}$ temperaturabhängig, aber nicht zeitabhängig,
+Im zweiten Term ist $\alpha_{0}$ temperaturabhängig, aber nicht zeitabhängig,
 wodurch der Korrekturansatz hier nicht mehr gelten kann. Um den Ansatz dennoch
-verwenden zu können, wird die Zeit des longterm annealing [Grammatik] mit dem
+verwenden zu können, wird die Zeit des \textit{longterm annealing} mit dem
 Skalierungsfaktor
 \begin{align}
-  \Theta(T) =  \exp{-\frac{E_{\mathrm{I}}^*}{k_b}\left(\frac{1}{T}-\frac{1}{T_{\mathrm{ref}}}\right)} \\
+  \Theta(T) =  \exp{-\frac{E_{\mathrm{I}}^*}{k_b}\left(\frac{1}{T}-\frac{1}{T_{\mathrm{ref}}}\right)} \text{\cite{moll}} \\
 \end{align}
 versehen, wodurch sich die Formel der Schadensrate ändert.
 \begin{align}
@@ -174,8 +182,8 @@ versehen, wodurch sich die Formel der Schadensrate ändert.
 Hierbei ist$E_{\mathrm{I}}^*$ ein Aktvierungsenergie und $\alpha^*_{0}$ nun nicht mehr temperaturabhängig,
 sondern lediglich abhängig von einer Referenztemperatur $T_{\mathrm{ref}}$. Für konstante Temperaturen
 ist diese Gleichung folglich äquivalent zu Gleichung \ref{eqn:damage}, für nicht
-konstante Temperaturen ist sie eine Näherung.
-Nun kann wieder eine Korrektur eingeführt werden:
+konstante Temperaturen ist die resultierende Abweichung im Vergleich zur Korrektur vernachlässigbar.
+Nun kann wieder eine Korrektur analog zu den vorherigen eingeführt werden eingeführt werden:
 
 \begin{align}
   \Theta(T) \cdot t_{\mathrm{n}} \rightarrow \sum_{i=0}^n   \Theta \left(\frac{T_{\mathrm{i}} +T_{\mathrm{i-1}}}{2}\right) \cdot  (t_{\mathrm{i}} - t_{\mathrm{i-1}})
@@ -185,8 +193,8 @@ In Abbildung \ref{fig:korrektur_damage} ist die Schadensrate ohne und mit Korrek
 dargestellt.
 
 \begin{figure}
-    \includegraphics[width=0.83\textwidth]{build/damageohnekorrektur.PDF}
-\caption{Schadensrate des Sensors R1 ohne Korrektur (a) und mit Korrektur (b).}
+    \includegraphics[width=0.83\textwidth]{build/damagekorrektur.PDF}
+\caption{Schadensrate des Sensors R1  mit Korrektur.}
 \label{fig:korrektur_damage}
 \end{figure}
 %\begin{figure}
@@ -201,11 +209,12 @@ dargestellt.
 %\end{figure}
 
 
-Auch hier zeigt das Verhalten ohne Korrektur klare Abweichungen zu den theoretischen
+Auch hier zeigt das Verhalten ohne Korrektur klare Abweichungen zu den
 Erwartungen, so kann beispielsweise die Schadensrate mit voranschreitendem annealing nicht steigen.
 Mit Korrektur verhält sich die Schadensrate gemäß den Erwartungen, der stärkste
 Effekt ist bei den größten Temperaturen zu sehen, kleine Temperaturen führen hingegen
 nur zu minimalen Änderungen.
+
 Mit der Implementierung dieser Korrekturen kann das Programm Annealingeffekte für
 beliebige Temperaturen berechnen.
 
@@ -217,16 +226,21 @@ Zeitintervall den Mittelwert der Anfangs- und Endtemperatur. Für große
 Zeitabschnitte kommt es also auch zu größeren Abweichung von der tatsächlichen
 Temperatur. Um diesen Fehler gering zu halten, wird das Temperaturprofil
 linear interpoliert.
-Damit die Rechenzeit des Programms bei vielen Daten nicht zu groß werden
-kann, wird eine Funktion für die Anzahl $n$ an Intervallen zwischen zwei
-Messwerten definiert.
+Um die Rechenzeit nicht unnötig zu erhöhen, wird eine Funktion definiert, die sinvolle
+Interpolationsschritte $n$ abschätzt.
+
 \begin{align*}
   n = \lceil{y \cdot (T_{\mathrm{A}}-T_{\mathrm{min}})+ z}\rceil \label{eqn:intervall}
 \end{align*}
-Diese Funktion wächst mit steigenden Temperaturen.
-Da große Temperaturen relevanter für das annealing sind, ist es vorteilhaft,
+Die Funktion wächst mit steigenden Temperaturen und gibt die Anzahl auf eine Temperatur $T_A$ des
+Datensatzes folgenden Intervalle an. Der Parameter $z$ bewirkt eine allgeine steigerung
+der Anzahl an Intervallen, während $y$ die Anzahl basierend auf der zu betrachtenden Temperatur
+erhöht.
+Da große Temperaturen relevanter für das annealing sind und die Annealingeffekte mehr als linear von
+der Temperatur abhängig sind, ist es vorteilhaft,
 bei diesen Werten möglichst kleine ungenauigkeiten und somit möglichst viele
-Intervalle zu erschaffen. Die Parameter $y$ und $z$ sind dabei frei anpassbar.
+Intervalle zu erschaffen. Aus diesem Grund wird die minimale Temperatur $T_{\mathrm{min}}$ des Datensatzes
+als Bezugspunkt genommen, wobei die Parameter $y$ und $z$ frei anpassbar sind.
 
 Für die Zeit und die Temperatur der interpolierten Daten gilt:
 \begin{align}
@@ -236,7 +250,7 @@ Für die Zeit und die Temperatur der interpolierten Daten gilt:
 \end{align}
 
 Hierdurch werden lineare und gleich lange Intervalle zwischen den Temperaturen
-erzeugt. In den Abbildungen \ref{fig:interpolation_N_eff} und \ref{fig:interpolation_damage} sind die Interpolierten Temperaturen und
+erzeugt. In den Abbildungen \ref{fig:interpolation_N_eff} und \ref{fig:interpolation_damage} sind die interpolierten Temperaturen und
 die daraus berechneten Annealingeffekte dargestellt.
 
 \begin{figure}
@@ -254,24 +268,25 @@ die daraus berechneten Annealingeffekte dargestellt.
 \end{figure}
 
 Die Anzahl der Intervalle der linearen Interpolation steigt gemäß der Funktion \ref{eqn:intervall}
-für größer Temperaturen. Kleine Abweichung der Annealingeffekte für gemessene und
-interpolierte Temperaturen ist durch die Korrektur aus Kapitel \ref{nicht_konstant}
-zu erklären. Da die lineare Interpolation lediglich eine Näherung des Verlaufes der
+für größer Temperaturen. Kleine Abweichungen der Annealingeffekte für gemessene und
+interpolierte Temperaturen treten durch die Korrektur aus Kapitel \ref{nicht_konstant}
+auf. Da die lineare Interpolation lediglich eine Näherung des Verlaufes der
 Temperaturkurve entspricht, kommt es bei der Aufsummierung der einzelnen Zeitabschnitte
-zu größer werdenden Abweichungen. Für große Zeiten strebt $\Delta N_{\mathrm{eff}}$
+zu größer werdenden Abweichungen von der eigentlichen Kurve. Die abweichenden Werte beschreiben
+aufgrund der Interpolation einen präziseren Verlauf als der Annealingeffekt des ursprünglichen Datensatzes.
+Für große Zeiten strebt $\Delta N_{\mathrm{eff}}$
 für beide Temperaturdatensätze gegen den selben Wert.
 
 \section{Berechnung der gesamten Annealinghistorie eines Sensors}
 Die hier betrachtete Annealinghistorie setzt sich aus 60 Erwärmungs-und
-Abkühlungszyklen des Sensors "P3" zusammen, welche $\SI{1170}{\minute}$ entsprechen.
+Abkühlungszyklen des Sensors "P3" zusammen, welche $\SI{1800}{\minute}$ entsprechen.
 Für den Sensor "P4" werden 39 Zyklen ($\SI{1170}{\minute}$) betrachtet.
-Beide wurden von der IRRAD Einrichtung mit $\SI{24}{\giga\eV\per\clight}$ Protonen des Protonen Sychrotrons bestrahlt.
+Beide wurden von der ${\mathrm{IRRAD}}$ Einrichtung mit $\SI{24}{\giga\eV\per\clight}$ Protonen des Protonen Sychrotrons bestrahlt.
 Die Datensätze werden mithilfe eines Python Programmes mit einander Verbunden,
 wobei die Zeiten zwischen dem annealing von einem Zyklus zum nächsten auf Null gesetzt werden. Wegen der geringen
 Temperaturen nach jeder Abkühlung sind die daraus resultierenden Abweichungen vernachlässigbar.
 Für jeden Zyklus wurde bei den Sensoren eine Temperatur von $\SI{60}{\celsius}$ angestrebt.
-Mehr Informationen zu den Eigenschaften von P3 und P4 in "Temperature scaling of reverse current generated in
-proton irradiated silicon bulk" \cite{felix}.
+Mehr Informationen zu den Eigenschaften von P3 und P4 in  \cite{felix}.
 
 
 In Abbildung \ref{fig:P_3} ist die Schadensrate für die 60 Annealingzyklen,
@@ -283,6 +298,7 @@ sowie die experimentell bestimmte Schadensrate dargestellt.
 \label{fig:P_3}
 \end{figure}
 
+Der stufenartige Verlauf der Kurve resultiert aus den Temperaturzyklen.
 Es ist eine merkliche Abweichung der experimentellen Messwerte von den theoretischen
 Werten erkennbar. Der Sensor "P3" wurde schon vor der Messung erwärmt, wodurch
 die angegebenen Annealingzeiten in Wahrheit größer sind. Dies erklärt die
@@ -310,5 +326,7 @@ dargestellt.
 
 Die Abweichungen sind in dieser Messreihe noch deutlicher. Neben den Fehlerquellen die
 für den Sensor "P3" aufgezählt wurden, ist "P4" zusätzlich nicht vollständig depletiert.
-Dies führt zu einer Änderung der gemessenen Schadensrate, da diese von dem Volumen
-der depletierten Zone abhängt, dessen Größe in diesem Fall nicht bekannt ist.
+Für die Bestimmung des aktiven Volumens zur Berechnung der Schadensrate wurde ein vollständig
+depletierter Sensor angenommen, das tatsächliche aktive Volumen des Detektors ist somit kleiner, wodurch sich auch
+die gemessene Schadensrate verringert.
+Die Funktion \ref{eqn:damage} kann solche Effekte nicht berücksichtigen.

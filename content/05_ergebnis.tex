@@ -1,14 +1,20 @@
 \chapter{Ergebnisse und Ausblick}
-Das Programm beschreibt die Dotierungskonzentration und die Schadensrate
-auf der Grundlage des Hamburger Modells präzise. Die Näherung für beliebige
+Das Programm beschreibt die Dotierungskonzentration und die Schadensrate während dem
+Annealing einer bestrahlten Diode
+auf der Grundlage des Hamburger Modells. Die Näherung für beliebige
 Temperaturen verursacht für hinreichend viele Interpolationsintervalle
-vernachlässigbar kleine Fehler. Das Modell versagt für kleine Schadensraten $\alpha < \SI{1.5e-17}{\ampere\per\centi\meter}$,
-da diese nicht beliebig gering werden können. Solche Werte werden jedoch erst nach
+vernachlässigbar kleine Fehler. Die Anwendbarkeit des Modells zur Berechnung der Schadensrate ist
+beschränkt, so würden große Annealingzeiten und Temperaturen ($\alpha < \SI{1.5e-17}{\ampere\per\centi\meter}$) zu Abweichungen
+zischen Modell und Realität führen. Solche Werte werden jedoch erst nach
 einer Annealingzeit von mehr als $t=\SI{1e4}{\minute}$ bei $\SI{80}{\celsius}$ erreicht, wofür
 die Dotierungskonzentration bereits nahe am Sättigungswert liegt.
+%versagt für kleine Schadensraten $\alpha < \SI{1.5e-17}{\ampere\per\centi\meter}$,
+%da diese nicht beliebig gering werden können. Solche Werte werden jedoch erst nach
+%einer Annealingzeit von mehr als $t=\SI{1e4}{\minute}$ bei $\SI{80}{\celsius}$ erreicht, wofür
+%die Dotierungskonzentration bereits nahe am Sättigungswert liegt.
 
 Die Verbindung von Datensätzen und die Anknüpfung der einzelnen Zeitstempel der
-Textdateien funktioniert unter vernachlässigbar kleinen Ungenauigkeiten, da das annealing
+Textdateien funktioniert unter vernachlässigbar kleinen Ungenauigkeiten, da das Annealing
 nach einem Abkühlungszyklus selbst über große Zeiträume irrelevant im Vergleich zu
 den Erwärmungszyklen.
 
@@ -17,8 +23,9 @@ zu erklären. Unvollständige Depletion des Sensors, vorheriges annealing über 
 unbekannten Zeitraum, und Unsicherheiten in der Temperaturskalierung des Leckstroms sowie
 des Volumens des Detektors sind dabei die Hauptursachen.
 
-Das Interface modelliert Annealingeffekte für beliebige Fluenzen, Temperaturen und
-Zeiten zuverlässig. Die dargestellten Werte entsprechen den genauen Funktionswerten
+Es wurde ein Interface erstellt, dass das Modell nutzt um die Schadensrate und die Dotierungskonzentration
+für beliebige Fluenzen, Temperaturen und
+Zeiten vorherzusagen. Die dargestellten Werte entsprechen den genauen Funktionswerten
 der Funktionen \ref{eqn:N_eff} und \ref{eqn:damage}, da keine Näherungen nötig sind.
 
 

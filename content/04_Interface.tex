@@ -1,7 +1,7 @@
 \chapter{Interface zur Berechnung von Annealingeffekte für konstante Temperaturen}
 Das Hauptprogramm dient zur Modellierung von Annealingeffekte für beliebige Datensätze.
-Um den theoretischen Verlauf von Annealingeffekten von konstanten Temperaturen über einen
-beliebigen Zeitraum darstellen zu können dient ein weiteres Pyton Programm diesem Zweck.
+Um den erwarteten Verlauf von Annealingeffekten von konstanten Temperaturen über einen
+beliebigen Zeitraum bestimmen zu können dient ein weiteres Python Programm diesem Zweck.
 Bei der Ausführung öffnet es ein Interface, welches nach den relevanten Angaben für
 das Modellieren der Dotierungskonzentration oder der Schadensrate fragt. In Abbildung \ref{fig:interface}
 ist das Interface dargestellt.
@@ -12,7 +12,9 @@ ist das Interface dargestellt.
 \label{fig:interface}
 \end{figure}
 
-Die Berechnung erfolgt dabei ebenfalls auf der Grundlage des Hamburger Modells.
+Die Berechnung erfolgt dabei ebenfalls auf der Grundlage des Hamburger Modells und modelliert die
+Annealingeffekte von
+$0,1$ Sekunden bis zu dem angegebenen Zeitintervall.
 Das Zeitintervall von einem Wert zum nächsten ist dabei logarithmisch, wodurch über alle
 Größenordnungen der Zeit hinweg der Abstand auf der logarithmischen Zeitachse gleich bleibt.
 Die Parameter können in den Einstellungen beliebig gewählt werden.
@@ -23,12 +25,12 @@ Schadensrate dargestellt. Hierbei werden die Parameter einer "WE-25k" Diode verw
 
 \begin{figure}
   \includegraphics[width=0.83\textwidth]{build/interface_n_eff.PDF}
-  \caption{Beispiel Plot von $N_{\mathrm{eff}}$ mit $t = \SI{1e5}{\minute}$, $\Phi_{\mathrm{eq}}= \SI{5e15}{\per\centi\meter\squared}$ und $T=\SI{60}{\celsius}$.}
+  \caption{Beispiel Plot von $N_{\mathrm{eff}}$ mit $t = \SI{e4}{\minute}$, $\Phi_{\mathrm{eq}}= \SI{5e15}{\per\centi\meter\squared}$ und $T=\SI{60}{\celsius}$.}
   \label{fig:inter_n}
 \end{figure}
 
 \begin{figure}
   \includegraphics[width=0.83\textwidth]{build/interface_damage.PDF}
-  \caption{Beispiel Plot von $\alpha$ mit $t = \SI{1e5}{\minute}$ und $T=\SI{60}{\celsius}$.}
+  \caption{Beispiel Plot von $\alpha$ mit $t = \SI{e4}{\minute}$ und $T=\SI{60}{\celsius}$.}
   \label{fig:inter_damage}
 \end{figure}
