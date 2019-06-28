@@ -51,7 +51,7 @@ Parameter sind beispielhaft gewählt und können gezielt angepasst werden.
     \bottomrule
   \end{tabular}
 \end{table}
-%Die Frequenzfaktoren und die Aktivierungsenergien sind zusätzlich Materialabhängig.
+Die \textit{introduction rates} und die Fitparameter $N_{\mathrm{C0}}$, $c$, $\alpha_{\mathrm{I}}$ und $\beta $ sind dabei materialabhängig.
 
 \begin{figure}
     \includegraphics[width=0.83\textwidth]{build/annealing.PDF}
@@ -65,13 +65,13 @@ Parameter sind beispielhaft gewählt und können gezielt angepasst werden.
     \label{fig:damage}
 \end{figure}
 
-Beide Annealingeffekte stimmen mit dem Verlauf von \ref{fig:n_eff_beispiel} und \ref{fig:damage_beispiel} über ein, was
+Beide Annealingeffekte stimmen mit dem Verlauf von \ref{fig:n_eff_beispiel} und \ref{fig:damage_rates} über ein, was
 die korrekte Implementierung der Funktionen \ref{eqn:N_eff} und \ref{eqn:damage}  des Programms
 bestätigt.
 
 
 
-\section{Annealingeffekt für nicht konstanten Temperaturen}{\label{nicht_konstant}}
+\section{Annealingeffekte für nicht konstante Temperaturen}{\label{nicht_konstant}}
 Die Gleichungen \ref{eqn:N_eff} und \ref{eqn:damage} gehen bei der Berechnung der Annealingeffekte von
 einer konstanten Temperatur aus, wodurch diese nicht geeignet sind um $\Delta N_{\mathrm{eff}}$ und $\alpha$ für
 Temperaturverläufe zu Berechnen, welche deutlich von einer konstanten Temperatur abweichen.
@@ -147,7 +147,7 @@ wird analog die gleiche Korrektur durchgeführt.
 In Abbildung \ref{fig:korrektur_N_eff} ist Dotierungskonzentration mit Korrektur dargestellt.
 
 
-\begin{figure}
+\begin{figure}[htp]
     \includegraphics[width=0.83\textwidth]{build/annealingtdata.PDF}
 \caption{$\Delta N_{eff}$ des Sensors R1 mit Korrektur nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
 \label{fig:korrektur_N_eff}
@@ -171,7 +171,7 @@ wodurch der Korrekturansatz hier nicht mehr gelten kann. Um den Ansatz dennoch
 verwenden zu können, wird die Zeit des \textit{longterm annealing} mit dem
 Skalierungsfaktor
 \begin{align}
-  \Theta(T) =  \exp{-\frac{E_{\mathrm{I}}^*}{k_b}\left(\frac{1}{T}-\frac{1}{T_{\mathrm{ref}}}\right)} \text{\cite{moll}} \\
+  \Theta(T) =  \exp{\left(-\frac{E_{\mathrm{I}}^*}{k_b}\left(\frac{1}{T}-\frac{1}{T_{\mathrm{ref}}}\right)\right)} \text{\cite{moll}} \\
 \end{align}
 versehen, wodurch sich die Formel der Schadensrate ändert.
 \begin{align}
@@ -223,7 +223,7 @@ beliebige Temperaturen berechnen.
 \section{Lineare Interpolation der Temperatur}
 Der im vorherigen Abschnitt beschriebene Korrketuransatz verwendet für jedes
 Zeitintervall den Mittelwert der Anfangs- und Endtemperatur. Für große
-Zeitabschnitte kommt es also auch zu größeren Abweichung von der tatsächlichen
+Zeitabschnitte kommt es bei Temperaturprofilen wie bei Sandia also auch zu größeren Abweichung von der tatsächlichen
 Temperatur. Um diesen Fehler gering zu halten, wird das Temperaturprofil
 linear interpoliert.
 Um die Rechenzeit nicht unnötig zu erhöhen, wird eine Funktion definiert, die sinvolle
@@ -236,9 +236,9 @@ Die Funktion wächst mit steigenden Temperaturen und gibt die Anzahl auf eine Te
 Datensatzes folgenden Intervalle an. Der Parameter $z$ bewirkt eine allgeine steigerung
 der Anzahl an Intervallen, während $y$ die Anzahl basierend auf der zu betrachtenden Temperatur
 erhöht.
-Da große Temperaturen relevanter für das annealing sind und die Annealingeffekte mehr als linear von
+Da große Temperaturen relevanter für das annealing sind und die Annealingeffekte nicht linear von
 der Temperatur abhängig sind, ist es vorteilhaft,
-bei diesen Werten möglichst kleine ungenauigkeiten und somit möglichst viele
+bei den Mittelwerten möglichst kleine ungenauigkeiten und somit möglichst viele
 Intervalle zu erschaffen. Aus diesem Grund wird die minimale Temperatur $T_{\mathrm{min}}$ des Datensatzes
 als Bezugspunkt genommen, wobei die Parameter $y$ und $z$ frei anpassbar sind.
 

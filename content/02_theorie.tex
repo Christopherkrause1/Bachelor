@@ -43,10 +43,11 @@ durch die festen Raumladungen entstehende Spannung und $U_{\mathrm{ext}}$ die ex
 strahlengeschädigten Detektoren ist dies nicht mehr der Fall, wodurch in Gleichung \ref{eqn:depletionsdicke} das $N_{\mathrm{D}}$ durch $N_{\mathrm{D}}$ ersetzt werden muss.
 
 
-Durch eine äußere negative Spannung  an der p-Seite im Bezug zur n-Seite, oder umgekehrt, wird die Zone vergrößert und dient als Ionisationskammer für einfallende Teilchen,. Diese streuen
+Durch eine äußere negative Spannung  an der p-Seite im Bezug zur n-Seite, oder umgekehrt, wird die Zone vergrößert und dient als Ionisationskammer für einfallende Teilchen. Diese streuen
 an den Atomkernen in der Zone und geben ein Teil oder ihre gesamte Energie bei dem Durchgang durch den Detektor ab. Mit der so abgegebenen
 Energie werden Elektron-Loch Paare erzeugt, welche sich durch das vorhandene elektrische Feld zu ihrer jeweiligen dotierten
-Schicht bewegen und über Elektroden als elektrisches Signal gemessen werden können.
+Schicht bewegen und über Elektroden als elektrisches Signal gemessen werden können. Des Weiteren ist Depletionszone essenziell damit
+die entstehenden Elektron-Loch Paare nicht mit
 Die raumladungsfreie Zone dient somit als Detektor und soll ein möglichst großes Volumen umfassen.
 
 Mehr Informationen über Halbleiter finden sich in  \cite{semiconductor}.
@@ -81,8 +82,11 @@ In Abbildung \ref{fig:typeinversion} ist eine Typinversion aus dem Buch "Teilche
 \label{fig:typeinversion}
 \end{figure}
 
-Nach der "Non-Ionizing Energy Loss" (NIEL) Hypothese wird der Detektorschaden durch die Energie des herausgeschlagenen
-Atoms beschrieben und ist unabhängig von der ursprünglichen Wechselwirkung.
+Gemäß der "Non-Ionizing Energy Loss" (NIEL) Hypothese ist der entstehende Schaden des Detektors durch
+herausgeschlagene Atome des Gitters proportional zur Energie dieser Zwischengitteratome.
+Abhänig von der Energie des Zwischengittertoms kann dieses weitere Atome aus den Gitter schlagen und somit
+eine Kaskade von Defekten auslösen. Der dem Detektor zugefügte Schaden ist dabei unabhängig von der
+ursprünglichen Wechselwirkung zwischen der Strahlung und des Gitters.
 Um somit Fluenzen $ \Phi$ von verschiedenen Teilchen (Lepton, Hadron) miteinander vergleichen zu können, werden diese
 auf eine $\SI{1}{\mega\eV}$ Neutronstrahlung normalisiert und haben die Einheit $[\Phi_{\mathrm{eq}}]\mathrm{\frac{n_{\mathrm{eq}}}{cm^2}}$.
 
@@ -133,7 +137,7 @@ Hierbei gilt für die temperaturabhängigen Funktion:
 Mit der \textit{introduction rate} $g_{\mathrm{a}}$, dem Frequenzfaktor $k_{0\mathrm{a}}$, der Boltzmann Konstante $k_{\mathrm{b}}$ und
 der Aktivierungsenergie $E_{aa}$. Die Aktivierungsenergie beschreibt dabei die nötige Energie für das Ausheilen der Defekte.
 Der Frequenzfaktor ist im Bereich der am häufigsten auftretenden Phononenfrequenz ${f = k_{\mathrm{B}}T/h \approx \SI{10e13}{\per\second}}$, wodurch
-die betroffenen Defekte höchstwahrscheinlich durch Dissoziation ausheilen.
+die betroffenen Defekte höchstwahrscheinlich durch Dissoziation ausheilen, da dieser ein Prozess mit einer einzelnen Zustandsänderung ist.
 
 
 \textbf{\textit{Longterm annealing}} $\symbf{N_{\mathrm{Y}}}:$ Der Aufbau von
