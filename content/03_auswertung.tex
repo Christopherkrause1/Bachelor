@@ -42,9 +42,9 @@ Parameter sind beispielhaft gewählt und können gezielt angepasst werden.
         $k_{0\mathrm{I}}$            &    1,2  $\cdot$             $10^{13}\mathrm{s^{-1}}$\\
         $k_{0\mathrm{a}}$           &    2,4  $\cdot$              $10^{13}\mathrm{s^{-1}}$   \\
         $k_{0\mathrm{Y}}$            &    1,5  $\cdot$             $10^{15}\mathrm{s^{-1}}$     \\
-        $E_{\mathrm{I}}$                       &    1,11 $\cdot$   $\mathrm{eV}$       \\
-        $E_{\mathrm{aa}}$                     &    1,09 $\cdot$    $\mathrm{eV}$       \\
-        $E_{\mathrm{Y}}$                      &    1,33 $\cdot$    $\mathrm{eV}$    \\
+        $E_{\mathrm{I}}$                       &    1,11           $\mathrm{eV}$       \\
+        $E_{\mathrm{aa}}$                     &    1,09            $\mathrm{eV}$       \\
+        $E_{\mathrm{Y}}$                      &    1,33            $\mathrm{eV}$    \\
         $g_{\mathrm{c}}$      &    1,58 $\cdot$                    $10^{-2}\mathrm{cm^{-2}}$           \\
         $g_{\mathrm{a}}$           &    1,59 $\cdot$               $10^{-2}\mathrm{cm^{-2}}$         \\
         $g_{\mathrm{Y}}$          &    4,84 $\cdot$                $10^{-2}\mathrm{cm^{-2}}$      \\
@@ -54,13 +54,15 @@ Parameter sind beispielhaft gewählt und können gezielt angepasst werden.
 Die \textit{introduction rates} und die Fitparameter $N_{\mathrm{C0}}$, $c$, $\alpha_{\mathrm{I}}$ und $\beta $ sind dabei materialabhängig.
 
 \begin{figure}
-    \includegraphics[width=0.83\textwidth]{build/annealing.PDF}
+  \centering
+    \includegraphics[width=0.82\textwidth]{build/annealing.PDF}
     \caption{$\Delta N_{\mathrm{eff}}$ einer WE-25k Diode nach Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
     \label{fig:N_eff}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.83\textwidth]{build/damage.PDF}
+  \centering
+    \includegraphics[width=0.82\textwidth]{build/damage.PDF}
     \caption{Schadensrate einer WE-25k Diode.}
     \label{fig:damage}
 \end{figure}
@@ -90,14 +92,16 @@ des Sensors "R1" mit Reaktorneutronen in den
 der Bestrahlungen finden sich in \ref{mareike}.
 
 \begin{figure}
-    \includegraphics[width=0.83\textwidth]{build/ohnekorrektur.PDF}
-    \caption{Dotierungskonzentration des Sensors R1 im Verkauf des Annealings nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
+  \centering
+    \includegraphics[width=0.82\textwidth]{build/ohnekorrektur.PDF}
+    \caption{Dotierungskonzentration des Sensors R1 im Verlauf des Annealings nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
     \label{fig:N_eff_ohne}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.83\textwidth]{build/damageohnekorrektur.PDF}
-    \caption{Schadensrate einer WE-25k Diode.}
+  \centering
+    \includegraphics[width=0.82\textwidth]{build/damageohnekorrektur.PDF}
+    \caption{Schadensrate des Sensors R1 im Verlauf des Annealings. \:\:\:\:\:\:}
     \label{fig:damage_ohne}
 \end{figure}
 
@@ -105,11 +109,11 @@ der Bestrahlungen finden sich in \ref{mareike}.
 %  \centering
 %  \begin{subfigure}{0.48\textwidth}
 %      \centering
-%      \includegraphics[height=0.83\textwidth]{build/ohnekorrektur.PDF}
+%      \includegraphics[height=0.82\textwidth]{build/ohnekorrektur.PDF}
 %  \end{subfigure}
 %  \begin{subfigure}{0.48\textwidth}
 %      \centering
-%      \includegraphics[height=0.83\textwidth]{build/damageohnekorrektur.PDF}
+%      \includegraphics[height=0.82\textwidth]{build/damageohnekorrektur.PDF}
 %  \end{subfigure}
 %  \caption{Dotierungskonzentration (a) und Schadensrate (b) des Sensors R1 nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
 %\end{figure}
@@ -118,7 +122,7 @@ der Bestrahlungen finden sich in \ref{mareike}.
 %  \label{fig:ohnekorrektur}
 %\end{figure}
 
-Die Dotierungskonzetration strebt nach dem Hamburg-Modell
+Die Dotierungskonzentration strebt nach dem Hamburg-Modell
 für unendlich große Zeiten gegen einen konstanten Wert und nimmt nicht mehr
 ab.
 Der Fehler entsteht, da Gleichung \ref{eqn:N_eff} für jeden
@@ -132,7 +136,7 @@ Um die Effekte richtig berechnen zu können, muss eine Korrektur in den
 Gleichungen vorgenommen werden.
 Zunächst wird die Dotierungskonzentration betrachtet. Als Näherung wird über
 jeden einzelnen Zeitabschnitt $t_{\mathrm{i}} - t_{\mathrm{i-1}}$ die
-Temperatur $(T_{\mathrm{i}} +T_{\mathrm{i-1}})/2$ für das annealing verwendet.
+Temperatur $(T_{\mathrm{i}} +T_{\mathrm{i-1}})/2$ für das Annealing verwendet.
 Da der stable damage keine Temperaturabhängigkeit hat, muss dieser nicht
 verändert werden. Für $N_{\mathrm{A}}$ wird nun folgende Näherung
 verwendet werden:
@@ -147,8 +151,9 @@ wird analog die gleiche Korrektur durchgeführt.
 In Abbildung \ref{fig:korrektur_N_eff} ist Dotierungskonzentration mit Korrektur dargestellt.
 
 
-\begin{figure}[htp]
-    \includegraphics[width=0.83\textwidth]{build/annealingtdata.PDF}
+\begin{figure}[!htb]
+  \centering
+    \includegraphics[width=0.82\textwidth]{build/annealingtdata.PDF}
 \caption{$\Delta N_{eff}$ des Sensors R1 mit Korrektur nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
 \label{fig:korrektur_N_eff}
 \end{figure}
@@ -165,7 +170,7 @@ der einzelnen Temperaturen verzögert sich der Annealingeffekt insgesamt, da anf
 geringe Temperaturen nur wenig zum gesamten Effekt beitragen. Dies wird
 an dem späteren Zeitpunkt des Minimums deutlich.
 
-Eine solche Korrektur kann für den shortterm annealing Term der Schadensrate ebenfalls gemacht werden.
+Eine solche Korrektur kann für den \textit{shortterm annealing} Term der Schadensrate ebenfalls erstellt werden.
 Im zweiten Term ist $\alpha_{0}$ temperaturabhängig, aber nicht zeitabhängig,
 wodurch der Korrekturansatz hier nicht mehr gelten kann. Um den Ansatz dennoch
 verwenden zu können, wird die Zeit des \textit{longterm annealing} mit dem
@@ -179,11 +184,11 @@ versehen, wodurch sich die Formel der Schadensrate ändert.
   \medskip
   \text{mit}\:\: &\alpha^*_{\mathrm{0}}(T) = \SI{-8.9e-17}{\ampere\per\centi\meter} + \SI{4.6e-14}{\ampere\kelvin\per\centi\meter} \cdot \frac{1}{T_{\mathrm{ref}}}
 \end{align}
-Hierbei ist$E_{\mathrm{I}}^*$ ein Aktvierungsenergie und $\alpha^*_{0}$ nun nicht mehr temperaturabhängig,
+Hierbei ist$E_{\mathrm{I}}^*$ ein Aktivierungsenergie und $\alpha^*_{0}$ nun nicht mehr temperaturabhängig,
 sondern lediglich abhängig von einer Referenztemperatur $T_{\mathrm{ref}}$. Für konstante Temperaturen
 ist diese Gleichung folglich äquivalent zu Gleichung \ref{eqn:damage}, für nicht
 konstante Temperaturen ist die resultierende Abweichung im Vergleich zur Korrektur vernachlässigbar.
-Nun kann wieder eine Korrektur analog zu den vorherigen eingeführt werden eingeführt werden:
+Nun kann wieder eine Korrektur analog zu den vorherigen eingeführt werden:
 
 \begin{align}
   \Theta(T) \cdot t_{\mathrm{n}} \rightarrow \sum_{i=0}^n   \Theta \left(\frac{T_{\mathrm{i}} +T_{\mathrm{i-1}}}{2}\right) \cdot  (t_{\mathrm{i}} - t_{\mathrm{i-1}})
@@ -193,7 +198,8 @@ In Abbildung \ref{fig:korrektur_damage} ist die Schadensrate ohne und mit Korrek
 dargestellt.
 
 \begin{figure}
-    \includegraphics[width=0.83\textwidth]{build/damagekorrektur.PDF}
+  \centering
+    \includegraphics[width=0.82\textwidth]{build/damagekorrektur.PDF}
 \caption{Schadensrate des Sensors R1  mit Korrektur.}
 \label{fig:korrektur_damage}
 \end{figure}
@@ -210,7 +216,7 @@ dargestellt.
 
 
 Auch hier zeigt das Verhalten ohne Korrektur klare Abweichungen zu den
-Erwartungen, so kann beispielsweise die Schadensrate mit voranschreitendem annealing nicht steigen.
+Erwartungen, so kann beispielsweise die Schadensrate mit voranschreitendem Annealing nicht steigen.
 Mit Korrektur verhält sich die Schadensrate gemäß den Erwartungen, der stärkste
 Effekt ist bei den größten Temperaturen zu sehen, kleine Temperaturen führen hingegen
 nur zu minimalen Änderungen.
@@ -221,24 +227,24 @@ beliebige Temperaturen berechnen.
 
 
 \section{Lineare Interpolation der Temperatur}
-Der im vorherigen Abschnitt beschriebene Korrketuransatz verwendet für jedes
+Der im vorherigen Abschnitt beschriebene Korrekturansatz verwendet für jedes
 Zeitintervall den Mittelwert der Anfangs- und Endtemperatur. Für große
 Zeitabschnitte kommt es bei Temperaturprofilen wie bei Sandia also auch zu größeren Abweichung von der tatsächlichen
 Temperatur. Um diesen Fehler gering zu halten, wird das Temperaturprofil
 linear interpoliert.
-Um die Rechenzeit nicht unnötig zu erhöhen, wird eine Funktion definiert, die sinvolle
+Um die Rechenzeit nicht unnötig zu erhöhen, wird eine Funktion definiert, die sinnvolle
 Interpolationsschritte $n$ abschätzt.
 
 \begin{align*}
   n = \lceil{y \cdot (T_{\mathrm{A}}-T_{\mathrm{min}})+ z}\rceil \label{eqn:intervall}
 \end{align*}
 Die Funktion wächst mit steigenden Temperaturen und gibt die Anzahl auf eine Temperatur $T_A$ des
-Datensatzes folgenden Intervalle an. Der Parameter $z$ bewirkt eine allgeine steigerung
+Datensatzes folgenden Intervalle an. Der Parameter $z$ bewirkt eine allgemeine Steigerung
 der Anzahl an Intervallen, während $y$ die Anzahl basierend auf der zu betrachtenden Temperatur
 erhöht.
-Da große Temperaturen relevanter für das annealing sind und die Annealingeffekte nicht linear von
+Da große Temperaturen relevanter für das Annealing sind und die Annealingeffekte nicht linear von
 der Temperatur abhängig sind, ist es vorteilhaft,
-bei den Mittelwerten möglichst kleine ungenauigkeiten und somit möglichst viele
+bei den Mittelwerten möglichst kleine Ungenauigkeiten und somit möglichst viele
 Intervalle zu erschaffen. Aus diesem Grund wird die minimale Temperatur $T_{\mathrm{min}}$ des Datensatzes
 als Bezugspunkt genommen, wobei die Parameter $y$ und $z$ frei anpassbar sind.
 
@@ -254,7 +260,7 @@ erzeugt. In den Abbildungen \ref{fig:interpolation_N_eff} und \ref{fig:interpola
 die daraus berechneten Annealingeffekte dargestellt.
 
 \begin{figure}
-    \includegraphics[width=0.83\textwidth]{build/interpolationtdata.PDF}
+    \includegraphics[width=0.82\textwidth]{build/interpolationtdata.PDF}
 \caption{Interpolierte Temperatur für y = $0,05$ und $z=0,2$ und $\Delta N_{\mathrm{eff}}$.}
 \label{fig:interpolation_N_eff}
 \end{figure}
@@ -262,7 +268,8 @@ die daraus berechneten Annealingeffekte dargestellt.
 
 
 \begin{figure}
-    \includegraphics[width=0.83\textwidth]{build/damage_interpolation.PDF}
+  \centering
+    \includegraphics[width=0.82\textwidth]{build/damage_interpolation.PDF}
 \caption{Interpolierte Temperatur für y = $0,05$ und $z=0,2$ und $\alpha$.}
 \label{fig:interpolation_damage}
 \end{figure}
@@ -275,15 +282,15 @@ Temperaturkurve entspricht, kommt es bei der Aufsummierung der einzelnen Zeitabs
 zu größer werdenden Abweichungen von der eigentlichen Kurve. Die abweichenden Werte beschreiben
 aufgrund der Interpolation einen präziseren Verlauf als der Annealingeffekt des ursprünglichen Datensatzes.
 Für große Zeiten strebt $\Delta N_{\mathrm{eff}}$
-für beide Temperaturdatensätze gegen den selben Wert.
+für beide Temperaturdatensätze gegen denselben Wert.
 
 \section{Berechnung der gesamten Annealinghistorie eines Sensors}
 Die hier betrachtete Annealinghistorie setzt sich aus 60 Erwärmungs-und
 Abkühlungszyklen des Sensors "P3" zusammen, welche $\SI{1800}{\minute}$ entsprechen.
 Für den Sensor "P4" werden 39 Zyklen ($\SI{1170}{\minute}$) betrachtet.
-Beide wurden von der ${\mathrm{IRRAD}}$ Einrichtung mit $\SI{24}{\giga\eV\per\clight}$ Protonen des Protonen Sychrotrons bestrahlt.
-Die Datensätze werden mithilfe eines Python Programmes mit einander Verbunden,
-wobei die Zeiten zwischen dem annealing von einem Zyklus zum nächsten auf Null gesetzt werden. Wegen der geringen
+Beide wurden von der ${\mathrm{IRRAD}}$ Einrichtung mit $\SI{24}{\giga\eV\per\clight}$ Protonen des Protonen Synchrotrons bestrahlt.
+Die Datensätze werden mithilfe eines Python Programmes miteinander Verbunden,
+wobei die Zeiten zwischen dem Annealing von einem Zyklus zum nächsten auf null gesetzt werden. Wegen der geringen
 Temperaturen nach jeder Abkühlung sind die daraus resultierenden Abweichungen vernachlässigbar.
 Für jeden Zyklus wurde bei den Sensoren eine Temperatur von $\SI{60}{\celsius}$ angestrebt.
 Mehr Informationen zu den Eigenschaften von P3 und P4 in  \cite{felix}.
@@ -293,7 +300,8 @@ In Abbildung \ref{fig:P_3} ist die Schadensrate für die 60 Annealingzyklen,
 sowie die experimentell bestimmte Schadensrate dargestellt.
 
 \begin{figure}
-    \includegraphics[width=0.83\textwidth]{build/damage_ohne_temperatur.PDF}
+  \centering
+    \includegraphics[width=0.82\textwidth]{build/damage_ohne_temperatur.PDF}
 \caption{Theoretische Schadensrate und gemessene Schadensrate nach 1, 2, 3, 4, 6, 9, 14, 24, 39 und 60 Zyklen .}
 \label{fig:P_3}
 \end{figure}
@@ -302,7 +310,7 @@ Der stufenartige Verlauf der Kurve resultiert aus den Temperaturzyklen.
 Es ist eine merkliche Abweichung der experimentellen Messwerte von den theoretischen
 Werten erkennbar. Der Sensor "P3" wurde schon vor der Messung erwärmt, wodurch
 die angegebenen Annealingzeiten in Wahrheit größer sind. Dies erklärt die
-geringe Änderung der einzelnen Messwerte von einander, welche dem
+geringe Änderung der einzelnen Messwerte voneinander, welche dem
 Verlauf der theoretischen Werte für große Zeiten ähnelt. Die Abweichung der theoretischen
 und experimentellen Funktionswerte wird dadurch größer.
 Für die Bestimmung der Schadensrate wird das Detektorvolumen und den durch
@@ -310,7 +318,7 @@ Strahlung induzierten Leckstrom $\Delta I$ benötigt. Bei der Messung wurde
 $\Delta I$ mit dem Leckstrom gleichgesetzt. Dies gilt nur bei einer Temperatur
 von $\SI{20}{\celsius}$, bei der Messung des Stroms betrug die tatsächliche Temperatur
 $\SI{-2}{\celsius}$. Um dies zu korrigieren wird der Leckstrom gemäß \ref{eqn:Chilingarov_2013}
-mit der Temperatur skaliert. Die Energie der Bandlücke und das Volumen des Detektormaterial
+mit der Temperatur skaliert. Die Energie der Bandlücke und das Volumen des Detektormaterials
 unterliegen dabei Unsicherheiten. Zusätzlich haben auch die materialspezifischen Parameter
 der theoretischen Messwerte eine gewisse Abweichung zu den tatsächlichen Parametern, da
 ein anderer Sensor betrachtet wird.
@@ -319,7 +327,8 @@ Die Messung des Sensors "P4" ist in Abbildung \ref{fig:P_4}
 dargestellt.
 
 \begin{figure}
-    \includegraphics[width=0.83\textwidth]{build/damage_P_4.PDF}
+  \centering
+    \includegraphics[width=0.82\textwidth]{build/damage_P_4.PDF}
 \caption{Theoretische Schadensrate und gemessene Schadensrate nach 1, 2, 3, 4, 6, 9, 14, 24 und 39 Zyklen.}
 \label{fig:P_4}
 \end{figure}
@@ -327,6 +336,6 @@ dargestellt.
 Die Abweichungen sind in dieser Messreihe noch deutlicher. Neben den Fehlerquellen die
 für den Sensor "P3" aufgezählt wurden, ist "P4" zusätzlich nicht vollständig depletiert.
 Für die Bestimmung des aktiven Volumens zur Berechnung der Schadensrate wurde ein vollständig
-depletierter Sensor angenommen, das tatsächliche aktive Volumen des Detektors ist somit kleiner, wodurch sich auch
+depletierter Sensor angenommen. Das tatsächliche aktive Volumen des Detektors ist somit kleiner, wodurch sich auch
 die gemessene Schadensrate verringert.
 Die Funktion \ref{eqn:damage} kann solche Effekte nicht berücksichtigen.
