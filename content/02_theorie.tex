@@ -4,7 +4,7 @@
 \section{Siliziumdetektoren}
 
 Die im Silizium vorkommenden Elektronen wechselwirken mit anderen Elektronen und
-Kernen des Kristalls, wodurch es zu vielen Aufspaltungen des Energieniveaus dieser kommt. Durch das Pauli-Prinzip können
+Kernen des Kristalls, wodurch es zu vielen Aufspaltungen des Energieniveaus der Elektronen kommt. Durch das Pauli-Prinzip können
 die Elektronen nicht dieselben Quantenzahlen besitzen, wodurch sich deren Energieniveaus voneinander unterscheidet.
 Die Zustände liegen dicht bei einander, weshalb von Energiebändern gesprochen wird.
 Das Höchste von den Elektronen besetzte Band im Grundzustand ist das Valenzband, welches von dem
@@ -21,8 +21,8 @@ erschaffen ein Loch über dem Valenzband, welches durch ein Elektron gefüllt wi
 Loch im Valenzband zurückbleibt.
 Bei den Fremdatomen wird zwischen Donatoren und Akzeptoren unterschieden, wobei die
 Ersteren mehr Valenzelektronen als das Silizium besitzen und die Zweiteren weniger.
-Bereiche des Siliziumkristalls mit Donatoren werden n-Dotierte Halbleiter
-und Bereiche mit Akzeptoren p-Dotierte Bereiche genannt.
+Bereiche des Siliziumkristalls mit Donatoren werden n-Dotierte Bereiche
+und mit Akzeptoren p-Dotierte Bereiche genannt.
 
 Bei einem Übergang von einer n-Dotierten zu einer p-Dotierten Schicht rekombinieren
 die Elektronen der n-Dotierten Schicht mit den Elektronenlöchern der p-dotierten Schicht, da beide
@@ -39,8 +39,8 @@ Im Falle von ($N_{\mathrm{A}} \gg N_{\mathrm{D}}$) lässt sich die Depletionstie
   \label{eqn:depletionsdicke}
 \end{align}
 Hierbei beschreibt $\epsilon \epsilon_0$ die Permittivität, $e$ die Elementarladung, $N_{\mathrm{D}}$ die Donatorenkonzentration, $U_{\mathrm{bi}}$ (\textit{built-in voltage})  die
-durch die festen Raumladungen entstehende Spannung und $U_{\mathrm{ext}}$ die extern angelegte Spannung. Für ideale Detektoren gilt $N_{\mathrm{D}} = N_{\mathrm{D}}$, bei
-strahlengeschädigten Detektoren ist dies nicht mehr der Fall, wodurch in Gleichung \ref{eqn:depletionsdicke} das $N_{\mathrm{D}}$ durch $N_{\mathrm{D}}$ ersetzt werden muss.
+durch die festen Raumladungen entstehende Spannung und $U_{\mathrm{ext}}$ die extern angelegte Spannung. Für ideale Detektoren gilt $N_{\mathrm{D}} = N_{\mathrm{eff}}$, bei
+strahlengeschädigten Detektoren ist dies nicht mehr der Fall, wodurch in Gleichung \ref{eqn:depletionsdicke} das $N_{\mathrm{D}}$ durch $N_{\mathrm{eff}}$ ersetzt werden muss.
 
 
 Durch eine äußere negative Spannung  an der p-Seite in Bezug zur n-Seite, oder umgekehrt, wird die Zone vergrößert und dient als Ionisationskammer für einfallende Teilchen. Diese streuen
@@ -55,7 +55,7 @@ Mehr Informationen über Halbleiter finden sich in  \cite{semiconductor}.
 \section{Strahlenschäden}
 Wechselwirkungen von Teilchen mit Silizium können zu Defekten in deren
 Gitterstruktur führen.
-Die Energie der Teilchen wird dabei durch Ionisation und elastischer Streuung an den Atomkernen abgeben. Die Ionisation der
+Die Energie der Teilchen wird dabei durch Ionisation und elastischer Streuung mit den Atomkernen abgegeben. Die Ionisation der
 Gitteratome wird \textit{Total Ionizing Dose} (TID) genannt und führt zu keinen Schäden im Bulk, lediglich das Streuen der Strahlung an den
 Atomkernen kann zu Defekten im Gitter führen.
 Es muss zwischen verschiedenen Arten von Defekten unterschieden werden. Die Teilchen können ein Gitteratom aus dem
@@ -94,7 +94,7 @@ auf eine $\SI{1}{\mega\eV}$ Neutronstrahlung normalisiert und haben die Einheit 
 
 \section{Annealing der Dotierungskonzentration}
 Annealing beschreibt im Allgemeinen die durch Erhitzung hervorgerufenen Veränderungen von Materialeigenschaften. Für strahlengeschädigte
-Halbleiter werden dabei, durch die zugeführte Wärme, die Defekte teilweise behoben werden, um somit eine
+Halbleiter werden dabei, durch die zugeführte Wärme, die Defekte teilweise behoben, um somit eine
 bessere Funktionsfähigkeit über einen längeren Zeitraum zu garantieren. Die auftretenden Effekte sind dabei wie folgt:
 
 \textbf{1. Migration:} Ist die Temperatur hoch genug können die Zwischengitteratome durch das Gitter wandern und
@@ -103,7 +103,7 @@ Leerstellen im Gitter füllen.
 \textbf{2. Komplexformation:} Das Migrieren der Atome kann zum Ausbilden von Komplexen führen. Dies geschieht durch das
 Gruppieren von mehreren Zwischengitteratomen im Kristall.
 
-\textbf{3. Dissoziation:} Komplexe können bei hohen Temperaturen Dissoziieren, wodurch einzelne Bestandteile des Komplexes
+\textbf{3. Dissoziation:} Komplexe können bei hohen Temperaturen dissoziieren, wodurch einzelne Bestandteile des Komplexes
 durch das Gitter migrieren können. Dafür muss die Schwingungsenergie des Gitters größer als die Bindungsenergie der Komplexe sein.
 
 Die Annealingeffekte bewirken eine Änderung in der effektiven Dotierungskonzentration
@@ -131,9 +131,9 @@ Funktion wird näherungsweise beschrieben durch:
 \begin{align}
   N_{\mathrm{A}}(t, \Phi_{\mathrm{eq}}, T) = \Phi_{\mathrm{eq}} \cdot g_{\mathrm{a}} \cdot \exp{\left(-\frac{t}{\tau_{\mathrm{a}}(T)}\right)}.
 \end{align}
-Hierbei gilt für die temperaturabhängige Funktion:
+Hierbei gilt für die temperaturabhängige Funktion
 \begin{align}
-  \tau_{\mathrm{a}}(T) = \frac{1}{k_{0\mathrm{a}}}\exp{\left(\frac{E_{aa}}{k_{\mathrm{b}}T}\right)}.
+  \tau_{\mathrm{a}}(T) = \frac{1}{k_{0\mathrm{a}}}\exp{\left(\frac{E_{aa}}{k_{\mathrm{b}}T}\right)},
 \end{align}
 Mit der \textit{introduction rate} $g_{\mathrm{a}}$, dem Frequenzfaktor $k_{0\mathrm{a}}$, der Boltzmann Konstante $k_{\mathrm{b}}$ und
 der Aktivierungsenergie $E_{aa}$. Die Aktivierungsenergie beschreibt dabei die nötige Energie für das Ausheilen der Defekte.
@@ -202,8 +202,8 @@ Temperatur beschrieben wird.\cite{moll}
 \begin{align}
   \alpha(t, T) = \underbrace{\alpha_I \cdot \exp{\left(-\frac{t}{\tau_{\mathrm{I}}(T)}\right)}}_{\mathrm{shortterm \: annealing}} + \underbrace{\alpha_{\mathrm{0}}(T) -\beta \cdot \ln{\left(\frac{t}{t_{\mathrm{0}}}\right)}}_{\mathrm{longterm \: annealing}} \text{\label{eqn:damage}}
 \end{align}
-Mit den Fitparameter $\alpha_I$,  $\beta$, den in \cite{moll} berechnete Werten für den Fitparameter $\alpha_{\mathrm{0}}(T)$, sowie der
-temperaturabhängigen Funktion $\tau_{\mathrm{I}}(T)$:
+Hierbei sind $\alpha_I$, $\beta$ und $\alpha_{\mathrm{0}}(T)$ Fitparameter und $\tau_{\mathrm{I}}(T)$ eine
+temperaturabhängige Funktion:
 \begin{align}
   &\alpha_{\mathrm{0}}(T) = \SI{-8.9e-17}{\ampere\per\centi\meter} + \SI{4.6e-14}{\ampere\kelvin\per\centi\meter} \cdot \frac{1}{T} \\
   &\tau_{\mathrm{a}}(T) = \frac{1}{k_{0\mathrm{I}}}\exp{\left(\frac{E_{I}}{k_{\mathrm{B}}T}\right)}
@@ -213,8 +213,8 @@ Wie für $N_{\mathrm{A}}$ und $N_{\mathrm{Y}}$ ist $k_{0\mathrm{I}}$ ein Frequen
 Anders als das Annealingverhalten der Dotierungskonzentration kann die Schadensrate
 bei fortschreitendem Annealing nur sinken. Für kurze und
 lange Zeiten dominieren in diesem Modell wie bei der Dotierungskonzentration unterschiedliche
-Terme. Für große Temperaturen und Zeiten würde die Schadensrate kleiner als null
-werden. Die Messwerte für kleine $\alpha$ weichen jedoch von den
+Terme. Für große Temperaturen und Zeiten würde $\alpha$ kleiner als null
+werden. Die Messwerte für kleine Schadensraten weichen jedoch von den
 Vorhersagen des Modells ab und nähern sich einen Wert größer null an. Auch für große Schadenraten ab ungefähr $\alpha=\SI{6e-17}{\ampere\per\centi\meter}$
 versagt das Modell.
 Dies ist in Abbildung \ref{fig:damage_rates} dargestellt.

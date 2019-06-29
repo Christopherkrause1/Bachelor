@@ -2,13 +2,13 @@
 Die folgenden Unterkapitel beschreiben die Vorgehensweise für die Entwicklung  eines Programmes zur
 Berechnung von Annealingeffekten. Das Programm ist in der Programmiersprache Python unter
 der Verwendung der NumPy, Matplotlib und math Bibliotheken geschrieben.
-\section{Annealingeffekt für konstanten Temperaturen}
+\section{Annealingeffekte für konstante Temperaturen}
 Zur Überprüfung der Implementation der Funktionen werden
 Gleichung \ref{eqn:N_eff} und \ref{eqn:damage}  bei konstanter Temperatur verwendet. In
 Abbildung \ref{fig:N_eff} und \ref{fig:damage} sind diese, für $10^5$ Minuten bei einer Temperatur
 von $\SI{60}{\celsius}$ und $\SI{80}{\celsius}$  dargestellt.
-Für alle Plots werden Fitparameter und  materialabhängige
-Parameter einer "WE-25k" Diode aus \cite{moll} genommen und sind in Tabelle \ref{tab:w1} dargestellt. Die verwendeten
+Für alle Plots werden Fitparameter
+einer "WE-25k" Diode aus \cite{moll} genommen und sind in Tabelle \ref{tab:w1} dargestellt. Die verwendeten
 Parameter sind beispielhaft gewählt und können gezielt angepasst werden.
 
 %\begin{table}[H]
@@ -76,7 +76,7 @@ bestätigt.
 \section{Annealingeffekte für nicht konstante Temperaturen}{\label{nicht_konstant}}
 Die Gleichungen \ref{eqn:N_eff} und \ref{eqn:damage} gehen bei der Berechnung der Annealingeffekte von
 einer konstanten Temperatur aus, wodurch diese nicht geeignet sind um $\Delta N_{\mathrm{eff}}$ und $\alpha$ für
-Temperaturverläufe zu Berechnen, welche deutlich von einer konstanten Temperatur abweichen.
+Temperaturverläufe zu berechnen, welche deutlich von einer konstanten Temperatur abweichen.
 
 
 %Werden die selben Gleichungen zur Modellierung von Annealingeffekte für nicht
@@ -89,7 +89,7 @@ diesem Ansatz dargestellt.
 Das Temperaturprofil wurde während der Bestrahlung
 des Sensors "R1" mit Reaktorneutronen in den
 "Sandia National Laboratories" aufgenommen. Weitere Informationen zu dem Sensor und
-der Bestrahlungen finden sich in \ref{mareike}.
+der Bestrahlungen finden sich in \cite{mareike}.
 
 \begin{figure}
   \centering
@@ -126,7 +126,7 @@ Die Dotierungskonzentration strebt nach dem Hamburg-Modell
 für unendlich große Zeiten gegen einen konstanten Wert und nimmt nicht mehr
 ab.
 Der Fehler entsteht, da Gleichung \ref{eqn:N_eff} für jeden
-Zeitpunkt eine konstante Temperatur annehmen. Jedoch ist es für Annealingeffekte
+Zeitpunkt eine konstante Temperatur annimmt. Jedoch ist es für Annealingeffekte
 relevant die Annealinghistorie zu berücksichtigen.
 Das bedeutet, dass $\Delta N_{\mathrm{eff}}$ für große Zeiten abfällt, da die Gleichung über den
 gesamten Zeitraum mit den zugehörigen kleinen Temperaturen rechnet. Für
@@ -139,7 +139,7 @@ jeden einzelnen Zeitabschnitt $t_{\mathrm{i}} - t_{\mathrm{i-1}}$ die
 Temperatur $(T_{\mathrm{i}} +T_{\mathrm{i-1}})/2$ für das Annealing verwendet.
 Da der stable damage keine Temperaturabhängigkeit hat, muss dieser nicht
 verändert werden. Für $N_{\mathrm{A}}$ wird nun folgende Näherung
-verwendet werden:
+verwendet:
 
 \begin{align}
   &\frac{t_{\mathrm{n}}}{\tau_{\mathrm{a}}(T_{\mathrm{n}})} \rightarrow \sum_{i=0}^n  \frac{t_{\mathrm{i}} - t_{\mathrm{i-1}}}{\tau_{\mathrm{a}}(\frac{T_{\mathrm{i}} +T_{\mathrm{i-1}}}{2})} \:\:\:\: \text{für} \: n>0 \\
@@ -229,7 +229,7 @@ beliebige Temperaturen berechnen.
 \section{Lineare Interpolation der Temperatur}
 Der im vorherigen Abschnitt beschriebene Korrekturansatz verwendet für jedes
 Zeitintervall den Mittelwert der Anfangs- und Endtemperatur. Für große
-Zeitabschnitte kommt es bei Temperaturprofilen wie bei Sandia also auch zu größeren Abweichung von der tatsächlichen
+Zeitabschnitte kommt es bei Temperaturprofilen wie bei Sandia also auch zu größeren Abweichungen von der tatsächlichen
 Temperatur. Um diesen Fehler gering zu halten, wird das Temperaturprofil
 linear interpoliert.
 Um die Rechenzeit nicht unnötig zu erhöhen, wird eine Funktion definiert, die sinnvolle
