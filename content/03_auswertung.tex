@@ -56,7 +56,8 @@ Die \textit{introduction rates} und die Fitparameter $N_{\mathrm{C0}}$, $c$, $\a
 \begin{figure}
   \centering
     \includegraphics[width=0.82\textwidth]{build/annealing.PDF}
-    \caption{$\Delta N_{\mathrm{eff}}$ einer WE-25k Diode nach Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
+    \caption{$\Delta N_{\mathrm{eff}}$ einer WE-25k Diode nach einer Bestrahlung mit einer Fluenz von
+    $5\cdot 10^{15} \, \mathrm{n_{\mathrm{eq}}/cm^2}$.}
     \label{fig:N_eff}
 \end{figure}
 
@@ -88,20 +89,22 @@ der Dotierungskonzentration und der Schadensrate mit
 diesem Ansatz dargestellt.
 Das Temperaturprofil wurde während der Bestrahlung
 des Sensors "R1" mit Reaktorneutronen in den
-"Sandia National Laboratories" aufgenommen. Weitere Informationen zu dem Sensor und
+"Sandia National Laboratories" aufgenommen.
+Weitere Informationen zu dem Sensor und
 der Bestrahlungen finden sich in \cite{mareike}.
 
 \begin{figure}
   \centering
     \includegraphics[width=0.82\textwidth]{build/ohnekorrektur.PDF}
-    \caption{Dotierungskonzentration des Sensors R1 im Verlauf des Annealings nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
+    \caption{Dotierungskonzentration des Sensors R1 im Verlauf des Annealings nach einer Bestrahlung mit einer Fluenz von
+    $5\cdot 10^{15} \, \mathrm{n_{eq}/cm^2}$.}
     \label{fig:N_eff_ohne}
 \end{figure}
 
 \begin{figure}
   \centering
     \includegraphics[width=0.82\textwidth]{build/damageohnekorrektur.PDF}
-    \caption{Schadensrate des Sensors R1 im Verlauf des Annealings. \:\:\:\:\:\:}
+    \caption{Schadensrate des Sensors R1 im Verlauf des Annealings.}
     \label{fig:damage_ohne}
 \end{figure}
 
@@ -154,21 +157,22 @@ In Abbildung \ref{fig:korrektur_N_eff} ist Dotierungskonzentration mit Korrektur
 \begin{figure}[!htb]
   \centering
     \includegraphics[width=0.82\textwidth]{build/annealingtdata.PDF}
-\caption{$\Delta N_{eff}$ des Sensors R1 mit Korrektur nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
+\caption{$\Delta N_{eff}$ des Sensors R1 mit Korrektur nach einer Bestrahlung mit einer Fluenz von $5\cdot 10^{15} \, \mathrm{n_{eq}/cm^2}$.}
 \label{fig:korrektur_N_eff}
 \end{figure}
-%\begin{figure}
-%    \subfigure[]{\includegraphics[width=0.49\textwidth]{images/ohnekorrektur.PDF}}
-%    \subfigure[]{\includegraphics[width=0.49\textwidth]{images/annealingtdata.PDF}}
-%    \caption{$\Delta N_{eff}$ des Sensors R1 ohne Korrektur (a) und mit Korrektur (b) nach einer Bestrahlung mit Fluenz $\Phi_{\mathrm{eq}} = \SI{5e15}{\per\centi\meter\squared}.$}
-%    \label{fig:korrektur_N_eff}
-%\end{figure}
 
 
-Der Verlauf entspricht nun den Erwartungen. Mit der Berücksichtigung
-der einzelnen Temperaturen verzögert sich der Annealingeffekt insgesamt, da anfänglich
-geringe Temperaturen nur wenig zum gesamten Effekt beitragen. Dies wird
-an dem späteren Zeitpunkt des Minimums deutlich.
+
+Der Verlauf entspricht nun den Erwartungen, ist aber lediglich als Näherung zu verstehen, da angenommen
+wird, dass die Bestrahlung vor dem Annealing stattgefunden hat. Die Sensoren wurden jedoch
+während dem Annealing bestrahlt, wodurch ein genaues Berechnen der Annealingeffekte nicht
+möglich ist. Für präzisere Ergebnisse sind Informationen über die zeitliche Änderung der Fluenz nötig,
+zusätzlich ist die Interaktion zwischen der Fluenz und dem Annealingprozess nicht bekannt.
+
+%Mit der Berücksichtigung
+%der einzelnen Temperaturen verzögert sich der Annealingeffekt insgesamt, da anfänglich
+%geringe Temperaturen nur wenig zum gesamten Effekt beitragen. Dies wird
+%an dem späteren Zeitpunkt des Minimums deutlich.
 
 Eine solche Korrektur kann für den \textit{shortterm annealing} Term der Schadensrate ebenfalls erstellt werden.
 Im zweiten Term ist $\alpha_{0}$ temperaturabhängig, aber nicht zeitabhängig,
@@ -200,7 +204,7 @@ dargestellt.
 \begin{figure}
   \centering
     \includegraphics[width=0.82\textwidth]{build/damagekorrektur.PDF}
-\caption{Schadensrate des Sensors R1  mit Korrektur.}
+\caption{Schadensrate des Sensors R1 mit Korrektur.}
 \label{fig:korrektur_damage}
 \end{figure}
 %\begin{figure}

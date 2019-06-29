@@ -89,7 +89,7 @@ Abhängig von der Energie des Zwischengitteratoms kann dieses weitere Atome aus 
 eine Kaskade von Defekten auslösen. Der dem Detektor zugefügte Schaden ist dabei unabhängig von der
 ursprünglichen Wechselwirkung zwischen der Strahlung und des Gitters.
 Um somit Fluenzen $ \Phi$ von verschiedenen Teilchen (Lepton, Hadron) miteinander vergleichen zu können, werden diese
-auf eine $\SI{1}{\mega\eV}$ Neutronstrahlung normalisiert und haben die Einheit $[\Phi_{\mathrm{eq}}]=\mathrm{\frac{n_{\mathrm{eq}}}{cm^2}}$.
+auf eine $\SI{1}{\mega\eV}$ Neutronstrahlung normalisiert und haben die Einheit $[\Phi_{\mathrm{eq}}]=\mathrm{n_{\mathrm{eq}}/cm^2}$.
 
 
 \section{Annealing der Dotierungskonzentration}
@@ -161,8 +161,8 @@ Sensors dargestellt.
 \begin{figure}
   \centering
   \includegraphics[width=0.82\textwidth]{logos/n_eff_beispiel.PNG}
-  \caption{Dotierungskonzentration bei 60°C für eine Bestrahlung mit einer Fluenz
-  von $\Phi=\SI{1.4e13}{\per\centi\meter\squared}$ .\cite{moll}}
+  \caption{Dotierungskonzentration bei 60°C für eine Bestrahlung mit einer Fluenz von
+  $1,4\cdot 10^{13} \, \mathrm{n_{eq}/cm^2}$.\cite{moll}}
   \label{fig:n_eff_beispiel}
 \end{figure}
 
@@ -179,11 +179,11 @@ was zu einer Verringerung des Leckstroms führt.
 Der Leckstrom vor und nach der Bestrahlung ist temperaturabhängig und wird
 beschrieben durch
 \begin{align}
-  I(T) \propto T^2 \exp{\left(\frac{-E_{\mathrm{g}}}{2 k_{\mathrm{B}}T}\right)} \text{\cite{moll}} \label{eqn:Chilingarov_2013}.
+  I(T) \propto T^2 \exp{\left(\frac{-E_{\mathrm{eff}}}{2 k_{\mathrm{B}}T}\right)} \text{\cite{Chilingarov_2013}} \label{eqn:Chilingarov_2013}.
 \end{align}
-Hierbei $E_{\mathrm{g}}$ die Aktivierungsenergie.
+Hierbei ist $E_{\mathrm{eff}}$ die Aktivierungsenergie.
 
-Die Fluenz und der durch Strahlung hervor gerufene Leckstrom $\Delta I$ sind
+Die Fluenz und der durch Strahlung hervorgerufene Leckstrom $\Delta I$ sind
 proportional zueinander.
 
 
