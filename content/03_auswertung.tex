@@ -1,7 +1,7 @@
 \chapter{Entwicklung des Programmes zur Berechnung von Annealingeffekten}\label{make}
 Die folgenden Unterkapitel beschreiben die Vorgehensweise für die Entwicklung  eines Programmes zur
 Berechnung von Annealingeffekten. Das Programm ist in der Programmiersprache Python unter
-der Verwendung der NumPy, Matplotlib und math Bibliotheken geschrieben.
+der Verwendung der \textit{NumPy}, \textit{Matplotlib} und \textit{math} Bibliotheken geschrieben.
 \section{Annealingeffekte für konstante Temperaturen}
 Zur Überprüfung der Implementation der Funktionen werden
 Gleichung \ref{eqn:N_eff} und \ref{eqn:damage}  bei konstanter Temperatur verwendet. In
@@ -68,7 +68,7 @@ Die \textit{introduction rates} und die Fitparameter $N_{\mathrm{C0}}$, $c$, $\a
     \label{fig:damage}
 \end{figure}
 
-Beide Annealingeffekte stimmen mit dem Verlauf von \ref{fig:n_eff_beispiel} und \ref{fig:damage_rates} über ein, was
+Beide Annealingeffekte stimmen mit dem Verlauf von Abbildung \ref{fig:n_eff_beispiel} und \ref{fig:damage_rates} über ein, was
 die korrekte Implementierung der Funktionen \ref{eqn:N_eff} und \ref{eqn:damage}  des Programms
 bestätigt.
 
@@ -169,6 +169,8 @@ während dem Annealing bestrahlt, wodurch ein genaues Berechnen der Annealingeff
 möglich ist. Für präzisere Ergebnisse sind Informationen über die zeitliche Änderung der Fluenz nötig,
 zusätzlich ist die Interaktion zwischen der Fluenz und dem Annealingprozess nicht bekannt.
 
+
+
 %Mit der Berücksichtigung
 %der einzelnen Temperaturen verzögert sich der Annealingeffekt insgesamt, da anfänglich
 %geringe Temperaturen nur wenig zum gesamten Effekt beitragen. Dies wird
@@ -177,18 +179,19 @@ zusätzlich ist die Interaktion zwischen der Fluenz und dem Annealingprozess nic
 Eine solche Korrektur kann für den \textit{shortterm annealing} Term der Schadensrate ebenfalls erstellt werden.
 Im zweiten Term ist $\alpha_{0}$ temperaturabhängig, aber nicht zeitabhängig,
 wodurch der Korrekturansatz hier nicht mehr gelten kann. Um den Ansatz dennoch
-verwenden zu können, wird die Zeit des \textit{longterm annealing} mit dem
+verwenden zu können, wird die Zeit des \textit{longterm annealing} mit dem in \cite{moll} vorgeschlagenen
 Skalierungsfaktor
 \begin{align}
-  \Theta(T) =  \exp{\left(-\frac{E_{\mathrm{I}}^*}{k_b}\left(\frac{1}{T}-\frac{1}{T_{\mathrm{ref}}}\right)\right)} \text{\cite{moll}} \\
+  \Theta(T) =  \exp{\left(-\frac{E_{\mathrm{I}}^*}{k_b}\left(\frac{1}{T}-\frac{1}{T_{\mathrm{ref}}}\right)\right)} \\
 \end{align}
-versehen, wodurch sich die Formel der Schadensrate ändert.
+versehen, wodurch sich die Formel der Schadensrate  zu
 \begin{align}
   &\alpha(t, T) = \alpha_I \cdot \exp{\left(-\frac{t}{\tau_{\mathrm{I}}(T)}\right)} + \alpha_{\mathrm{0}}^{*} -\beta \cdot \ln{\left(\Theta(T) \cdot \frac{t}{t_{\mathrm{0}}}\right)} \\
   \medskip
   \text{mit}\:\: &\alpha^*_{\mathrm{0}}(T) = \SI{-8.9e-17}{\ampere\per\centi\meter} + \SI{4.6e-14}{\ampere\kelvin\per\centi\meter} \cdot \frac{1}{T_{\mathrm{ref}}}
 \end{align}
-Hierbei ist$E_{\mathrm{I}}^*$ ein Aktivierungsenergie und $\alpha^*_{0}$ nun nicht mehr temperaturabhängig,
+ändert.
+Hierbei ist $E_{\mathrm{I}}^*$ eine Aktivierungsenergie und $\alpha^*_{0}$ nun nicht mehr temperaturabhängig,
 sondern lediglich abhängig von einer Referenztemperatur $T_{\mathrm{ref}}$. Für konstante Temperaturen
 ist diese Gleichung folglich äquivalent zu Gleichung \ref{eqn:damage}, für nicht
 konstante Temperaturen ist die resultierende Abweichung im Vergleich zur Korrektur vernachlässigbar.
@@ -198,7 +201,7 @@ Nun kann wieder eine Korrektur analog zu den vorherigen eingeführt werden:
   \Theta(T) \cdot t_{\mathrm{n}} \rightarrow \sum_{i=0}^n   \Theta \left(\frac{T_{\mathrm{i}} +T_{\mathrm{i-1}}}{2}\right) \cdot  (t_{\mathrm{i}} - t_{\mathrm{i-1}})
 \end{align}
 
-In Abbildung \ref{fig:korrektur_damage} ist die Schadensrate ohne und mit Korrektur
+In Abbildung \ref{fig:korrektur_damage} ist die Schadensrate mit Korrektur
 dargestellt.
 
 \begin{figure}
@@ -219,14 +222,14 @@ dargestellt.
 %\end{figure}
 
 
-Auch hier zeigt das Verhalten ohne Korrektur klare Abweichungen zu den
-Erwartungen, so kann beispielsweise die Schadensrate mit voranschreitendem Annealing nicht steigen.
+%Auch hier zeigt das Verhalten ohne Korrektur klare Abweichungen zu den
+%Erwartungen, so kann beispielsweise die Schadensrate mit voranschreitendem Annealing nicht steigen.
 Mit Korrektur verhält sich die Schadensrate gemäß den Erwartungen, der stärkste
 Effekt ist bei den größten Temperaturen zu sehen, kleine Temperaturen führen hingegen
 nur zu minimalen Änderungen.
 
 Mit der Implementierung dieser Korrekturen kann das Programm Annealingeffekte für
-beliebige Temperaturen berechnen.
+beliebige Temperaturverläuft berechnen.
 
 
 
@@ -237,20 +240,21 @@ Zeitabschnitte kommt es bei Temperaturprofilen wie bei Sandia also auch zu grö�
 Temperatur. Um diesen Fehler gering zu halten, wird das Temperaturprofil
 linear interpoliert.
 Um die Rechenzeit nicht unnötig zu erhöhen, wird eine Funktion definiert, die sinnvolle
-Interpolationsschritte $n$ abschätzt.
-
-\begin{align*}
-  n = \lceil{y \cdot (T_{\mathrm{A}}-T_{\mathrm{min}})+ z}\rceil \label{eqn:intervall}
-\end{align*}
-Die Funktion wächst mit steigenden Temperaturen und gibt die Anzahl auf eine Temperatur $T_A$ des
-Datensatzes folgenden Intervalle an. Der Parameter $z$ bewirkt eine allgemeine Steigerung
-der Anzahl an Intervallen, während $y$ die Anzahl basierend auf der zu betrachtenden Temperatur
-erhöht.
+Interpolationsschritte $n$ zwischen zwei Messpunkten abschätzt.
 Da große Temperaturen relevanter für das Annealing sind und die Annealingeffekte nicht linear von
 der Temperatur abhängig sind, ist es vorteilhaft,
-bei den Mittelwerten möglichst kleine Ungenauigkeiten und somit möglichst viele
+bei den Mittelwerten der Temperaturen möglichst kleine Ungenauigkeiten und somit möglichst viele
 Intervalle zu erschaffen. Aus diesem Grund wird die minimale Temperatur $T_{\mathrm{min}}$ des Datensatzes
-als Bezugspunkt genommen, wobei die Parameter $y$ und $z$ frei anpassbar sind.
+als Bezugspunkt genommen, wobei die Parameter $y$ und $z$ frei anpassbar sind:
+
+\begin{align*}
+  n = \lceil{y \cdot (T-T_{\mathrm{min}})+ z}\rceil \label{eqn:intervall} .
+\end{align*}
+Die Funktion wächst mit steigenden Temperaturen und gibt die Anzahl auf eine Temperatur $T(t_{\mathrm{i}})$ des
+Datensatzes folgenden Intervalle bis zur nächsten Temperatur $T(t_{\mathrm{i+1}})$ an. Der Parameter $z$ bewirkt eine allgemeine Steigerung
+der Anzahl an Intervallen, während $y$ die Anzahl basierend auf der zu betrachtenden Temperatur
+erhöht.
+
 
 Für die Zeit und die Temperatur der interpolierten Daten gilt:
 \begin{align}
@@ -265,7 +269,7 @@ die daraus berechneten Annealingeffekte dargestellt.
 
 \begin{figure}
     \includegraphics[width=0.82\textwidth]{build/interpolationtdata.PDF}
-\caption{Interpolierte Temperatur für y = $0,05$ und $z=0,2$ und $\Delta N_{\mathrm{eff}}$.}
+\caption{$\Delta N_{\mathrm{eff}}$ und zugehörige Interpolierte Temperatur für y = $0,05$ und $z=0,2$.}
 \label{fig:interpolation_N_eff}
 \end{figure}
 
@@ -279,18 +283,18 @@ die daraus berechneten Annealingeffekte dargestellt.
 \end{figure}
 
 Die Anzahl der Intervalle der linearen Interpolation steigt gemäß der Funktion \ref{eqn:intervall}
-für größer Temperaturen. Kleine Abweichungen der Annealingeffekte für gemessene und
-interpolierte Temperaturen treten durch die Korrektur aus Kapitel \ref{nicht_konstant}
-auf. Da die lineare Interpolation lediglich eine Näherung des Verlaufes der
-Temperaturkurve entspricht, kommt es bei der Aufsummierung der einzelnen Zeitabschnitte
-zu größer werdenden Abweichungen von der eigentlichen Kurve. Die abweichenden Werte beschreiben
+für größer werdende Temperaturen. Durch die Verwendung der Interpolation kommt es zu kleinen Abweichungen im
+Vergleich zu einer Berechnung die lediglich die Messpunkte nutzt.
+%Da die lineare Interpolation lediglich eine Näherung des Verlaufes der
+%Temperaturkurve entspricht, kommt es bei der Aufsummierung der einzelnen Zeitabschnitte
+%zu größer werdenden Abweichungen von der eigentlichen Kurve.
+Die abweichenden Werte beschreiben
 aufgrund der Interpolation einen präziseren Verlauf als der Annealingeffekt des ursprünglichen Datensatzes.
-Für große Zeiten strebt $\Delta N_{\mathrm{eff}}$
-für beide Temperaturdatensätze gegen denselben Wert.
+Jedoch beschreibt die lineare Interpolation nur eine Näherung des wahren Temperaturverlaufes.
 
 \section{Berechnung der gesamten Annealinghistorie eines Sensors}
 Die hier betrachtete Annealinghistorie setzt sich aus 60 Erwärmungs-und
-Abkühlungszyklen des Sensors "P3" zusammen, welche $\SI{1800}{\minute}$ entsprechen.
+Abkühlungszyklen des Sensors "P3" zusammen, welche insgesamt $\SI{1800}{\minute}$ entsprechen.
 Für den Sensor "P4" werden 39 Zyklen ($\SI{1170}{\minute}$) betrachtet.
 Beide wurden von der ${\mathrm{IRRAD}}$ Einrichtung mit $\SI{24}{\giga\eV\per\clight}$ Protonen des Protonen Synchrotrons bestrahlt.
 Die Datensätze werden mithilfe eines Python Programmes miteinander Verbunden,
@@ -312,8 +316,8 @@ sowie die experimentell bestimmte Schadensrate dargestellt.
 
 Der stufenartige Verlauf der Kurve resultiert aus den Temperaturzyklen.
 Es ist eine merkliche Abweichung der experimentellen Messwerte von den theoretischen
-Werten erkennbar. Der Sensor "P3" wurde schon vor der Messung erwärmt, wodurch
-die angegebenen Annealingzeiten in Wahrheit größer sind. Dies erklärt die
+Werten erkennbar. Der Sensor "P3" wurde schon vor der Messung unkontrolliert erwärmt, wodurch
+die angegebenen Annealingzeiten in Wahrheit größer sind und nicht präzise abgeschätzt werden können. Dies erklärt die
 geringe Änderung der einzelnen Messwerte voneinander, welche dem
 Verlauf der theoretischen Werte für große Zeiten ähnelt. Die Abweichung der theoretischen
 und experimentellen Funktionswerte wird dadurch größer.
@@ -342,4 +346,6 @@ für den Sensor "P3" aufgezählt wurden, ist "P4" zusätzlich nicht vollständig
 Für die Bestimmung des aktiven Volumens zur Berechnung der Schadensrate wurde ein vollständig
 depletierter Sensor angenommen. Das tatsächliche aktive Volumen des Detektors ist somit kleiner, wodurch sich auch
 die gemessene Schadensrate verringert.
-Die Funktion \ref{eqn:damage} kann solche Effekte nicht berücksichtigen.
+Um diesen Effekt berücksichtigen zu können, müsste das Depletierte Volumen
+beispielweise über Ladungssammlungseffizienz (CCE) Messungen bestimmt werden.
+%Die Funktion \ref{eqn:damage} kann solche Effekte nicht berücksichtigen.

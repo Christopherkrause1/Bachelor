@@ -1,9 +1,9 @@
 \chapter{Interface zur Berechnung von Annealingeffekten für konstante Temperaturen}
 Das Hauptprogramm dient zur Modellierung von Annealingeffekten für beliebige Datensätze.
 Um den erwarteten Verlauf von Annealingeffekten von konstanten Temperaturen über einen
-beliebigen Zeitraum bestimmen zu können dient ein weiteres Python Programm diesem Zweck.
-Bei der Ausführung öffnet es ein Interface, welches nach den relevanten Angaben für
-das Modellieren der Dotierungskonzentration oder der Schadensrate fragt. In Abbildung \ref{fig:interface}
+beliebigen Zeitraum bestimmen zu können wird ein weiteres Python Programm für diesen Zweck entwickelt.
+Bei der Ausführung öffnet es ein Interface, welches die relevanten Angaben für
+das Modellieren der Dotierungskonzentration oder der Schadensrate abfragt. In Abbildung \ref{fig:interface}
 ist das Interface dargestellt.
 
 \begin{figure}
@@ -14,7 +14,7 @@ ist das Interface dargestellt.
 
 Die Berechnung erfolgt dabei ebenfalls auf der Grundlage des Hamburger Modells und modelliert die
 Annealingeffekte von
-$0,1$ Sekunden bis zu dem angegebenen Zeitintervall.
+0,1 Sekunden bis zu dem angegebenen Endpunkt.
 Das Zeitintervall von einem Wert zum nächsten ist dabei logarithmisch, wodurch über alle
 Größenordnungen der Zeit hinweg der Abstand auf der logarithmischen Zeitachse gleich bleibt.
 Die Parameter können in den Einstellungen beliebig gewählt werden.

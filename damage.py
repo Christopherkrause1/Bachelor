@@ -60,7 +60,7 @@ def damage(t, T):
 #plt.xlabel(r'Time / $\mathrm{min}$')
 #plt.savefig('build/damage.pdf')
 #plt.clf()
-t = np.logspace(1, 5, 25, endpoint=True)
+t = np.logspace(-1, 5, 30, endpoint=True)
 plt.gcf().subplots_adjust(bottom=0.18)
 plt.semilogx(t, damage(t, 60+273.15), 'r.', label=r'$\alpha @60°C$', Markersize=6)
 plt.semilogx(t, damage(t, 80+273.15), 'b.', label=r'$\alpha @80°C$', Markersize=6)

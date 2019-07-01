@@ -16,22 +16,25 @@ Das Einbringen von Fremdatomen in den Siliziumkristall kann dessen Eigenschaften
 und wird Dotierung genannt.
 Hat das Fremdatom mehr oder weniger Valenzelektronen als das Silizium, ersetzt ein neuer Zustand innerhalb der Bandlücke
 einen alten Zustand.
+Bei den Fremdatomen wird zwischen Donatoren und Akzeptoren unterschieden, wobei die
+Ersteren mehr Valenzelektronen als das Silizium besitzen und die Zweiteren weniger.
 Durch Donatoren wird es für Elektronen einfacher in das Leitungsband zu wandern. Akzeptoren
 erschaffen ein Loch über dem Valenzband, welches durch ein Elektron gefüllt wird und somit ein
 Loch im Valenzband zurückbleibt.
-Bei den Fremdatomen wird zwischen Donatoren und Akzeptoren unterschieden, wobei die
-Ersteren mehr Valenzelektronen als das Silizium besitzen und die Zweiteren weniger.
 Bereiche des Siliziumkristalls mit Donatoren werden n-Dotierte Bereiche
 und mit Akzeptoren p-Dotierte Bereiche genannt.
 
-Bei einem Übergang von einer n-Dotierten zu einer p-Dotierten Schicht rekombinieren
-die Elektronen der n-Dotierten Schicht mit den Elektronenlöchern der p-dotierten Schicht, da beide
-in die anderen Bereiche diffundieren. Durch die übrig bleibenden ortsfesten Atomkerne
+Bei einem Übergang von einer n-Dotierten zu einer p-Dotierten Schicht rekombinieren die durch
+thermische Anregung entstehenden freien Ladungsträger
+der n-und p-Dotierten Schicht, da beide
+in die anderen Bereiche diffundieren. Die Diffusion findet aufgrund der Dotierung und die dadurch folgenden unterschiedlichen
+Konzentrationen von Elektronen und Löchern der beiden Bereiche statt.
+Durch die übrig bleibenden ortsfesten Atomkerne
 baut sich ein elektrisches Feld auf, welches dem Diffusionsstrom entgegenwirkt.
 Ein sich einstellendes Gleichgewicht führt zu einer ladungsträgerfreien Zone bei
-dem p-n-Übergang.
-Für Detektoren werden die beiden Schichten unterschiedlich stark dotiert, wobei eine
-stark dotierte Oberfläche und ein leicht dotierter Bulk verwendet. Durch die asymmetrische
+9m Bereich des p-n-Übergangs.
+Für Detektoren werden die beiden Schichten unterschiedlich stark dotiert, wobei typischerweise eine
+stark dotierte Oberfläche und ein leicht dotierter Bulk verwendet wird. Durch die asymmetrische
 Dotierung breitet sich die Depletionszone hauptsächlich in den schwächer dotierten Bulk aus.
 Im Falle von ($N_{\mathrm{A}} \gg N_{\mathrm{D}}$) lässt sich die Depletionstiefe $d$ beschreiben durch:
 \begin{align}
@@ -43,37 +46,41 @@ durch die festen Raumladungen entstehende Spannung und $U_{\mathrm{ext}}$ die ex
 strahlengeschädigten Detektoren ist dies nicht mehr der Fall, wodurch in Gleichung \ref{eqn:depletionsdicke} das $N_{\mathrm{D}}$ durch $N_{\mathrm{eff}}$ ersetzt werden muss.
 
 
-Durch eine äußere negative Spannung  an der p-Seite in Bezug zur n-Seite, oder umgekehrt, wird die Zone vergrößert und dient als Ionisationskammer für einfallende Teilchen. Diese streuen
-an den Atomkernen in der Zone und geben ein Teil oder ihre gesamte Energie bei dem Durchgang durch den Detektor ab. Mit der so abgegebenen
+Durch eine äußere negative Spannung  an der p-Seite in Bezug zur n-Seite wird die Zone vergrößert und dient als Ionisationskammer für einfallende Teilchen. Diese streuen vor allem
+an den Elektronen der Atome in der Zone und geben ein Teil oder ihre gesamte Energie bei dem Durchgang durch den Detektor ab. Mit der so abgegebenen
 Energie werden Elektron-Loch Paare erzeugt, welche sich durch das vorhandene elektrische Feld zu ihrer jeweiligen dotierten
 Schicht bewegen und über Elektroden als elektrisches Signal gemessen werden können. Des Weiteren ist die Depletionszone essenziell damit
 die entstehenden Elektron-Loch Paare nicht mit vorhandenen Ladungsräger rekombinieren, was zu einer deutlichen Verringerung des Signales führen würde.
 Die ladungsträgerfreie Zone fungiert somit als Detektor und soll ein möglichst großes Volumen umfassen.
 
-Mehr Informationen über Halbleiter finden sich in  \cite{semiconductor}.
+Mehr Informationen über Detektoren finden sich in  \cite{semiconductor}.
 
 \section{Strahlenschäden}
 Wechselwirkungen von Teilchen mit Silizium können zu Defekten in deren
 Gitterstruktur führen.
-Die Energie der Teilchen wird dabei durch Ionisation und elastischer Streuung mit den Atomkernen abgegeben. Die Ionisation der
-Gitteratome wird \textit{Total Ionizing Dose} (TID) genannt und führt zu keinen Schäden im Bulk, lediglich das Streuen der Strahlung an den
+Die Energie der Teilchen wird dabei durch Ionisation und elastischer Streuung mit den Atomkernen abgegeben. Über Ionisation abgegebene Energie
+fließt dabei in die
+\textit{Total Ionizing Dose} (TID) ein und führt zu keinen Schäden im Bulk, lediglich das Streuen der Strahlung an den
 Atomkernen kann zu Defekten im Gitter führen.
+
 Es muss zwischen verschiedenen Arten von Defekten unterschieden werden. Die Teilchen können ein Gitteratom aus dem
 Gitter herausschlagen, wodurch eine Leerstelle und ein Zwischengitteratom entstehen. Das herausgeschlagene Atom
 kann Silizium, aber auch ein Fremdatom sein. Daraus folgt eine Änderung der Dotierungskonzentration im
-Halbleiter und somit eine Änderung seiner Eigenschaften. Zum Beispiel können neue Zustände innerhalb der
+Halbleiter und somit eine Änderung seiner Eigenschaften. Zum Beispiel können neue Zustände nahe der Mitte der
 Bandlücke entstehen, welche Elektronen und Löcher aus dem Valenzband einfangen  und in das Leitungsband
 abgeben, wodurch der Leckstrom wächst.
-Zwischengitteratome können stabile Komplexe miteinander bilden. Diese werden nicht durch Annealing
-beeinflusst und verändern die Halbleiter permanent.
+Zwischengitteratome können stabile Komplexe miteinander bilden.
+%Diese werden nicht durch Annealing
+%beeinflusst und verändern die Halbleiter permanent.
 
 Die durch Strahlenschäden hervorgerufenen Energiezustände verhalten sich hauptsächlich wie Akzeptoren im Siliziumgitter. Bei
-einer steigenden Anzahl an Defekten werden die dotierten Schichten insgesamt positiver. Für die n-dotierte Schicht kann
+einer steigenden Anzahl an Defekten wächst die p-Dotierung der Schichten. Für die n-dotierte Schicht kann
 es zur sogennanten Typinversion kommen, wodurch diese sich in eine leicht p-dotierte Schicht umwandelt. Bei einer
-solchen Typinversion wird die Dotierungskonzentration minimal und die benötigte externe Spannung für das Depletieren des Sensors geht gegen null, da sich
-das Vorzeichen der Ladung der Verarmungszone ändert.
+solchen Typinversion
+geht die benötigte externe Spannung wegen \ref{eqn:depletionsdicke} für das Depletieren des Sensors,
+sowie die Dotierungskonzentration gegen null.
 Für größer werdende Fluenzen steigt die benötigte externe Spannung und die
-Dotierungskonzentration kontinuierlich an.
+Dotierungskonzentration wieder kontinuierlich an.
 In Abbildung \ref{fig:typeinversion} ist eine Typinversion aus \cite{typinversion} dargestellt.
 
 \begin{figure}
@@ -84,12 +91,12 @@ In Abbildung \ref{fig:typeinversion} ist eine Typinversion aus \cite{typinversio
 \end{figure}
 
 Gemäß der \textit{Non-Ionizing Energy Loss} (NIEL) Hypothese ist der entstehende Schaden des Detektors durch
-herausgeschlagene Atome des Gitters proportional zur Energie dieser Zwischengitteratome.
+herausgeschlagene Atome des Gitters proportional zur Energie, welche durch Streuung an die Zwischengitteratome abgegeben wird.
 Abhängig von der Energie des Zwischengitteratoms kann dieses weitere Atome aus dem Gitter schlagen und somit
-eine Kaskade von Defekten auslösen. Der dem Detektor zugefügte Schaden ist dabei unabhängig von der
-ursprünglichen Wechselwirkung zwischen der Strahlung und des Gitters.
+eine Kaskade von Defekten auslösen. Der dem Detektor zugefügte Schaden ist dabei
+lediglich abhängig von der abgegeben Energie und nicht vom Verlauf der Kaskade und dem Stoßpartner.
 Um somit Fluenzen $ \Phi$ von verschiedenen Teilchen (Lepton, Hadron) miteinander vergleichen zu können, werden diese
-auf eine $\SI{1}{\mega\eV}$ Neutronstrahlung normalisiert und haben die Einheit $[\Phi_{\mathrm{eq}}]=\mathrm{n_{\mathrm{eq}}/cm^2}$.
+auf dne NIEL einer $\SI{1}{\mega\eV}$ Neutronstrahlung normalisiert und haben die Einheit $[\Phi_{\mathrm{eq}}]=\mathrm{n_{\mathrm{eq}}/cm^2}$.
 
 
 \section{Annealing der Dotierungskonzentration}
@@ -103,10 +110,10 @@ Leerstellen im Gitter füllen.
 \textbf{2. Komplexformation:} Das Migrieren der Atome kann zum Ausbilden von Komplexen führen. Dies geschieht durch das
 Gruppieren von mehreren Zwischengitteratomen im Kristall.
 
-\textbf{3. Dissoziation:} Komplexe können bei hohen Temperaturen dissoziieren, wodurch einzelne Bestandteile des Komplexes
+\textbf{3. Dissoziation:} Komplexe und Fehlstellen können bei hohen Temperaturen dissoziieren, wodurch einzelne Bestandteile des Komplexes
 durch das Gitter migrieren können. Dafür muss die Schwingungsenergie des Gitters größer als die Bindungsenergie der Komplexe sein.
 
-Die Annealingeffekte bewirken eine Änderung in der effektiven Dotierungskonzentration
+Die Bestrahlung und die Annealingeffekte bewirken eine Änderung in der effektiven Dotierungskonzentration
 ${N_{\mathrm{eff}}= |N_{\mathrm{D}}-N_{\mathrm{A}}|}$,
 welches durch das Hamburger Modell beschrieben wird.
 Die Änderung von $N_{\mathrm{eff}}$ ist gegeben durch:
@@ -116,7 +123,7 @@ Die Änderung von $N_{\mathrm{eff}}$ ist gegeben durch:
 \end{align}
 Die einzelnen Summanden werden im folgenden erläutert.
 
-\textbf{\textit{Stable Damage}} $\symbf{N_{\mathrm{C}}}:$ Der stable Damage ist unabhängig von der Temperatur und wird durch Annealing nicht beeinflusst.
+\textbf{\textit{Stable Damage}} $\symbf{N_{\mathrm{C}}}:$ Der stable Damage wird durch Annealing nicht beeinflusst.
 \begin{align}
   N_{\mathrm{C}}(\Phi_{\mathrm{eq}}) = N_{\mathrm{C0}}[1-\exp{(-c \cdot \Phi_{\mathrm{eq}})}] + g_{\mathrm{c}} \cdot \Phi_{\mathrm{eq}}
 \end{align}
@@ -153,9 +160,8 @@ Für $\tau_{\mathrm{Y}}(T)$ gilt:
   \tau_{\mathrm{Y}}(T) = \frac{1}{k_{0\mathrm{Y}}}\exp{\left(\frac{E_{Y}}{k_{\mathrm{b}}T}\right)}.
 \end{align}
 Auch hier ist $k_{0\mathrm{Y}}$ ein Frequenzfaktor und $E_{\mathrm{Y}}$ die Aktivierungsenergie. Der Faktor $N_{\mathrm{Y , \inf}}$
-ist das Produkt der \textit{introduction rate} $g_{\mathrm{Y}}$ und der Fluenz. Nach einem unendlich großen Zeitraum strebt
-die Funktion $N_{\mathrm{A}}(t, \Phi_{\mathrm{eq}}, T) + N_{\mathrm{Y}}(t, \Phi_{\mathrm{eq}}, T)$ gegen $N_{\mathrm{Y , \inf}}$.
-In Abbildung \ref{fig:n_eff_beispiel} ist beispielhaft das Annealingverhalten eines
+ist das Produkt der \textit{introduction rate} $g_{\mathrm{Y}}$ und der Fluenz.
+In Abbildung \ref{fig:n_eff_beispiel} ist beispielhaft die Änderung der Dotierungskonzentration mit Annealing eines
 Sensors dargestellt.
 
 \begin{figure}
@@ -184,11 +190,11 @@ beschrieben durch
 Hierbei ist $E_{\mathrm{eff}}$ die Aktivierungsenergie.
 
 Die Fluenz und der durch Strahlung hervorgerufene Leckstrom $\Delta I$ sind
-proportional zueinander.
+proportional zueinander:
 
 
 \begin{align}
-  \Delta I = \alpha \Phi_{\mathrm{eq}} \cdot V
+  \Delta I = \alpha \Phi_{\mathrm{eq}} \cdot V .
 \end{align}
 Hierbei ist $V$ das Volumen des Detektormaterials und $\alpha$ die
 sogenannte Schadensrate.
@@ -214,9 +220,9 @@ Anders als das Annealingverhalten der Dotierungskonzentration kann die Schadensr
 bei fortschreitendem Annealing nur sinken. Für kurze und
 lange Zeiten dominieren in diesem Modell wie bei der Dotierungskonzentration unterschiedliche
 Terme. Für große Temperaturen und Zeiten würde $\alpha$ kleiner als null
-werden. Die Messwerte für kleine Schadensraten weichen jedoch von den
-Vorhersagen des Modells ab und nähern sich einen Wert größer null an. Auch für große Schadenraten ab ungefähr $\alpha=\SI{6e-17}{\ampere\per\centi\meter}$
-versagt das Modell.
+werden, was unphysikalisch wäre.
+Die Messwerte für kleine Schadensraten weichen jedoch von den
+Vorhersagen des Modells ab und nähern sich einen Wert größer null an. Das Modell versagt in diesem Fall.
 Dies ist in Abbildung \ref{fig:damage_rates} dargestellt.
 
 \begin{figure}
