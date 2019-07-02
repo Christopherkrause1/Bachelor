@@ -19,10 +19,10 @@ beta = 3.07*10**(-18)        #fit parameter A/cm
 b_0 = 4.6*10**(-14)          #fit parameter in A*K/cm
 T_ref = 353.15               #reference temperature in kelvin
 
-t_5, T_5 = np.genfromtxt('Daten/tdata_1.txt', unpack=True)
+t_1, t_1 = np.genfromtxt('Daten/tdata_1.txt', unpack=True)
 k_B = 1.38064852 * 10**(-23)             #Boltzmann constant in J/K
 t_0 = 60                                 #s
-
+from configuration import *
 
 
 def tau_I(T):                            #time constant
@@ -67,7 +67,7 @@ def damage(t, T):                                      #damage rate
     return a_I * np.exp(-t_I) + a_02() - beta * np.log(t_theta /t_0)
 
 fig, ax1 = plt.subplots()
-plt.semilogx(t_5/60 , T_5, 'r.', label='Temperature', Markersize=6)
+plt.semilogx(t_1/60 , T_1, 'r.', label='Temperature', Markersize=6)
 ax1.set_ylabel(r"Temperature / $^{\circ}$C", color = 'red')
 ax1.tick_params('y',colors='red')
 ax1.set_xlabel("Time / min")
@@ -75,7 +75,7 @@ ax1.legend(loc='upper left')
 
 
 ax2 = ax1.twinx()
-plt.semilogx(t_5/60, damage(t_5/60, T_5+273.15), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ of R1', Markersize=6)
+plt.semilogx(t_1/60, damage(t_1/60, T_1+273.15), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ of R1', Markersize=6)
 ax2.set_ylabel(r"$\alpha $ /$\mathrm{A cm^{-1}} $",color='blue')
 ax2.tick_params('y',colors='blue')
 plt.ylim(0, 1*10**(-16))
@@ -83,5 +83,6 @@ ax1.grid()
 ax2.legend(loc='best')
 plt.xlabel(r'Time / $\mathrm{min}$')
 plt.ylim(0.4*10**(-16), 1*10**(-16))
-plt.savefig('build/damagekorrektur.pdf')
+#plt.savefig('build/damagekorrektur.pdf')
+plt.show()
 plt.clf()

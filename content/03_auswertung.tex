@@ -1,7 +1,7 @@
 \chapter{Entwicklung des Programmes zur Berechnung von Annealingeffekten}\label{make}
 Die folgenden Unterkapitel beschreiben die Vorgehensweise für die Entwicklung  eines Programmes zur
 Berechnung von Annealingeffekten. Das Programm ist in der Programmiersprache Python unter
-der Verwendung der \textit{NumPy}, \textit{Matplotlib} und \textit{math} Bibliotheken geschrieben.
+der Verwendung der \textit{NumPy} \cite{oliphant2006guide}, \textit{Matplotlib} \cite{Hunter:2007} und \textit{math} Bibliotheken geschrieben.
 \section{Annealingeffekte für konstante Temperaturen}
 Zur Überprüfung der Implementation der Funktionen werden
 Gleichung \ref{eqn:N_eff} und \ref{eqn:damage}  bei konstanter Temperatur verwendet. In
@@ -140,7 +140,7 @@ Gleichungen vorgenommen werden.
 Zunächst wird die Dotierungskonzentration betrachtet. Als Näherung wird über
 jeden einzelnen Zeitabschnitt $t_{\mathrm{i}} - t_{\mathrm{i-1}}$ die
 Temperatur $(T_{\mathrm{i}} +T_{\mathrm{i-1}})/2$ für das Annealing verwendet.
-Da der stable damage keine Temperaturabhängigkeit hat, muss dieser nicht
+Da der \textit{stable damage} keine Temperaturabhängigkeit hat, muss dieser nicht
 verändert werden. Für $N_{\mathrm{A}}$ wird nun folgende Näherung
 verwendet:
 
@@ -167,7 +167,7 @@ Der Verlauf entspricht nun den Erwartungen, ist aber lediglich als Näherung zu 
 wird, dass die Bestrahlung vor dem Annealing stattgefunden hat. Die Sensoren wurden jedoch
 während dem Annealing bestrahlt, wodurch ein genaues Berechnen der Annealingeffekte nicht
 möglich ist. Für präzisere Ergebnisse sind Informationen über die zeitliche Änderung der Fluenz nötig,
-zusätzlich ist die Interaktion zwischen der Fluenz und dem Annealingprozess nicht bekannt.
+zusätzlich sind die Wechselwirkungen zwischen der Fluenz und dem gleichzeitigen Annealing unklar.
 
 
 
@@ -319,14 +319,19 @@ Es ist eine merkliche Abweichung der experimentellen Messwerte von den theoretis
 Werten erkennbar. Der Sensor "P3" wurde schon vor der Messung unkontrolliert erwärmt, wodurch
 die angegebenen Annealingzeiten in Wahrheit größer sind und nicht präzise abgeschätzt werden können. Dies erklärt die
 geringe Änderung der einzelnen Messwerte voneinander, welche dem
-Verlauf der theoretischen Werte für große Zeiten ähnelt. Die Abweichung der theoretischen
-und experimentellen Funktionswerte wird dadurch größer.
-Für die Bestimmung der Schadensrate wird das Detektorvolumen und den durch
-Strahlung induzierten Leckstrom $\Delta I$ benötigt. Bei der Messung wurde
-$\Delta I$ mit dem Leckstrom gleichgesetzt. Dies gilt nur bei einer Temperatur
-von $\SI{20}{\celsius}$, bei der Messung des Stroms betrug die tatsächliche Temperatur
+Verlauf der theoretischen Werte für große Zeiten ähnelt.
+Unter Berücksichtigung dieser Erwärmung verschieben sich die Messpunkte im Vergleich zu den
+simulierten Werten zu höheren Temperaturen.
+%Die Abweichung der theoretischen
+%und experimentellen Funktionswerte wird dadurch größer.
+Für die Bestimmung der Schadensrate
+wird das Detektorvolumen benötigt, außerdem nimmt das Modell den Leckstrom bei $\SI{20}{\celsius}$ an.
+%Bei der Messung wurde
+%$\Delta I$ mit dem Leckstrom gleichgesetzt. Dies gilt nur bei einer Temperatur
+%von $\SI{20}{\celsius}$,
+Bei der Messung des Stroms betrug die tatsächliche Temperatur
 $\SI{-2}{\celsius}$. Um dies zu korrigieren wird der Leckstrom gemäß \ref{eqn:Chilingarov_2013}
-mit der Temperatur skaliert. Die Energie der Bandlücke und das Volumen des Detektormaterials
+mit der Temperatur skaliert. Die Aktivierungsenergie $E_{\mathrm{eff}}$ und das Volumen des Detektormaterials
 unterliegen dabei Unsicherheiten. Zusätzlich haben auch die materialspezifischen Parameter
 der theoretischen Messwerte eine gewisse Abweichung zu den tatsächlichen Parametern, da
 ein anderer Sensor betrachtet wird.

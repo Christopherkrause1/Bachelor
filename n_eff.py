@@ -55,9 +55,9 @@ def N_Y(t, phi, T):                                  #longterm annealing
 
 def interpolation_t(t, T):                                            #linear interpolation of the time for more data
     t_int = np.array(t[0])                                            #create new time starting with arrays of zeros
-    T_min = min(T)                                                    #number of intervalls depend on minimal temperature
+    T_max = max(T_1)                                                   #number of intervalls depend on maximum temperature
     for i in range(1, len(T)):
-        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int))             #function for the number of intervalls
+        n = math.ceil((x_int*abs(T_1[i-1]- T_1[i])/(T_max-(T_1[i-1]+T_1[i])/2 +y_int) + z_int))             #function for the number of intervalls
         for j in range(1, n+1):
             t_int = np.append(t_int, t[i-1] + abs(t[i-1]-t[i])/n *j)  #new interpolated times (includes initial times)
     return t_int;
@@ -65,9 +65,9 @@ def interpolation_t(t, T):                                            #linear in
 
 def interpolation_T(t, T):                                            #linear interpolation of the temperature for more data
     T_int = np.array(T[0])                                            #create new temperature starting with arrays of zeros
-    T_min = min(T)                                                    #number of intervalls depend on minimal temperature
+    T_max = max(T_1)                                                    #number of intervalls depend on minimal temperature
     for i in range(1, len(T)):
-        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int))             #function for the number of intervalls
+        n = math.ceil((x_int*abs(T_1[i-1]- T_1[i])/(T_max-(T_1[i-1]+T_1[i])/2 +y_int) + z_int))           #function for the number of intervalls
         for j in range(1, n+1):
             T_int = np.append(T_int, T[i-1] + (T[i]-T[i-1])/(n) * (j))#new interpolated temperatures (includes initial ones)
     return T_int

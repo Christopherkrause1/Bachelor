@@ -33,8 +33,8 @@ Durch die übrig bleibenden ortsfesten Atomkerne
 baut sich ein elektrisches Feld auf, welches dem Diffusionsstrom entgegenwirkt.
 Ein sich einstellendes Gleichgewicht führt zu einer ladungsträgerfreien Zone bei
 9m Bereich des p-n-Übergangs.
-Für Detektoren werden die beiden Schichten unterschiedlich stark dotiert, wobei typischerweise eine
-stark dotierte Oberfläche und ein leicht dotierter Bulk verwendet wird. Durch die asymmetrische
+Für Detektoren werden die Bereiche von Bulk und Oberfläche unterschiedlich stark dotiert, wobei typischerweise eine starke n-und
+p-dotierte Oberfläche und ein leicht dotierter Bulk verwendet wird. Durch die asymmetrische
 Dotierung breitet sich die Depletionszone hauptsächlich in den schwächer dotierten Bulk aus.
 Im Falle von ($N_{\mathrm{A}} \gg N_{\mathrm{D}}$) lässt sich die Depletionstiefe $d$ beschreiben durch:
 \begin{align}
@@ -69,9 +69,7 @@ kann Silizium, aber auch ein Fremdatom sein. Daraus folgt eine Änderung der Dot
 Halbleiter und somit eine Änderung seiner Eigenschaften. Zum Beispiel können neue Zustände nahe der Mitte der
 Bandlücke entstehen, welche Elektronen und Löcher aus dem Valenzband einfangen  und in das Leitungsband
 abgeben, wodurch der Leckstrom wächst.
-Zwischengitteratome können stabile Komplexe miteinander bilden.
-%Diese werden nicht durch Annealing
-%beeinflusst und verändern die Halbleiter permanent.
+
 
 Die durch Strahlenschäden hervorgerufenen Energiezustände verhalten sich hauptsächlich wie Akzeptoren im Siliziumgitter. Bei
 einer steigenden Anzahl an Defekten wächst die p-Dotierung der Schichten. Für die n-dotierte Schicht kann
@@ -112,6 +110,9 @@ Gruppieren von mehreren Zwischengitteratomen im Kristall.
 
 \textbf{3. Dissoziation:} Komplexe und Fehlstellen können bei hohen Temperaturen dissoziieren, wodurch einzelne Bestandteile des Komplexes
 durch das Gitter migrieren können. Dafür muss die Schwingungsenergie des Gitters größer als die Bindungsenergie der Komplexe sein.
+Zwischengitteratome können jedoch auch stabile Komplexe miteinander bilden.
+Diese werden nicht durch Annealing
+beeinflusst und verändern die Halbleiter permanent.
 
 Die Bestrahlung und die Annealingeffekte bewirken eine Änderung in der effektiven Dotierungskonzentration
 ${N_{\mathrm{eff}}= |N_{\mathrm{D}}-N_{\mathrm{A}}|}$,
@@ -127,8 +128,9 @@ Die einzelnen Summanden werden im folgenden erläutert.
 \begin{align}
   N_{\mathrm{C}}(\Phi_{\mathrm{eq}}) = N_{\mathrm{C0}}[1-\exp{(-c \cdot \Phi_{\mathrm{eq}})}] + g_{\mathrm{c}} \cdot \Phi_{\mathrm{eq}}
 \end{align}
-Der erste Summand folgt aus einer unvollständigen Entfernung von Donatoren, der zweite Summand beschreibt stabile Defekte, welche sich wie Akzeptoren verhalten \cite{beyer}.
-Hierbei beschreibt $N_{\mathrm{C0}}$ die Amplitude, $g_{\mathrm{c}}$ die sogenannte \textit{introduction rate} der Akzeptoren und $c$ einen Fitparameter.
+Der erste Summand beschreibt wie die Anzahl an Donatoren mit
+steigender Fluenz asymptotisch gegen 0 gehen, der zweite Summand beschreibt stabile Defekte, welche sich wie Akzeptoren verhalten \cite{beyer}.
+Hierbei beschreibt $N_{\mathrm{C0}}$ die entfernte Donatorenkonzentration, $g_{\mathrm{c}}$ die sogenannte \textit{introduction rate} der Akzeptoren und $c$ einen Fitparameter.
 Die \textit{introduction rate} beschreibt die Anzahl an durch Bestrahlung entstehenden Akzeptoren.
 
 \textbf{\textit{Shortterm annealing}} $\symbf{N_{\mathrm{A}}}:$ Das shortterm Annealing bewirkt eine Verringerung der Dotierungskonzentration und entsteht durch
@@ -152,7 +154,7 @@ die betroffenen Defekte höchstwahrscheinlich durch Dissoziation ausheilen, da d
 Akzeptoren sorgen nach einem hinreichend großen Zeitraum für eine steigende
 Dotierungskonzentration. Dieser Effekt wird wie folgt berechnet.
 \begin{align}
-  N_{\mathrm{Y}}(t, \Phi_{\mathrm{eq}}, T)     = N_{\mathrm{Y , \inf}}\cdot \left(1 - \frac{1}{1 + \frac{t}{\tau_{\mathrm{Y}}(T)}}\right)
+  N_{\mathrm{Y}}(t, \Phi_{\mathrm{eq}}, T)     = \underbrace{N_{\mathrm{Y , \inf}}}_{g_{\mathrm{Y}}\cdot\Phi_{\mathrm{eq}}}\cdot \left(1 - \frac{1}{1 + \frac{t}{\tau_{\mathrm{Y}}(T)}}\right)
 \end{align}
 Beginnend bei null läuft die Funktion asymptotisch gegen die Konstante $N_{\mathrm{Y, \inf}}$.
 Für $\tau_{\mathrm{Y}}(T)$ gilt:
@@ -187,7 +189,7 @@ beschrieben durch
 \begin{align}
   I(T) \propto T^2 \exp{\left(\frac{-E_{\mathrm{eff}}}{2 k_{\mathrm{B}}T}\right)} \text{\cite{Chilingarov_2013}} \label{eqn:Chilingarov_2013}.
 \end{align}
-Hierbei ist $E_{\mathrm{eff}}$ die Aktivierungsenergie.
+Hierbei ist $E_{\mathrm{eff}}$ die  effektive Aktivierungsenergie. Mmehr Information in \cite{Chilingarov_2013}.
 
 Die Fluenz und der durch Strahlung hervorgerufene Leckstrom $\Delta I$ sind
 proportional zueinander:

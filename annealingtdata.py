@@ -11,7 +11,7 @@ g_y = 5.16*10**(-2)   #cm**(-1)
 k_B = 1.38064852 * 10**(-23) #Boltzmann Konstante
 E_aa = 1.09 * 1.6* 10**(-19) #j   activation Energy
 k_0a = 2.4 *10**(13) #1/s   frequency factor
-
+from configuration import *
 
 
 
@@ -72,7 +72,7 @@ t, T_2 = np.genfromtxt('Daten/tdata_1.txt', unpack=True)   #R1 daten
 
 
 fig, ax1 = plt.subplots()
-plt.semilogx(t/60 , T_2, 'r.', label='Temperature', Markersize=6)
+plt.semilogx(t_1/60 , T_2, 'r.', label='Temperature', Markersize=6)
 #ax1.bar()
 #ax1.scatter()
 ax1.set_ylabel(r"Temperature / $^{\circ}$C", color = 'red')
@@ -82,7 +82,7 @@ ax1.legend(loc=6)
 
 
 ax2 = ax1.twinx()
-plt.semilogx(t/60, N_eff(t, 5*10**(15), T_2), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ of R1', Markersize=6)
+plt.semilogx(t_1/60, N_eff(t_1, 5*10**(15), T_2), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ of R1', Markersize=6)
 #plt.semilogx(t/60, N_eff(t, 5*10**(15), 80), 'k--', label=r'$\Delta N_{\mathrm{eff}}$ für 80°C', Markersize=6)
 ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
 ax2.tick_params('y',colors='blue')
@@ -102,7 +102,8 @@ ax2.legend(loc='best')
 #plt.grid()
 #plt.xlabel(r't / $\mathrm{min}$')
 #plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
-plt.savefig('build/annealingtdata.pdf')
+#plt.savefig('build/annealingtdata.pdf')
+plt.show()
 plt.clf()
 
 

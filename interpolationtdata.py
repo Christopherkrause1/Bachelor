@@ -1,4 +1,4 @@
-from einstellungen import *
+from configuration import *
 k_B = 1.38064852 * 10**(-23) #Boltzmann Konstante
 
 
@@ -58,23 +58,32 @@ def N_eff(t, phi, T):                                #Änderung der Dotierungsko
 
 
 
-new_t = np.array(t[0])
+new_t = np.array(t_1[0])
 new_T = np.array(T_1[0])
-
+n_a = np.array(0)
 T_min = min(T_1)
-
+T_max = max(T_1)
+y = 15
+z_1 = 5
+z_2 = 0.2
 for i in range(1, len(T_1)):
-    n = math.ceil((0.05*abs(T_1[i-1]- T_min) + 0.2))
-    print(n)
+    n = math.ceil((15*abs(T_1[i-1]- T_1[i])/(T_max-(T_1[i-1]+T_1[i])/2 +z_1) + z_2))
+    n_a = np.append(n_a, n)
     for j in range(1, n+1):
         new_T = np.append(new_T, T_1[i-1] + (T_1[i]-T_1[i-1])/(n) * (j))
-        new_t = np.append(new_t, t[i-1] + abs(t[i-1]-t[i])/n *j)
+        new_t = np.append(new_t, t_1[i-1] + abs(t_1[i-1]-t_1[i])/n *j)
 
 
+
+
+plt.xlabel(r'T/°C')
+plt.ylabel(r'$n$')
+plt.show()
+plt.clf()
 
 fig, ax1 = plt.subplots()
 plt.semilogx(new_t/60 , new_T, 'r.', label='interpolierte Temperatur', Markersize=6)
-plt.semilogx(t/60 , T_1, 'g.', label='Temperatur', Markersize=6)
+plt.semilogx(t_1/60 , T_1, 'g.', label='Temperatur', Markersize=6)
 ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
 ax1.tick_params('y',colors='red')
 ax1.set_xlabel("Zeit / min")
@@ -83,7 +92,7 @@ ax1.legend(loc=6)
 
 ax2 = ax1.twinx()
 plt.semilogx(new_t/60, N_eff(new_t, 5*10**(15), new_T), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
-plt.semilogx(t/60, N_eff(t, 5*10**(15), T_1), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
+plt.semilogx(t_1/60, N_eff(t_1, 5*10**(15), T_1), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
 #plt.semilogx(new_t/60, N_C(5*10**(15))+N_Y(new_t, 5*10**(15), new_T), 'y-', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
 #plt.semilogx(new_x/60, N_eff(new_x, 5*10**(15), 80), 'k--', label=r'$\Delta N_{\mathrm{eff}}$ für 80°C', Markersize=6)
 ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
@@ -91,7 +100,8 @@ ax2.tick_params('y',colors='blue')
 ax1.grid()
 ax2.legend(loc='best')
 #plt.xlim(0, 2*10**2)
-plt.savefig('build/interpolationtdata.pdf')
+plt.show()
+#plt.savefig('build/interpolationtdata.pdf')
 
 
 

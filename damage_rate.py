@@ -46,24 +46,24 @@ def damage(t, T):                                     #damage rate
     t_theta = gett_theta(t, T_t, T)                   #assigning name for the approximation
     return a_I * np.exp(-t_I) + a_02() - beta * np.log(t_theta /t_0)
 
-def interpolation_t(t, T):                                #linear interpolation of the time for more data
-    t_int = np.array(t[0])                                #create new time starting with arrays of zeros
-    T_min = min(T)                                        #number of intervalls depend on minimal temperature
+def interpolation_t(t, T):                                            #linear interpolation of the time for more data
+    t_int = np.array(t[0])                                            #create new time starting with arrays of zeros
+    T_max = max(T_1)                                                   #number of intervalls depend on maximum temperature
     for i in range(1, len(T)):
-        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int)) #function for the number of intervalls
+        n = math.ceil((x_int*abs(T_1[i-1]- T_1[i])/(T_max-(T_1[i-1]+T_1[i])/2 +y_int) + z_int))             #function for the number of intervalls
         for j in range(1, n+1):
-            t_int = np.append(t_int, t[i-1] + abs(t[i-1]-t[i])/n *j)
-    return t_int;                                         #new interpolated times (includes initial times)
+            t_int = np.append(t_int, t[i-1] + abs(t[i-1]-t[i])/n *j)  #new interpolated times (includes initial times)
+    return t_int;
 
 
-def interpolation_T(t, T):                                #linear interpolation of the temperature for more data
-    T_int = np.array(T[0])                                #create new temperature starting with arrays of zeros
-    T_min = min(T)                                        #number of intervalls depend on minimal temperature
-    for i in range(1, len(T)):                            #loop over all temperatures
-        n = math.ceil((x_int*abs(T[i-1]- T_min) + y_int)) #function for the number of intervalls
-        for j in range(1, n+1):                           #loop over each intervall n
-            T_int = np.append(T_int, T[i-1] + (T[i]-T[i-1])/(n) * (j)) #temperature array for every n
-    return T_int                                          #new interpolated temperatures (includes initial temperatures)
+def interpolation_T(t, T):                                            #linear interpolation of the temperature for more data
+    T_int = np.array(T[0])                                            #create new temperature starting with arrays of zeros
+    T_max = max(T_1)                                                    #number of intervalls depend on maximum temperature
+    for i in range(1, len(T)):
+        n = math.ceil((x_int*abs(T_1[i-1]- T_1[i])/(T_max-(T_1[i-1]+T_1[i])/2 +y_int) + z_int))           #function for the number of intervalls
+        for j in range(1, n+1):
+            T_int = np.append(T_int, T[i-1] + (T[i]-T[i-1])/(n) * (j))#new interpolated temperatures (includes initial ones)
+    return T_int                                         #new interpolated temperatures (includes initial temperatures)
 
 
 #function that plots the damage rate
@@ -87,8 +87,8 @@ def plot_damage_rate(t, T):
         ax2.set_ylim(None, 1.2*damage(interpolation_t(t, T), interpolation_T(t, T)+273.15)[1])
         ax1.grid()
         ax2.legend(loc='lower center')
-        plt.savefig('build/damage_interpolation.pdf')
-        #plt.show()
+        #plt.savefig('build/damage_interpolation.pdf')
+        plt.show()
         plt.clf()
 
     else:

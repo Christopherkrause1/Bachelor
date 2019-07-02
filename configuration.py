@@ -25,7 +25,7 @@ show_temperature_curve = 1
 #following parameters can be changed
 
 #constant fluence in 1/cm**2
-phi = 1*10**(15)
+phi = 5*10**(15)
 
 #constant parameters of the N_eff function with a "WE-25k Ohm cm" Diode
 N_C0 = 1.1*10**11                   #stable Damage amplitude in 1/cm**3
@@ -46,12 +46,12 @@ E_I = 1.11 * 1.6 * 10**(-19) #fit parameter j
 E_I2 = 1.3 * 1.6 * 10**(-19) #fit parameter j
 beta = 3.07*10**(-18)        #fit parameter A/cm
 b_0 = 4.6*10**(-14)          #fit parameter in A*K/cm
-T_ref = 322.15               #reference temperature in kelvin
+T_ref = 353.15               #reference temperature in kelvin
 
 #parameters for the numbers of linear interpolation intervalls n = x * (T-T_min) + y
-x_int = 0.05
-y_int = 0.02
-
+x_int = 15
+y_int = 5
+z_int = 0.2
 
 
 
