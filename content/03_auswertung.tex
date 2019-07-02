@@ -254,8 +254,10 @@ und $z_2$ frei anpassbar sind:
   n = \left\lceil{y \cdot \frac{T(t_{\mathrm{i}})-T(t_{\mathrm{i}}+1)}{T_{\mathrm{max}}-T(t_{\mathrm{i}})+ z_1}}+z_2\right\rceil \label{eqn:intervall} .
 \end{align*}
 Die Funktion wächst mit steigenden Temperaturen und größer werdenden Temperaturdifferenzen.
-Mit $y$ werden die Anzahl an Intervallen gesteuert, während die
+Mit $y$ wird die Anzahl an Intervallen gesteuert, während die
 Parameter $z_1$ und $z_2$ verhindern, dass $n$ null oder unendlich groß wird.
+Die Funktion folgt lediglich aus den vorgegebenen Anspüchen an die Intervallzahl und beschreibt
+keine optimale Abschätzung.
 
 
 Für die Zeit und die Temperatur der interpolierten Daten gilt:
@@ -270,8 +272,9 @@ erzeugt. In den Abbildungen \ref{fig:interpolation_N_eff} und \ref{fig:interpola
 die daraus berechneten Annealingeffekte dargestellt.
 
 \begin{figure}
-    \includegraphics[width=0.82\textwidth]{build/interpolationtdata.PDF}
-\caption{$\Delta N_{\mathrm{eff}}$ und zugehörige Interpolierte Temperatur für y = $0,05$ und $z=0,2$.}
+  \centering
+    \includegraphics[width=0.8\textwidth]{build/interpolationtdata.PDF}
+\caption{$\Delta N_{\mathrm{eff}}$ und zugehörige Interpolierte Temperatur für y = $15$, $z_1=\SI{5}{\kelvin}$ und $z_2=0.2$.}
 \label{fig:interpolation_N_eff}
 \end{figure}
 
@@ -279,10 +282,20 @@ die daraus berechneten Annealingeffekte dargestellt.
 
 \begin{figure}
   \centering
-    \includegraphics[width=0.82\textwidth]{build/damage_interpolation.PDF}
-\caption{Interpolierte Temperatur für y = $0,05$ und $z=0,2$ und $\alpha$.}
+    \includegraphics[width=0.8\textwidth]{build/damage_interpolation.PDF}
+\caption{$\alpha$ und zugehörige Interpolierte Temperatur für y = $15$, $z_1=\SI{5}{\kelvin}$ und $z_2=0.2$.}
 \label{fig:interpolation_damage}
 \end{figure}
+
+%\begin{figure}
+%  \begin{subfigure}[c]{0.5\textwidth}
+%    \includegraphics[width=0.82\textwidth]{build/damage_interpolation.PDF}
+%  \end{subfigure}
+%  \begin{subfigure}[c]{0.5\textwidth}
+%    \caption{$\Delta N_{\mathrm{eff}}$ und zugehörige Interpolierte Temperatur für y = $15$,$z_1=\SI{5}{\kelvin}$ und $z_2=0.2$.}
+%  \end{subfigure}
+%\caption{Zwei Bilder mit Subfigure nebeneinander}
+%\end{figure}
 
 Die Anzahl der Intervalle der linearen Interpolation steigt gemäß der Funktion \ref{eqn:intervall}
 für größer werdende Temperaturen. Durch die Verwendung der Interpolation kommt es zu kleinen Abweichungen im
@@ -323,7 +336,7 @@ die angegebenen Annealingzeiten in Wahrheit größer sind und nicht präzise abg
 geringe Änderung der einzelnen Messwerte voneinander, welche dem
 Verlauf der theoretischen Werte für große Zeiten ähnelt.
 Unter Berücksichtigung dieser Erwärmung verschieben sich die Messpunkte im Vergleich zu den
-simulierten Werten zu höheren Temperaturen.
+simulierten Werten zu höheren Annealingzeiten.
 %Die Abweichung der theoretischen
 %und experimentellen Funktionswerte wird dadurch größer.
 Für die Bestimmung der Schadensrate
