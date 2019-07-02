@@ -53,13 +53,15 @@ def damage(t, T):
 #plt.semilogx(t_5/60, damage(t_5/60, T_5+273.15), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ of R1', Markersize=6)
 ##plt.semilogx(t_2/60, N_eff(t_2/60, 5*10**(15), 80+273.15), 'k--', label=r'$\Delta N_{\mathrm{eff}}$@80°C', Markersize=6)
 #ax2.set_ylabel(r"$\alpha $ /$\mathrm{A cm^{-1}} $",color='blue')
+#plt.ylim(0, 1*10**(-16))
 #ax2.tick_params('y',colors='blue')
-
 #ax1.grid()
 #ax2.legend(loc='best')
 #plt.xlabel(r'Time / $\mathrm{min}$')
-#plt.savefig('build/damage.pdf')
+#plt.savefig('build/damage_ohne_korrektur.pdf')
+##plt.show()
 #plt.clf()
+
 t = np.logspace(-1, 5, 30, endpoint=True)
 plt.gcf().subplots_adjust(bottom=0.18)
 plt.semilogx(t, damage(t, 60+273.15), 'r.', label=r'$\alpha @60°C$', Markersize=6)

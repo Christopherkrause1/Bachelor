@@ -81,10 +81,11 @@ def plot_damage_rate(t, T):
         plt.semilogx(t/60 , damage(t, T+273.15), 'k.', label='damage rate', Markersize=6)
 
         if 'T_const' in globals():
-            plt.semilogx(t/60 , damage(t, T_const+273.15), 'c.', label=r'$\alpha @$'+ str(T_const) + '°C', Markersize=6)
+            plt.semilogx(t/60 , damage(t/60, T_const+273.15), 'c.', label=r'$\alpha @$'+ str(T_const) + '°C', Markersize=6)
         ax2.set_ylabel(r"$\alpha  / \mathrm{A cm^{-1}} $",color='blue', size=13)
         ax2.tick_params('y',colors='blue')
-        ax2.set_ylim(None, 1.2*damage(interpolation_t(t, T), interpolation_T(t, T)+273.15)[1])
+        #ax2.set_ylim(None, 1.2*damage(interpolation_t(t, T), interpolation_T(t, T)+273.15)[1])
+        ax2.set_ylim(0, 1*10**(-16))
         ax1.grid()
         ax2.legend(loc='lower center')
         #plt.savefig('build/damage_interpolation.pdf')
@@ -110,12 +111,12 @@ def plot_damage_rate(t, T):
         plt.xlabel("Time / min", size=13)
         plt.xlim(10, None)
         plt.ylabel(r"$\alpha$ /$\mathrm{A cm^{-1}} $",color='blue', size=13)
-        plt.ylim(None, 1.2*damage(interpolation_t(t, T), interpolation_T(t, T)+273.15)[1])
+        #plt.ylim(None, 1.2*damage(interpolation_t(t, T), interpolation_T(t, T)+273.15)[1])
         plt.tick_params('y',colors='blue')
         plt.grid()
         plt.legend(loc='best')
-        #plt.show()
-        plt.savefig('build/damage_interpolation.pdf')
+        plt.show()
+        #plt.savefig('build/damage_interpolation.pdf')
         plt.clf()
 
 

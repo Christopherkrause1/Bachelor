@@ -103,7 +103,7 @@ der Bestrahlungen finden sich in \cite{mareike}.
 
 \begin{figure}
   \centering
-    \includegraphics[width=0.82\textwidth]{build/damageohnekorrektur.PDF}
+    \includegraphics[width=0.82\textwidth]{build/damage_ohne_korrektur.PDF}
     \caption{Schadensrate des Sensors R1 im Verlauf des Annealings.}
     \label{fig:damage_ohne}
 \end{figure}
@@ -244,16 +244,18 @@ Interpolationsschritte $n$ zwischen zwei Messpunkten abschätzt.
 Da große Temperaturen relevanter für das Annealing sind und die Annealingeffekte nicht linear von
 der Temperatur abhängig sind, ist es vorteilhaft,
 bei den Mittelwerten der Temperaturen möglichst kleine Ungenauigkeiten und somit möglichst viele
-Intervalle zu erschaffen. Aus diesem Grund wird die minimale Temperatur $T_{\mathrm{min}}$ des Datensatzes
-als Bezugspunkt genommen, wobei die Parameter $y$ und $z$ frei anpassbar sind:
+Intervalle zu erschaffen. Dies ist insbesondere für große Temperaturänderungen von einem Messwert zum nächsten relevant.
+Aus diesem Grund wird sowohl die maximale Temperatur $T_{\mathrm{max}}$ des Datensatzes
+als Bezugspunkt genommen, als auch die Temperaturdifferenz zweier
+aufeinander folgenden Temperaturen $T(t_{\mathrm{i}}$ und $T(t_{\mathrm{i+1}}$  betrachtet. Die Parameter $y$, $z_1$
+und $z_2$ frei anpassbar sind:
 
 \begin{align*}
-  n = \lceil{y \cdot (T-T_{\mathrm{min}})+ z}\rceil \label{eqn:intervall} .
+  n = \left\lceil{y \cdot \frac{T(t_{\mathrm{i}})-T(t_{\mathrm{i}}+1)}{T_{\mathrm{max}}-T(t_{\mathrm{i}})+ z_1}}+z_2\right\rceil \label{eqn:intervall} .
 \end{align*}
-Die Funktion wächst mit steigenden Temperaturen und gibt die Anzahl auf eine Temperatur $T(t_{\mathrm{i}})$ des
-Datensatzes folgenden Intervalle bis zur nächsten Temperatur $T(t_{\mathrm{i+1}})$ an. Der Parameter $z$ bewirkt eine allgemeine Steigerung
-der Anzahl an Intervallen, während $y$ die Anzahl basierend auf der zu betrachtenden Temperatur
-erhöht.
+Die Funktion wächst mit steigenden Temperaturen und größer werdenden Temperaturdifferenzen.
+Mit $y$ werden die Anzahl an Intervallen gesteuert, während die
+Parameter $z_1$ und $z_2$ verhindern, dass $n$ null oder unendlich groß wird.
 
 
 Für die Zeit und die Temperatur der interpolierten Daten gilt:
