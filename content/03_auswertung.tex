@@ -247,11 +247,11 @@ bei den Mittelwerten der Temperaturen möglichst kleine Ungenauigkeiten und somi
 Intervalle zu erschaffen. Dies ist insbesondere für große Temperaturänderungen von einem Messwert zum nächsten relevant.
 Aus diesem Grund wird sowohl die maximale Temperatur $T_{\mathrm{max}}$ des Datensatzes
 als Bezugspunkt genommen, als auch die Temperaturdifferenz zweier
-aufeinander folgenden Temperaturen $T(t_{\mathrm{i}}$ und $T(t_{\mathrm{i+1}}$  betrachtet. Die Parameter $y$, $z_1$
+aufeinander folgenden Temperaturen $T(t_{\mathrm{i}}$ und $T(t_{\mathrm{i+1}}$  betrachtet. Die positiven Parameter $y$, $z_1$
 und $z_2$ frei anpassbar sind:
 
 \begin{align*}
-  n = \left\lceil{y \cdot \frac{T(t_{\mathrm{i}})-T(t_{\mathrm{i}}+1)}{T_{\mathrm{max}}-T(t_{\mathrm{i}})+ z_1}}+z_2\right\rceil \label{eqn:intervall} .
+  n = \left\lceil{ y \cdot \frac{|T(t_{\mathrm{i}})-T(t_{\mathrm{i}}+1)|}{T_{\mathrm{max}}-T(t_{\mathrm{i}})+ z_1}}+z_2 \right\rceil \label{eqn:intervall} .
 \end{align*}
 Die Funktion wächst mit steigenden Temperaturen und größer werdenden Temperaturdifferenzen.
 Mit $y$ wird die Anzahl an Intervallen gesteuert, während die
@@ -269,12 +269,13 @@ Für die Zeit und die Temperatur der interpolierten Daten gilt:
 
 Hierdurch werden lineare und gleich lange Intervalle zwischen den Temperaturen
 erzeugt. In den Abbildungen \ref{fig:interpolation_N_eff} und \ref{fig:interpolation_damage} sind die interpolierten Temperaturen und
-die daraus berechneten Annealingeffekte dargestellt.
+die daraus berechneten Annealingeffekte dargestellt. Die Anzahl an Intervallen für die
+einzelnen Temperaturen ist in Abbildung \ref{fig:interpolation_steps} wiedergegeben.
 
 \begin{figure}
   \centering
     \includegraphics[width=0.8\textwidth]{build/interpolationtdata.PDF}
-\caption{$\Delta N_{\mathrm{eff}}$ und zugehörige Interpolierte Temperatur für y = $15$, $z_1=\SI{5}{\kelvin}$ und $z_2=0.2$.}
+\caption{$\Delta N_{\mathrm{eff}}$ und zugehörige Interpolierte Temperatur für y = $15$, $z_1=\SI{5}{\kelvin}$ und $z_2=0,2$.}
 \label{fig:interpolation_N_eff}
 \end{figure}
 
@@ -283,8 +284,15 @@ die daraus berechneten Annealingeffekte dargestellt.
 \begin{figure}
   \centering
     \includegraphics[width=0.8\textwidth]{build/damage_interpolation.PDF}
-\caption{$\alpha$ und zugehörige Interpolierte Temperatur für y = $15$, $z_1=\SI{5}{\kelvin}$ und $z_2=0.2$.}
+\caption{$\alpha$ und zugehörige Interpolierte Temperatur für y = $15$, $z_1=\SI{5}{\kelvin}$ und $z_2=0,2$.}
 \label{fig:interpolation_damage}
+\end{figure}
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.8\textwidth]{build/interpolation_steps.PDF}
+\caption{Anzahl an Interpolationsschritten für y = $15$, $z_1=\SI{5}{\kelvin}$ und $z_2=0,2$.}
+\label{fig:interpolation_steps}
 \end{figure}
 
 %\begin{figure}

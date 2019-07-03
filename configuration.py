@@ -14,7 +14,7 @@ t_1, T_1 = np.genfromtxt(r'daten/tdata_1.txt', usecols=(0, 1), unpack=True) #adj
 
 
 #if you also want the annealing of a constant temperature in your plot, use the following line, adjust the value T_const in °C
-#T_const = 80
+T_const = 80
 
 
 #if you don't want to have the temperature curve shown in the plot, comment the next line out

@@ -100,8 +100,8 @@ def plot_N_eff(t, phi, T):
         ax2.tick_params('y',colors='blue')
         ax1.grid()
         ax2.legend(loc='best')
-        #plt.show()
-        plt.savefig('build/interpolationtdata.pdf')
+        plt.show()
+        #plt.savefig('build/interpolationtdata.pdf')
         plt.clf()
 
     else:
