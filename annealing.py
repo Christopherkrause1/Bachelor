@@ -16,7 +16,7 @@ E_aa = 1.09 * 1.6* 10**(-19)    #activation Energy in j
 k_0a = 2.4 *10**(13)  *60          #frequency factor in 1/s
 c = 75 * 10**(-14)              #fit parameter in 1/cm**2
 
-t, phi, T, T_2, T_3, T_4 = np.genfromtxt('Daten/daten.txt', unpack=True)
+t, phi, T, T_2, T_3, T_4 = np.genfromtxt('Daten/merge_file', unpack=True)
 #t_2, T_5 = np.genfromtxt('Daten/tdata_1.txt', unpack=True)
 #t_unix, T_6 = np.genfromtxt('2018-09-22_11_21_40_Annealingtest_1950.txt', usecols=(0, 2), unpack=True)  #unix daten
 #t_s = t_unix-t_unix[0]
@@ -70,11 +70,12 @@ def N_eff(t, phi, T):                                  #Änderung der Dotierungs
 t = np.logspace(-1, 5, 30, endpoint=True)
 plt.gcf().subplots_adjust(bottom=0.18)
 plt.semilogx(t, N_eff(t, 1.4*10**(13), 60+273.15), 'r.', label=r'$\Delta N_eff@60°C$', Markersize=6)
-plt.semilogx(t, N_eff(t, 1.4*10**(13), 80+273.15), 'b.', label=r'$\Delta N_eff@80°C$', Markersize=6)
+#plt.semilogx(t, N_eff(t, 1.4*10**(13), 80+273.15), 'b.', label=r'$\Delta N_eff@80°C$', Markersize=6)
 plt.legend()
 plt.grid()
 
 plt.xlabel(r'Time / $\mathrm{min}$')
 plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
-plt.savefig('build/annealing.pdf')
+plt.show()
+#plt.savefig('build/annealing.pdf')
 plt.clf()

@@ -3,7 +3,7 @@ from configuration import *
 t_1 -= t_1[0]                                          #converts unix time stamps to seconds
 k_B = 1.38064852 * 10**(-23)                           #Boltzmann constant in J/K
 
-
+print(t_extra)
 
 def N_Y_inf(phi):                                      #longterm annealing amplitude
     return g_y * phi
@@ -90,7 +90,7 @@ def plot_N_eff(t, phi, T):
         ax1.set_ylabel(r"Temperature / $^{\circ}$C", color = 'red', size=13)
         ax1.tick_params('y',colors='red')
         ax1.set_xlabel("Time / min", size=13)
-        ax1.legend(loc=6)
+        ax1.legend(loc='best')
         ax2 = ax1.twinx()          #n_eff axis
         plt.semilogx(interpolation_t(t, T)/60, N_eff(interpolation_t(t, T), phi, interpolation_T(t, T)), 'b.', label=r'interpolated $\Delta N_{\mathrm{eff}}$', Markersize=6)
         plt.semilogx(t/60, N_eff(t, phi, T), 'k.', label=r'$\Delta N_{\mathrm{eff}}$', Markersize=6)
@@ -99,9 +99,12 @@ def plot_N_eff(t, phi, T):
         ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue', size=13)
         ax2.tick_params('y',colors='blue')
         ax1.grid()
-        ax2.legend(loc='best')
+        ax2.legend(loc='lower left')
+        plt.axvline(x=4.917)
+        plt.axvline(x=12.4)
+        ax2.axhline(y=2.2112*10**(13))
         plt.show()
-        #plt.savefig('build/interpolationtdata.pdf')
+        #plt.savefig('build/mareike_R9_2.pdf')
         plt.clf()
 
     else:

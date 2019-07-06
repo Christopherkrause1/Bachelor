@@ -5,13 +5,13 @@ Sie  lassen präzise Rückschlüsse auf die Energie, sowie den Impuls von Teilch
 hohe Ortsauflösung zu.
 
 
-ATLAS verwendet Siliziumdetektoren als
-einen Teil seines inneren Detektors zur Bestimmung von Richtung, Impuls
-und Ladung von geladenen Teilchen. Es ist eines der vier großen Experimente am LHC.
+Im ATLAS Experiment werden Siliziumdetektoren, zur Bestimmung von Richtung, Impuls
+und Ladung von geladenen Teilchen, verwendet. Es ist eines der vier großen Experimente am LHC.
 Er wird von einem $\SI{2}{\tesla}$ Magnetfeld eines ihn umgebenden Solenoids
 durchsetzt und krümmt Teilchenbahnen in Abhängigkeit von Ladung und Impuls.
 Bestehend aus drei Komponenten, dem Pixeldetektor, dem "Semiconductor Tracker" (SCT) und dem "Transition Radiation Tracker" (TRT) kommen  die
 Siliziumdetektoren in den ersten beiden Bestandteilen zum Einsatz.
+
 Mit einer Fläche von $\SI{1.7}{\meter\squared}$ und drei Lagen von Modulen
 %und insgesamt 1744 Modulen
 ist es im Pixeldetektor möglich
@@ -21,13 +21,14 @@ Im SCT werden, anders als im Pixeldetektor, Siliziumstreifen-Sensoren verwendet.
 %sowie 18 scheibenförmige Lagen, verteilt und umfasst eine Fläche von $\SI{63}{\meter\squared}$.
 Auch dieser wird für
 die Rekonstruktion der Bahn der Teilchen verwendet, jedoch auch für die Identifikation und der Bestimmung des Impulses der Teilchen.
+
 Der TRT wird ebenfalls zur Identifikation von Teilchen, hauptsächlich Elektronen und Pionen, verwendet und besteht aus 73 Lagen
 von Straw-Detektoren (viele aneinander gereihte Proportionalzählrohre).
-Weiterreichende Informationen über ATLAS befinden sich in \cite{ATLAS}.
+Weiterreichende Informationen über das ATLAS-Experiment befinden sich in \cite{ATLAS}.
 Für Collider-Experimente sind möglichst funktionsfähige Detektoren essenziell.
 Die Sensoren der innersten Schicht des Pixeldetektors (IBL)
 werden bei den Experimenten mit Fluenzen von ungefähr $\Phi_{\mathrm{eq}} =3,3\cdot 10^{15} \, \mathrm{n_{eq}/cm^2}$ bestrahlt \cite{Capeans:1291633}.
-Die erwartete Fluenz des geplanten \textit{Inner Tracker} (ITK) des Pixeldetektors beträgt
+Die erwartete Fluenz des geplanten "Inner Tracker" (ITK) beträgt
 $\Phi_{\mathrm{eq}} =1,3\cdot 10^{16} \, \mathrm{n_{eq}/cm^2}$ \cite{itk}. Eine Untersuchung
 der Folgen und Gegenmaßnahmen der Strahlenbeschädigung ist somit notwendig.
 
@@ -41,9 +42,11 @@ Einfallende Teilchen können die
 Struktur des Detektors und somit dessen Dotierungskonzentration verändern, wodurch dieser ineffizienter wird.
 Es ist somit notwendig, die Strahlenschäden möglichst gering zu halten damit
 die Halbleiter eine möglichst lange Lebenszeit besitzen.
+
 Die Bestrahlung der Detektoren führt zu einem anwachsenden Leckstrom, welcher den
 gemessenen elektrischen Signalen überlagert ist und ein Rauschen kreiert. Ein
 effektiver Detektor sollte somit einen möglichst geringen Leckstrom haben.
+
 Für einen Detektor ist eine möglichst große Depletionszone ebenfalls wichtig,
 da Teilchen nur beim Durchdringen der Depletionszone über ein elektrisches Signal detektiert
 werden können.
@@ -57,13 +60,16 @@ Raumladungszone beschreibt.
 Die durch Strahlung induzierte Änderung der Dotierungskonzentration und des Leckstromes sind
 somit wichtige Größen für die Qualität eines Detektors.
 Um die Schäden zu verringern wird der Annealingeffekt ausgenutzt. Mit diesem lassen
-Defekte durch Wärme verändern und teilweise beheben. Die Eigenschaften des Detektor können
+Defekte durch Wärme verändern und teilweise beheben. Die Eigenschaften des Detektors können
 dabei sowohl verbessert als auch verschlechtert werden.
 Jedoch kann Annealing im besten Fall die Verschlechterung der Detektoreigenschaften durch Bestrahlung nur
 abschwächen.
+Um zu Überprüfen, ob Sensoren den Anforderungen im Experiment genügen, werden sie in
+Bestrahlungseinrichtungen gezielt bestrahlt.
 
 In dieser Arbeit wird das
-theoretische Verhalten der beiden Größen auf der Grundlage des Hamburger Modells betrachtet.
+theoretische Verhalten der Dotierungskonzentration und des Leckstroms auf der Grundlage des Hamburger Modells betrachtet.
 Ein Programm zur Modellierung von Annealingeffekten kann somit zur
 Optimierung durch die Bewertung von Annealingschritten und der Vorhersage der Effekte beitragen.
-Zusätzlich ist es an keine weiteren Programme gebunden und unkompliziert bedienbar.
+
+%Zusätzlich ist es an keine weiteren Programme gebunden und unkompliziert bedienbar.
