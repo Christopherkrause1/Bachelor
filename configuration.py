@@ -5,7 +5,7 @@ from merging_data import *     #only use this line if you want to plot data from
 
 
 #insert txt file with time and temperature values (no rows with nans)
-t_1, T_1 = np.genfromtxt(r'merge_file.txt', usecols=(0, 16), unpack=True) #adjust columns if necessary
+t_1, T_1 = np.genfromtxt(r'merge_file.txt', usecols=(0, 1), unpack=True) #adjust columns if necessary
 #t_1: Time in seconds/unix timestamps; T_1: Temperature in degree celsius
 
 #only use next line if you merged files with the merging_data.py and want to plot the data of the merge_file.txt
@@ -14,18 +14,18 @@ t_1 = t_merged_data
 
 
 #if you also want the annealing of a constant temperature in your plot, use the following line, adjust the value T_const in °C
-T_const = 80
+#T_const = 80
 
 
 #if you don't want to have the temperature curve shown in the plot, comment the next line out
-show_temperature_curve = 1
+#show_temperature_curve = 1
 
 
 
 #following parameters can be changed
 
 #constant fluence in 1/cm**2
-phi = 1*10**(15)
+phi = 5*10**(15)
 
 #constant parameters of the N_eff function with a "WE-25k Ohm cm" Diode
 N_C0 = 1.1*10**11                   #stable Damage amplitude in 1/cm**3

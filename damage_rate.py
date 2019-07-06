@@ -16,7 +16,7 @@ def gett_I(t, T_s, T):                      #creates an approximation for t/tau_
     timediff_I /= tau_I((T_s+T_n)/2)        #dividing each element by the mean of 2 adjacent tau_I elements
     t_I = np.zeros(len(t))                  #create an array of zeros to work with
     for i in range(0, len(t)):
-        t_I[i] = np.sum(timediff_I[0:i+1])  #writes in each element the sum of the cooresponding timediff_I values
+        t_I[i] = np.sum(timediff_I[0:i+1])  #writes in each element the sum of the corresponding timediff_I values
     return t_I                              #now looks like [0, 0 + t[1]-t[0]/(tau_I[0] + tau_I[1])/2, ...]
 
 
@@ -70,15 +70,15 @@ def interpolation_T(t, T):                                            #linear in
 def plot_damage_rate(t, T):
     if 'show_temperature_curve' in globals():
         fig, ax1 = plt.subplots()
-        plt.semilogx(interpolation_t(t, T)/60 , interpolation_T(t, T), 'g.', label='interpolated temperature', Markersize=6)
-        plt.semilogx(t/60 , T, 'r.', label='temperature', Markersize=6)
-        ax1.set_ylabel(r"Temperature / $^{\circ}$C", color = 'red', size=13)
+        plt.semilogx(interpolation_t(t, T)/60 , interpolation_T(t, T), 'g.', label='Interpolierte Temperatur', Markersize=6)
+        plt.semilogx(t/60 , T, 'r.', label='Temperatur', Markersize=6)
+        ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red', size=13)
         ax1.tick_params('y',colors='red')
-        ax1.set_xlabel("Time / min", size=13)
+        ax1.set_xlabel("Zeit / min", size=13)
         ax1.legend(loc='best')
         ax2 = ax1.twinx() #second axis (damage rate)
-        plt.semilogx(interpolation_t(t, T)/60 , damage(interpolation_t(t, T), interpolation_T(t, T)+273.15), 'b.', label='interpolated damage rate', Markersize=6)
-        plt.semilogx(t/60 , damage(t, T+273.15), 'k.', label='damage rate', Markersize=6)
+        plt.semilogx(interpolation_t(t, T)/60 , damage(interpolation_t(t, T), interpolation_T(t, T)+273.15), 'b.', label='Interpolierte Schadensrate', Markersize=6)
+        plt.semilogx(t/60 , damage(t, T+273.15), 'k.', label='Schadensrate', Markersize=6)
 
         if 'T_const' in globals():
             plt.semilogx(t/60 , damage(t/60, T_const+273.15), 'c.', label=r'$\alpha @$'+ str(T_const) + '°C', Markersize=6)
@@ -88,35 +88,34 @@ def plot_damage_rate(t, T):
         ax2.set_ylim(0, 1*10**(-16))
         ax1.grid()
         ax2.legend(loc='lower center')
-        #plt.savefig('build/damage_interpolation.pdf')
-        plt.show()
+        plt.savefig('build/damage_interpolation.pdf')
+        #plt.show()
         plt.clf()
 
     else:
         plt.gcf().subplots_adjust(bottom=0.18)
-        plt.semilogx(interpolation_t(t, T)/60, damage(interpolation_t(t, T), interpolation_T(t, T)+273.15), 'b.', label=r'interpolated damage rate', Markersize=6)
-        plt.semilogx(t/60, damage(t, T+273.15), 'k.', label=r'damage rate', Markersize=6)
-        #plt.semilogx(t_extra[0]/60 ,  4.44689013*10**(-17), 'co', label='measured damage rate', Markersize=6)
-        #plt.semilogx(t_extra[1]/60 ,  4.31653104*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[2]/60 ,  4.23412643*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[3]/60 ,  4.14873766*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[5]/60 ,  4.04255188*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[8]/60 ,  3.93018074*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[13]/60 , 3.81504309*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[28]/60 , 3.62997850*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[38]/60 , 3.55766500*10**(-17), 'co', Markersize=6)
-        #plt.semilogx(t_extra[59]/60 , 3.44813677*10**(-17), 'co', Markersize=6)
+        plt.semilogx(interpolation_t(t, T)/60, damage(interpolation_t(t, T), interpolation_T(t, T)+273.15), 'b.', label=r'Interpolierte Schadensrate', Markersize=6)
+        plt.semilogx(t/60, damage(t, T+273.15), 'k.', label=r'Schadensrate', Markersize=6)
+        plt.semilogx(t_extra[0]/60 ,  2.26467890*10**(-17), 'co', label='Gemessene Schadensrate', Markersize=6)
+        plt.semilogx(t_extra[1]/60 ,  2.21539516*10**(-17), 'co', Markersize=6)
+        plt.semilogx(t_extra[2]/60 ,  2.13973679*10**(-17), 'co', Markersize=6)
+        plt.semilogx(t_extra[3]/60 ,  2.11307209*10**(-17), 'co', Markersize=6)
+        plt.semilogx(t_extra[5]/60 ,  2.02070876*10**(-17), 'co', Markersize=6)
+        plt.semilogx(t_extra[8]/60 ,  1.96382040*10**(-17), 'co', Markersize=6)
+        plt.semilogx(t_extra[13]/60 , 1.90172111*10**(-17), 'co', Markersize=6)
+        plt.semilogx(t_extra[23]/60 , 1.85258704*10**(-17), 'co', Markersize=6)
+        plt.semilogx(t_extra[38]/60 , 1.85975260*10**(-17), 'co', Markersize=6)
         if 'T_const' in globals():
             plt.semilogx(t/60, damage(t/60, T_const+273.15), 'c.', label=r'$\alpha @$'+ str(T_const) + '°C', Markersize=6)
-        plt.xlabel("Time / min", size=13)
+        plt.xlabel("Zeit / min", size=13)
         plt.xlim(10, None)
         plt.ylabel(r"$\alpha$ /$\mathrm{A cm^{-1}} $",color='blue', size=13)
-        #plt.ylim(None, 1.2*damage(interpolation_t(t, T), interpolation_T(t, T)+273.15)[1])
+        plt.ylim(None, 1.2*damage(interpolation_t(t, T), interpolation_T(t, T)+273.15)[1])
         plt.tick_params('y',colors='blue')
         plt.grid()
         plt.legend(loc='best')
-        plt.show()
-        #plt.savefig('build/damage_interpolation.pdf')
+        #plt.show()
+        plt.savefig('build/damage_P_4.pdf')
         plt.clf()
 
 

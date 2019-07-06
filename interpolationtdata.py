@@ -79,7 +79,7 @@ for i in range(1, len(T_1)):
 
 
 #fig, ax1 = plt.subplots()
-#plt.semilogx(new_t/60 , new_T, 'r.', label='interpolierte Temperatur', Markersize=6)
+#plt.semilogx(new_t/60 , new_T, 'r.', label='Interpolierte Temperatur', Markersize=6)
 #plt.semilogx(t_1/60 , T_1, 'g.', label='Temperatur', Markersize=6)
 #ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
 #ax1.tick_params('y',colors='red')
@@ -88,8 +88,8 @@ for i in range(1, len(T_1)):
 #
 #
 #ax2 = ax1.twinx()
-#plt.semilogx(new_t/60, N_eff(new_t, 5*10**(15), new_T), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit interpolation', Markersize=6)
-#plt.semilogx(t_1/60, N_eff(t_1, 5*10**(15), T_1), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
+#plt.semilogx(new_t/60, N_eff(new_t, 5*10**(15), new_T), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ mit Interpolation', Markersize=6)
+#plt.semilogx(t_1/60, N_eff(t_1, 5*10**(15), T_1), 'k.', label=r'$\Delta N_{\mathrm{eff}}$ ohne Interpolation', Markersize=6)
 ##plt.semilogx(new_t/60, N_C(5*10**(15))+N_Y(new_t, 5*10**(15), new_T), 'y-', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
 ##plt.semilogx(new_x/60, N_eff(new_x, 5*10**(15), 80), 'k--', label=r'$\Delta N_{\mathrm{eff}}$ für 80°C', Markersize=6)
 #ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
@@ -97,23 +97,23 @@ for i in range(1, len(T_1)):
 #ax1.grid()
 #ax2.legend(loc='best')
 ##plt.xlim(0, 2*10**2)
-#plt.show()
-##plt.savefig('build/interpolationtdata.pdf')
+##plt.show()
+#plt.savefig('build/interpolationtdata.pdf')
 
 
 
 
 fig, ax1 = plt.subplots()
-plt.semilogx(new_t/60 , new_T, 'g.', label='interpolated temperature', Markersize=6)
-plt.semilogx(t_1/60 , T_1, 'r.', label='temperatur', Markersize=6)
-ax1.set_ylabel(r"Temperature/ $^{\circ}$C", color = 'red')
+plt.semilogx(new_t/60 , new_T, 'g.', label='Interpolierte Temperatur', Markersize=6)
+plt.semilogx(t_1/60 , T_1, 'r.', label='Temperatur', Markersize=6)
+ax1.set_ylabel(r"Temperatur/ $^{\circ}$C", color = 'red')
 ax1.tick_params('y',colors='red')
-ax1.set_xlabel("Time / min")
+ax1.set_xlabel("Zeit / min")
 ax1.legend(loc=6)
 
 n_a = np.append(n_a, 0)
 ax2 = ax1.twinx()
-plt.semilogx(t_1/60, n_a, 'b--', label=r'number of interpolation steps', Markersize=6)
+plt.semilogx(t_1/60, n_a, 'b--', label=r'Anzahl an Interpolationsintervalle', Markersize=6)
 #plt.semilogx(new_t/60, N_C(5*10**(15))+N_Y(new_t, 5*10**(15), new_T), 'y-', label=r'$\Delta N_{\mathrm{eff}}$ ohne interpolation', Markersize=6)
 #plt.semilogx(new_x/60, N_eff(new_x, 5*10**(15), 80), 'k--', label=r'$\Delta N_{\mathrm{eff}}$ für 80°C', Markersize=6)
 ax2.set_ylabel(r"n",color='blue')

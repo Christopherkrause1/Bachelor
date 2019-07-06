@@ -16,8 +16,8 @@ E_aa = 1.09 * 1.6* 10**(-19)    #activation Energy in j
 k_0a = 2.4 *10**(13)  *60          #frequency factor in 1/s
 c = 75 * 10**(-14)              #fit parameter in 1/cm**2
 
-t, phi, T, T_2, T_3, T_4 = np.genfromtxt('Daten/merge_file', unpack=True)
-#t_2, T_5 = np.genfromtxt('Daten/tdata_1.txt', unpack=True)
+#t, phi, T, T_2, T_3, T_4 = np.genfromtxt('Daten/tdata_1.txt', unpack=True)
+t_2, T_5 = np.genfromtxt('Daten/tdata_1.txt', unpack=True)
 #t_unix, T_6 = np.genfromtxt('2018-09-22_11_21_40_Annealingtest_1950.txt', usecols=(0, 2), unpack=True)  #unix daten
 #t_s = t_unix-t_unix[0]
 #Änderung der effektiven Dotierungskonzentration für WE-25k$\Omega$cm
@@ -49,33 +49,34 @@ def N_eff(t, phi, T):                                  #Änderung der Dotierungs
 
 
 
-#fig, ax1 = plt.subplots()
-#plt.semilogx(t_2/60 , T_5, 'r.', label='Temperature', Markersize=6)
-#ax1.set_ylabel(r"Temperature / $^{\circ}$C", color = 'red')
-#ax1.tick_params('y',colors='red')
-#ax1.set_xlabel("Time / min")
-#ax1.legend(loc='upper left')
-#
-#
-#ax2 = ax1.twinx()
-#plt.semilogx(t_2/60, N_eff(t_2/60, 5*10**(15), T_5+273.15), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ of R1', Markersize=6)
-##plt.semilogx(t_2/60, N_eff(t_2/60, 5*10**(15), 80+273.15), 'k--', label=r'$\Delta N_{\mathrm{eff}}$@80°C', Markersize=6)
-#ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
-#ax2.tick_params('y',colors='blue')
-#
-#ax1.grid()
-#ax2.legend(loc='best')
-#plt.savefig('build/annealing.pdf')
-#plt.clf()
-t = np.logspace(-1, 5, 30, endpoint=True)
-plt.gcf().subplots_adjust(bottom=0.18)
-plt.semilogx(t, N_eff(t, 1.4*10**(13), 60+273.15), 'r.', label=r'$\Delta N_eff@60°C$', Markersize=6)
-#plt.semilogx(t, N_eff(t, 1.4*10**(13), 80+273.15), 'b.', label=r'$\Delta N_eff@80°C$', Markersize=6)
-plt.legend()
-plt.grid()
+fig, ax1 = plt.subplots()
+plt.semilogx(t_2/60 , T_5, 'r.', label='Temperatur', Markersize=6)
+ax1.set_ylabel(r"Temperatur / $^{\circ}$C", color = 'red')
+ax1.tick_params('y',colors='red')
+ax1.set_xlabel("Zeit / min")
+ax1.legend(loc='upper left')
 
-plt.xlabel(r'Time / $\mathrm{min}$')
-plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
-plt.show()
-#plt.savefig('build/annealing.pdf')
+
+ax2 = ax1.twinx()
+plt.semilogx(t_2/60, N_eff(t_2/60, 5*10**(15), T_5+273.15), 'b.', label=r'$\Delta N_{\mathrm{eff}}$ von R1', Markersize=6)
+#plt.semilogx(t_2/60, N_eff(t_2/60, 5*10**(15), 80+273.15), 'k--', label=r'$\Delta N_{\mathrm{eff}}$@80°C', Markersize=6)
+ax2.set_ylabel(r"$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $",color='blue')
+ax2.tick_params('y',colors='blue')
+
+ax1.grid()
+ax2.legend(loc='best')
+#plt.show()
+plt.savefig('build/ohnekorrektur.pdf')
 plt.clf()
+#t = np.logspace(-1, 5, 30, endpoint=True)
+#plt.gcf().subplots_adjust(bottom=0.18)
+#plt.semilogx(t, N_eff(t, 1.4*10**(13), 60+273.15), 'r.', label=r'$\Delta N_eff@60°\mathrm{C}$', Markersize=6)
+#plt.semilogx(t, N_eff(t, 1.4*10**(13), 80+273.15), 'b.', label=r'$\Delta N_eff@80°\mathrm{C}$', Markersize=6)
+#plt.legend()
+#plt.grid()
+#
+#plt.xlabel(r'Zeit / $\mathrm{min}$')
+#plt.ylabel(r'$\Delta N_{eff}$ /$\mathrm{cm^{-3}} $')
+#plt.show()
+##plt.savefig('build/annealing.pdf')
+#plt.clf()
