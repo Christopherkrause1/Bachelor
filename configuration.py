@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 import numpy as np
 import math
 from merging_data import *     #only use this line if you want to plot data from the merge_file.txt (also uncomment line 12)

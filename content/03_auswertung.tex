@@ -30,7 +30,7 @@ Weitere Informationen zu den Beschaffenheiten der "WE-25k" Diode befinden sich i
 
 \begin{table}
   \centering
-  \caption{Fitparameter der "WE-25k" Diode für die Modellierung von Annealingeffekten }
+  \caption{Fitparameter der "WE-25k" Diode für die Modellierung von ${\mathrm{Annealingeffekten}}$. }
   \label{tab:w1}
   \begin{tabular}{c c}
     \toprule
@@ -96,7 +96,7 @@ der Bestrahlungen finden sich in \cite{mareike}.
 
 \begin{figure}
   \centering
-    \includegraphics[width=0.82\textwidth]{build/ohnekorrektur.PDF}
+    \includegraphics[width=0.78\textwidth]{build/ohnekorrektur.PDF}
     \caption{Dotierungskonzentration des Sensors R1 im Verlauf des Annealings nach einer Bestrahlung mit einer Fluenz von
     $5\cdot 10^{15} \, \mathrm{n_{eq}/cm^2}$ ohne die Berücksichtigung der Annealinghistorie.}
     \label{fig:N_eff_ohne}
@@ -104,7 +104,7 @@ der Bestrahlungen finden sich in \cite{mareike}.
 
 \begin{figure}
   \centering
-    \includegraphics[width=0.82\textwidth]{build/damage_ohne_korrektur.PDF}
+    \includegraphics[width=0.78\textwidth]{build/damage_ohne_korrektur.PDF}
     \caption{Schadensrate des Sensors R1 im Verlauf des Annealings ohne die Berücksichtigung der Annealinghistorie.}
     \label{fig:damage_ohne}
 \end{figure}
@@ -180,7 +180,7 @@ Zusätzlich sind die Wechselwirkungen zwischen der Fluenz und dem gleichzeitigen
 %der einzelnen Temperaturen verzögert sich der Annealingeffekt insgesamt, da anfänglich
 %geringe Temperaturen nur wenig zum gesamten Effekt beitragen. Dies wird
 %an dem späteren Zeitpunkt des Minimums deutlich.
-Dennoch erfüllt die Korrektur ihren Zweck
+Dennoch ist es mit der Korrektur möglich Annealingeffekte von beliebigen Temperaturprofilen zu berechnen und
 kann für den \textit{shortterm annealing} Term der Schadensrate ebenfalls erstellt werden.
 Im zweiten Term ist $\alpha_{0}$ temperaturabhängig, aber nicht zeitabhängig,
 wodurch der Korrekturansatz aus der Berechnung von $\Delta N_{eff}$ nicht mehr gelten kann. Um die Annealinghistorie dennoch
@@ -261,7 +261,7 @@ und $z_2$ sind frei anpassbar:
 Die Funktion wächst mit steigenden Temperaturen und größer werdenden Temperaturdifferenzen.
 Mit $y$ wird die Anzahl an Intervallen gesteuert, während die
 Parameter $z_1$ und $z_2$ verhindern, dass $n$ null oder unendlich groß wird.
-Die Funktion folgt lediglich aus den vorgegebenen Anspüchen an die Intervallzahl und beschreibt
+Die Funktion folgt lediglich aus den vorgegebenen Ansprüchen an die Intervallzahl und beschreibt
 keine optimale Abschätzung.
 
 
@@ -280,7 +280,7 @@ einzelnen Temperaturen ist in Abbildung \ref{fig:interpolation_steps} wiedergege
 \begin{figure}
   \centering
     \includegraphics[width=0.8\textwidth]{build/interpolationtdata.PDF}
-\caption{$\Delta N_{\mathrm{eff}}$ und zugehörige Interpolierte Temperatur für y = $15$, $z_1=\SI{5}{\kelvin}$ und $z_2=0,2$.}
+\caption{$\Delta N_{\mathrm{eff}}$ und zugehörige interpolierte Temperatur für y = $15$, $z_1=\SI{5}{\kelvin}$ und $z_2=0,2$.}
 \label{fig:interpolation_N_eff}
 \end{figure}
 
@@ -289,7 +289,7 @@ einzelnen Temperaturen ist in Abbildung \ref{fig:interpolation_steps} wiedergege
 \begin{figure}
   \centering
     \includegraphics[width=0.8\textwidth]{build/damage_interpolation.PDF}
-\caption{$\alpha$ und zugehörige Interpolierte Temperatur für y = $15$, $z_1=\SI{5}{\kelvin}$ und $z_2=0,2$.}
+\caption{$\alpha$ und zugehörige interpolierte Temperatur für y = $15$, $z_1=\SI{5}{\kelvin}$ und $z_2=0,2$.}
 \label{fig:interpolation_damage}
 \end{figure}
 
@@ -311,8 +311,12 @@ einzelnen Temperaturen ist in Abbildung \ref{fig:interpolation_steps} wiedergege
 %\end{figure}
 
 Die Anzahl der Intervalle der linearen Interpolation steigt gemäß der Funktion \ref{eqn:intervall}
-für größer werdende Temperaturen. Durch die Verwendung der Interpolation kommt es zu kleinen Abweichungen im
-Vergleich zu einer Berechnung die lediglich die Messpunkte nutzt.
+für größer werdende Temperaturen $T(t_{\mathrm{i}})$ und Temperaturdifferenzen
+$|T(t_{\mathrm{i}})-T(t_{\mathrm{i}}+1)|$. So kommt es beispielsweise im Maximum des Temperaturverlaufes, durch
+die geringe Änderung der Temperatur zu keinen zusätzlichen Interpolationsintervallen.
+
+Durch die Verwendung der Interpolation kommt es zu kleinen Abweichungen im
+Vergleich zu einer Berechnung, die lediglich die Messpunkte nutzt.
 %Da die lineare Interpolation lediglich eine Näherung des Verlaufes der
 %Temperaturkurve entspricht, kommt es bei der Aufsummierung der einzelnen Zeitabschnitte
 %zu größer werdenden Abweichungen von der eigentlichen Kurve.
@@ -320,16 +324,16 @@ Die abweichenden Werte beschreiben
 aufgrund der Interpolation einen präziseren Verlauf als der Annealingeffekt des ursprünglichen Datensatzes.
 Jedoch beschreibt die lineare Interpolation nur eine Näherung des wahren Temperaturverlaufes.
 
-\section{Berechnung der gesamten Annealinghistorie eines Sensors}
+\section{Berechnung der gesamten Annealinghistorie einer Diode}
 Die hier betrachtete Annealinghistorie setzt sich aus 60 Erwärmungs-und
-Abkühlungszyklen des Sensors "P3" zusammen, welche insgesamt $\SI{1800}{\minute}$ entsprechen.
-Für den Sensor "P4" werden 39 Zyklen ($\SI{1170}{\minute}$) betrachtet.
-Beide wurden von der ${\mathrm{IRRAD}}$ Einrichtung mit $\SI{24}{\giga\eV\per\clight}$ Protonen des Protonen Synchrotrons bestrahlt.
-Die Datensätze werden mithilfe eines Python Programmes miteinander Verbunden,
-wobei die Zeiten zwischen dem Annealing von einem Zyklus zum nächsten auf null gesetzt werden. Wegen der geringen
-Temperaturen nach jeder Abkühlung sind die daraus resultierenden Abweichungen vernachlässigbar.
-Für jeden Zyklus wurde bei den Sensoren eine Temperatur von $\SI{60}{\celsius}$ angestrebt.
-Mehr Informationen zu den Eigenschaften von P3 und P4 in  \cite{felix}.
+Abkühlungszyklen der Diode "P3" zusammen, welche insgesamt $\SI{1800}{\minute}$ entsprechen.
+Für die Diode "P4" werden 39 Zyklen ($\SI{1170}{\minute}$) betrachtet.
+Beide wurden von der ${\mathrm{IRRAD}}$ Einrichtung \cite{irrad} am CERN mit $\SI{24}{\giga\eV\per\clight}$ Protonen des Protonen Synchrotrons bestrahlt.
+Die Datensätze werden mithilfe eines Python Programmes miteinander Verbunden.
+Wegen der geringen
+Temperaturen nach jeder Abkühlung werden die Zeitabstände zwischen den Aufheizungen vernachlässigt.
+Für jeden Zyklus wurde bei den Dioden eine Temperatur von $\SI{60}{\celsius}$ angestrebt.
+Mehr Informationen zu den Eigenschaften von "P3" und "P4" gibt es in  \cite{felix}.
 
 
 In Abbildung \ref{fig:P_3} ist die Schadensrate für die 60 Annealingzyklen,
@@ -337,14 +341,15 @@ sowie die experimentell bestimmte Schadensrate dargestellt.
 
 \begin{figure}
   \centering
-    \includegraphics[width=0.82\textwidth]{build/damage_ohne_temperatur.PDF}
-\caption{Theoretische Schadensrate und gemessene Schadensrate nach 1, 2, 3, 4, 6, 9, 14, 24, 39 und 60 Zyklen.}
+    \includegraphics[width=0.82\textwidth]{build/damage_P_3.PDF}
+\caption{Theoretische Schadensrate und gemessene Schadensrate der
+Diode "P3" nach 1, 2, 3, 4, 6, 9, 14, 24, 39 und 60 Zyklen.}
 \label{fig:P_3}
 \end{figure}
 
 Der stufenartige Verlauf der Kurve resultiert aus den Temperaturzyklen.
 Es ist eine merkliche Abweichung der experimentellen Messwerte von den theoretischen
-Werten erkennbar. Der Sensor "P3" wurde schon vor der Messung unkontrolliert erwärmt, wodurch
+Werten erkennbar. Die Diode "P3" wurde schon vor der Messung unkontrolliert erwärmt, wodurch
 die angegebenen Annealingzeiten in Wahrheit größer sind und nicht präzise abgeschätzt werden können. Dies erklärt die
 geringe Änderung der einzelnen Messwerte voneinander, welche dem
 Verlauf der theoretischen Werte für große Zeiten ähnelt.
@@ -362,23 +367,28 @@ $\SI{-2}{\celsius}$. Um dies zu korrigieren wird der Leckstrom gemäß \ref{eqn:
 mit der Temperatur skaliert. Die Aktivierungsenergie $E_{\mathrm{eff}}$ und das Volumen des Detektormaterials
 unterliegen dabei Unsicherheiten. Zusätzlich haben auch die materialspezifischen Parameter
 der theoretischen Messwerte eine gewisse Abweichung zu den tatsächlichen Parametern, da
-ein anderer Sensor betrachtet wird.
+eine andere Diode betrachtet wird.
 
-Die Messung des Sensors "P4" ist in Abbildung \ref{fig:P_4}
+Die Messung der Diode "P4" ist in Abbildung \ref{fig:P_4}
 dargestellt.
 
 \begin{figure}
   \centering
     \includegraphics[width=0.82\textwidth]{build/damage_P_4.PDF}
-\caption{Theoretische Schadensrate und gemessene Schadensrate nach 1, 2, 3, 4, 6, 9, 14, 24 und 39 Zyklen.}
+\caption{Theoretische Schadensrate und gemessene Schadensrate
+der Diode "P4" nach 1, 2, 3, 4, 6, 9, 14, 24 und 39 Zyklen.}
 \label{fig:P_4}
 \end{figure}
 
 Die Abweichungen sind in dieser Messreihe noch deutlicher. Neben den Fehlerquellen die
-für den Sensor "P3" aufgezählt wurden, ist "P4" zusätzlich nicht vollständig depletiert.
-Für die Bestimmung des aktiven Volumens zur Berechnung der Schadensrate wurde ein vollständig
-depletierter Sensor angenommen. Das tatsächliche aktive Volumen des Detektors ist somit kleiner, wodurch sich auch
+für die Diode "P3" aufgezählt wurden, ist "P4" zusätzlich nicht vollständig depletiert, da die verwendete
+Depletionsspannung aufgrund der Strahlenschäden nicht ausgereicht hat. Höhere Spannungen hätten zu
+einem Leistungsverlust geführt und die Messung gestört.
+Für die Bestimmung des aktiven Volumens zur Berechnung der Schadensrate wurde eine vollständig
+depletierte Diode angenommen. Das tatsächliche aktive Volumen des Detektors ist somit kleiner, wodurch sich auch
 die gemessene Schadensrate verringert.
-Um diesen Effekt berücksichtigen zu können, müsste das Depletierte Volumen
-beispielweise über Ladungssammlungseffizienz (CCE) Messungen bestimmt werden.
+Um diesen Effekt berücksichtigen zu können, müsste das depletierte Volumen
+beispielsweise über \textit{edge Transient Current Technique} (edge-TCT) Messungen untersucht werden.
+Diese konnten, aufgrund eines nicht vorhandenen Aufbaus, nicht durchgeführt werden.
+Mehr Informationen zu diesem Verfahren gibt es in \cite{edge}
 %Die Funktion \ref{eqn:damage} kann solche Effekte nicht berücksichtigen.

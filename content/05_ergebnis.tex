@@ -1,29 +1,41 @@
 \chapter{Zusammenfassung}
 Das Programm beschreibt die Dotierungskonzentration und die Schadensrate während dem
 Annealing einer bestrahlten Diode
-auf der Grundlage des Hamburger Modells. Die Näherung für beliebige
-Temperaturverläufe verursacht für hinreichend viele Interpolationsintervalle
-vernachlässigbar kleine Fehler. Die Anwendbarkeit des Modells zur Berechnung der Schadensrate ist
-beschränkt, so würden große Annealingzeiten und Temperaturen ($\alpha < \SI{1.5e-17}{\ampere\per\centi\meter}$) zu Abweichungen
-zwischen Modell und Realität führen. Solche Werte werden jedoch erst nach
-einer Annealingzeit von mehr als $t=\SI{e4}{\minute}$ bei $\SI{80}{\celsius}$ erreicht. siehe
-\ref{fig:damage_rates}, wofür
-die Dotierungskonzentration bereits nahe am Sättigungswert liegt.
+auf der Grundlage des Hamburger Modells.
+
+Durch beliebig viele Interpolationsintervalle im Temperaturprofil kann die entstehende Abweichung des
+Korrekturansatzes klein gehalten werden.
+%Die Näherung für beliebige
+%Temperaturverläufe verursacht für hinreichend viele Interpolationsintervalle
+%vernachlässigbar kleine Fehler.
+
+Für große Annealingzeiten beschreibt Gleichung \ref{eqn:damage} nicht mehr die tatsächliche Schadensrate, wodurch das Programm,
+welches auf dieser Gleichung basiert, dies ebenfalls nicht kann. Abweichungen
+von dem Hamburger Modell werden jedoch erst nach
+einer Annealingzeit von mehr als $t=\SI{e4}{\minute}$ bei $\SI{80}{\celsius}$ erreicht (siehe
+\ref{fig:damage_rates}). Für solche Werte liegt
+die Dotierungskonzentration bereits nahe am Sättigungswert.
+
+%Die Anwendbarkeit des Modells zur Berechnung der Schadensrate ist
+%beschränkt, so würden große Annealingzeiten und Temperaturen ($\alpha < \SI{1.5e-17}{\ampere\per\centi\meter}$) zu Abweichungen
+%zwischen Modell und Realität führen. Solche Werte werden jedoch erst nach
+%einer Annealingzeit von mehr als $t=\SI{e4}{\minute}$ bei $\SI{80}{\celsius}$ erreicht (siehe
+%\ref{fig:damage_rates}), wofür
+%die Dotierungskonzentration bereits nahe am Sättigungswert liegt.
 %versagt für kleine Schadensraten $\alpha < \SI{1.5e-17}{\ampere\per\centi\meter}$,
 %da diese nicht beliebig gering werden können. Solche Werte werden jedoch erst nach
 %einer Annealingzeit von mehr als $t=\SI{1e4}{\minute}$ bei $\SI{80}{\celsius}$ erreicht, wofür
 %die Dotierungskonzentration bereits nahe am Sättigungswert liegt.
 
-Die Verbindung von Datensätzen und die Anknüpfung der einzelnen Zeitstempel der
-Textdateien funktioniert.
+%Die Verbindung von Datensätzen und die Anknüpfung der einzelnen Zeitstempel der
+%Textdateien funktioniert.
 %Abweichungen von experimentellen Daten führen zu vernachlässigbar kleinen Ungenauigkeiten, da das Annealing
 %nach einem Abkühlungszyklus selbst über große Zeiträume irrelevant im Vergleich zu
 %den Erwärmungszyklen ist.
 
 Abweichungen von experimentellen Daten sind durch systematische Unsicherheiten der Messdaten
 zu erklären. Unvollständige Depletion des Sensors, vorheriges Annealing über einen
-unbekannten Zeitraum, und Unsicherheiten in der Temperaturskalierung des Leckstroms sowie
-des Volumens des Detektors sind dabei die Hauptursachen.
+unbekannten Zeitraum und Unsicherheiten in der Temperaturskalierung des Leckstroms sind dabei die Hauptursachen.
 
 Es wurde ein Interface erstellt, dass das Modell nutzt um die Schadensrate und die Dotierungskonzentration
 für beliebige Fluenzen, Temperaturen und

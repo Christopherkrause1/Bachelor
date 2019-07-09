@@ -1,7 +1,7 @@
 \chapter{Interface zur Berechnung von Annealingeffekten für konstante Temperaturen}
 Das Hauptprogramm dient zur Modellierung von Annealingeffekten für beliebige Datensätze.
 Um den erwarteten Verlauf von Annealingeffekten von konstanten Temperaturen über einen
-beliebigen Zeitraum bestimmen zu können wird ein weiteres Python Programm für diesen Zweck entwickelt.
+beliebigen Zeitraum bestimmen zu können wird ein weiteres Python Programm entwickelt.
 Bei der Ausführung öffnet es ein Interface, welches die relevanten Angaben für
 das Modellieren der Dotierungskonzentration oder der Schadensrate abfragt. In Abbildung \ref{fig:interface}
 ist das Interface dargestellt.
@@ -18,7 +18,7 @@ Annealingeffekte von
 0,1 Sekunden bis zu dem angegebenen Endpunkt.
 Das Zeitintervall von einem Wert zum nächsten ist dabei logarithmisch, wodurch über alle
 Größenordnungen der Zeit hinweg der Abstand auf der logarithmischen Zeitachse gleich bleibt.
-Die Parameter können in den Einstellungen beliebig gewählt werden.
+Die Parameter der Gleichungen \ref{eqn:N_eff} und \ref{eqn:damage} können in den Einstellungen beliebig gewählt werden.
 
 In Abbildung \ref{fig:inter_n} und \ref{fig:inter_damage} sind Beispielhaft jeweils ein Plot für die Dotierungskonzentration und der
 Schadensrate dargestellt. Hierbei werden die Parameter einer "WE-25k" Diode verwendet.
@@ -26,14 +26,14 @@ Schadensrate dargestellt. Hierbei werden die Parameter einer "WE-25k" Diode verw
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.83\textwidth]{build/interface_n_eff.PDF}
-  \caption{Beispiel Plot von $N_{\mathrm{eff}}$ mit $t = \SI{e4}{\minute}$, $\Phi_{\mathrm{eq}}= 5\cdot 10^{15} \, \mathrm{n_{eq}/cm^2}$ und $T=\SI{60}{\celsius}$.}
+  \includegraphics[width=0.8\textwidth]{build/interface_n_eff.PDF}
+  \caption{Beispiel Plot von $N_{\mathrm{eff}}$ einer "WE-25k" Diode mit $t = \SI{e4}{\minute}$, $\Phi_{\mathrm{eq}}= 5\cdot 10^{15} \, \mathrm{n_{eq}/cm^2}$ und $T=\SI{60}{\celsius}$.}
   \label{fig:inter_n}
 \end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.83\textwidth]{build/interface_damage.PDF}
-  \caption{Beispiel Plot von $\alpha$ mit $t = \SI{e4}{\minute}$ und $T=\SI{60}{\celsius}$.}
+  \includegraphics[width=0.8\textwidth]{build/interface_damage.PDF}
+  \caption{Beispiel Plot von der Schadensrate einer "WE-25k" Diode mit $t = \SI{e4}{\minute}$ und $T=\SI{60}{\celsius}$.}
   \label{fig:inter_damage}
 \end{figure}

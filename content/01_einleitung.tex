@@ -1,7 +1,8 @@
 \chapter{Einleitung}
 Siliziumdetektoren sind in der Wissenschaft und in der Industrie weit verbreitete
 Detektoren. In der Hochenergiephysik werden sie in Collider-Experimenten, wie ATLAS, verwendet.
-Sie  lassen präzise Rückschlüsse auf die Energie, sowie den Impuls von Teilchen durch eine
+Sie  lassen präzise Rückschlüsse auf die Energie, sowie den Impuls von Teilchen, die bei der
+Kollision entstanden sind, durch eine
 hohe Ortsauflösung zu.
 
 
@@ -9,28 +10,29 @@ Im ATLAS Experiment werden Siliziumdetektoren, zur Bestimmung von Richtung, Impu
 und Ladung von geladenen Teilchen, verwendet. Es ist eines der vier großen Experimente am LHC.
 Er wird von einem $\SI{2}{\tesla}$ Magnetfeld eines ihn umgebenden Solenoids
 durchsetzt und krümmt Teilchenbahnen in Abhängigkeit von Ladung und Impuls.
-Bestehend aus drei Komponenten, dem Pixeldetektor, dem "Semiconductor Tracker" (SCT) und dem "Transition Radiation Tracker" (TRT) kommen  die
-Siliziumdetektoren in den ersten beiden Bestandteilen zum Einsatz.
+Bestehend aus drei Komponenten, dem "Transition Radiation Tracker" (TRT), dem "Semiconductor Tracker" (SCT) und
+dem Pixeldetektor kommen  die
+Siliziumdetektoren in den letzten beiden Bestandteilen zum Einsatz.
+
+Der TRT wird zur Identifikation von Teilchen, hauptsächlich Elektronen und Pionen, verwendet und besteht aus 73 Lagen
+von Straw-Detektoren (viele aneinander gereihte Proportionalzählrohre).
+
+Im SCT werden Siliziumstreifensensoren verwendet und dient zur
+%Der SCT besteht aus 4088 Modulen über vier zylindrische Lagen,
+%sowie 18 scheibenförmige Lagen, verteilt und umfasst eine Fläche von $\SI{63}{\meter\squared}$.
+Rekonstruktion der Bahn der Teilchen, jedoch auch für die Identifikation und der Bestimmung des Impulses der Teilchen.
 
 Mit einer Fläche von $\SI{1.7}{\meter\squared}$ und drei Lagen von Modulen
 %und insgesamt 1744 Modulen
 ist es im Pixeldetektor möglich
 Informationen über die Strecke der entstehenden Teilchen zu erlangen.
-Im SCT werden, anders als im Pixeldetektor, Siliziumstreifen-Sensoren verwendet.
-%Der SCT besteht aus 4088 Modulen über vier zylindrische Lagen,
-%sowie 18 scheibenförmige Lagen, verteilt und umfasst eine Fläche von $\SI{63}{\meter\squared}$.
-Auch dieser wird für
-die Rekonstruktion der Bahn der Teilchen verwendet, jedoch auch für die Identifikation und der Bestimmung des Impulses der Teilchen.
-
-Der TRT wird ebenfalls zur Identifikation von Teilchen, hauptsächlich Elektronen und Pionen, verwendet und besteht aus 73 Lagen
-von Straw-Detektoren (viele aneinander gereihte Proportionalzählrohre).
 Weiterreichende Informationen über das ATLAS-Experiment befinden sich in \cite{ATLAS}.
-Für Collider-Experimente sind möglichst funktionsfähige Detektoren essenziell.
+Für Collider-Experimente sind möglichst funktionsfähige Sensoren essenziell.
 Die Sensoren der innersten Schicht des Pixeldetektors (IBL)
 werden bei den Experimenten mit Fluenzen von ungefähr $\Phi_{\mathrm{eq}} =3,3\cdot 10^{15} \, \mathrm{n_{eq}/cm^2}$ bestrahlt \cite{Capeans:1291633}.
 Die erwartete Fluenz des geplanten "Inner Tracker" (ITK) beträgt
 $\Phi_{\mathrm{eq}} =1,3\cdot 10^{16} \, \mathrm{n_{eq}/cm^2}$ \cite{itk}. Eine Untersuchung
-der Folgen und Gegenmaßnahmen der Strahlenbeschädigung ist somit notwendig.
+der Folgen der Strahlenbeschädigung ist somit notwendig.
 
 %Da diese während des Experimentes unter starker Bestrahlung
 %stehen ist eine Untersuchung der Folgen und Gegenmaßnahmen notwendig. Die Sensoren der innersten Schicht des Pixeldetektors (IBL)
@@ -39,11 +41,12 @@ der Folgen und Gegenmaßnahmen der Strahlenbeschädigung ist somit notwendig.
 %$\Phi_{\mathrm{eq}} =1,2\cdot 10^{15} \, \mathrm{n_{eq}/cm^2}$ \cite{itk}.
 
 Einfallende Teilchen können die
-Struktur des Detektors und somit dessen Dotierungskonzentration verändern, wodurch dieser ineffizienter wird.
-Es ist somit notwendig, die Strahlenschäden möglichst gering zu halten damit
+Struktur des Detektors verändern, wodurch dieser ineffizienter wird.
+Es ist somit notwendig die Strahlenschäden möglichst gering zu halten, damit
 die Halbleiter eine möglichst lange Lebenszeit besitzen.
 
-Die Bestrahlung der Detektoren führt zu einem anwachsenden Leckstrom, welcher den
+
+Die Bestrahlung der Sensoren hat zwei Effekte zur Folge. Zum einen wächst der Leckstrom, welcher den
 gemessenen elektrischen Signalen überlagert ist und ein Rauschen kreiert. Ein
 effektiver Detektor sollte somit einen möglichst geringen Leckstrom haben.
 
@@ -57,13 +60,13 @@ darauf geachtet werden muss bei möglichst geringer externer Spannung den Detekt
 Dies ist abhängig von der Dotierungskonzentration, da sie die Ladung der
 Raumladungszone beschreibt.
 
-Die durch Strahlung induzierte Änderung der Dotierungskonzentration und des Leckstromes sind
+Die durch Strahlung induzierte Änderung der effektiven Dotierungskonzentration und des Leckstromes sind
 somit wichtige Größen für die Qualität eines Detektors.
 Um die Schäden zu verringern wird der Annealingeffekt ausgenutzt. Mit diesem lassen
 Defekte durch Wärme verändern und teilweise beheben. Die Eigenschaften des Detektors können
-dabei sowohl verbessert als auch verschlechtert werden.
-Jedoch kann Annealing im besten Fall die Verschlechterung der Detektoreigenschaften durch Bestrahlung nur
-abschwächen.
+dabei sowohl verbessert als auch bei zu langer Erwärmung verschlechtert werden.
+Jedoch kann gezieltes Annealing die durch Bestrahlung induzierten Schäden im Detektor nur
+abschwächen und nicht vollständig beheben.
 Um zu Überprüfen, ob Sensoren den Anforderungen im Experiment genügen, werden sie in
 Bestrahlungseinrichtungen gezielt bestrahlt.
 
