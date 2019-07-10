@@ -166,8 +166,10 @@ In Abbildung \ref{fig:korrektur_N_eff} ist Dotierungskonzentration mit Korrektur
 
 
 
-Der Verlauf entspricht nun den Erwartungen, ist aber lediglich als Näherung zu verstehen, da angenommen
-wird, dass die Bestrahlung vor dem Annealing stattgefunden hat. Die Sensoren wurden jedoch
+Das Programm kann $\Delta N_{\mathrm{eff}}$ für das korrekt
+Temperaturprofil berechnen, da der Verlauf mit den Erwartungen übereinstimmt.
+Für den gegebenen Sensor ist dies lediglich als Näherung zu verstehen, da angenommen
+wird, dass die Bestrahlung vor dem Annealing stattgefunden hat. Der Sensor wurde jedoch
 während dem Annealing bestrahlt.
 %wodurch ein genaues Berechnen der Annealingeffekte nicht
 %möglich ist.
@@ -180,7 +182,7 @@ Zusätzlich sind die Wechselwirkungen zwischen der Fluenz und dem gleichzeitigen
 %der einzelnen Temperaturen verzögert sich der Annealingeffekt insgesamt, da anfänglich
 %geringe Temperaturen nur wenig zum gesamten Effekt beitragen. Dies wird
 %an dem späteren Zeitpunkt des Minimums deutlich.
-Dennoch ist es mit der Korrektur möglich Annealingeffekte von beliebigen Temperaturprofilen zu berechnen und
+Eine solche Korrektur
 kann für den \textit{shortterm annealing} Term der Schadensrate ebenfalls erstellt werden.
 Im zweiten Term ist $\alpha_{0}$ temperaturabhängig, aber nicht zeitabhängig,
 wodurch der Korrekturansatz aus der Berechnung von $\Delta N_{eff}$ nicht mehr gelten kann. Um die Annealinghistorie dennoch
@@ -234,7 +236,7 @@ Effekt ist bei den größten Temperaturen zu sehen, kleine Temperaturen führen 
 nur zu minimalen Änderungen.
 
 Mit der Implementierung dieser Korrekturen kann das Programm Annealingeffekte für
-beliebige Temperaturverläuft berechnen.
+beliebige Temperaturverläufe berechnen.
 
 
 
@@ -246,10 +248,13 @@ Temperatur. Um diesen Fehler gering zu halten, wird das Temperaturprofil
 linear interpoliert.
 Um die Rechenzeit nicht unnötig zu erhöhen, wird eine Funktion definiert, die sinnvolle
 Interpolationsschritte $n$ zwischen zwei Messpunkten abschätzt.
-Da große Temperaturen relevanter für das Annealing sind und die Annealingeffekte nicht linear von
+Da
+Annealingeffekte nicht linear von
 der Temperatur abhängig sind, ist es vorteilhaft,
-bei den Mittelwerten der Temperaturen möglichst kleine Ungenauigkeiten und somit möglichst viele
-Intervalle zu erschaffen. Dies ist insbesondere für große Temperaturänderungen von einem Messwert zum nächsten relevant.
+bei den Mittelwerten der Temperaturen möglichst viele
+Intervalle zu erschaffen, um die Genauigkeit zu
+verbessern. Dies ist insbesondere für große Temperaturänderungen von einem Messwert zum nächsten relevant.
+Zusätzlich sind für das Annealing große Temperaturen relevanter als kleine.
 Aus diesem Grund wird sowohl die maximale Temperatur $T_{\mathrm{max}}$ des Datensatzes
 als Bezugspunkt genommen, als auch die Temperaturdifferenz zweier
 aufeinander folgenden Temperaturen $T(t_{\mathrm{i}})$ und $T(t_{\mathrm{i+1}})$  betrachtet. Die positiven Parameter $y$, $z_1$
@@ -261,8 +266,8 @@ und $z_2$ sind frei anpassbar:
 Die Funktion wächst mit steigenden Temperaturen und größer werdenden Temperaturdifferenzen.
 Mit $y$ wird die Anzahl an Intervallen gesteuert, während die
 Parameter $z_1$ und $z_2$ verhindern, dass $n$ null oder unendlich groß wird.
-Die Funktion folgt lediglich aus den vorgegebenen Ansprüchen an die Intervallzahl und beschreibt
-keine optimale Abschätzung.
+%Die Funktion folgt lediglich aus den vorgegebenen Ansprüchen an die Intervallzahl und beschreibt
+%keine optimale Abschätzung.
 
 
 Für die Zeit und die Temperatur der interpolierten Daten gilt:
@@ -325,7 +330,7 @@ aufgrund der Interpolation einen präziseren Verlauf als der Annealingeffekt des
 Jedoch beschreibt die lineare Interpolation nur eine Näherung des wahren Temperaturverlaufes.
 
 \section{Berechnung der gesamten Annealinghistorie einer Diode}
-Die hier betrachtete Annealinghistorie setzt sich aus 60 Erwärmungs-und
+Die hier betrachtete Annealinghistorie setzt sich aus 60 Erwärmungs- und
 Abkühlungszyklen der Diode "P3" zusammen, welche insgesamt $\SI{1800}{\minute}$ entsprechen.
 Für die Diode "P4" werden 39 Zyklen ($\SI{1170}{\minute}$) betrachtet.
 Beide wurden von der ${\mathrm{IRRAD}}$ Einrichtung \cite{irrad} am CERN mit $\SI{24}{\giga\eV\per\clight}$ Protonen des Protonen Synchrotrons bestrahlt.
@@ -333,7 +338,7 @@ Die Datensätze werden mithilfe eines Python Programmes miteinander Verbunden.
 Wegen der geringen
 Temperaturen nach jeder Abkühlung werden die Zeitabstände zwischen den Aufheizungen vernachlässigt.
 Für jeden Zyklus wurde bei den Dioden eine Temperatur von $\SI{60}{\celsius}$ angestrebt.
-Mehr Informationen zu den Eigenschaften von "P3" und "P4" gibt es in  \cite{felix}.
+Mehr Informationen zu den Eigenschaften von "P3" und "P4" befinden sich in  \cite{felix}.
 
 
 In Abbildung \ref{fig:P_3} ist die Schadensrate für die 60 Annealingzyklen,
@@ -388,7 +393,7 @@ Für die Bestimmung des aktiven Volumens zur Berechnung der Schadensrate wurde e
 depletierte Diode angenommen. Das tatsächliche aktive Volumen des Detektors ist somit kleiner, wodurch sich auch
 die gemessene Schadensrate verringert.
 Um diesen Effekt berücksichtigen zu können, müsste das depletierte Volumen
-beispielsweise über \textit{edge Transient Current Technique} (edge-TCT) Messungen untersucht werden.
+beispielsweise über \textit{Edge Transient Current} ${\textit{Technique}}$ (Edge-TCT) Messungen untersucht werden.
 Diese konnten, aufgrund eines nicht vorhandenen Aufbaus, nicht durchgeführt werden.
-Mehr Informationen zu diesem Verfahren gibt es in \cite{edge}
+Mehr Informationen zu diesem Verfahren befinden sich in \cite{edge}.
 %Die Funktion \ref{eqn:damage} kann solche Effekte nicht berücksichtigen.
